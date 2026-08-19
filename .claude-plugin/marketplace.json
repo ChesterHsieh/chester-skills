@@ -1,0 +1,17 @@
+{
+  "name": "chester-skills",
+  "owner": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "description": "Chester 自用的 Claude Code skill 集合，以 plugin 形式安装。",
+  "plugins": [
+    {
+      "name": "deck-skills",
+      "source": "./",
+      "description": "检核与生成简报／workshop 教材／interactive HTML 的叙事骨架，并产出逐字稿。规格取自硅谷101的深度视频讲法。",
+      "category": "productivity",
+      "keywords": ["presentation", "slides", "workshop", "narrative", "content-review"]
+    }
+  ]
+}

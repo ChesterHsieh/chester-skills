@@ -1,0 +1,32 @@
+{
+  "name": "deck-skills",
+  "displayName": "Deck Skills",
+  "version": "0.1.0",
+  "description": "把「硅谷101式」深度内容的讲法变成可打分规格：检核简报／workshop 教材／interactive HTML 的叙事骨架，产出逐字稿，或从素材正向生成。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": [
+    "presentation",
+    "slides",
+    "pptx",
+    "workshop",
+    "narrative",
+    "storytelling",
+    "content-review",
+    "speaker-notes"
+  ],
+  "skills": [
+    "./skills/deck/narrative-spine",
+    "./skills/deck/deck-audit",
+    "./skills/deck/deck-script",
+    "./skills/deck/deck-build"
+  ],
+  "agents": [
+    "./agents/deck-reviewer.md"
+  ]
+}
