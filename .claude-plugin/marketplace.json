@@ -8,10 +8,30 @@
   "plugins": [
     {
       "name": "deck-skills",
-      "source": "./",
+      "source": "./plugins/deck-skills",
       "description": "检核与生成简报／workshop 教材／interactive HTML 的叙事骨架，并产出逐字稿。规格取自硅谷101的深度视频讲法。",
       "category": "productivity",
-      "keywords": ["presentation", "slides", "workshop", "narrative", "content-review"]
+      "keywords": [
+        "presentation",
+        "slides",
+        "workshop",
+        "narrative",
+        "content-review"
+      ]
+    },
+    {
+      "name": "skill-tree",
+      "source": "./plugins/skill-tree",
+      "description": "把课程大纲／职业路径／技术栈做成互动技能树，节点带任务与验收条件，配 60–150 题选择题检核点。产出是单一自足的 HTML。",
+      "category": "productivity",
+      "keywords": [
+        "learning-path",
+        "roadmap",
+        "skill-tree",
+        "quiz",
+        "curriculum",
+        "interview-prep"
+      ]
     }
   ]
 }

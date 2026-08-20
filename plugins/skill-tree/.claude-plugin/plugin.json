@@ -1,0 +1,25 @@
+{
+  "name": "skill-tree",
+  "displayName": "Skill Tree",
+  "version": "0.1.0",
+  "description": "把一个领域做成 Path of Exile 式的互动技能树 ＋ 大量选择题检核点，产出单一自足的 HTML。节点带任务清单与验收条件，每题附一段可贴回 Claude 的深挖 prompt。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": [
+    "learning-path",
+    "roadmap",
+    "skill-tree",
+    "quiz",
+    "curriculum",
+    "self-assessment",
+    "interview-prep"
+  ],
+  "skills": [
+    "./skills/skill-tree"
+  ]
+}
