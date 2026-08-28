@@ -32,6 +32,21 @@
         "curriculum",
         "interview-prep"
       ]
+    },
+    {
+      "name": "leaps-strategy",
+      "source": "./plugins/leaps-strategy",
+      "description": "制定特定股票的 LEAPS 长天期 call 槓桿策略，串接 IBKR connector 抓真实选择权链，产出带 delta／年化槓桿租金／价差成本与三关判定的候选合约清单。",
+      "category": "finance",
+      "keywords": [
+        "options",
+        "leaps",
+        "ibkr",
+        "leverage",
+        "delta",
+        "pmcc",
+        "trading"
+      ]
     }
   ]
 }

@@ -21,6 +21,7 @@ SKILLS=(
   "deck-script:plugins/deck-skills/skills/deck/deck-script"
   "deck-build:plugins/deck-skills/skills/deck/deck-build"
   "skill-tree:plugins/skill-tree/skills/skill-tree"
+  "leaps-strategy:plugins/leaps-strategy/skills/leaps-strategy"
 )
 AGENTS=("deck-reviewer:plugins/deck-skills/agents/deck-reviewer.md")
 
@@ -71,3 +72,4 @@ echo
 echo "完成。开新的 Claude Code session 后生效。"
 echo "验证 deck:       python3 $REPO/plugins/deck-skills/skills/deck/deck-audit/scripts/extract.py <你的档案> --pretty"
 echo "验证 skill-tree: cd <你的题目资料夹> && python3 $REPO/plugins/skill-tree/skills/skill-tree/assets/build.py"
+echo "验证 leaps:      python3 $REPO/plugins/leaps-strategy/skills/leaps-strategy/screener.py <quotes.json>"
