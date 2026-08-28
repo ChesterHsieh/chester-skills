@@ -1,11 +1,12 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前两个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前三个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
 | **deck-skills** | 把「硅谷101式」深度内容的讲法变成**可打分的规格**，用来检核与生成简报／workshop 教材／interactive HTML，并产出逐字稿 |
 | **skill-tree** | 把一个领域做成 **Path of Exile 式的互动技能树 ＋ 选择题检核点**，产出单一自足的 HTML |
+| **leaps-strategy** | 针对特定股票制定 **LEAPS 长天期 call 槓桿策略**，串接 IBKR connector 抓真实选择权链，产出候选合约清单 |
 
 ## 安装
 
@@ -13,6 +14,7 @@ Chester 自用的 Claude Code plugin 集合。目前两个 plugin，各自独立
 /plugin marketplace add ChesterHsieh/chester-skills
 /plugin install deck-skills@chester-skills
 /plugin install skill-tree@chester-skills
+/plugin install leaps-strategy@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -22,7 +24,8 @@ Chester 自用的 Claude Code plugin 集合。目前两个 plugin，各自独立
 ```
 plugins/
 ├── deck-skills/     narrative-spine, deck-audit, deck-script, deck-build + deck-reviewer agent
-└── skill-tree/      skill-tree
+├── skill-tree/      skill-tree
+└── leaps-strategy/  leaps-strategy
 ```
 
 ---
@@ -106,12 +109,40 @@ python3 skills/deck/deck-audit/scripts/extract.py <档案> --pretty
 
 ---
 
+# leaps-strategy
+
+丢一个股票代码，产出一份 LEAPS（长天期 call）槓桿策略与**可下单的候选合约清单**。
+
+论点是：长期看好某标的，但资金规模有限，所以用 deep ITM 长天期 call 当**融资持股的替代品**——不是赌方向的彩券。
+
+```
+边界检查 → 抓标的现况(IV 百分位) → 挑 12–24 月到期 → 抓链与逐档报价 → screener → 候选清单
+```
+
+门槛全部来自使用者自己的交易检讨报告（`references/playbook.md`），不是教科书通则：
+
+- **delta 框架**：0.70–0.85 替代持股（核心仓）／0.40–0.60 高信念加速／<0.25 彩券限额。
+  赚钱的 call 进场时近 ATM 偏 ITM，赔钱的是深度 OTM——这是 +$22k 与 −$14k 的分水岭。
+- **三关检查**：标的关（催化剂 + 到期日在其后至少 6 个月）、价格关（IV 百分位 + delta + 到期窗）、资金关（单笔权利金 ≤ 帐户 5%）。
+- **成本关**：显性佣金约 $220/年，但成本大头是 LEAPS 的买卖价差，常是佣金的十倍以上。
+
+IBKR connector **不回传 greeks**，所以 `screener.py` 用 Black-Scholes 自己补算 delta 与 vega，
+再摊开时间价值占比、年化槓桿租金、实质槓桿倍数、来回价差成本与部位上限：
+
+```bash
+python3 plugins/leaps-strategy/skills/leaps-strategy/screener.py quotes.json
+```
+
+**只做筛选与风险计算，不下单、不给个人化投资建议。**
+
+---
+
 ## 本地开发
 
 改 skill 内容时，用软链装到 `~/.claude/` 直接生效，不必走 plugin 安装流程：
 
 ```bash
-./install.sh              # 软链两个 plugin 的全部 skill；--copy 改为复制；--uninstall 移除
+./install.sh              # 软链全部 plugin 的 skill；--copy 改为复制；--uninstall 移除
 ```
 
 同时装了 plugin 版和软链版会重复载入，二择一。
@@ -124,6 +155,10 @@ python3 skills/deck/deck-audit/scripts/extract.py <档案> --pretty
 
 **skill-tree** 的时数与週数是估计值，作用是给回馈节奏而不是精算。
 另外技能树会过时——课纲换届、论文换代、硬体换代时值得重跑一次更新分支。
+
+**leaps-strategy** 的 delta 是用 Black-Scholes 从 IV 反推的近似值，不是券商回报的官方 greeks，
+无股息／连续复利假设下与实际会有小差距；判断分类够用，精算保证金不够用。
+另外 IBKR 的 `option_midpoint_iv` 在长天期合约上会回无效值，脚本改用 `implied_vol`。
 
 ## License
 
