@@ -111,12 +111,13 @@ python3 skills/deck/deck-audit/scripts/extract.py <档案> --pretty
 
 # leaps-strategy
 
-丢一个股票代码，产出一份 LEAPS（长天期 call）槓桿策略与**可下单的候选合约清单**。
+给一个**股票代码 ＋ 一笔预算**，产出 LEAPS（长天期 call）槓桿策略与**可下单的候选合约清单**，含每档买几口。
+预算是这次要花在选择权上的权利金总额，全额用于买选择权——skill 不反推帐户比例。
 
 论点是：长期看好某标的，但资金规模有限，所以用 deep ITM 长天期 call 当**融资持股的替代品**——不是赌方向的彩券。
 
 ```
-边界检查 → 抓标的现况(IV 百分位) → 挑 12–24 月到期 → 抓链与逐档报价 → screener → 候选清单
+代码+预算 → 抓标的现况(IV 百分位) → 挑 12–24 月到期 → 抓链与逐档报价 → screener → 候选清单+口数
 ```
 
 门槛全部来自使用者自己的交易检讨报告（`references/playbook.md`），不是教科书通则：
@@ -132,6 +133,9 @@ IBKR connector **不回传 greeks**，所以 `screener.py` 用 Black-Scholes 自
 ```bash
 python3 plugins/leaps-strategy/skills/leaps-strategy/screener.py quotes.json
 ```
+
+核心产出是取舍：同样 $25k 买 NVDA Jan'28，delta 0.90 那档拿 181 等效股、年化槓桿租金 4.8%；
+delta 0.77 那档拿 230 股，代价是年租金 10.0%。**摊开给你看，不替你决定。**
 
 **只做筛选与风险计算，不下单、不给个人化投资建议。**
 
