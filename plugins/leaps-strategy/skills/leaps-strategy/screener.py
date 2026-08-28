@@ -3,7 +3,10 @@
 
 IBKR MCP connector 不回传 greeks，只给 bid/ask/IV/OI。这支脚本用 Black-Scholes
 自己算 delta，并把「时间价值占比 / 年化槓桿租金 / 实质槓桿 / 半价差成本」摊开，
-最后依 A3-1 delta 框架 + A5-1 部位规模给出三关判定。
+最后依 A3-1 delta 框架给出判定，并在给定预算下算出每档能买几口。
+
+预算（budget）是这次打算花在选择权上的权利金总额，可弹性调整；
+脚本不做帐户比例检查，只回答「这笔预算在这档上买得到什么」。
 
 用法:
     python3 screener.py quotes.json
@@ -23,9 +26,8 @@ BUCKETS = [
     (0.25, 0.40, "偏投机", "已接近彩券区，需并入投机总额"),
     (0.00, 0.25, "彩券", "L股 600C 的教训——一律归投机仓并限额"),
 ]
-# A5-1 部位规模上限
-MAX_SINGLE_PCT = 0.05      # 单笔权利金 ≤ 帐户 5%
-MAX_SPEC_PCT = 0.10        # delta<0.25 的投机段总额上限
+# 预算模式：budget 就是这次要花掉的权利金总额，全额用于买选择权。
+# 不反推帐户比例——资金总量由使用者自己在 skill 外面管。
 # A3-4 到期日窗口（月）
 DTE_MIN_MONTHS, DTE_MAX_MONTHS = 12, 24
 # A3-3 价差红线：半价差 / 中价
@@ -86,7 +88,11 @@ def evaluate(q, cfg, today):
     if delta >= 0.85:
         bucket, note = "深度 ITM（超框架）", "槓桿已低，接近直接持股，检查是否值得付价差"
 
-    max_ct_size = int((cfg["account"] * MAX_SINGLE_PCT) // premium) if premium else 0
+    budget = cfg["budget"]
+    n_ct = int(budget // premium) if premium else 0
+    spend = n_ct * premium
+    leftover = budget - spend
+    budget_use = spend / budget if budget else 0.0
 
     fails = []
     months = t * 12
@@ -96,10 +102,10 @@ def evaluate(q, cfg, today):
         fails.append(f"半价差 {half_spread_pct:.1%} > {MAX_HALF_SPREAD_PCT:.0%}")
     if oi < MIN_OI:
         fails.append(f"OI {oi} < {MIN_OI}")
-    if max_ct_size < 1:
-        fails.append("单口权利金已超帐户 5% 上限")
+    if n_ct < 1:
+        fails.append(f"单口权利金 ${premium:,.0f} > 预算 ${budget:,.0f}")
     if delta < 0.25:
-        fails.append("delta<0.25：投机区，需并入投机总额限制")
+        fails.append("delta<0.25：彩券区，不是槓桿工具")
 
     return {
         "label": f'{cfg["symbol"]} {q["expiry"]} {strike:g}C',
@@ -109,7 +115,10 @@ def evaluate(q, cfg, today):
         "rent": rent, "leverage": leverage, "vega_1pt": vega * 100,
         "half_spread": half_spread, "half_spread_pct": half_spread_pct,
         "oi": oi, "bucket": bucket, "note": note,
-        "premium": premium, "max_contracts": max_ct_size,
+        "premium": premium, "n_contracts": n_ct, "spend": spend,
+        "leftover": leftover, "budget_use": budget_use,
+        "eff_shares": delta * n_ct * 100,
+        "notional": delta * spot * n_ct * 100,
         "theo": theo, "rich": mid - theo,
         "fails": fails,
     }
@@ -118,6 +127,11 @@ def evaluate(q, cfg, today):
 def main():
     src = sys.argv[1] if len(sys.argv) > 1 else "-"
     cfg = json.load(sys.stdin if src == "-" else open(src))
+    for key in ("symbol", "spot", "budget", "quotes"):
+        if key not in cfg:
+            sys.exit(f"缺少必填栏位 `{key}`。budget = 这次要花在选择权上的权利金总额。")
+    if not cfg["quotes"]:
+        sys.exit("quotes 是空的——先用 get_price_snapshot 逐档抓 bid/ask/iv/oi。")
     cfg.setdefault("rate", 0.04)
     cfg.setdefault("div_yield", 0.0)
     today = date.fromisoformat(cfg["asof"]) if "asof" in cfg else date.today()
@@ -132,26 +146,33 @@ def main():
         print(f'A2-2 价格关 · IV 百分位 {ivp:.0f} → {gate}')
     if cfg.get("earnings_date"):
         print(f'A4-4 财报日 {cfg["earnings_date"]} —— 财报前 N 天不开新买方部位')
-    print(f'A5-1 帐户 ${cfg["account"]:,.0f} → 单笔权利金上限 ${cfg["account"]*MAX_SINGLE_PCT:,.0f}\n')
+    print(f'预算 ${cfg["budget"]:,.0f}（全额用于买选择权）\n')
 
-    hdr = f'{"合约":<26}{"月":>5}{"中价":>8}{"delta":>7}{"IV":>7}{"时值%":>7}{"年租金":>8}{"槓桿":>6}{"半价差":>8}{"OI":>7}  {"分类"}'
+    hdr = f'{"合约":<26}{"月":>5}{"中价":>8}{"delta":>7}{"IV":>7}{"时值%":>7}{"年租金":>8}{"槓桿":>6}{"半价差":>8}{"OI":>7}{"口数":>6}{"动用":>8}  {"分类"}'
     print(hdr)
     print("-" * len(hdr))
     for r in rows:
         flag = "  " if not r["fails"] else "✗ "
         print(f'{flag}{r["label"]:<24}{r["months"]:>5.1f}{r["mid"]:>8.2f}{r["delta"]:>7.2f}'
               f'{r["iv"]*100:>6.1f}%{r["ext_pct"]*100:>6.1f}%{r["rent"]*100:>7.1f}%'
-              f'{r["leverage"]:>5.1f}x{r["half_spread_pct"]*100:>7.1f}%{r["oi"]:>7}  {r["bucket"]}')
+              f'{r["leverage"]:>5.1f}x{r["half_spread_pct"]*100:>7.1f}%{r["oi"]:>7}{r["n_contracts"]:>6}{r["budget_use"]*100:>7.0f}%  {r["bucket"]}')
 
     print("\n--- 逐档细节 ---")
     for r in rows:
         print(f'\n▸ {r["label"]}  [{r["bucket"]}]')
         print(f'   {r["note"]}')
-        print(f'   每口权利金 ${r["premium"]:,.0f}；等效持股 ${r["delta"]*cfg["spot"]*100:,.0f}；'
-              f'5% 上限下最多 {r["max_contracts"]} 口')
+        print(f'   每口权利金 ${r["premium"]:,.0f}；每口等效持股 ${r["delta"]*cfg["spot"]*100:,.0f}')
+        if r["n_contracts"] >= 1:
+            print(f'   预算 ${cfg["budget"]:,.0f} → 买 {r["n_contracts"]} 口，花 ${r["spend"]:,.0f}'
+                  f'（动用 {r["budget_use"]:.0%}），剩 ${r["leftover"]:,.0f}')
+            print(f'   → 总等效持股 {r["eff_shares"]:,.0f} 股 / ${r["notional"]:,.0f}'
+                  f'（同样的钱直接买正股只有 {r["spend"]/cfg["spot"]:,.0f} 股）')
+        else:
+            print(f'   预算 ${cfg["budget"]:,.0f} 买不到一口')
         print(f'   内在 ${r["intrinsic"]:.2f} / 时间价值 ${r["extrinsic"]:.2f}'
               f'（年化槓桿租金 {r["rent"]*100:.1f}%，对照融资利率 {cfg["rate"]*100:.1f}%）')
-        print(f'   IV 每动 1 点 ≈ ${r["vega_1pt"]:,.0f}/口；'
+        print(f'   IV 每动 1 点 ≈ ${r["vega_1pt"]:,.0f}/口'
+              f'（{r["n_contracts"]} 口 = ${r["vega_1pt"]*r["n_contracts"]:,.0f}）；'
               f'一买一卖价差成本 ≈ ${r["half_spread"]*200:,.0f}/口')
         print(f'   三关：{"全过 ✓" if not r["fails"] else "否决 → " + "；".join(r["fails"])}')
     print("\n※ 本表是筛选与风险计算工具，不是投资建议；下单与否由你决定。")
