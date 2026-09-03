@@ -1,12 +1,13 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前三个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前四个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
 | **deck-skills** | 把「硅谷101式」深度内容的讲法变成**可打分的规格**，用来检核与生成简报／workshop 教材／interactive HTML，并产出逐字稿 |
 | **skill-tree** | 把一个领域做成 **Path of Exile 式的互动技能树 ＋ 选择题检核点**，产出单一自足的 HTML |
 | **leaps-strategy** | 针对特定股票制定 **LEAPS 长天期 call 槓桿策略**，串接 IBKR connector 抓真实选择权链，产出候选合约清单 |
+| **grill-me** | 对一个计划、决策或想法**地毯式提问**，逐一走过决策树、每题给建议答案，直到达成共识才罢休 |
 
 ## 安装
 
@@ -15,6 +16,7 @@ Chester 自用的 Claude Code plugin 集合。目前三个 plugin，各自独立
 /plugin install deck-skills@chester-skills
 /plugin install skill-tree@chester-skills
 /plugin install leaps-strategy@chester-skills
+/plugin install grill-me@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -25,7 +27,8 @@ Chester 自用的 Claude Code plugin 集合。目前三个 plugin，各自独立
 plugins/
 ├── deck-skills/     narrative-spine, deck-audit, deck-script, deck-build + deck-reviewer agent
 ├── skill-tree/      skill-tree
-└── leaps-strategy/  leaps-strategy
+├── leaps-strategy/  leaps-strategy
+└── grill-me/        grill-me, grilling
 ```
 
 ---
@@ -138,6 +141,19 @@ python3 plugins/leaps-strategy/skills/leaps-strategy/screener.py quotes.json
 delta 0.77 那档拿 230 股，代价是年租金 10.0%。**摊开给你看，不替你决定。**
 
 **只做筛选与风险计算，不下单、不给个人化投资建议。**
+
+---
+
+# grill-me
+
+对一个计划、决策或想法进行**地毯式提问**，逐一走过决策树、把彼此有依赖关系的决定拆开来一个一个确认，直到双方对方案有共识才罢休。
+
+包含两个 skill：
+
+- **grilling** — 实际执行提问的 skill：一次只问一题、每题都给出建议答案，等使用者回覆才问下一题；能从环境（档案、工具）查到的**事实**自己去查，不问使用者，只把**决策**丢回来讨论。在使用者确认达成共识前，不会动手实作。
+- **grill-me** — 极简触发入口（`disable-model-invocation: true`，不会被模型自动叫用），效果等同直接叫用 `grilling`。
+
+触发时机：使用者想压力测试自己的想法、或讲出任何「grill」相关的字眼时。
 
 ---
 

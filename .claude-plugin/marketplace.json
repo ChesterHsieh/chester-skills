@@ -47,6 +47,19 @@
         "pmcc",
         "trading"
       ]
+    },
+    {
+      "name": "grill-me",
+      "source": "./plugins/grill-me",
+      "description": "对一个计划、决策或想法进行地毯式提问，逐一走过决策树、每题给出建议答案，直到达成共识才罢休。",
+      "category": "productivity",
+      "keywords": [
+        "grill",
+        "interview",
+        "stress-test",
+        "decision",
+        "planning"
+      ]
     }
   ]
 }

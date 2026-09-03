@@ -1,0 +1,15 @@
+{
+  "name": "grill-me",
+  "displayName": "Grill Me",
+  "version": "0.1.0",
+  "description": "对一个计划、决策或想法进行地毯式提问，逐一走过决策树、每题给出建议答案，直到达成共识才罢休。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": ["grill", "interview", "stress-test", "decision", "planning"],
+  "skills": ["./skills/grill-me", "./skills/grilling"]
+}

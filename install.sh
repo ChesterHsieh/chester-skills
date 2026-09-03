@@ -22,6 +22,8 @@ SKILLS=(
   "deck-build:plugins/deck-skills/skills/deck/deck-build"
   "skill-tree:plugins/skill-tree/skills/skill-tree"
   "leaps-strategy:plugins/leaps-strategy/skills/leaps-strategy"
+  "grill-me:plugins/grill-me/skills/grill-me"
+  "grilling:plugins/grill-me/skills/grilling"
 )
 AGENTS=("deck-reviewer:plugins/deck-skills/agents/deck-reviewer.md")
 
