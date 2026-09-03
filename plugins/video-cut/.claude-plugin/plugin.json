@@ -1,0 +1,15 @@
+{
+  "name": "video-cut",
+  "displayName": "Camera Cut",
+  "version": "0.1.0",
+  "description": "从固定机位的比赛／演讲／活动录影中，自动侦测并移除非主机位镜头（球员特写、观众席、转场卡），只保留主机位。逐帧侦测、关键帧对齐，支援无损直切与混合剪接。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": ["video", "ffmpeg", "shot-detection", "editing", "lossless-cut", "sports"],
+  "skills": ["./skills/camera-cut"]
+}

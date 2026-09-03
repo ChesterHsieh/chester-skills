@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前四个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前五个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -8,6 +8,7 @@ Chester 自用的 Claude Code plugin 集合。目前四个 plugin，各自独立
 | **skill-tree** | 把一个领域做成 **Path of Exile 式的互动技能树 ＋ 选择题检核点**，产出单一自足的 HTML |
 | **leaps-strategy** | 针对特定股票制定 **LEAPS 长天期 call 槓桿策略**，串接 IBKR connector 抓真实选择权链，产出候选合约清单 |
 | **grill-me** | 对一个计划、决策或想法**地毯式提问**，逐一走过决策树、每题给建议答案，直到达成共识才罢休 |
+| **video-cut** | 从**固定机位的录影**里自动剪掉特写／观众席／转场卡等非主机位镜头，逐帧侦测＋关键帧对齐，支援无损直切 |
 
 ## 安装
 
@@ -17,6 +18,7 @@ Chester 自用的 Claude Code plugin 集合。目前四个 plugin，各自独立
 /plugin install skill-tree@chester-skills
 /plugin install leaps-strategy@chester-skills
 /plugin install grill-me@chester-skills
+/plugin install video-cut@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -28,7 +30,8 @@ plugins/
 ├── deck-skills/     narrative-spine, deck-audit, deck-script, deck-build + deck-reviewer agent
 ├── skill-tree/      skill-tree
 ├── leaps-strategy/  leaps-strategy
-└── grill-me/        grill-me, grilling
+├── grill-me/        grill-me, grilling
+└── video-cut/       camera-cut
 ```
 
 ---
@@ -157,6 +160,38 @@ delta 0.77 那档拿 230 股，代价是年租金 10.0%。**摊开给你看，�
 
 ---
 
+# video-cut
+
+给一支**有固定主机位**的录影（球场后方的定机、讲台正面的定机），自动剪掉特写、观众席、赞助商转场卡这些杂镜头，只留主机位那一路。
+
+```
+缩图墙确认镜头结构 → 逐帧侦测 → 保留段清单给人看过 → 剪 → 逐帧验证成片
+```
+
+手法很土但很稳：整片降采样成 64×36，取中位数当「主机位的平均长相」，每帧对它算 L1 距离。
+主机位的帧距离小、杂镜头距离大，两群分得很开，阈值自动抓（Otsu 与 MAD 取较小者——单用 Otsu 会被
+帧数压倒性的主机位带偏，把纯色转场卡也算进去）。
+
+```bash
+python3 plugins/video-cut/skills/camera-cut/scripts/detect.py 影片.mp4 --contact-sheet /tmp/sheets
+python3 plugins/video-cut/skills/camera-cut/scripts/detect.py 影片.mp4 --json plan.json --min-seg 3
+python3 plugins/video-cut/skills/camera-cut/scripts/cut.py  影片.mp4 --plan plan.json -o out.mp4 --mode hybrid --verify
+```
+
+三种剪法的取舍是这个 plugin 的重点。`-c copy` 无法从 P 帧开始解，所以每段起点只能落在关键帧上：
+
+| 模式 | 重编码 | 代价 |
+|---|---|---|
+| `lossless` | 0% | 对不齐关键帧时**整个段首要往后让**。实测一支 320s 球赛片少掉 13 秒好画面 |
+| `hybrid` | 实测 4.9% | 只把段首到下一个关键帧那一小截重压，其余照抄。**预设** |
+| `reencode` | 100% | 切点与时间戳都最干净，成片要进后制流程时用 |
+
+`--verify` 会在成片上重跑侦测，逐帧回报有没有漏掉的杂镜头——**这是这个 skill 唯一的验收标准**，
+不是「看起来差不多」。踩过的 ffmpeg 坑（`-to` 是封包层级会多含一帧、concat 的重复时间戳、
+zsh 的 glob 中止、ffmpeg 吃 stdin）写在 `references/gotchas.md`。
+
+---
+
 ## 本地开发
 
 改 skill 内容时，用软链装到 `~/.claude/` 直接生效，不必走 plugin 安装流程：
@@ -179,6 +214,9 @@ delta 0.77 那档拿 230 股，代价是年租金 10.0%。**摊开给你看，�
 **leaps-strategy** 的 delta 是用 Black-Scholes 从 IV 反推的近似值，不是券商回报的官方 greeks，
 无股息／连续复利假设下与实际会有小差距；判断分类够用，精算保证金不够用。
 另外 IBKR 的 `option_midpoint_iv` 在长天期合约上会回无效值，脚本改用 `implied_vol`。
+
+**video-cut** 只对**机位固定**的片子有效。手持跟拍、频繁推轨变焦的素材每一帧长相都不同，这套方法会整片误判——skill 会先要求用缩图墙确认前提，不成立时直接讲，不硬做。
+另外 `hybrid`／`lossless` 走 concat 出来的档案，接点上会有重复时间戳（`non monotonically increasing dts`）。播放器都正常播，但拿去重新编码会看到警告，试过 `+genpts` 与 `setts` 都修不掉，要根除只能走 `reencode`。
 
 ## License
 

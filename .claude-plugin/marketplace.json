@@ -60,6 +60,20 @@
         "decision",
         "planning"
       ]
+    },
+    {
+      "name": "video-cut",
+      "source": "./plugins/video-cut",
+      "description": "从固定机位的录影里自动侦测并剪掉非主机位镜头（特写、观众席、转场卡），只留主机位。逐帧侦测、关键帧对齐，支援无损直切与混合剪接，并逐帧验证成片。",
+      "category": "productivity",
+      "keywords": [
+        "video",
+        "ffmpeg",
+        "shot-detection",
+        "editing",
+        "lossless-cut",
+        "sports"
+      ]
     }
   ]
 }
