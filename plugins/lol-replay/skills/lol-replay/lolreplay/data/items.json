@@ -1,0 +1,4468 @@
+{
+"version": "16.17.1",
+"items": {
+"1001": {
+"zh": "鞋子",
+"en": "Boots",
+"gold": 300,
+"tags": [
+"Boots"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加跑速"
+},
+"1004": {
+"zh": "仙女護符",
+"en": "Faerie Charm",
+"gold": 200,
+"tags": [
+"ManaRegen"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加魔力回復"
+},
+"1006": {
+"zh": "治療寶珠",
+"en": "Rejuvenation Bead",
+"gold": 300,
+"tags": [
+"HealthRegen"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加生命回復"
+},
+"1011": {
+"zh": "巨人腰帶",
+"en": "Giant's Belt",
+"gold": 900,
+"tags": [
+"Health"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "大幅增加生命"
+},
+"1018": {
+"zh": "靈巧披風",
+"en": "Cloak of Agility",
+"gold": 600,
+"tags": [
+"CriticalStrike"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "增加暴擊率"
+},
+"1026": {
+"zh": "爆裂魔杖",
+"en": "Blasting Wand",
+"gold": 850,
+"tags": [
+"SpellDamage"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "中等程度增加魔法攻擊"
+},
+"1027": {
+"zh": "藍水晶",
+"en": "Sapphire Crystal",
+"gold": 300,
+"tags": [
+"Mana"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "增加魔力"
+},
+"1028": {
+"zh": "紅水晶",
+"en": "Ruby Crystal",
+"gold": 400,
+"tags": [
+"Health"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "增加生命"
+},
+"1029": {
+"zh": "布甲",
+"en": "Cloth Armor",
+"gold": 300,
+"tags": [
+"Armor"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加物理防禦"
+},
+"1031": {
+"zh": "鎖子甲",
+"en": "Chain Vest",
+"gold": 800,
+"tags": [
+"Armor"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "大幅增加物理防禦"
+},
+"1033": {
+"zh": "抗魔斗篷",
+"en": "Null-Magic Mantle",
+"gold": 400,
+"tags": [
+"SpellBlock"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加魔法防禦"
+},
+"1036": {
+"zh": "長劍",
+"en": "Long Sword",
+"gold": 350,
+"tags": [
+"Damage",
+"Lane"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加物理攻擊"
+},
+"1037": {
+"zh": "十字鎬",
+"en": "Pickaxe",
+"gold": 875,
+"tags": [
+"Damage"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "中等程度增加物理攻擊"
+},
+"1038": {
+"zh": "暴風之劍",
+"en": "B. F. Sword",
+"gold": 1300,
+"tags": [
+"Damage"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "大幅增加物理攻擊"
+},
+"1042": {
+"zh": "短劍",
+"en": "Dagger",
+"gold": 250,
+"tags": [
+"AttackSpeed"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加攻速"
+},
+"1043": {
+"zh": "反曲弓",
+"en": "Recurve Bow",
+"gold": 700,
+"tags": [
+"AttackSpeed",
+"OnHit"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "大幅增加攻速"
+},
+"1052": {
+"zh": "增幅典籍",
+"en": "Amplifying Tome",
+"gold": 400,
+"tags": [
+"SpellDamage"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加魔法攻擊"
+},
+"1053": {
+"zh": "吸血鬼權杖",
+"en": "Vampiric Scepter",
+"gold": 900,
+"tags": [
+"Damage",
+"LifeSteal"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "普攻回復生命"
+},
+"1054": {
+"zh": "多蘭之盾",
+"en": "Doran's Shield",
+"gold": 450,
+"tags": [
+"Health",
+"HealthRegen",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "優秀的起手防禦道具"
+},
+"1055": {
+"zh": "多蘭之劍",
+"en": "Doran's Blade",
+"gold": 450,
+"tags": [
+"Health",
+"Damage",
+"LifeSteal",
+"SpellVamp",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "優秀的起手攻擊道具"
+},
+"1056": {
+"zh": "多蘭之戒",
+"en": "Doran's Ring",
+"gold": 400,
+"tags": [
+"Health",
+"Lane",
+"ManaRegen",
+"SpellDamage"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "優秀的法師起手道具"
+},
+"1057": {
+"zh": "負極斗篷",
+"en": "Negatron Cloak",
+"gold": 850,
+"tags": [
+"SpellBlock"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "中等程度增加魔法防禦"
+},
+"1058": {
+"zh": "巨型魔棒",
+"en": "Needlessly Large Rod",
+"gold": 1200,
+"tags": [
+"SpellDamage"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "大幅增加魔法攻擊"
+},
+"1082": {
+"zh": "黑暗玉璽",
+"en": "Dark Seal",
+"gold": 350,
+"tags": [
+"Health",
+"SpellDamage",
+"Lane"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "提供魔攻和魔力，擊殺敵人時獲得成長"
+},
+"1083": {
+"zh": "剔除鐮刀",
+"en": "Cull",
+"gold": 450,
+"tags": [
+"Damage",
+"OnHit",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "提供傷害、命中普攻吸血，擊殺士兵獲得額外金錢"
+},
+"1086": {
+"zh": "多蘭之弓",
+"en": "Doran's Bow",
+"gold": 400,
+"tags": [
+"Damage",
+"AttackSpeed",
+"SpellVamp",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1101": {
+"zh": "熾爪幼犬",
+"en": "Scorchclaw Pup",
+"gold": 450,
+"tags": [
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1102": {
+"zh": "馭風幼狐",
+"en": "Gustwalker Hatchling",
+"gold": 450,
+"tags": [
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1103": {
+"zh": "重踏幼螈",
+"en": "Mosstomper Seedling",
+"gold": 450,
+"tags": [
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1105": {
+"zh": "重踏幼螈",
+"en": "Mosstomper Seedling",
+"gold": 450,
+"tags": [
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1106": {
+"zh": "馭風幼狐",
+"en": "Gustwalker Hatchling",
+"gold": 450,
+"tags": [
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1107": {
+"zh": "熾爪幼犬",
+"en": "Scorchclaw Pup",
+"gold": 450,
+"tags": [
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1120": {
+"zh": "多蘭之盔",
+"en": "Doran's Helm",
+"gold": 450,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"1501": {
+"zh": "強化堡壘",
+"en": "Fortification",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1502": {
+"zh": "武裝強化",
+"en": "Reinforced Armor",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1503": {
+"zh": "守護之眼",
+"en": "Warden's Eye",
+"gold": 0,
+"tags": [
+"HealthRegen",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1505": {
+"zh": "強化護甲",
+"en": "Reinforced Armor",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1506": {
+"zh": "強化護甲",
+"en": "Reinforced Armor",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1507": {
+"zh": "超載",
+"en": "Overcharged",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1508": {
+"zh": "扛塔之襪",
+"en": "Anti-tower Socks",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1509": {
+"zh": "熱血情懷",
+"en": "Gusto",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1510": {
+"zh": "弗瑞克式的熱血情懷",
+"en": "Phreakish Gusto",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1511": {
+"zh": "超級士兵裝甲",
+"en": "Super Mech Armor",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1512": {
+"zh": "超級士兵能量力場",
+"en": "Super Mech Power Field",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1515": {
+"zh": "防禦塔護甲",
+"en": "Turret Plating",
+"gold": 0,
+"tags": [
+"Armor"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1516": {
+"zh": "建築物賞金",
+"en": "Structure Bounty",
+"gold": 0,
+"tags": [
+"HealthRegen",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1517": {
+"zh": "建築物賞金",
+"en": "Structure Bounty",
+"gold": 0,
+"tags": [
+"HealthRegen",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1518": {
+"zh": "建築物賞金",
+"en": "Structure Bounty",
+"gold": 0,
+"tags": [
+"HealthRegen",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1519": {
+"zh": "建築物賞金",
+"en": "Structure Bounty",
+"gold": 0,
+"tags": [
+"HealthRegen",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1520": {
+"zh": "咆嘯深淵超載",
+"en": "OvererchargedHA",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1521": {
+"zh": "強化堡壘",
+"en": "Fortification",
+"gold": 0,
+"tags": [
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1522": {
+"zh": "強化防禦塔",
+"en": "Tower Power-Up",
+"gold": 0,
+"tags": [
+"Armor",
+"Damage"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1523": {
+"zh": "超載",
+"en": "Overcharged",
+"gold": 0,
+"tags": [
+"Armor",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"1524": {
+"zh": "激增",
+"en": "Overgrowth",
+"gold": 0,
+"tags": [
+"Armor",
+"Damage"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2001": {
+"zh": "回城",
+"en": "Recall",
+"gold": 60,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2003": {
+"zh": "生命藥水",
+"en": "Health Potion",
+"gold": 50,
+"tags": [
+"HealthRegen",
+"Consumable",
+"Lane",
+"Jungle"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "使用以回復生命"
+},
+"2007": {
+"zh": "取消回城",
+"en": "Disabled Recall",
+"gold": 60,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2010": {
+"zh": "活力乾糧",
+"en": "Total Biscuit of Everlasting Will",
+"gold": 50,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2019": {
+"zh": "鋼鐵紋章",
+"en": "Steel Sigil",
+"gold": 1100,
+"tags": [
+"Armor",
+"Damage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"2020": {
+"zh": "兇殘之柄",
+"en": "The Brutalizer",
+"gold": 1337,
+"tags": [
+"Damage",
+"CooldownReduction",
+"ArmorPenetration"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"2021": {
+"zh": "鑽掘機",
+"en": "Tunneler",
+"gold": 1150,
+"tags": [
+"Health",
+"Damage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"2022": {
+"zh": "發光結晶",
+"en": "Glowing Mote",
+"gold": 250,
+"tags": [
+"CooldownReduction"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"2031": {
+"zh": "回復藥水",
+"en": "Refillable Potion",
+"gold": 150,
+"tags": [
+"HealthRegen",
+"Consumable",
+"Active",
+"Lane",
+"Jungle"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "逐漸回復生命，可回商店回充"
+},
+"2033": {
+"zh": "污濁藥劑",
+"en": "Corrupting Potion",
+"gold": 500,
+"tags": [
+"Active",
+"Consumable",
+"HealthRegen",
+"Lane",
+"ManaRegen"
+],
+"depth": 2,
+"into": false,
+"purchasable": false,
+"plaintext": "逐漸回復生命和魔力，並增加戰鬥能力- 可在商店回充"
+},
+"2051": {
+"zh": "保衛者號角",
+"en": "Guardian's Horn",
+"gold": 950,
+"tags": [
+"Health",
+"HealthRegen",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "優秀的防禦起手道具"
+},
+"2052": {
+"zh": "普羅的飼料",
+"en": "Poro-Snax",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2055": {
+"zh": "控域守衛",
+"en": "Control Ward",
+"gold": 75,
+"tags": [
+"Consumable",
+"Lane",
+"Stealth",
+"Vision"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "使用以讓區域內偵察守衛或隱藏的陷阱失效"
+},
+"2065": {
+"zh": "蘇瑞亞的戰歌",
+"en": "Shurelya's Battlesong",
+"gold": 2200,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"Active",
+"CooldownReduction",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動以加速附近友軍。"
+},
+"2138": {
+"zh": "抗擊藥劑",
+"en": "Elixir of Iron",
+"gold": 500,
+"tags": [
+"Health",
+"Consumable",
+"NonbootsMovement",
+"Tenacity"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "暫時提升防禦能力，並留下一道路徑讓友軍跟隨"
+},
+"2139": {
+"zh": "巫魔藥劑",
+"en": "Elixir of Sorcery",
+"gold": 500,
+"tags": [
+"Consumable",
+"ManaRegen",
+"SpellDamage"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "暫時獲得魔攻，並對英雄與防禦塔造成額外傷害"
+},
+"2140": {
+"zh": "憤怒藥劑",
+"en": "Elixir of Wrath",
+"gold": 500,
+"tags": [
+"Consumable",
+"Damage",
+"LifeSteal",
+"SpellVamp"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "暫時增加物理攻擊，對英雄造成的物理傷害將可以恢復自身生命"
+},
+"2141": {
+"zh": "帽帽果汁",
+"en": "Cappa Juice",
+"gold": 300,
+"tags": [
+"Damage",
+"Consumable"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2150": {
+"zh": "精通藥劑",
+"en": "Elixir of Skill",
+"gold": 0,
+"tags": [
+"Consumable"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2151": {
+"zh": "貪婪藥劑",
+"en": "Elixir of Avarice",
+"gold": 50,
+"tags": [
+"Health",
+"Consumable",
+"Tenacity"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2152": {
+"zh": "力量藥劑",
+"en": "Elixir of Force",
+"gold": 50,
+"tags": [
+"Consumable",
+"Tenacity"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2403": {
+"zh": "士兵去質器",
+"en": "Minion Dematerializer",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"2420": {
+"zh": "探索者護腕",
+"en": "Seeker's Armguard",
+"gold": 1600,
+"tags": [
+"Armor",
+"SpellDamage",
+"Active"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "啟動以進入無敵狀態，但是無法進行任何動作"
+},
+"2421": {
+"zh": "破碎的護腕",
+"en": "Shattered Armguard",
+"gold": 1600,
+"tags": [],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "升級成停滯鐘錶"
+},
+"2422": {
+"zh": "輕魔之靴",
+"en": "Slightly Magical Footwear",
+"gold": 300,
+"tags": [
+"Boots"
+],
+"depth": 1,
+"into": true,
+"purchasable": false,
+"plaintext": ""
+},
+"2501": {
+"zh": "狂霸血甲",
+"en": "Overlord's Bloodmail",
+"gold": 3300,
+"tags": [
+"Health",
+"Damage"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2502": {
+"zh": "無盡絕望",
+"en": "Unending Despair",
+"gold": 2800,
+"tags": [
+"Health",
+"Armor",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2503": {
+"zh": "黑焰火炬",
+"en": "Blackfire Torch",
+"gold": 2800,
+"tags": [
+"SpellDamage",
+"Mana",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2504": {
+"zh": "凱尼克欺瞞者",
+"en": "Kaenic Rookern",
+"gold": 2900,
+"tags": [
+"Health",
+"SpellBlock",
+"HealthRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2508": {
+"zh": "命定灰燼",
+"en": "Fated Ashes",
+"gold": 900,
+"tags": [
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"2510": {
+"zh": "暮夜與黎明",
+"en": "Dusk and Dawn",
+"gold": 3100,
+"tags": [
+"Health",
+"AttackSpeed",
+"SpellDamage",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2512": {
+"zh": "獵魔弩箭",
+"en": "Fiendhunter Bolts",
+"gold": 2650,
+"tags": [
+"CriticalStrike",
+"AttackSpeed",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2517": {
+"zh": "無盡飢渴",
+"en": "Endless Hunger",
+"gold": 3100,
+"tags": [
+"Damage",
+"LifeSteal",
+"SpellVamp",
+"Tenacity",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2520": {
+"zh": "破堡者",
+"en": "Bastionbreaker",
+"gold": 3000,
+"tags": [
+"Damage",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2522": {
+"zh": "時現者",
+"en": "Actualizer",
+"gold": 2800,
+"tags": [
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2523": {
+"zh": "海克斯光學C44",
+"en": "Hexoptics C44",
+"gold": 2800,
+"tags": [
+"Damage",
+"CriticalStrike"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2524": {
+"zh": "班德爾笛子",
+"en": "Bandlepipes",
+"gold": 2300,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"AttackSpeed",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2525": {
+"zh": "原質馭帶",
+"en": "Protoplasm Harness",
+"gold": 2600,
+"tags": [
+"Health",
+"NonbootsMovement",
+"Tenacity",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"2526": {
+"zh": "低語之環",
+"en": "Whispering Circlet",
+"gold": 2250,
+"tags": [
+"Health",
+"Mana",
+"ManaRegen"
+],
+"depth": 3,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"2530": {
+"zh": "歌謠之冠",
+"en": "Diadem of Songs",
+"gold": 2250,
+"tags": [
+"Health",
+"Mana",
+"ManaRegen",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3002": {
+"zh": "開拓者",
+"en": "Trailblazer",
+"gold": 2400,
+"tags": [
+"Health",
+"Armor",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3003": {
+"zh": "大天使之杖",
+"en": "Archangel's Staff",
+"gold": 2900,
+"tags": [
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "根據最大魔力增加魔攻"
+},
+"3004": {
+"zh": "魔劍正宗",
+"en": "Manamune",
+"gold": 2900,
+"tags": [
+"Damage",
+"Mana",
+"CooldownReduction",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "根據最大魔力增加物理攻擊"
+},
+"3006": {
+"zh": "狂戰士護脛",
+"en": "Berserker's Greaves",
+"gold": 1100,
+"tags": [
+"AttackSpeed",
+"Boots"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加跑速和攻速"
+},
+"3008": {
+"zh": "貪婪護脛",
+"en": "Gluttonous Greaves",
+"gold": 1000,
+"tags": [
+"LifeSteal",
+"SpellVamp",
+"Boots"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "根據最大魔力增加物理攻擊"
+},
+"3009": {
+"zh": "輕靈之靴",
+"en": "Boots of Swiftness",
+"gold": 1000,
+"tags": [
+"Boots"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加跑速以及降低緩速效果"
+},
+"3010": {
+"zh": "共生之足",
+"en": "Symbiotic Soles",
+"gold": 900,
+"tags": [
+"Boots"
+],
+"depth": 2,
+"into": true,
+"purchasable": false,
+"plaintext": "消耗魔力會回復一部份生命"
+},
+"3011": {
+"zh": "生化科技腐化器",
+"en": "Chemtech Putrifier",
+"gold": 1900,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3013": {
+"zh": "靈魂同步",
+"en": "Synchronized Souls",
+"gold": 900,
+"tags": [
+"Boots"
+],
+"depth": 3,
+"into": true,
+"purchasable": false,
+"plaintext": ""
+},
+"3020": {
+"zh": "法師之靴",
+"en": "Sorcerer's Shoes",
+"gold": 1100,
+"tags": [
+"Boots",
+"MagicPenetration"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加跑速及魔法傷害"
+},
+"3024": {
+"zh": "冰川圓盾",
+"en": "Glacial Buckler",
+"gold": 900,
+"tags": [
+"Armor",
+"Mana",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加物理防禦和冷卻時間減免"
+},
+"3026": {
+"zh": "守護天使",
+"en": "Guardian Angel",
+"gold": 3200,
+"tags": [
+"Armor",
+"Damage"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "每隔一陣子可以讓死亡的英雄復活"
+},
+"3031": {
+"zh": "無盡之刃",
+"en": "Infinity Edge",
+"gold": 3500,
+"tags": [
+"CriticalStrike",
+"Damage"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": "大幅增強暴擊傷害"
+},
+"3032": {
+"zh": "雲陶狂箭",
+"en": "Yun Tal Wildarrows",
+"gold": 3000,
+"tags": [
+"Damage",
+"CriticalStrike",
+"AttackSpeed"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3033": {
+"zh": "致死宣告",
+"en": "Mortal Reminder",
+"gold": 3000,
+"tags": [
+"Damage",
+"CriticalStrike",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "對付物理防禦和生命回復很高的敵人"
+},
+"3035": {
+"zh": "最後耳語",
+"en": "Last Whisper",
+"gold": 1450,
+"tags": [
+"ArmorPenetration",
+"Damage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "對抗物理防禦很高的敵人"
+},
+"3036": {
+"zh": "多明尼克的問候",
+"en": "Lord Dominik's Regards",
+"gold": 3300,
+"tags": [
+"Damage",
+"CriticalStrike",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "對抗有大量生命和物理防禦的敵人"
+},
+"3040": {
+"zh": "熾天使的擁抱",
+"en": "Seraph's Embrace",
+"gold": 2900,
+"tags": [
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3041": {
+"zh": "靈魂竊取者",
+"en": "Mejai's Soulstealer",
+"gold": 1500,
+"tags": [
+"Health",
+"SpellDamage",
+"NonbootsMovement"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": "獲得擊殺或助攻時增加魔攻"
+},
+"3042": {
+"zh": "終極魔劍",
+"en": "Muramana",
+"gold": 2900,
+"tags": [
+"Damage",
+"Mana",
+"CooldownReduction",
+"OnHit",
+"ArmorPenetration"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3044": {
+"zh": "淨蝕之槌",
+"en": "Phage",
+"gold": 1100,
+"tags": [
+"Health",
+"Damage",
+"NonbootsMovement"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "攻擊和擊殺提供額外跑速"
+},
+"3046": {
+"zh": "幻影之舞",
+"en": "Phantom Dancer",
+"gold": 2650,
+"tags": [
+"CriticalStrike",
+"AttackSpeed",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "攻擊敵人時跑速變快，並在生命低於一定值時獲得一個護盾。"
+},
+"3047": {
+"zh": "鍍板鋼蓋",
+"en": "Plated Steelcaps",
+"gold": 1200,
+"tags": [
+"Armor",
+"Boots"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加跑速並減少受到的普攻傷害"
+},
+"3050": {
+"zh": "錫柯的聚合之力",
+"en": "Zeke's Convergence",
+"gold": 2200,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "施放大絕時賦予自身及身旁一名友軍額外效果。"
+},
+"3051": {
+"zh": "爐縛之斧",
+"en": "Hearthbound Axe",
+"gold": 1200,
+"tags": [
+"Damage",
+"AttackSpeed"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"3053": {
+"zh": "史特拉克手套",
+"en": "Sterak's Gage",
+"gold": 3200,
+"tags": [
+"Health",
+"Damage",
+"Tenacity"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "避免受到大量的爆發傷害"
+},
+"3057": {
+"zh": "閃耀劍",
+"en": "Sheen",
+"gold": 900,
+"tags": [
+"OnHit",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "施放技能後的下次普攻獲得加成"
+},
+"3065": {
+"zh": "振奮盔甲",
+"en": "Spirit Visage",
+"gold": 2700,
+"tags": [
+"Health",
+"SpellBlock",
+"HealthRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "增加生命和回復效果"
+},
+"3066": {
+"zh": "飛翼月甲",
+"en": "Winged Moonplate",
+"gold": 800,
+"tags": [
+"Health",
+"NonbootsMovement"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"3067": {
+"zh": "燃燒寶石",
+"en": "Kindlegem",
+"gold": 800,
+"tags": [
+"Health",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加生命和冷卻時間減免"
+},
+"3068": {
+"zh": "日炎聖盾",
+"en": "Sunfire Aegis",
+"gold": 2800,
+"tags": [
+"Health",
+"Armor",
+"Aura",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "高物理防禦。持續對附近敵人造成傷害。硬控場敵人時可釋放一道傷害性的火焰波"
+},
+"3070": {
+"zh": "女神之淚",
+"en": "Tear of the Goddess",
+"gold": 400,
+"tags": [
+"Mana",
+"ManaRegen"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": "消耗魔力時提高最大魔力"
+},
+"3071": {
+"zh": "黑色切割者",
+"en": "Black Cleaver",
+"gold": 3000,
+"tags": [
+"Health",
+"Damage",
+"CooldownReduction",
+"OnHit",
+"NonbootsMovement",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "對敵方英雄造成物理傷害並降低他們的物理防禦"
+},
+"3072": {
+"zh": "嗜血者",
+"en": "Bloodthirster",
+"gold": 3400,
+"tags": [
+"Damage",
+"LifeSteal"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "獲得物理攻擊，普攻吸血可獲得超量治療效果"
+},
+"3073": {
+"zh": "實驗型海克斯板甲",
+"en": "Experimental Hexplate",
+"gold": 3000,
+"tags": [
+"Health",
+"Damage",
+"AttackSpeed",
+"CooldownReduction",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "消耗魔力時提高最大魔力"
+},
+"3074": {
+"zh": "狂怒九頭蛇",
+"en": "Ravenous Hydra",
+"gold": 3300,
+"tags": [
+"Damage",
+"LifeSteal",
+"CooldownReduction",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "近戰攻擊會對附近單位造成傷害被回復生命"
+},
+"3075": {
+"zh": "荊棘之甲",
+"en": "Thornmail",
+"gold": 2450,
+"tags": [
+"Health",
+"Armor"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3076": {
+"zh": "刺藤胸甲",
+"en": "Bramble Vest",
+"gold": 800,
+"tags": [
+"Armor"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"3077": {
+"zh": "海神之斧",
+"en": "Tiamat",
+"gold": 1200,
+"tags": [
+"Damage",
+"OnHit"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "近戰攻擊附近的士兵"
+},
+"3078": {
+"zh": "三相之力",
+"en": "Trinity Force",
+"gold": 3333,
+"tags": [
+"Health",
+"Damage",
+"AttackSpeed",
+"CooldownReduction",
+"OnHit",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "超大量傷害"
+},
+"3082": {
+"zh": "守望者鎧甲",
+"en": "Warden's Mail",
+"gold": 1000,
+"tags": [
+"Armor"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"3083": {
+"zh": "好戰者鎧甲",
+"en": "Warmog's Armor",
+"gold": 3100,
+"tags": [
+"Health",
+"HealthRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "獲得大幅生命和生命回復"
+},
+"3084": {
+"zh": "雄心之鋼",
+"en": "Heartsteel",
+"gold": 3000,
+"tags": [
+"Health",
+"HealthRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "擊殺或助攻回復生命"
+},
+"3085": {
+"zh": "芮蘭颶風箭",
+"en": "Runaan's Hurricane",
+"gold": 2650,
+"tags": [
+"CriticalStrike",
+"AttackSpeed",
+"OnHit",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "遠距離攻擊額外射出兩支箭攻擊附近敵人"
+},
+"3086": {
+"zh": "狂熱雙刀",
+"en": "Zeal",
+"gold": 1200,
+"tags": [
+"CriticalStrike",
+"AttackSpeed",
+"NonbootsMovement"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "稍微增加暴擊率、跑速和攻擊速度"
+},
+"3087": {
+"zh": "史提克彈簧刀",
+"en": "Statikk Shiv",
+"gold": 3000,
+"tags": [
+"Damage",
+"AttackSpeed",
+"SpellDamage",
+"OnHit",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "移動能堆積充能，普攻時可以釋放靜電電擊"
+},
+"3089": {
+"zh": "死亡之帽",
+"en": "Rabadon's Deathcap",
+"gold": 3500,
+"tags": [
+"SpellDamage"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": "大幅增加魔法攻擊"
+},
+"3091": {
+"zh": "智慧末刃",
+"en": "Wit's End",
+"gold": 2800,
+"tags": [
+"SpellBlock",
+"AttackSpeed",
+"OnHit",
+"Tenacity"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "提升魔法防禦，並在造成普攻傷害時回復自身生命。"
+},
+"3094": {
+"zh": "衝擊火炮",
+"en": "Rapid Firecannon",
+"gold": 2650,
+"tags": [
+"CriticalStrike",
+"AttackSpeed",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "移動堆積充能，並能釋放攻城攻擊"
+},
+"3095": {
+"zh": "狂暴利刃",
+"en": "Stormrazor",
+"gold": 3200,
+"tags": [
+"Damage",
+"CriticalStrike",
+"AttackSpeed",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "極大化其他充能效果。"
+},
+"3100": {
+"zh": "巫妖之禍",
+"en": "Lich Bane",
+"gold": 2900,
+"tags": [
+"SpellDamage",
+"OnHit",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "施放技能後下次普攻獲得加成"
+},
+"3102": {
+"zh": "女妖面紗",
+"en": "Banshee's Veil",
+"gold": 3000,
+"tags": [
+"SpellBlock",
+"SpellDamage"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "每隔一段時間可以阻擋敵方技能"
+},
+"3107": {
+"zh": "贖罪神石",
+"en": "Redemption",
+"gold": 2300,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動道具效果以治療友軍並傷害範圍內敵人"
+},
+"3108": {
+"zh": "惡魔法典",
+"en": "Fiendish Codex",
+"gold": 850,
+"tags": [
+"SpellDamage",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加魔攻和冷卻時間減免"
+},
+"3109": {
+"zh": "騎士誓願",
+"en": "Knight's Vow",
+"gold": 2300,
+"tags": [
+"Health",
+"HealthRegen",
+"Armor",
+"Aura",
+"Active",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "與一位盟友結盟，保護彼此"
+},
+"3110": {
+"zh": "冰霜之心",
+"en": "Frozen Heart",
+"gold": 2500,
+"tags": [
+"Armor",
+"Mana",
+"Aura",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "大幅增加物理防禦和降低敵方攻速"
+},
+"3111": {
+"zh": "水星之靴",
+"en": "Mercury's Treads",
+"gold": 1250,
+"tags": [
+"Boots",
+"SpellBlock",
+"Tenacity"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加跑速和減少控制效果持續時間"
+},
+"3112": {
+"zh": "保衛者冰玉",
+"en": "Guardian's Orb",
+"gold": 950,
+"tags": [
+"Health",
+"SpellDamage",
+"ManaRegen",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "優秀的法師起手道具"
+},
+"3113": {
+"zh": "蒼穹神火",
+"en": "Aether Wisp",
+"gold": 900,
+"tags": [
+"NonbootsMovement",
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加魔攻和跑速"
+},
+"3114": {
+"zh": "禁忌之像",
+"en": "Forbidden Idol",
+"gold": 600,
+"tags": [
+"ManaRegen"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "提升治療效果、護盾強度、魔力回復和冷卻時間減免"
+},
+"3115": {
+"zh": "納什之牙",
+"en": "Nashor's Tooth",
+"gold": 2900,
+"tags": [
+"AttackSpeed",
+"SpellDamage",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "增加攻速、魔攻和冷卻時間減免"
+},
+"3116": {
+"zh": "瑞萊的冰晶節杖",
+"en": "Rylai's Crystal Scepter",
+"gold": 2600,
+"tags": [
+"Health",
+"SpellDamage",
+"Slow"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "技能緩速敵人"
+},
+"3117": {
+"zh": "疾行之靴",
+"en": "Mobility Boots",
+"gold": 1000,
+"tags": [
+"Boots"
+],
+"depth": 2,
+"into": false,
+"purchasable": false,
+"plaintext": "不在戰鬥時大幅增加跑速"
+},
+"3118": {
+"zh": "惡意",
+"en": "Malignance",
+"gold": 2700,
+"tags": [
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "指定一名友方英雄作為戰友並互相保護"
+},
+"3119": {
+"zh": "凜冬將至",
+"en": "Winter's Approach",
+"gold": 2400,
+"tags": [
+"Health",
+"Mana",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3121": {
+"zh": "芬布爾之冬",
+"en": "Fimbulwinter",
+"gold": 2400,
+"tags": [
+"Health",
+"Mana",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3123": {
+"zh": "死刑宣告",
+"en": "Executioner's Calling",
+"gold": 800,
+"tags": [
+"Damage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "抵抗高回復力的敵人"
+},
+"3124": {
+"zh": "鬼索的狂暴之刃",
+"en": "Guinsoo's Rageblade",
+"gold": 3000,
+"tags": [
+"Damage",
+"AttackSpeed",
+"SpellDamage",
+"OnHit"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3133": {
+"zh": "考菲爾德的戰槌",
+"en": "Caulfield's Warhammer",
+"gold": 1050,
+"tags": [
+"Damage",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "物理攻擊和冷卻時間減免。"
+},
+"3134": {
+"zh": "殘暴之力",
+"en": "Serrated Dirk",
+"gold": 1000,
+"tags": [
+"Damage",
+"ArmorPenetration"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加物理攻擊和物理致命"
+},
+"3135": {
+"zh": "虛空之杖",
+"en": "Void Staff",
+"gold": 3000,
+"tags": [
+"MagicPenetration",
+"SpellDamage"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "增加魔法傷害"
+},
+"3137": {
+"zh": "死墓之花",
+"en": "Cryptbloom",
+"gold": 3000,
+"tags": [
+"SpellDamage",
+"MagicPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動來移除所有減益效果並大幅提高跑速"
+},
+"3139": {
+"zh": "水星彎刀",
+"en": "Mercurial Scimitar",
+"gold": 3200,
+"tags": [
+"SpellBlock",
+"Damage",
+"LifeSteal",
+"Active",
+"NonbootsMovement",
+"Tenacity"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動來移除所有控制效果並大幅提高跑速"
+},
+"3140": {
+"zh": "水銀飾帶",
+"en": "Quicksilver Sash",
+"gold": 1300,
+"tags": [
+"Active",
+"SpellBlock"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "啟動來移除所有控制效果"
+},
+"3142": {
+"zh": "妖夢鬼刀",
+"en": "Youmuu's Ghostblade",
+"gold": 2800,
+"tags": [
+"Damage",
+"Active",
+"NonbootsMovement",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動來大幅增加跑速"
+},
+"3143": {
+"zh": "蘭頓之兆",
+"en": "Randuin's Omen",
+"gold": 2700,
+"tags": [
+"Health",
+"Armor",
+"Active",
+"Slow"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "大幅提高防禦力，啟動來緩速鄰近敵方"
+},
+"3144": {
+"zh": "斥候彈弓",
+"en": "Scout's Slingshot",
+"gold": 600,
+"tags": [
+"AttackSpeed"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "啟動來造成魔法傷害並緩速目標英雄"
+},
+"3145": {
+"zh": "海克斯科技發電機",
+"en": "Hextech Alternator",
+"gold": 1100,
+"tags": [
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加魔法攻擊。普攻附加額外魔法傷害。"
+},
+"3146": {
+"zh": "海克斯科技槍刃",
+"en": "Hextech Gunblade",
+"gold": 3000,
+"tags": [
+"Damage",
+"LifeSteal",
+"SpellDamage",
+"Active",
+"SpellVamp"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "增加物理攻擊和魔法攻擊，啟動來緩速目標"
+},
+"3147": {
+"zh": "幽魂面具",
+"en": "Haunting Guise",
+"gold": 1300,
+"tags": [
+"Health",
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "伏擊敵人時會造成額外物理傷害。"
+},
+"3152": {
+"zh": "海克斯科技火箭腰帶",
+"en": "Hextech Rocketbelt",
+"gold": 2650,
+"tags": [
+"Health",
+"SpellDamage",
+"Active",
+"CooldownReduction",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動來向前衝刺並釋放火焰箭"
+},
+"3153": {
+"zh": "殞落王者之劍",
+"en": "Blade of The Ruined King",
+"gold": 3200,
+"tags": [
+"Damage",
+"AttackSpeed",
+"LifeSteal",
+"Slow",
+"OnHit"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "根據目標的生命造成傷害及偷取目標跑速。"
+},
+"3155": {
+"zh": "吸魔劍",
+"en": "Hexdrinker",
+"gold": 1300,
+"tags": [
+"Damage",
+"SpellBlock"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加物理攻擊和魔法防禦"
+},
+"3156": {
+"zh": "魔提斯深淵",
+"en": "Maw of Malmortius",
+"gold": 3100,
+"tags": [
+"SpellBlock",
+"Damage",
+"LifeSteal",
+"SpellVamp",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "當生命值低落時給予額外物理攻擊"
+},
+"3157": {
+"zh": "中婭沙漏",
+"en": "Zhonya's Hourglass",
+"gold": 3250,
+"tags": [
+"Armor",
+"SpellDamage",
+"Active"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動以進入無敵狀態，但是無法進行任何動作"
+},
+"3158": {
+"zh": "愛歐尼亞之靴",
+"en": "Ionian Boots of Lucidity",
+"gold": 900,
+"tags": [
+"Boots",
+"CooldownReduction"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "增加跑速和冷卻時間減免"
+},
+"3161": {
+"zh": "精進之矛",
+"en": "Spear of Shojin",
+"gold": 3100,
+"tags": [
+"Health",
+"Damage",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "使來自敵方英雄的傷害降低一個固定值。在附近擁有多名英雄時發起攻擊以在短時間內增加此固定值。"
+},
+"3165": {
+"zh": "黑魔禁書",
+"en": "Morellonomicon",
+"gold": 2850,
+"tags": [
+"Health",
+"SpellDamage",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "提升魔法攻擊"
+},
+"3168": {
+"zh": "不朽之道",
+"en": "Immortal Path",
+"gold": 1000,
+"tags": [
+"LifeSteal",
+"SpellVamp",
+"Boots"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3170": {
+"zh": "快速行軍",
+"en": "Swiftmarch",
+"gold": 1000,
+"tags": [
+"Boots"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "加強防禦力並減少控制效果持續時間"
+},
+"3171": {
+"zh": "血色法靴",
+"en": "Crimson Lucidity",
+"gold": 900,
+"tags": [
+"CooldownReduction",
+"Boots"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3172": {
+"zh": "槍銅護脛",
+"en": "Gunmetal Greaves",
+"gold": 1100,
+"tags": [
+"AttackSpeed",
+"LifeSteal",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "機動性和韌性"
+},
+"3173": {
+"zh": "鎖鍊軍靴",
+"en": "Chainlaced Crushers",
+"gold": 1250,
+"tags": [
+"SpellBlock",
+"Boots",
+"Tenacity",
+"MagicResist"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "提升跑速和冷卻時間減免"
+},
+"3174": {
+"zh": "裝甲戰靴",
+"en": "Armored Advance",
+"gold": 1200,
+"tags": [
+"Armor",
+"Boots"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "造成傷害來觸發治療和護盾效果"
+},
+"3175": {
+"zh": "魔法使之鞋",
+"en": "Spellslinger's Shoes",
+"gold": 1100,
+"tags": [
+"Boots",
+"MagicPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3176": {
+"zh": "勇進靈靴",
+"en": "Forever Forward",
+"gold": 900,
+"tags": [
+"Boots"
+],
+"depth": 4,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3177": {
+"zh": "保衛者之刃",
+"en": "Guardian's Blade",
+"gold": 950,
+"tags": [
+"Health",
+"Damage",
+"Lane",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "普攻型英雄的優秀起始裝備"
+},
+"3179": {
+"zh": "闇影戰戟",
+"en": "Umbral Glaive",
+"gold": 2800,
+"tags": [
+"Damage",
+"Vision",
+"CooldownReduction",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "周期性地提供針對守衛與陷阱的偵察能力。"
+},
+"3181": {
+"zh": "破船戰斧",
+"en": "Hullbreaker",
+"gold": 3000,
+"tags": [
+"Health",
+"Damage",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3184": {
+"zh": "保衛者戰鎚",
+"en": "Guardian's Hammer",
+"gold": 950,
+"tags": [
+"Health",
+"Damage",
+"LifeSteal",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "優秀的攻擊起手道具"
+},
+"3190": {
+"zh": "日輪的加冕",
+"en": "Locket of the Iron Solari",
+"gold": 2200,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"Aura",
+"Active",
+"MagicResist",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動道具來施放一個可以吸收傷害的護盾至周圍友軍身上"
+},
+"3211": {
+"zh": "亡靈斗篷",
+"en": "Spectre's Cowl",
+"gold": 1250,
+"tags": [
+"Health",
+"HealthRegen",
+"SpellBlock"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "受到傷害時增加防禦力並給予回復能力"
+},
+"322065": {
+"zh": "蘇瑞亞的戰歌",
+"en": "Shurelya's Battlesong",
+"gold": 2600,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"Active",
+"CooldownReduction",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3222": {
+"zh": "米凱的祝福",
+"en": "Mikael's Blessing",
+"gold": 2300,
+"tags": [
+"Health",
+"ManaRegen",
+"Active",
+"CooldownReduction",
+"Tenacity",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "啟動來移除友方英雄身上所有控制效果"
+},
+"322526": {
+"zh": "低語之環",
+"en": "Whispering Circlet",
+"gold": 2250,
+"tags": [
+"Health",
+"Mana",
+"ManaRegen"
+],
+"depth": 3,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"322530": {
+"zh": "歌謠之冠",
+"en": "Diadem of Songs",
+"gold": 2250,
+"tags": [
+"Health",
+"Mana",
+"ManaRegen",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"323002": {
+"zh": "開拓者",
+"en": "Trailblazer",
+"gold": 2600,
+"tags": [
+"Health",
+"Armor",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"323003": {
+"zh": "大天使之杖",
+"en": "Archangel's Staff",
+"gold": 2900,
+"tags": [
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323004": {
+"zh": "魔劍正宗",
+"en": "Manamune",
+"gold": 2900,
+"tags": [
+"Damage",
+"Mana",
+"CooldownReduction",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323040": {
+"zh": "熾天使的擁抱",
+"en": "Seraph's Embrace",
+"gold": 2900,
+"tags": [
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"323042": {
+"zh": "終極魔劍",
+"en": "Muramana",
+"gold": 2900,
+"tags": [
+"Damage",
+"Mana",
+"CooldownReduction",
+"OnHit",
+"ArmorPenetration"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"323050": {
+"zh": "錫柯的聚合之力",
+"en": "Zeke's Convergence",
+"gold": 2300,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323070": {
+"zh": "女神之淚",
+"en": "Tear of the Goddess",
+"gold": 400,
+"tags": [
+"Mana",
+"ManaRegen"
+],
+"depth": 1,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"323075": {
+"zh": "荊棘之甲",
+"en": "Thornmail",
+"gold": 2650,
+"tags": [
+"Health",
+"Armor"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323107": {
+"zh": "贖罪神石",
+"en": "Redemption",
+"gold": 2800,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323109": {
+"zh": "騎士誓願",
+"en": "Knight's Vow",
+"gold": 2900,
+"tags": [
+"Health",
+"HealthRegen",
+"Armor",
+"Aura",
+"Active",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323110": {
+"zh": "冰霜之心",
+"en": "Frozen Heart",
+"gold": 2700,
+"tags": [
+"Armor",
+"Mana",
+"Aura",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323119": {
+"zh": "凜冬將至",
+"en": "Winter's Approach",
+"gold": 2400,
+"tags": [
+"Health",
+"Mana",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323121": {
+"zh": "芬布爾之冬",
+"en": "Fimbulwinter",
+"gold": 2400,
+"tags": [
+"Health",
+"Mana",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"323190": {
+"zh": "日輪的加冕",
+"en": "Locket of the Iron Solari",
+"gold": 2600,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"Aura",
+"Active",
+"MagicResist",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323222": {
+"zh": "米凱的祝福",
+"en": "Mikael's Blessing",
+"gold": 2800,
+"tags": [
+"Health",
+"ManaRegen",
+"Active",
+"CooldownReduction",
+"Tenacity",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"323504": {
+"zh": "熾灼魔器",
+"en": "Ardent Censer",
+"gold": 2600,
+"tags": [
+"AttackSpeed",
+"SpellDamage",
+"ManaRegen",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"324005": {
+"zh": "帝王命令",
+"en": "Imperial Mandate",
+"gold": 2400,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"326616": {
+"zh": "流水之杖",
+"en": "Staff of Flowing Water",
+"gold": 2600,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"326617": {
+"zh": "月之石再生裝置",
+"en": "Moonstone Renewer",
+"gold": 2900,
+"tags": [
+"Health",
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"326620": {
+"zh": "希利亞的迴響",
+"en": "Echoes of Helia",
+"gold": 2600,
+"tags": [
+"Health",
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"326621": {
+"zh": "破曉之核",
+"en": "Dawncore",
+"gold": 2900,
+"tags": [
+"SpellDamage",
+"ManaRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"326657": {
+"zh": "時光之杖",
+"en": "Rod of Ages",
+"gold": 2600,
+"tags": [
+"Health",
+"HealthRegen",
+"SpellDamage",
+"Mana",
+"ManaRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"328020": {
+"zh": "深淵面具",
+"en": "Abyssal Mask",
+"gold": 2850,
+"tags": [
+"Health",
+"SpellBlock",
+"CooldownReduction",
+"MagicResist",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3302": {
+"zh": "臨界點",
+"en": "Terminus",
+"gold": 3000,
+"tags": [
+"Damage",
+"AttackSpeed",
+"OnHit",
+"MagicPenetration",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "每隔一段時間擊殺士兵來治療附近友方並給予金錢"
+},
+"3330": {
+"zh": "稻草人",
+"en": "Scarecrow Effigy",
+"gold": 0,
+"tags": [
+"Active",
+"Jungle",
+"Lane",
+"Trinket",
+"Vision"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "周期性地放置一個潛行守衛"
+},
+"3340": {
+"zh": "潛行守衛",
+"en": "Stealth Ward",
+"gold": 0,
+"tags": [
+"Active",
+"Jungle",
+"Lane",
+"Trinket",
+"Vision"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "每隔一段時間可放置一個潛行守衛"
+},
+"3363": {
+"zh": "鷹眼晶球",
+"en": "Farsight Alteration",
+"gold": 0,
+"tags": [
+"Active",
+"Trinket",
+"Vision"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "給予更大的施放範圍並顯示目標區域"
+},
+"3364": {
+"zh": "先知透視鏡",
+"en": "Oracle Lens",
+"gold": 0,
+"tags": [
+"Active",
+"Trinket",
+"Vision"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "一段時間內無效化鄰近的隱形守衛和陷阱"
+},
+"3400": {
+"zh": "你也有份",
+"en": "Your Cut",
+"gold": 0,
+"tags": [
+"Consumable",
+"GoldPer"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3504": {
+"zh": "熾灼魔器",
+"en": "Ardent Censer",
+"gold": 2200,
+"tags": [
+"AttackSpeed",
+"SpellDamage",
+"ManaRegen",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "施放在其他單位身上的護盾和治療效果會短暫賦予你們攻速，且你們的攻擊命中時將造成額外魔法傷害。"
+},
+"3508": {
+"zh": "奪魄之鐮",
+"en": "Essence Reaver",
+"gold": 3050,
+"tags": [
+"Damage",
+"CriticalStrike",
+"ManaRegen",
+"CooldownReduction",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3599": {
+"zh": "克黎思妲的靈魂黑矛",
+"en": "Kalista's Black Spear",
+"gold": 0,
+"tags": [
+"Consumable"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "克黎思妲的靈魂黑矛綁定一個隊友。"
+},
+"3600": {
+"zh": "克黎思妲的靈魂黑矛",
+"en": "Kalista's Black Spear",
+"gold": 0,
+"tags": [
+"Consumable"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": "克黎思妲的靈魂黑矛綁定一個隊友。"
+},
+"3742": {
+"zh": "死者肩甲",
+"en": "Dead Man's Plate",
+"gold": 2900,
+"tags": [
+"Health",
+"Armor",
+"Slow",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "透過移動堆積衝勁，再直闖敵營。"
+},
+"3748": {
+"zh": "泰坦九頭蛇",
+"en": "Titanic Hydra",
+"gold": 3300,
+"tags": [
+"Health",
+"HealthRegen",
+"Damage",
+"OnHit"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "根據持有者的最大生命造成範圍傷害"
+},
+"3801": {
+"zh": "水晶護腕",
+"en": "Crystalline Bracer",
+"gold": 800,
+"tags": [
+"Health",
+"HealthRegen"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "獲得生命與生命回復"
+},
+"3802": {
+"zh": "失落之章",
+"en": "Lost Chapter",
+"gold": 1200,
+"tags": [
+"SpellDamage",
+"Mana",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "等級提升時回復魔力。"
+},
+"3803": {
+"zh": "催化魔方",
+"en": "Catalyst of Aeons",
+"gold": 1300,
+"tags": [
+"Health",
+"HealthRegen",
+"Mana",
+"ManaRegen"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"3814": {
+"zh": "夜色緣界",
+"en": "Edge of Night",
+"gold": 3000,
+"tags": [
+"Health",
+"Damage",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "周期性地阻擋敵人的法術。"
+},
+"3865": {
+"zh": "世界地圖",
+"en": "World Atlas",
+"gold": 400,
+"tags": [
+"Health",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3866": {
+"zh": "符文指針",
+"en": "Runic Compass",
+"gold": 400,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"3867": {
+"zh": "跨界獎賞",
+"en": "Bounty of Worlds",
+"gold": 400,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 1,
+"into": true,
+"purchasable": false,
+"plaintext": ""
+},
+"3869": {
+"zh": "星體抗力",
+"en": "Celestial Opposition",
+"gold": 400,
+"tags": [
+"Health",
+"HealthRegen",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3870": {
+"zh": "夢寐以求",
+"en": "Dream Maker",
+"gold": 400,
+"tags": [
+"Health",
+"HealthRegen",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3871": {
+"zh": "薩茲薩克的領域之刺",
+"en": "Zaz'Zak's Realmspike",
+"gold": 400,
+"tags": [
+"Health",
+"HealthRegen",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3876": {
+"zh": "冬至雪橇",
+"en": "Solstice Sleigh",
+"gold": 400,
+"tags": [
+"Health",
+"HealthRegen",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3877": {
+"zh": "血歌",
+"en": "Bloodsong",
+"gold": 400,
+"tags": [
+"Health",
+"HealthRegen",
+"ManaRegen",
+"Vision",
+"GoldPer",
+"Lane"
+],
+"depth": 2,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"3901": {
+"zh": "<rarityLegendary>恣意開火</rarityLegendary><br><subtitleLeft><silver>500 毒蛇銀幣</silver></subtitleLeft>",
+"en": "<rarityLegendary>Fire at Will</rarityLegendary><br><subtitleLeft><silver>500 Silver Serpents</silver></subtitleLeft>",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": "加農炮幕會以持續提升的速率發射（在持續期間額外發射 6 波）。"
+},
+"3902": {
+"zh": "<rarityLegendary>死亡之女</rarityLegendary><br><subtitleLeft><silver>500 毒蛇銀幣</silver></subtitleLeft>",
+"en": "<rarityLegendary>Death's Daughter</rarityLegendary><br><subtitleLeft><silver>500 Silver Serpents</silver></subtitleLeft>",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": "加農炮幕在炮幕的中心額外發射一顆巨型炮彈，額外造成真實傷害和緩速。"
+},
+"3903": {
+"zh": "<rarityLegendary>士氣高昂</rarityLegendary><br><subtitleLeft><silver>500 毒蛇銀幣</silver></subtitleLeft>",
+"en": "<rarityLegendary>Raise Morale</rarityLegendary><br><subtitleLeft><silver>500 Silver Serpents</silver></subtitleLeft>",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": "加農炮幕範圍內的隊友會增加跑速。"
+},
+"3916": {
+"zh": "遺忘寶珠",
+"en": "Oblivion Orb",
+"gold": 800,
+"tags": [
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": "提升魔法攻擊"
+},
+"4005": {
+"zh": "帝王命令",
+"en": "Imperial Mandate",
+"gold": 2400,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "延遲所受傷害。"
+},
+"4401": {
+"zh": "自然之力",
+"en": "Force of Nature",
+"gold": 2800,
+"tags": [
+"Health",
+"SpellBlock",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "跑速、魔法防禦和最大生命回復"
+},
+"4628": {
+"zh": "視界專注",
+"en": "Horizon Focus",
+"gold": 2700,
+"tags": [
+"SpellDamage",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "硬控場一名英雄時會引發閃電劈打該英雄"
+},
+"4629": {
+"zh": "星河馳騁",
+"en": "Cosmic Drive",
+"gold": 3000,
+"tags": [
+"Health",
+"SpellDamage",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "大幅冷卻時間減免"
+},
+"4630": {
+"zh": "枯萎寶石",
+"en": "Blighting Jewel",
+"gold": 1100,
+"tags": [
+"MagicPenetration",
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"4632": {
+"zh": "蒼翠屏障",
+"en": "Verdant Barrier",
+"gold": 1600,
+"tags": [
+"SpellBlock",
+"SpellDamage"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"4633": {
+"zh": "峽谷製造者",
+"en": "Riftmaker",
+"gold": 3100,
+"tags": [
+"Health",
+"SpellDamage",
+"CooldownReduction",
+"SpellVamp"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"4635": {
+"zh": "榨血睥睨",
+"en": "Leeching Leer",
+"gold": 1265,
+"tags": [
+"Health",
+"SpellDamage",
+"SpellVamp"
+],
+"depth": 2,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"4636": {
+"zh": "闇夜收割者",
+"en": "Night Harvester",
+"gold": 2765,
+"tags": [
+"Health",
+"SpellDamage",
+"CooldownReduction",
+"NonbootsMovement",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"4637": {
+"zh": "惡魔之擁",
+"en": "Demonic Embrace",
+"gold": 3000,
+"tags": [
+"Health",
+"SpellDamage"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"4641": {
+"zh": "活耀視石",
+"en": "Stirring Wardstone",
+"gold": 350,
+"tags": [
+"Health",
+"Damage",
+"SpellDamage",
+"ManaRegen",
+"Vision",
+"Active",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"4642": {
+"zh": "班德爾玻璃之鏡",
+"en": "Bandleglass Mirror",
+"gold": 900,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"4645": {
+"zh": "黯影之炎",
+"en": "Shadowflame",
+"gold": 3200,
+"tags": [
+"SpellDamage",
+"MagicPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"4646": {
+"zh": "雷霆風暴",
+"en": "Stormsurge",
+"gold": 2800,
+"tags": [
+"SpellDamage",
+"GoldPer",
+"NonbootsMovement",
+"MagicPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6333": {
+"zh": "死亡之舞",
+"en": "Death's Dance",
+"gold": 3300,
+"tags": [
+"Armor",
+"Damage",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6609": {
+"zh": "生化龐克鏈鋸之劍",
+"en": "Chempunk Chainsword",
+"gold": 3000,
+"tags": [
+"Health",
+"Damage",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6610": {
+"zh": "突破天際",
+"en": "Sundered Sky",
+"gold": 3100,
+"tags": [
+"Health",
+"Damage",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6616": {
+"zh": "流水之杖",
+"en": "Staff of Flowing Water",
+"gold": 2250,
+"tags": [
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "你的治療和護盾會縮短控制效果並提供跑速"
+},
+"6617": {
+"zh": "月之石再生裝置",
+"en": "Moonstone Renewer",
+"gold": 2200,
+"tags": [
+"Health",
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "你的治療和護盾的冷卻時間更短並且對低生命英雄造成更多效果"
+},
+"6620": {
+"zh": "希利亞的迴響",
+"en": "Echoes of Helia",
+"gold": 2200,
+"tags": [
+"Health",
+"SpellDamage",
+"ManaRegen",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "對低生命的敵人造成傷害時會觸發一次詛咒爆炸，造成傷害並使附近敵人緩速"
+},
+"6621": {
+"zh": "破曉之核",
+"en": "Dawncore",
+"gold": 2500,
+"tags": [
+"SpellDamage",
+"ManaRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663039": {
+"zh": "終末戰戟",
+"en": "Atma's Reckoning",
+"gold": 2500,
+"tags": [
+"Health",
+"CriticalStrike",
+"Lane"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663056": {
+"zh": "魔王的王冠",
+"en": "Demon King's Crown",
+"gold": 2500,
+"tags": [
+"Health",
+"Armor",
+"Damage",
+"AttackSpeed",
+"SpellDamage",
+"MagicResist",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663058": {
+"zh": "熔岩護盾",
+"en": "Shield of Molten Stone",
+"gold": 2500,
+"tags": [
+"Health",
+"Armor"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663059": {
+"zh": "星夜斗篷",
+"en": "Cloak of Starry Night",
+"gold": 2500,
+"tags": [
+"Health",
+"SpellBlock"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663060": {
+"zh": "神聖之劍",
+"en": "Sword of the Divine",
+"gold": 2500,
+"tags": [
+"Damage",
+"CriticalStrike",
+"SpellDamage"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663064": {
+"zh": "維迦的昇華護符",
+"en": "Veigar's Talisman of Ascension",
+"gold": 900,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6631": {
+"zh": "步履破壞者",
+"en": "Stridebreaker",
+"gold": 3300,
+"tags": [
+"Health",
+"Damage",
+"AttackSpeed",
+"Slow"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663146": {
+"zh": "海克斯科技槍刃",
+"en": "Hextech Gunblade",
+"gold": 2500,
+"tags": [
+"Damage",
+"LifeSteal",
+"SpellDamage",
+"Active",
+"SpellVamp"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663172": {
+"zh": "和風守護",
+"en": "Zephyr",
+"gold": 2500,
+"tags": [
+"AttackSpeed",
+"CooldownReduction",
+"OnHit",
+"NonbootsMovement",
+"Tenacity"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"663193": {
+"zh": "石像鬼磐核",
+"en": "Gargoyle Stoneplate",
+"gold": 2500,
+"tags": [
+"SpellBlock",
+"Armor",
+"Active",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"664011": {
+"zh": "破曉綻放之劍",
+"en": "Sword of Blossoming Dawn",
+"gold": 2500,
+"tags": [
+"Health",
+"SpellDamage",
+"CooldownReduction",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"664403": {
+"zh": "黃金鍋鏟",
+"en": "The Golden Spatula",
+"gold": 2500,
+"tags": [
+"Health",
+"SpellBlock",
+"HealthRegen",
+"Armor",
+"Damage",
+"CriticalStrike",
+"AttackSpeed",
+"LifeSteal",
+"SpellDamage",
+"Mana",
+"ManaRegen",
+"CooldownReduction",
+"NonbootsMovement"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"664644": {
+"zh": "殘破王后之冠",
+"en": "Crown of the Shattered Queen",
+"gold": 2500,
+"tags": [
+"Health",
+"SpellDamage",
+"Mana",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6653": {
+"zh": "黎安卓的折磨",
+"en": "Liandry's Torment",
+"gold": 3000,
+"tags": [
+"Health",
+"SpellDamage"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "在戰鬥中充能以造成大量持續傷害，特別用於對付耐久型敵人時"
+},
+"6655": {
+"zh": "盧登回音",
+"en": "Luden's Echo",
+"gold": 2750,
+"tags": [
+"SpellDamage",
+"Mana",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "高爆發傷害，用於對付脆弱的敵人。"
+},
+"6657": {
+"zh": "時光之杖",
+"en": "Rod of Ages",
+"gold": 2600,
+"tags": [
+"Health",
+"HealthRegen",
+"SpellDamage",
+"Mana",
+"ManaRegen"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6660": {
+"zh": "巴米灰燼",
+"en": "Bami's Cinder",
+"gold": 900,
+"tags": [
+"Health",
+"AbilityHaste"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"6662": {
+"zh": "寒冰霸拳",
+"en": "Iceborn Gauntlet",
+"gold": 2900,
+"tags": [
+"Health",
+"Armor",
+"CooldownReduction",
+"Slow",
+"OnHit",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "高魔法防禦。被動使附近敵人緩速。當附近有技能施放時，釋放一道能量波來造成傷害和緩速。"
+},
+"6664": {
+"zh": "虛偽光彩",
+"en": "Hollow Radiance",
+"gold": 2800,
+"tags": [
+"Health",
+"SpellBlock",
+"HealthRegen",
+"Aura",
+"MagicResist",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": "硬控場敵人以獲得一個護盾。開啟更快跑向敵人。"
+},
+"6665": {
+"zh": "千變萬化之賈克修",
+"en": "Jak'Sho, The Protean",
+"gold": 3200,
+"tags": [
+"Health",
+"SpellBlock",
+"Armor",
+"MagicResist"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6670": {
+"zh": "正午箭筒",
+"en": "Noonquiver",
+"gold": 1300,
+"tags": [
+"Damage",
+"CriticalStrike"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"667101": {
+"zh": "賭徒之刀",
+"en": "Gambler's Blade",
+"gold": 2500,
+"tags": [
+"Damage",
+"NonbootsMovement",
+"MagicPenetration",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"667109": {
+"zh": "殘忍",
+"en": "Cruelty",
+"gold": 2500,
+"tags": [
+"Armor",
+"SpellDamage",
+"MagicResist"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"667112": {
+"zh": "食肉者",
+"en": "Flesheater",
+"gold": 2500,
+"tags": [
+"Damage",
+"SpellDamage",
+"MagicPenetration",
+"ArmorPenetration"
+],
+"depth": 1,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6672": {
+"zh": "海妖殺手",
+"en": "Kraken Slayer",
+"gold": 3000,
+"tags": [
+"Damage",
+"AttackSpeed",
+"OnHit",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6673": {
+"zh": "不朽盾弓",
+"en": "Immortal Shieldbow",
+"gold": 3000,
+"tags": [
+"Damage",
+"CriticalStrike"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6675": {
+"zh": "那歐閃刃",
+"en": "Navori Flickerblade",
+"gold": 2650,
+"tags": [
+"CriticalStrike",
+"AttackSpeed",
+"NonbootsMovement"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6676": {
+"zh": "蒐集者",
+"en": "The Collector",
+"gold": 3000,
+"tags": [
+"Damage",
+"CriticalStrike",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"667666": {
+"zh": "蒐集者",
+"en": "The Collector",
+"gold": 3000,
+"tags": [
+"Damage",
+"CriticalStrike",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6690": {
+"zh": "導翔之羽",
+"en": "Rectrix",
+"gold": 775,
+"tags": [
+"Damage",
+"NonbootsMovement"
+],
+"depth": 2,
+"into": true,
+"purchasable": true,
+"plaintext": ""
+},
+"6692": {
+"zh": "星蝕",
+"en": "Eclipse",
+"gold": 2900,
+"tags": [
+"Damage",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6693": {
+"zh": "潛行者之爪",
+"en": "Prowler's Claw",
+"gold": 2850,
+"tags": [
+"Damage",
+"CooldownReduction",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"6694": {
+"zh": "席利妲咒怨",
+"en": "Serylda's Grudge",
+"gold": 3000,
+"tags": [
+"Damage",
+"CooldownReduction",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6695": {
+"zh": "巨蛇鋒牙",
+"en": "Serpent's Fang",
+"gold": 2500,
+"tags": [
+"Damage",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6696": {
+"zh": "公理弧刃",
+"en": "Axiom Arc",
+"gold": 2750,
+"tags": [
+"Damage",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6697": {
+"zh": "傲慢",
+"en": "Hubris",
+"gold": 2800,
+"tags": [
+"Damage",
+"Active",
+"CooldownReduction",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6698": {
+"zh": "瀆神九頭蛇",
+"en": "Profane Hydra",
+"gold": 2850,
+"tags": [
+"Damage",
+"Active",
+"CooldownReduction",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6699": {
+"zh": "電流旋風劍",
+"en": "Voltaic Cyclosword",
+"gold": 3000,
+"tags": [
+"Damage",
+"Active",
+"CooldownReduction",
+"ArmorPenetration",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"6701": {
+"zh": "機會",
+"en": "Opportunity",
+"gold": 2700,
+"tags": [
+"Damage",
+"Active",
+"NonbootsMovement",
+"ArmorPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"7050": {
+"zh": "剛普朗克 版面",
+"en": "Gangplank Placeholder",
+"gold": 0,
+"tags": [],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": "新的剛普朗克介面即將推出！"
+},
+"771500": {
+"zh": "穿甲彈",
+"en": "Penetrating Bullets",
+"gold": 0,
+"tags": [
+"HealthRegen",
+"ManaRegen",
+"OnHit"
+],
+"depth": 1,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"8001": {
+"zh": "咒恨縛鎖",
+"en": "Anathema's Chains",
+"gold": 2500,
+"tags": [
+"Health",
+"Active",
+"CooldownReduction",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": false,
+"plaintext": ""
+},
+"8010": {
+"zh": "血書詛咒",
+"en": "Bloodletter's Curse",
+"gold": 2900,
+"tags": [
+"Health",
+"SpellDamage",
+"CooldownReduction",
+"MagicPenetration"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+},
+"8020": {
+"zh": "深淵面具",
+"en": "Abyssal Mask",
+"gold": 2650,
+"tags": [
+"Health",
+"SpellBlock",
+"CooldownReduction",
+"MagicResist",
+"AbilityHaste"
+],
+"depth": 3,
+"into": false,
+"purchasable": true,
+"plaintext": ""
+}
+}
+}

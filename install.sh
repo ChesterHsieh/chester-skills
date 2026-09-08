@@ -26,6 +26,7 @@ SKILLS=(
   "grilling:plugins/grill-me/skills/grilling"
   "camera-cut:plugins/video-cut/skills/camera-cut"
   "concept-check:plugins/concept-check/skills/concept-check"
+  "lol-replay:plugins/lol-replay/skills/lol-replay"
 )
 AGENTS=("deck-reviewer:plugins/deck-skills/agents/deck-reviewer.md")
 
@@ -77,4 +78,5 @@ echo "完成。开新的 Claude Code session 后生效。"
 echo "验证 deck:       python3 $REPO/plugins/deck-skills/skills/deck/deck-audit/scripts/extract.py <你的档案> --pretty"
 echo "验证 skill-tree: cd <你的题目资料夹> && python3 $REPO/plugins/skill-tree/skills/skill-tree/assets/build.py"
 echo "验证 leaps:      python3 $REPO/plugins/leaps-strategy/skills/leaps-strategy/screener.py <quotes.json>"
+echo "验证 lol-replay:  python3 $REPO/plugins/lol-replay/skills/lol-replay/scripts/rofl_cli.py summary <game.rofl> --no-payload"
 echo "验证 camera-cut: python3 $REPO/plugins/video-cut/skills/camera-cut/scripts/detect.py <影片> --json /tmp/plan.json"

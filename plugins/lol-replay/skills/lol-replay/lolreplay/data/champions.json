@@ -1,0 +1,1692 @@
+{
+"version": "16.17.1",
+"champions": {
+"Aatrox": {
+"id": 266,
+"zh": "厄薩斯",
+"en": "Aatrox",
+"title_zh": "冥血劍魔",
+"tags": [
+"Fighter"
+]
+},
+"Ahri": {
+"id": 103,
+"zh": "阿璃",
+"en": "Ahri",
+"title_zh": "九尾妖狐",
+"tags": [
+"Mage",
+"Assassin"
+]
+},
+"Akali": {
+"id": 84,
+"zh": "阿卡莉",
+"en": "Akali",
+"title_zh": "隻影刺客",
+"tags": [
+"Assassin"
+]
+},
+"Akshan": {
+"id": 166,
+"zh": "埃可尚",
+"en": "Akshan",
+"title_zh": "俠盜哨兵",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Alistar": {
+"id": 12,
+"zh": "亞歷斯塔",
+"en": "Alistar",
+"title_zh": "牛頭酋長",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Ambessa": {
+"id": 799,
+"zh": "安比薩",
+"en": "Ambessa",
+"title_zh": "鐵血狼母",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Amumu": {
+"id": 32,
+"zh": "阿姆姆",
+"en": "Amumu",
+"title_zh": "殤之木乃伊",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Anivia": {
+"id": 34,
+"zh": "艾妮維亞",
+"en": "Anivia",
+"title_zh": "冰晶鳳凰",
+"tags": [
+"Mage"
+]
+},
+"Annie": {
+"id": 1,
+"zh": "安妮",
+"en": "Annie",
+"title_zh": "黑暗之女",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Aphelios": {
+"id": 523,
+"zh": "亞菲利歐",
+"en": "Aphelios",
+"title_zh": "信仰銳武",
+"tags": [
+"Marksman"
+]
+},
+"Ashe": {
+"id": 22,
+"zh": "艾希",
+"en": "Ashe",
+"title_zh": "冰霜射手",
+"tags": [
+"Marksman",
+"Support"
+]
+},
+"AurelionSol": {
+"id": 136,
+"zh": "翱銳龍獸",
+"en": "Aurelion Sol",
+"title_zh": "星際漫遊者",
+"tags": [
+"Mage"
+]
+},
+"Aurora": {
+"id": 893,
+"zh": "歐羅拉",
+"en": "Aurora",
+"title_zh": "跨界靈使",
+"tags": [
+"Mage",
+"Assassin"
+]
+},
+"Azir": {
+"id": 268,
+"zh": "阿祈爾",
+"en": "Azir",
+"title_zh": "蘇瑞瑪砂皇",
+"tags": [
+"Mage",
+"Marksman"
+]
+},
+"Bard": {
+"id": 432,
+"zh": "巴德",
+"en": "Bard",
+"title_zh": "漂泊守望者",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Belveth": {
+"id": 200,
+"zh": "貝爾薇斯",
+"en": "Bel'Veth",
+"title_zh": "虛空女皇",
+"tags": [
+"Fighter"
+]
+},
+"Blitzcrank": {
+"id": 53,
+"zh": "布里茨",
+"en": "Blitzcrank",
+"title_zh": "蒸汽巨神兵",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Brand": {
+"id": 63,
+"zh": "布蘭德",
+"en": "Brand",
+"title_zh": "復仇業火",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Braum": {
+"id": 201,
+"zh": "布郎姆",
+"en": "Braum",
+"title_zh": "弗雷爾卓德豪腕",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Briar": {
+"id": 233,
+"zh": "布蕾爾",
+"en": "Briar",
+"title_zh": "披枷饞鬼",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Caitlyn": {
+"id": 51,
+"zh": "凱特琳",
+"en": "Caitlyn",
+"title_zh": "執法者",
+"tags": [
+"Marksman"
+]
+},
+"Camille": {
+"id": 164,
+"zh": "卡蜜兒",
+"en": "Camille",
+"title_zh": "鋼鐵殘影",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Cassiopeia": {
+"id": 69,
+"zh": "卡莎碧雅",
+"en": "Cassiopeia",
+"title_zh": "蛇之擁抱",
+"tags": [
+"Mage"
+]
+},
+"Chogath": {
+"id": 31,
+"zh": "科加斯",
+"en": "Cho'Gath",
+"title_zh": "虛空恐懼",
+"tags": [
+"Tank",
+"Mage"
+]
+},
+"Corki": {
+"id": 42,
+"zh": "庫奇",
+"en": "Corki",
+"title_zh": "英勇投彈手",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Darius": {
+"id": 122,
+"zh": "達瑞斯",
+"en": "Darius",
+"title_zh": "諾克薩斯之力",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Diana": {
+"id": 131,
+"zh": "黛安娜",
+"en": "Diana",
+"title_zh": "輕藐之月",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Draven": {
+"id": 119,
+"zh": "達瑞文",
+"en": "Draven",
+"title_zh": "處刑娛樂大師",
+"tags": [
+"Marksman"
+]
+},
+"DrMundo": {
+"id": 36,
+"zh": "蒙多醫生",
+"en": "Dr. Mundo",
+"title_zh": "佐恩狂人",
+"tags": [
+"Tank",
+"Fighter"
+]
+},
+"Ekko": {
+"id": 245,
+"zh": "艾克",
+"en": "Ekko",
+"title_zh": "時空少年",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Elise": {
+"id": 60,
+"zh": "伊莉絲",
+"en": "Elise",
+"title_zh": "蜘蛛女王",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Evelynn": {
+"id": 28,
+"zh": "伊芙琳",
+"en": "Evelynn",
+"title_zh": "臨終擁抱",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Ezreal": {
+"id": 81,
+"zh": "伊澤瑞爾",
+"en": "Ezreal",
+"title_zh": "探險家",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Fiddlesticks": {
+"id": 9,
+"zh": "費德提克",
+"en": "Fiddlesticks",
+"title_zh": "亙古之懼",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Fiora": {
+"id": 114,
+"zh": "菲歐拉",
+"en": "Fiora",
+"title_zh": "孤高劍客",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Fizz": {
+"id": 105,
+"zh": "飛斯",
+"en": "Fizz",
+"title_zh": "深海頑童",
+"tags": [
+"Assassin",
+"Fighter"
+]
+},
+"Galio": {
+"id": 3,
+"zh": "加里歐",
+"en": "Galio",
+"title_zh": "禦國巨像",
+"tags": [
+"Tank",
+"Mage"
+]
+},
+"Gangplank": {
+"id": 41,
+"zh": "剛普朗克",
+"en": "Gangplank",
+"title_zh": "海洋之災",
+"tags": [
+"Fighter"
+]
+},
+"Garen": {
+"id": 86,
+"zh": "蓋倫",
+"en": "Garen",
+"title_zh": "蒂瑪西亞之力",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Gnar": {
+"id": 150,
+"zh": "吶兒",
+"en": "Gnar",
+"title_zh": "失落之子",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Gragas": {
+"id": 79,
+"zh": "古拉格斯",
+"en": "Gragas",
+"title_zh": "酒桶之王",
+"tags": [
+"Fighter",
+"Mage"
+]
+},
+"Graves": {
+"id": 104,
+"zh": "葛雷夫",
+"en": "Graves",
+"title_zh": "亡命之徒",
+"tags": [
+"Marksman"
+]
+},
+"Gwen": {
+"id": 887,
+"zh": "關",
+"en": "Gwen",
+"title_zh": "聖啟織偶",
+"tags": [
+"Fighter"
+]
+},
+"Hecarim": {
+"id": 120,
+"zh": "赫克林",
+"en": "Hecarim",
+"title_zh": "戰爭之影",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Heimerdinger": {
+"id": 74,
+"zh": "漢默丁格",
+"en": "Heimerdinger",
+"title_zh": "大發明家",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Hwei": {
+"id": 910,
+"zh": "赫威",
+"en": "Hwei",
+"title_zh": "奇想繪師",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Illaoi": {
+"id": 420,
+"zh": "伊羅旖",
+"en": "Illaoi",
+"title_zh": "海妖祭司",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Irelia": {
+"id": 39,
+"zh": "伊瑞莉雅",
+"en": "Irelia",
+"title_zh": "舞劍靈使",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Ivern": {
+"id": 427,
+"zh": "埃爾文",
+"en": "Ivern",
+"title_zh": "綠林之父",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Janna": {
+"id": 40,
+"zh": "珍娜",
+"en": "Janna",
+"title_zh": "風暴女神",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"JarvanIV": {
+"id": 59,
+"zh": "嘉文四世",
+"en": "Jarvan IV",
+"title_zh": "蒂瑪西亞楷模",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Jax": {
+"id": 24,
+"zh": "賈克斯",
+"en": "Jax",
+"title_zh": "武器達人",
+"tags": [
+"Fighter"
+]
+},
+"Jayce": {
+"id": 126,
+"zh": "杰西",
+"en": "Jayce",
+"title_zh": "明日守護者",
+"tags": [
+"Fighter",
+"Marksman"
+]
+},
+"Jhin": {
+"id": 202,
+"zh": "燼",
+"en": "Jhin",
+"title_zh": "炫技大師",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Jinx": {
+"id": 222,
+"zh": "吉茵珂絲",
+"en": "Jinx",
+"title_zh": "暴走重砲",
+"tags": [
+"Marksman"
+]
+},
+"Kaisa": {
+"id": 145,
+"zh": "凱莎",
+"en": "Kai'Sa",
+"title_zh": "虛空之女",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Kalista": {
+"id": 429,
+"zh": "克黎思妲",
+"en": "Kalista",
+"title_zh": "復仇之矛",
+"tags": [
+"Marksman"
+]
+},
+"Karma": {
+"id": 43,
+"zh": "卡瑪",
+"en": "Karma",
+"title_zh": "魂之啟者",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Karthus": {
+"id": 30,
+"zh": "卡爾瑟斯",
+"en": "Karthus",
+"title_zh": "死亡頌唱者",
+"tags": [
+"Mage"
+]
+},
+"Kassadin": {
+"id": 38,
+"zh": "卡薩丁",
+"en": "Kassadin",
+"title_zh": "虛空行者",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Katarina": {
+"id": 55,
+"zh": "卡特蓮娜",
+"en": "Katarina",
+"title_zh": "不祥之刃",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Kayle": {
+"id": 10,
+"zh": "凱爾",
+"en": "Kayle",
+"title_zh": "正義天使",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Kayn": {
+"id": 141,
+"zh": "慨影",
+"en": "Kayn",
+"title_zh": "闇魂收割者",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Kennen": {
+"id": 85,
+"zh": "凱能",
+"en": "Kennen",
+"title_zh": "狂暴之心",
+"tags": [
+"Mage"
+]
+},
+"Khazix": {
+"id": 121,
+"zh": "卡力斯",
+"en": "Kha'Zix",
+"title_zh": "虛空掠食者",
+"tags": [
+"Assassin"
+]
+},
+"Kindred": {
+"id": 203,
+"zh": "鏡爪",
+"en": "Kindred",
+"title_zh": "永恆獵手",
+"tags": [
+"Marksman"
+]
+},
+"Kled": {
+"id": 240,
+"zh": "克雷德",
+"en": "Kled",
+"title_zh": "暴躁騎士",
+"tags": [
+"Fighter"
+]
+},
+"KogMaw": {
+"id": 96,
+"zh": "寇格魔",
+"en": "Kog'Maw",
+"title_zh": "深淵巨口",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"KSante": {
+"id": 897,
+"zh": "卡桑帝",
+"en": "K'Sante",
+"title_zh": "納祖瑪之傲",
+"tags": [
+"Tank",
+"Fighter"
+]
+},
+"Leblanc": {
+"id": 7,
+"zh": "勒布朗",
+"en": "LeBlanc",
+"title_zh": "詐欺師",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"LeeSin": {
+"id": 64,
+"zh": "李星",
+"en": "Lee Sin",
+"title_zh": "盲眼武僧",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Leona": {
+"id": 89,
+"zh": "雷歐娜",
+"en": "Leona",
+"title_zh": "黎明之光",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Lillia": {
+"id": 876,
+"zh": "莉莉亞",
+"en": "Lillia",
+"title_zh": "羞赧綻華",
+"tags": [
+"Fighter",
+"Mage"
+]
+},
+"Lissandra": {
+"id": 127,
+"zh": "麗珊卓",
+"en": "Lissandra",
+"title_zh": "傲雪巫女",
+"tags": [
+"Mage"
+]
+},
+"Locke": {
+"id": 805,
+"zh": "洛克",
+"en": "Locke",
+"title_zh": "死灰驅魔師",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Lucian": {
+"id": 236,
+"zh": "路西恩",
+"en": "Lucian",
+"title_zh": "驅魔聖槍",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Lulu": {
+"id": 117,
+"zh": "露璐",
+"en": "Lulu",
+"title_zh": "精靈魔法使",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Lux": {
+"id": 99,
+"zh": "拉克絲",
+"en": "Lux",
+"title_zh": "光之少女",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Malphite": {
+"id": 54,
+"zh": "墨菲特",
+"en": "Malphite",
+"title_zh": "幻石碎片",
+"tags": [
+"Tank",
+"Mage"
+]
+},
+"Malzahar": {
+"id": 90,
+"zh": "馬爾札哈",
+"en": "Malzahar",
+"title_zh": "虛空先知",
+"tags": [
+"Mage"
+]
+},
+"Maokai": {
+"id": 57,
+"zh": "茂凱",
+"en": "Maokai",
+"title_zh": "扭曲樹人",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"MasterYi": {
+"id": 11,
+"zh": "易大師",
+"en": "Master Yi",
+"title_zh": "無極劍聖",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Mel": {
+"id": 800,
+"zh": "梅爾",
+"en": "Mel",
+"title_zh": "映魂祕使",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Milio": {
+"id": 902,
+"zh": "米里歐",
+"en": "Milio",
+"title_zh": "溫煦良焰",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"MissFortune": {
+"id": 21,
+"zh": "好運姐",
+"en": "Miss Fortune",
+"title_zh": "賞金獵人",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"MonkeyKing": {
+"id": 62,
+"zh": "悟空",
+"en": "Wukong",
+"title_zh": "齊天大聖",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Mordekaiser": {
+"id": 82,
+"zh": "魔鬥凱薩",
+"en": "Mordekaiser",
+"title_zh": " 金屬亡靈",
+"tags": [
+"Fighter",
+"Mage"
+]
+},
+"Morgana": {
+"id": 25,
+"zh": "魔甘娜",
+"en": "Morgana",
+"title_zh": "墮落天使",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Naafiri": {
+"id": 950,
+"zh": "娜菲芮",
+"en": "Naafiri",
+"title_zh": "百犬之牙",
+"tags": [
+"Assassin",
+"Fighter"
+]
+},
+"Nami": {
+"id": 267,
+"zh": "娜米",
+"en": "Nami",
+"title_zh": "海潮之音",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Nasus": {
+"id": 75,
+"zh": "納瑟斯",
+"en": "Nasus",
+"title_zh": "沙漠死神",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Nautilus": {
+"id": 111,
+"zh": "納帝魯斯",
+"en": "Nautilus",
+"title_zh": "深淵巨人",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Neeko": {
+"id": 518,
+"zh": "妮可",
+"en": "Neeko",
+"title_zh": "好奇變色龍",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Nidalee": {
+"id": 76,
+"zh": "奈德麗",
+"en": "Nidalee",
+"title_zh": "狂野獵手",
+"tags": [
+"Assassin",
+"Mage"
+]
+},
+"Nilah": {
+"id": 895,
+"zh": "淣菈",
+"en": "Nilah",
+"title_zh": "奔放笑顏",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Nocturne": {
+"id": 56,
+"zh": "夜曲",
+"en": "Nocturne",
+"title_zh": "永恆夢魘",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Nunu": {
+"id": 20,
+"zh": "努努和威朗普",
+"en": "Nunu & Willump",
+"title_zh": "冰原拍檔",
+"tags": [
+"Tank",
+"Mage"
+]
+},
+"Olaf": {
+"id": 2,
+"zh": "歐拉夫",
+"en": "Olaf",
+"title_zh": "狂戰士",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Orianna": {
+"id": 61,
+"zh": "奧莉安娜",
+"en": "Orianna",
+"title_zh": "發條少女",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Ornn": {
+"id": 516,
+"zh": "鄂爾",
+"en": "Ornn",
+"title_zh": "爐心山神",
+"tags": [
+"Tank"
+]
+},
+"Pantheon": {
+"id": 80,
+"zh": "潘森",
+"en": "Pantheon",
+"title_zh": "不屈之矛",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Poppy": {
+"id": 78,
+"zh": "波比",
+"en": "Poppy",
+"title_zh": "聖鎚守護者",
+"tags": [
+"Tank",
+"Fighter"
+]
+},
+"Pyke": {
+"id": 555,
+"zh": "派克",
+"en": "Pyke",
+"title_zh": "血港開膛手",
+"tags": [
+"Support",
+"Assassin"
+]
+},
+"Qiyana": {
+"id": 246,
+"zh": "姬亞娜",
+"en": "Qiyana",
+"title_zh": "元素女帝",
+"tags": [
+"Assassin"
+]
+},
+"Quinn": {
+"id": 133,
+"zh": "葵恩",
+"en": "Quinn",
+"title_zh": "蒂瑪西亞之翼",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Rakan": {
+"id": 497,
+"zh": "銳空",
+"en": "Rakan",
+"title_zh": "惑羽",
+"tags": [
+"Support"
+]
+},
+"Rammus": {
+"id": 33,
+"zh": "拉姆斯",
+"en": "Rammus",
+"title_zh": "披甲龍龜",
+"tags": [
+"Tank"
+]
+},
+"RekSai": {
+"id": 421,
+"zh": "雷珂煞",
+"en": "Rek'Sai",
+"title_zh": "虛空穿梭者",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Rell": {
+"id": 526,
+"zh": "銳兒",
+"en": "Rell",
+"title_zh": "鋼鐵少女",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Renata": {
+"id": 888,
+"zh": "睿娜妲‧格萊斯克",
+"en": "Renata Glasc",
+"title_zh": "化學女爵",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Renekton": {
+"id": 58,
+"zh": "雷尼克頓",
+"en": "Renekton",
+"title_zh": "沙漠屠夫",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Rengar": {
+"id": 107,
+"zh": "雷葛爾",
+"en": "Rengar",
+"title_zh": "傲慢伏擊者",
+"tags": [
+"Assassin",
+"Fighter"
+]
+},
+"Riven": {
+"id": 92,
+"zh": "雷玟",
+"en": "Riven",
+"title_zh": "破刃放逐者",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Rumble": {
+"id": 68,
+"zh": "藍寶",
+"en": "Rumble",
+"title_zh": "武裝機兵",
+"tags": [
+"Fighter",
+"Mage"
+]
+},
+"Ryze": {
+"id": 13,
+"zh": "雷茲",
+"en": "Ryze",
+"title_zh": "符文法師",
+"tags": [
+"Mage"
+]
+},
+"Samira": {
+"id": 360,
+"zh": "煞蜜拉",
+"en": "Samira",
+"title_zh": "荒漠薔薇",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Sejuani": {
+"id": 113,
+"zh": "史瓦妮",
+"en": "Sejuani",
+"title_zh": "北境之怒",
+"tags": [
+"Tank"
+]
+},
+"Senna": {
+"id": 235,
+"zh": "姍娜",
+"en": "Senna",
+"title_zh": "贖魂聖槍",
+"tags": [
+"Support",
+"Marksman"
+]
+},
+"Seraphine": {
+"id": 147,
+"zh": "瑟菈紛",
+"en": "Seraphine",
+"title_zh": "燦眸歌姬",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Sett": {
+"id": 875,
+"zh": "賽特",
+"en": "Sett",
+"title_zh": "獸血拳皇",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Shaco": {
+"id": 35,
+"zh": "薩科",
+"en": "Shaco",
+"title_zh": "惡魔小丑",
+"tags": [
+"Assassin"
+]
+},
+"Shen": {
+"id": 98,
+"zh": "慎",
+"en": "Shen",
+"title_zh": "暮光之眼",
+"tags": [
+"Tank"
+]
+},
+"Shyvana": {
+"id": 102,
+"zh": "希瓦娜",
+"en": "Shyvana",
+"title_zh": "半龍少女",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Singed": {
+"id": 27,
+"zh": "辛吉德",
+"en": "Singed",
+"title_zh": "瘋狂煉金師",
+"tags": [
+"Tank",
+"Mage"
+]
+},
+"Sion": {
+"id": 14,
+"zh": "賽恩",
+"en": "Sion",
+"title_zh": "亡靈勇士",
+"tags": [
+"Tank",
+"Fighter"
+]
+},
+"Sivir": {
+"id": 15,
+"zh": "希維爾",
+"en": "Sivir",
+"title_zh": "戰爭女神",
+"tags": [
+"Marksman"
+]
+},
+"Skarner": {
+"id": 72,
+"zh": "史加納",
+"en": "Skarner",
+"title_zh": "遠古強者",
+"tags": [
+"Tank",
+"Fighter"
+]
+},
+"Smolder": {
+"id": 901,
+"zh": "史矛德",
+"en": "Smolder",
+"title_zh": "帝煌雛龍",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Sona": {
+"id": 37,
+"zh": "索娜",
+"en": "Sona",
+"title_zh": "琴仙",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Soraka": {
+"id": 16,
+"zh": "索拉卡",
+"en": "Soraka",
+"title_zh": "眾星之子",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Swain": {
+"id": 50,
+"zh": "斯溫",
+"en": "Swain",
+"title_zh": "諾克薩斯總帥",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Sylas": {
+"id": 517,
+"zh": "賽勒斯",
+"en": "Sylas",
+"title_zh": "罪鍊術士",
+"tags": [
+"Mage",
+"Assassin"
+]
+},
+"Syndra": {
+"id": 134,
+"zh": "星朵拉",
+"en": "Syndra",
+"title_zh": "黑暗領主",
+"tags": [
+"Mage"
+]
+},
+"TahmKench": {
+"id": 223,
+"zh": "貪啃奇",
+"en": "Tahm Kench",
+"title_zh": "河中巨怪",
+"tags": [
+"Tank",
+"Support"
+]
+},
+"Taliyah": {
+"id": 163,
+"zh": "塔莉雅",
+"en": "Taliyah",
+"title_zh": "岩石編織者",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Talon": {
+"id": 91,
+"zh": "塔隆",
+"en": "Talon",
+"title_zh": "神影刺客",
+"tags": [
+"Assassin"
+]
+},
+"Taric": {
+"id": 44,
+"zh": "塔里克",
+"en": "Taric",
+"title_zh": "瓦羅然之盾",
+"tags": [
+"Support",
+"Tank"
+]
+},
+"Teemo": {
+"id": 17,
+"zh": "提摩",
+"en": "Teemo",
+"title_zh": "迅捷斥候",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Thresh": {
+"id": 412,
+"zh": "瑟雷西",
+"en": "Thresh",
+"title_zh": "鍊魂獄長",
+"tags": [
+"Support",
+"Tank"
+]
+},
+"Tristana": {
+"id": 18,
+"zh": "崔絲塔娜",
+"en": "Tristana",
+"title_zh": "約德爾炮手",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Trundle": {
+"id": 48,
+"zh": "特朗德",
+"en": "Trundle",
+"title_zh": "巨魔王",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Tryndamere": {
+"id": 23,
+"zh": "泰達米爾",
+"en": "Tryndamere",
+"title_zh": "蠻族之王",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"TwistedFate": {
+"id": 4,
+"zh": "逆命",
+"en": "Twisted Fate",
+"title_zh": "卡牌大師",
+"tags": [
+"Mage",
+"Marksman"
+]
+},
+"Twitch": {
+"id": 29,
+"zh": "圖奇",
+"en": "Twitch",
+"title_zh": "瘟疫之源",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Udyr": {
+"id": 77,
+"zh": "烏迪爾",
+"en": "Udyr",
+"title_zh": "神靈行者",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Urgot": {
+"id": 6,
+"zh": "烏爾加特",
+"en": "Urgot",
+"title_zh": "重裝無畏",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Varus": {
+"id": 110,
+"zh": "法洛士",
+"en": "Varus",
+"title_zh": "懲戒之箭",
+"tags": [
+"Marksman",
+"Mage"
+]
+},
+"Vayne": {
+"id": 67,
+"zh": "汎",
+"en": "Vayne",
+"title_zh": "暗夜獵人",
+"tags": [
+"Marksman",
+"Assassin"
+]
+},
+"Veigar": {
+"id": 45,
+"zh": "維迦",
+"en": "Veigar",
+"title_zh": "邪惡小法師",
+"tags": [
+"Mage"
+]
+},
+"Velkoz": {
+"id": 161,
+"zh": "威寇茲",
+"en": "Vel'Koz",
+"title_zh": "虛空魔眼",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"Vex": {
+"id": 711,
+"zh": "薇可絲",
+"en": "Vex",
+"title_zh": "愁霧影巫",
+"tags": [
+"Mage"
+]
+},
+"Vi": {
+"id": 254,
+"zh": "菲艾",
+"en": "Vi",
+"title_zh": "鐵腕特警",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Viego": {
+"id": 234,
+"zh": "維爾戈",
+"en": "Viego",
+"title_zh": "殞落王者",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Viktor": {
+"id": 112,
+"zh": "維克特",
+"en": "Viktor",
+"title_zh": "奧術預示者",
+"tags": [
+"Mage"
+]
+},
+"Vladimir": {
+"id": 8,
+"zh": "弗拉迪米爾",
+"en": "Vladimir",
+"title_zh": "血色收割者",
+"tags": [
+"Mage",
+"Fighter"
+]
+},
+"Volibear": {
+"id": 106,
+"zh": "弗力貝爾",
+"en": "Volibear",
+"title_zh": "無情風暴",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Warwick": {
+"id": 19,
+"zh": "沃維克",
+"en": "Warwick",
+"title_zh": "嗜血狂怒",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Xayah": {
+"id": 498,
+"zh": "剎雅",
+"en": "Xayah",
+"title_zh": "逆羽",
+"tags": [
+"Marksman"
+]
+},
+"Xerath": {
+"id": 101,
+"zh": "齊勒斯",
+"en": "Xerath",
+"title_zh": "遠古魔導",
+"tags": [
+"Mage",
+"Support"
+]
+},
+"XinZhao": {
+"id": 5,
+"zh": "趙信",
+"en": "Xin Zhao",
+"title_zh": "蒂瑪西亞總管",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Yasuo": {
+"id": 157,
+"zh": "犽宿",
+"en": "Yasuo",
+"title_zh": "放逐浪人",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Yone": {
+"id": 777,
+"zh": "犽凝",
+"en": "Yone",
+"title_zh": "不滅劍豪",
+"tags": [
+"Fighter",
+"Assassin"
+]
+},
+"Yorick": {
+"id": 83,
+"zh": "約瑞科",
+"en": "Yorick",
+"title_zh": "亡魂牧人",
+"tags": [
+"Fighter",
+"Tank"
+]
+},
+"Yunara": {
+"id": 804,
+"zh": "尤娜拉",
+"en": "Yunara",
+"title_zh": "千年巫女",
+"tags": [
+"Marksman"
+]
+},
+"Yuumi": {
+"id": 350,
+"zh": "悠咪",
+"en": "Yuumi",
+"title_zh": "魔法靈貓",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Zaahen": {
+"id": 904,
+"zh": "薩亨",
+"en": "Zaahen",
+"title_zh": "不滅冥聖",
+"tags": [
+"Fighter"
+]
+},
+"Zac": {
+"id": 154,
+"zh": "札克",
+"en": "Zac",
+"title_zh": "魔人",
+"tags": [
+"Tank",
+"Fighter"
+]
+},
+"Zed": {
+"id": 238,
+"zh": "劫",
+"en": "Zed",
+"title_zh": "影忍至尊",
+"tags": [
+"Assassin"
+]
+},
+"Zeri": {
+"id": 221,
+"zh": "婕莉",
+"en": "Zeri",
+"title_zh": "佐恩電光",
+"tags": [
+"Marksman"
+]
+},
+"Ziggs": {
+"id": 115,
+"zh": "希格斯",
+"en": "Ziggs",
+"title_zh": "魔法爆破專家",
+"tags": [
+"Mage"
+]
+},
+"Zilean": {
+"id": 26,
+"zh": "極靈",
+"en": "Zilean",
+"title_zh": "時光守護者",
+"tags": [
+"Support",
+"Mage"
+]
+},
+"Zoe": {
+"id": 142,
+"zh": "柔依",
+"en": "Zoe",
+"title_zh": "暮光星靈",
+"tags": [
+"Mage"
+]
+},
+"Zyra": {
+"id": 143,
+"zh": "枷蘿",
+"en": "Zyra",
+"title_zh": "荊棘漫遊者",
+"tags": [
+"Mage",
+"Support"
+]
+}
+}
+}

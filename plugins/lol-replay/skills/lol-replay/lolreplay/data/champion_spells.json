@@ -1,0 +1,4676 @@
+{
+"version": "16.17.1",
+"champions": {
+"Aatrox": {
+"Q": {
+"id": "AatroxQ",
+"zh": "冥血邪劍",
+"en": "The Darkin Blade"
+},
+"W": {
+"id": "AatroxW",
+"zh": "冥府血鏈",
+"en": "Infernal Chains"
+},
+"E": {
+"id": "AatroxE",
+"zh": "冥影衝鋒",
+"en": "Umbral Dash"
+},
+"R": {
+"id": "AatroxR",
+"zh": "劍魔滅世",
+"en": "World Ender"
+},
+"P": {
+"id": "AatroxPassive",
+"zh": "冥使劍姿",
+"en": "Deathbringer Stance"
+}
+},
+"Ahri": {
+"Q": {
+"id": "AhriQ",
+"zh": "幻玉",
+"en": "Orb of Deception"
+},
+"W": {
+"id": "AhriW",
+"zh": "魅火",
+"en": "Fox-Fire"
+},
+"E": {
+"id": "AhriE",
+"zh": "傾城",
+"en": "Charm"
+},
+"R": {
+"id": "AhriR",
+"zh": "飛仙",
+"en": "Spirit Rush"
+},
+"P": {
+"id": "AhriPassive",
+"zh": "銷魂",
+"en": "Essence Theft"
+}
+},
+"Akali": {
+"Q": {
+"id": "AkaliQ",
+"zh": "落擲苦無",
+"en": "Five Point Strike"
+},
+"W": {
+"id": "AkaliW",
+"zh": "暮光朦影",
+"en": "Twilight Shroud"
+},
+"E": {
+"id": "AkaliE",
+"zh": "離群手裡劍",
+"en": "Shuriken Flip"
+},
+"R": {
+"id": "AkaliR",
+"zh": "無瑕追擊",
+"en": "Perfect Execution"
+},
+"P": {
+"id": "AkaliPassive",
+"zh": "刺客印記",
+"en": "Assassin's Mark"
+}
+},
+"Akshan": {
+"Q": {
+"id": "AkshanQ",
+"zh": "復仇迴力鏢",
+"en": "Avengerang"
+},
+"W": {
+"id": "AkshanW",
+"zh": "離經叛道",
+"en": "Going Rogue"
+},
+"E": {
+"id": "AkshanE",
+"zh": "英勇勾索",
+"en": "Heroic Swing"
+},
+"R": {
+"id": "AkshanR",
+"zh": "因果蓄能彈",
+"en": "Comeuppance"
+},
+"P": {
+"id": "AkshanPassive",
+"zh": "無賴之道",
+"en": "Dirty Fighting"
+}
+},
+"Alistar": {
+"Q": {
+"id": "Pulverize",
+"zh": "大地粉碎",
+"en": "Pulverize"
+},
+"W": {
+"id": "Headbutt",
+"zh": "野蠻衝撞",
+"en": "Headbutt"
+},
+"E": {
+"id": "AlistarE",
+"zh": "蠻牛之力",
+"en": "Trample"
+},
+"R": {
+"id": "FerociousHowl",
+"zh": "堅定意志",
+"en": "Unbreakable Will"
+},
+"P": {
+"id": "AlistarPassive",
+"zh": "勝利怒吼",
+"en": "Triumphant Roar"
+}
+},
+"Ambessa": {
+"Q": {
+"id": "AmbessaQ",
+"zh": "暗襲／裂斬",
+"en": "Cunning Sweep / Sundering Slam"
+},
+"W": {
+"id": "AmbessaW",
+"zh": "鐵令",
+"en": "Repudiation"
+},
+"E": {
+"id": "AmbessaE",
+"zh": "血戮",
+"en": "Lacerate"
+},
+"R": {
+"id": "AmbessaR",
+"zh": "殛刑",
+"en": "Public Execution"
+},
+"P": {
+"id": "AmbessaPassive",
+"zh": "龍犬詭步",
+"en": "Drakehound's Step"
+}
+},
+"Amumu": {
+"Q": {
+"id": "BandageToss",
+"zh": "繃帶牽引",
+"en": "Bandage Toss"
+},
+"W": {
+"id": "AuraofDespair",
+"zh": "絕望",
+"en": "Despair"
+},
+"E": {
+"id": "Tantrum",
+"zh": "憤怒",
+"en": "Tantrum"
+},
+"R": {
+"id": "CurseoftheSadMummy",
+"zh": "木乃伊之咒",
+"en": "Curse of the Sad Mummy"
+},
+"P": {
+"id": "AmumuPassive",
+"zh": "詛咒之觸",
+"en": "Cursed Touch"
+}
+},
+"Anivia": {
+"Q": {
+"id": "FlashFrost",
+"zh": "寒冰閃耀",
+"en": "Flash Frost"
+},
+"W": {
+"id": "Crystallize",
+"zh": "寒冰屏障",
+"en": "Crystallize"
+},
+"E": {
+"id": "Frostbite",
+"zh": "霜寒刺骨",
+"en": "Frostbite"
+},
+"R": {
+"id": "GlacialStorm",
+"zh": "冰川風暴",
+"en": "Glacial Storm"
+},
+"P": {
+"id": "AniviaPassive",
+"zh": "寒霜涅槃",
+"en": "Rebirth"
+}
+},
+"Annie": {
+"Q": {
+"id": "AnnieQ",
+"zh": "瓦解怒焰",
+"en": "Disintegrate"
+},
+"W": {
+"id": "AnnieW",
+"zh": "烈焰衝擊",
+"en": "Incinerate"
+},
+"E": {
+"id": "AnnieE",
+"zh": "熔炎護盾",
+"en": "Molten Shield"
+},
+"R": {
+"id": "AnnieR",
+"zh": "召喚：泰貝爾",
+"en": "Summon: Tibbers"
+},
+"P": {
+"id": "AnniePassive",
+"zh": "嗜火",
+"en": "Pyromania"
+}
+},
+"Aphelios": {
+"Q": {
+"id": "ApheliosQ_ClientTooltipWrapper",
+"zh": "武器技能",
+"en": "Weapon Abilites"
+},
+"W": {
+"id": "ApheliosW",
+"zh": "月相輪轉",
+"en": "Phase"
+},
+"E": {
+"id": "ApheliosE_ClientTooltipWrapper",
+"zh": "武器佇列系統",
+"en": "Weapon Queue System"
+},
+"R": {
+"id": "ApheliosR",
+"zh": "月夜守護",
+"en": "Moonlight Vigil"
+},
+"P": {
+"id": "ApheliosPassive",
+"zh": "殺手與先知",
+"en": "The Hitman and the Seer"
+}
+},
+"Ashe": {
+"Q": {
+"id": "AsheQ",
+"zh": "專注射擊",
+"en": "Ranger's Focus"
+},
+"W": {
+"id": "Volley",
+"zh": "萬箭齊發",
+"en": "Volley"
+},
+"E": {
+"id": "AsheSpiritOfTheHawk",
+"zh": "鷹擊長空",
+"en": "Hawkshot"
+},
+"R": {
+"id": "EnchantedCrystalArrow",
+"zh": "魔法水晶箭",
+"en": "Enchanted Crystal Arrow"
+},
+"P": {
+"id": "AshePassive",
+"zh": "冰霜射擊",
+"en": "Frost Shot"
+}
+},
+"AurelionSol": {
+"Q": {
+"id": "AurelionSolQ",
+"zh": "星光吐息",
+"en": "Breath of Light"
+},
+"W": {
+"id": "AurelionSolW",
+"zh": "星界翱翔",
+"en": "Astral Flight"
+},
+"E": {
+"id": "AurelionSolE",
+"zh": "宇宙奇點",
+"en": "Singularity"
+},
+"R": {
+"id": "AurelionSolR",
+"zh": "降世星辰／天界殞落",
+"en": "Falling Star / The Skies Descend"
+},
+"P": {
+"id": "AurelionSolPassive",
+"zh": "宇宙創世",
+"en": "Cosmic Creator"
+}
+},
+"Aurora": {
+"Q": {
+"id": "AuroraQ",
+"zh": "二重靈咒",
+"en": "Twofold Hex"
+},
+"W": {
+"id": "AuroraW",
+"zh": "跨越兩界",
+"en": "Across the Veil"
+},
+"E": {
+"id": "AuroraE",
+"zh": "靈異逆躍",
+"en": "The Weirding"
+},
+"R": {
+"id": "AuroraR",
+"zh": "雙界合一",
+"en": "Between Worlds"
+},
+"P": {
+"id": "AuroraPassive",
+"zh": "精靈附體",
+"en": "Spirit Abjuration"
+}
+},
+"Azir": {
+"Q": {
+"id": "AzirQWrapper",
+"zh": "砂影霸者",
+"en": "Conquering Sands"
+},
+"W": {
+"id": "AzirW",
+"zh": "砂漠禁軍",
+"en": "Arise!"
+},
+"E": {
+"id": "AzirEWrapper",
+"zh": "護砂瞬身",
+"en": "Shifting Sands"
+},
+"R": {
+"id": "AzirR",
+"zh": "空砂防壁",
+"en": "Emperor's Divide"
+},
+"P": {
+"id": "AzirPassive",
+"zh": "蘇瑞瑪遺跡",
+"en": "Shurima's Legacy"
+}
+},
+"Bard": {
+"Q": {
+"id": "BardQ",
+"zh": "宇宙制約",
+"en": "Cosmic Binding"
+},
+"W": {
+"id": "BardW",
+"zh": "守望神龕",
+"en": "Caretaker's Shrine"
+},
+"E": {
+"id": "BardE",
+"zh": "奇幻旅程",
+"en": "Magical Journey"
+},
+"R": {
+"id": "BardR",
+"zh": "凝滯命域",
+"en": "Tempered Fate"
+},
+"P": {
+"id": "BardPassive",
+"zh": "旅者引領",
+"en": "Traveler's Call"
+}
+},
+"Belveth": {
+"Q": {
+"id": "BelvethQ",
+"zh": "虛空強襲 ",
+"en": "Void Surge"
+},
+"W": {
+"id": "BelvethW",
+"zh": "尾棘鞭笞 ",
+"en": "Above and Below"
+},
+"E": {
+"id": "BelvethE",
+"zh": "女皇風暴 ",
+"en": "Royal Maelstrom"
+},
+"R": {
+"id": "BelvethR",
+"zh": "無盡盛宴 ",
+"en": "Endless Banquet"
+},
+"P": {
+"id": "BelvethPassive",
+"zh": "魂斷紫海 ",
+"en": "Death in Lavender "
+}
+},
+"Blitzcrank": {
+"Q": {
+"id": "RocketGrab",
+"zh": "火箭抓取",
+"en": "Rocket Grab"
+},
+"W": {
+"id": "Overdrive",
+"zh": "過載運轉",
+"en": "Overdrive"
+},
+"E": {
+"id": "PowerFist",
+"zh": "充能一擊",
+"en": "Power Fist"
+},
+"R": {
+"id": "StaticField",
+"zh": "靜電力場",
+"en": "Static Field"
+},
+"P": {
+"id": "BlitzcrankPassive",
+"zh": "法力屏障",
+"en": "Mana Barrier"
+}
+},
+"Brand": {
+"Q": {
+"id": "BrandQ",
+"zh": "火焰烙印",
+"en": "Sear"
+},
+"W": {
+"id": "BrandW",
+"zh": "煉獄風暴",
+"en": "Pillar of Flame"
+},
+"E": {
+"id": "BrandE",
+"zh": "天火燎原",
+"en": "Conflagration"
+},
+"R": {
+"id": "BrandR",
+"zh": "末日熔岩",
+"en": "Pyroclasm"
+},
+"P": {
+"id": "BrandPassive",
+"zh": "烈炎鐵血",
+"en": "Blaze"
+}
+},
+"Braum": {
+"Q": {
+"id": "BraumQ",
+"zh": "凜冬衝擊",
+"en": "Winter's Bite"
+},
+"W": {
+"id": "BraumW",
+"zh": "壁壘守護",
+"en": "Stand Behind Me"
+},
+"E": {
+"id": "BraumE",
+"zh": "雄心重盾",
+"en": "Unbreakable"
+},
+"R": {
+"id": "BraumRWrapper",
+"zh": "冰河裂隙",
+"en": "Glacial Fissure"
+},
+"P": {
+"id": "BraumPassive",
+"zh": "震盪冰封",
+"en": "Concussive Blows"
+}
+},
+"Briar": {
+"Q": {
+"id": "BriarQ",
+"zh": "沖昏頭",
+"en": "Head Rush"
+},
+"W": {
+"id": "BriarW",
+"zh": "嗜血狂熱／進擊的點心",
+"en": "Blood Frenzy / Snack Attack"
+},
+"E": {
+"id": "BriarE",
+"zh": "破膽尖嘯",
+"en": "Chilling Scream"
+},
+"R": {
+"id": "BriarR",
+"zh": "必死無疑",
+"en": "Certain Death"
+},
+"P": {
+"id": "BriarPassive",
+"zh": "血色詛咒",
+"en": "Crimson Curse"
+}
+},
+"Caitlyn": {
+"Q": {
+"id": "CaitlynQ",
+"zh": "鎮暴射擊",
+"en": "Piltover Peacemaker"
+},
+"W": {
+"id": "CaitlynW",
+"zh": "捕獲陷阱",
+"en": "Yordle Snap Trap"
+},
+"E": {
+"id": "CaitlynE",
+"zh": "九零式獵網",
+"en": "90 Caliber Net"
+},
+"R": {
+"id": "CaitlynR",
+"zh": "王牌射手",
+"en": "Ace in the Hole"
+},
+"P": {
+"id": "CaitlynPassive",
+"zh": "爆頭",
+"en": "Headshot"
+}
+},
+"Camille": {
+"Q": {
+"id": "CamilleQ",
+"zh": "精密解剖",
+"en": "Precision Protocol"
+},
+"W": {
+"id": "CamilleW",
+"zh": "刀光掠影",
+"en": "Tactical Sweep"
+},
+"E": {
+"id": "CamilleE",
+"zh": "鋼鐵鉤射",
+"en": "Hookshot"
+},
+"R": {
+"id": "CamilleR",
+"zh": "海克斯晶體結界",
+"en": "The Hextech Ultimatum"
+},
+"P": {
+"id": "CamillePassive",
+"zh": "適性防禦",
+"en": "Adaptive Defenses"
+}
+},
+"Cassiopeia": {
+"Q": {
+"id": "CassiopeiaQ",
+"zh": "毒霧爆擊",
+"en": "Noxious Blast"
+},
+"W": {
+"id": "CassiopeiaW",
+"zh": "劇毒瘴氣",
+"en": "Miasma"
+},
+"E": {
+"id": "CassiopeiaE",
+"zh": "雙生毒牙",
+"en": "Twin Fang"
+},
+"R": {
+"id": "CassiopeiaR",
+"zh": "石化凝視",
+"en": "Petrifying Gaze"
+},
+"P": {
+"id": "CassiopeiaPassive",
+"zh": "致命節奏",
+"en": "Serpentine Grace"
+}
+},
+"Chogath": {
+"Q": {
+"id": "Rupture",
+"zh": "破裂",
+"en": "Rupture"
+},
+"W": {
+"id": "FeralScream",
+"zh": "野性尖嘯",
+"en": "Feral Scream"
+},
+"E": {
+"id": "VorpalSpikes",
+"zh": "恐懼尖刺",
+"en": "Vorpal Spikes"
+},
+"R": {
+"id": "Feast",
+"zh": "饗宴",
+"en": "Feast"
+},
+"P": {
+"id": "ChogathPassive",
+"zh": "肉食者",
+"en": "Carnivore"
+}
+},
+"Corki": {
+"Q": {
+"id": "PhosphorusBomb",
+"zh": "磷光炸彈",
+"en": "Phosphorus Bomb"
+},
+"W": {
+"id": "CarpetBomb",
+"zh": "女武神特攻",
+"en": "Valkyrie"
+},
+"E": {
+"id": "GGun",
+"zh": "格林機槍",
+"en": "Gatling Gun"
+},
+"R": {
+"id": "MissileBarrage",
+"zh": "火箭轟擊",
+"en": "Missile Barrage"
+},
+"P": {
+"id": "CorkiPassive",
+"zh": "海克斯軍火",
+"en": "Hextech Munitions"
+}
+},
+"Darius": {
+"Q": {
+"id": "DariusCleave",
+"zh": "毀滅風暴",
+"en": "Decimate"
+},
+"W": {
+"id": "DariusNoxianTacticsONH",
+"zh": "殘廢打擊",
+"en": "Crippling Strike"
+},
+"E": {
+"id": "DariusAxeGrabCone",
+"zh": "索魂奪命",
+"en": "Apprehend"
+},
+"R": {
+"id": "DariusExecute",
+"zh": "諾克薩斯斷頭台",
+"en": "Noxian Guillotine"
+},
+"P": {
+"id": "DariusPassive",
+"zh": "絞喉",
+"en": "Hemorrhage"
+}
+},
+"Diana": {
+"Q": {
+"id": "DianaQ",
+"zh": "月牙衝擊",
+"en": "Crescent Strike"
+},
+"W": {
+"id": "DianaOrbs",
+"zh": "蒼白月瀑",
+"en": "Pale Cascade"
+},
+"E": {
+"id": "DianaTeleport",
+"zh": "朔月幻步",
+"en": "Lunar Rush"
+},
+"R": {
+"id": "DianaR",
+"zh": "月隕",
+"en": "Moonfall"
+},
+"P": {
+"id": "DianaPassive",
+"zh": "銀月之刃",
+"en": "Moonsilver Blade"
+}
+},
+"Draven": {
+"Q": {
+"id": "DravenSpinning",
+"zh": "迴旋飛斧",
+"en": "Spinning Axe"
+},
+"W": {
+"id": "DravenFury",
+"zh": "好戲上場",
+"en": "Blood Rush"
+},
+"E": {
+"id": "DravenDoubleShot",
+"zh": "給我閃！",
+"en": "Stand Aside"
+},
+"R": {
+"id": "DravenRCast",
+"zh": "迴轉死神",
+"en": "Whirling Death"
+},
+"P": {
+"id": "DravenPassive",
+"zh": "瑞文聯盟",
+"en": "League of Draven"
+}
+},
+"DrMundo": {
+"Q": {
+"id": "DrMundoQ",
+"zh": "病毒骨鋸",
+"en": "Infected Bonesaw"
+},
+"W": {
+"id": "DrMundoW",
+"zh": "心臟電擊器",
+"en": "Heart Zapper"
+},
+"E": {
+"id": "DrMundoE",
+"zh": "鈍擊創傷",
+"en": "Blunt Force Trauma"
+},
+"R": {
+"id": "DrMundoR",
+"zh": "最大劑量",
+"en": "Maximum Dosage"
+},
+"P": {
+"id": "DrMundoPassive",
+"zh": "想去哪就去哪",
+"en": "Goes Where He Pleases"
+}
+},
+"Ekko": {
+"Q": {
+"id": "EkkoQ",
+"zh": "時光樞紐",
+"en": "Timewinder"
+},
+"W": {
+"id": "EkkoW",
+"zh": "時空攔截",
+"en": "Parallel Convergence"
+},
+"E": {
+"id": "EkkoE",
+"zh": "相位轉移",
+"en": "Phase Dive"
+},
+"R": {
+"id": "EkkoR",
+"zh": "計時開始",
+"en": "Chronobreak"
+},
+"P": {
+"id": "EkkoPassive",
+"zh": "共振驅動-Z",
+"en": "Z-Drive Resonance"
+}
+},
+"Elise": {
+"Q": {
+"id": "EliseHumanQ",
+"zh": "神經毒素 / 毒咬",
+"en": "Neurotoxin / Venomous Bite"
+},
+"W": {
+"id": "EliseHumanW",
+"zh": "爆裂毒蛛 / 掠食者的狂喜",
+"en": "Volatile Spiderling / Skittering Frenzy"
+},
+"E": {
+"id": "EliseHumanE",
+"zh": "盤纏蛛絲 / 韌絲飛躍",
+"en": "Cocoon / Rappel"
+},
+"R": {
+"id": "EliseR",
+"zh": "蜘蛛型態",
+"en": "Spider Form"
+},
+"P": {
+"id": "ElisePassive",
+"zh": "蜘蛛女王",
+"en": "Spider Queen"
+}
+},
+"Evelynn": {
+"Q": {
+"id": "EvelynnQ",
+"zh": "憎恨尖刺",
+"en": "Hate Spike"
+},
+"W": {
+"id": "EvelynnW",
+"zh": "咒慾迷塵",
+"en": "Allure"
+},
+"E": {
+"id": "EvelynnE",
+"zh": "奪魂鞭索",
+"en": "Whiplash"
+},
+"R": {
+"id": "EvelynnR",
+"zh": "殘戮收割",
+"en": "Last Caress"
+},
+"P": {
+"id": "EvelynnPassive",
+"zh": "魔魅之影",
+"en": "Demon Shade"
+}
+},
+"Ezreal": {
+"Q": {
+"id": "EzrealQ",
+"zh": "祕術射擊",
+"en": "Mystic Shot"
+},
+"W": {
+"id": "EzrealW",
+"zh": "精華躍動",
+"en": "Essence Flux"
+},
+"E": {
+"id": "EzrealE",
+"zh": "奧術躍遷",
+"en": "Arcane Shift"
+},
+"R": {
+"id": "EzrealR",
+"zh": "精準彈幕",
+"en": "Trueshot Barrage"
+},
+"P": {
+"id": "EzrealPassive",
+"zh": "咒能高漲",
+"en": "Rising Spell Force"
+}
+},
+"Fiddlesticks": {
+"Q": {
+"id": "FiddleSticksQ",
+"zh": "恐懼",
+"en": "Terrify"
+},
+"W": {
+"id": "FiddleSticksW",
+"zh": "豐收之魘",
+"en": "Bountiful Harvest"
+},
+"E": {
+"id": "FiddleSticksE",
+"zh": "駭懼收割",
+"en": "Reap"
+},
+"R": {
+"id": "FiddleSticksR",
+"zh": "群鴉風暴",
+"en": "Crowstorm"
+},
+"P": {
+"id": "FiddlesticksPassive",
+"zh": "無害稻草人",
+"en": "A Harmless Scarecrow"
+}
+},
+"Fiora": {
+"Q": {
+"id": "FioraQ",
+"zh": "移形之體",
+"en": "Lunge"
+},
+"W": {
+"id": "FioraW",
+"zh": "斗轉之力",
+"en": "Riposte"
+},
+"E": {
+"id": "FioraE",
+"zh": "迅雷之技",
+"en": "Bladework"
+},
+"R": {
+"id": "FioraR",
+"zh": "頂尖對決",
+"en": "Grand Challenge"
+},
+"P": {
+"id": "FioraPassive",
+"zh": "不屈鬥魂",
+"en": "Duelist's Dance"
+}
+},
+"Fizz": {
+"Q": {
+"id": "FizzQ",
+"zh": "現撈海膽",
+"en": "Urchin Strike"
+},
+"W": {
+"id": "FizzW",
+"zh": "海神三叉戟",
+"en": "Seastone Trident"
+},
+"E": {
+"id": "FizzE",
+"zh": "愛玩小飛 / 調皮小飛",
+"en": "Playful / Trickster"
+},
+"R": {
+"id": "FizzR",
+"zh": "海之霸主",
+"en": "Chum the Waters"
+},
+"P": {
+"id": "FizzPassive",
+"zh": "靈巧海族",
+"en": "Nimble Fighter"
+}
+},
+"Galio": {
+"Q": {
+"id": "GalioQ",
+"zh": "征戰風暴",
+"en": "Winds of War"
+},
+"W": {
+"id": "GalioW",
+"zh": "杜蘭德之盾",
+"en": "Shield of Durand"
+},
+"E": {
+"id": "GalioE",
+"zh": "光榮制裁",
+"en": "Justice Punch"
+},
+"R": {
+"id": "GalioR",
+"zh": "英靈之門",
+"en": "Hero's Entrance"
+},
+"P": {
+"id": "GalioPassive",
+"zh": "護國意志",
+"en": "Colossal Smash"
+}
+},
+"Gangplank": {
+"Q": {
+"id": "GangplankQWrapper",
+"zh": "槍火談判",
+"en": "Parrrley"
+},
+"W": {
+"id": "GangplankW",
+"zh": "壞血症療法",
+"en": "Remove Scurvy"
+},
+"E": {
+"id": "GangplankE",
+"zh": "火藥桶",
+"en": "Powder Keg"
+},
+"R": {
+"id": "GangplankR",
+"zh": "加農炮幕",
+"en": "Cannon Barrage"
+},
+"P": {
+"id": "GangplankPassive",
+"zh": "烈火審判",
+"en": "Trial by Fire"
+}
+},
+"Garen": {
+"Q": {
+"id": "GarenQ",
+"zh": "致命打擊",
+"en": "Decisive Strike"
+},
+"W": {
+"id": "GarenW",
+"zh": "勇氣",
+"en": "Courage"
+},
+"E": {
+"id": "GarenE",
+"zh": "審判",
+"en": "Judgment"
+},
+"R": {
+"id": "GarenR",
+"zh": "蒂瑪西亞制裁",
+"en": "Demacian Justice"
+},
+"P": {
+"id": "GarenPassive",
+"zh": "堅韌",
+"en": "Perseverance"
+}
+},
+"Gnar": {
+"Q": {
+"id": "GnarQ",
+"zh": "骨頭迴力鏢／巨岩拋擲",
+"en": "Boomerang Throw / Boulder Toss"
+},
+"W": {
+"id": "GnarW",
+"zh": "野獸本能／原始衝撞",
+"en": "Hyper / Wallop"
+},
+"E": {
+"id": "GnarE",
+"zh": "吶兒跳跳／重磅輾壓",
+"en": "Hop / Crunch"
+},
+"R": {
+"id": "GnarR",
+"zh": "狂嘯猛擊！",
+"en": "GNAR!"
+},
+"P": {
+"id": "GnarPassive",
+"zh": "狂怒基因",
+"en": "Rage Gene"
+}
+},
+"Gragas": {
+"Q": {
+"id": "GragasQ",
+"zh": "滾動酒桶",
+"en": "Barrel Roll"
+},
+"W": {
+"id": "GragasW",
+"zh": "醉酒狂暴",
+"en": "Drunken Rage"
+},
+"E": {
+"id": "GragasE",
+"zh": "肉彈衝擊",
+"en": "Body Slam"
+},
+"R": {
+"id": "GragasR",
+"zh": "爆破酒桶",
+"en": "Explosive Cask"
+},
+"P": {
+"id": "GragasPassive",
+"zh": "歡樂時光",
+"en": "Happy Hour"
+}
+},
+"Graves": {
+"Q": {
+"id": "GravesQLineSpell",
+"zh": "人在江湖",
+"en": "End of the Line"
+},
+"W": {
+"id": "GravesSmokeGrenade",
+"zh": "隻手遮天",
+"en": "Smoke Screen"
+},
+"E": {
+"id": "GravesMove",
+"zh": "猛龍過江",
+"en": "Quickdraw"
+},
+"R": {
+"id": "GravesChargeShot",
+"zh": "龍爭虎鬥",
+"en": "Collateral Damage"
+},
+"P": {
+"id": "GravesPassive",
+"zh": "命運",
+"en": "New Destiny"
+}
+},
+"Gwen": {
+"Q": {
+"id": "GwenQ",
+"zh": "剪剪！",
+"en": "Snip Snip!"
+},
+"W": {
+"id": "GwenW",
+"zh": "聖霧絲縷",
+"en": "Hallowed Mist"
+},
+"E": {
+"id": "GwenE",
+"zh": "剪步如飛",
+"en": "Skip 'n Slash"
+},
+"R": {
+"id": "GwenR",
+"zh": "飛針走線",
+"en": "Needlework"
+},
+"P": {
+"id": "GwenPassive",
+"zh": "千刀萬剮",
+"en": "A Thousand Cuts"
+}
+},
+"Hecarim": {
+"Q": {
+"id": "HecarimRapidSlash",
+"zh": "逸騎刃擊",
+"en": "Rampage"
+},
+"W": {
+"id": "HecarimW",
+"zh": "靈魂恐懼",
+"en": "Spirit of Dread"
+},
+"E": {
+"id": "HecarimRamp",
+"zh": "毀滅衝刺",
+"en": "Devastating Charge"
+},
+"R": {
+"id": "HecarimUlt",
+"zh": "暗影的逆襲",
+"en": "Onslaught of Shadows"
+},
+"P": {
+"id": "HecarimPassive",
+"zh": "刃馬合一",
+"en": "Warpath"
+}
+},
+"Heimerdinger": {
+"Q": {
+"id": "HeimerdingerQ",
+"zh": "H-28 G 進化砲臺",
+"en": "H-28 G Evolution Turret"
+},
+"W": {
+"id": "HeimerdingerW",
+"zh": "高科技微型火箭",
+"en": "Hextech Micro-Rockets"
+},
+"E": {
+"id": "HeimerdingerE",
+"zh": "CH-2 暴風手雷",
+"en": "CH-2 Electron Storm Grenade"
+},
+"R": {
+"id": "HeimerdingerR",
+"zh": "升級！！！",
+"en": "UPGRADE!!!"
+},
+"P": {
+"id": "HeimerdingerPassive",
+"zh": "海克斯親合性",
+"en": "Hextech Affinity"
+}
+},
+"Hwei": {
+"Q": {
+"id": "HweiQ",
+"zh": "主題：厄禍筆法",
+"en": "Subject: Disaster"
+},
+"W": {
+"id": "HweiW",
+"zh": "主題：靜謐筆法",
+"en": "Subject: Serenity"
+},
+"E": {
+"id": "HweiE",
+"zh": "主題：苦惱筆法",
+"en": "Subject: Torment"
+},
+"R": {
+"id": "HweiR",
+"zh": "絕望螺旋",
+"en": "Spiraling Despair"
+},
+"P": {
+"id": "HweiPassive",
+"zh": "筆仙真跡",
+"en": "Signature of the Visionary"
+}
+},
+"Illaoi": {
+"Q": {
+"id": "IllaoiQ",
+"zh": "鞭笞觸手",
+"en": "Tentacle Smash"
+},
+"W": {
+"id": "IllaoiW",
+"zh": "嚴酷考驗",
+"en": "Harsh Lesson"
+},
+"E": {
+"id": "IllaoiE",
+"zh": "祖靈之試",
+"en": "Test of Spirit"
+},
+"R": {
+"id": "IllaoiR",
+"zh": "虔信一躍",
+"en": "Leap of Faith"
+},
+"P": {
+"id": "IllaoiPassive",
+"zh": "遠古預言",
+"en": "Prophet of an Elder God"
+}
+},
+"Irelia": {
+"Q": {
+"id": "IreliaQ",
+"zh": "利刃衝擊",
+"en": "Bladesurge"
+},
+"W": {
+"id": "IreliaW",
+"zh": "不屈祕舞",
+"en": "Defiant Dance"
+},
+"E": {
+"id": "IreliaE",
+"zh": "無瑕重刃",
+"en": "Flawless Duet"
+},
+"R": {
+"id": "IreliaR",
+"zh": "護劍化形",
+"en": "Vanguard's Edge"
+},
+"P": {
+"id": "IreliaPassive",
+"zh": "愛歐尼亞狂熱",
+"en": "Ionian Fervor"
+}
+},
+"Ivern": {
+"Q": {
+"id": "IvernQ",
+"zh": "盤根束縛",
+"en": "Rootcaller"
+},
+"W": {
+"id": "IvernW",
+"zh": "茂林春生",
+"en": "Brushmaker"
+},
+"E": {
+"id": "IvernE",
+"zh": "守護種子",
+"en": "Triggerseed"
+},
+"R": {
+"id": "IvernR",
+"zh": "黛西！",
+"en": "Daisy!"
+},
+"P": {
+"id": "IvernPassive",
+"zh": "森林之友",
+"en": "Friend of the Forest"
+}
+},
+"Janna": {
+"Q": {
+"id": "HowlingGale",
+"zh": "颶風呼嘯",
+"en": "Howling Gale"
+},
+"W": {
+"id": "SowTheWind",
+"zh": "和風守護",
+"en": "Zephyr"
+},
+"E": {
+"id": "EyeOfTheStorm",
+"zh": "風暴之眼",
+"en": "Eye Of The Storm"
+},
+"R": {
+"id": "ReapTheWhirlwind",
+"zh": "復甦季風",
+"en": "Monsoon"
+},
+"P": {
+"id": "JannaPassive",
+"zh": "順風而行",
+"en": "Tailwind"
+}
+},
+"JarvanIV": {
+"Q": {
+"id": "JarvanIVDragonStrike",
+"zh": "滅龍一擊",
+"en": "Dragon Strike"
+},
+"W": {
+"id": "JarvanIVGoldenAegis",
+"zh": "光盾庇護",
+"en": "Golden Aegis"
+},
+"E": {
+"id": "JarvanIVDemacianStandard",
+"zh": "帝國戰旗",
+"en": "Demacian Standard"
+},
+"R": {
+"id": "JarvanIVCataclysm",
+"zh": "浩劫降臨",
+"en": "Cataclysm"
+},
+"P": {
+"id": "JarvanIVPassive",
+"zh": "戰爭律動",
+"en": "Martial Cadence"
+}
+},
+"Jax": {
+"Q": {
+"id": "JaxQ",
+"zh": "跳斬",
+"en": "Leap Strike"
+},
+"W": {
+"id": "JaxW",
+"zh": "蓄力一擊",
+"en": "Empower"
+},
+"E": {
+"id": "JaxE",
+"zh": "反擊風暴",
+"en": "Counter Strike"
+},
+"R": {
+"id": "JaxR",
+"zh": "武器宗師",
+"en": "Grandmaster-at-Arms"
+},
+"P": {
+"id": "JaxPassive",
+"zh": "無情突擊",
+"en": "Relentless Assault"
+}
+},
+"Jayce": {
+"Q": {
+"id": "JayceToTheSkies",
+"zh": "浩瀚無垠／電磁脈衝",
+"en": "To the Skies! / Shock Blast"
+},
+"W": {
+"id": "JayceStaticField",
+"zh": "離子領域／超頻導體",
+"en": "Lightning Field / Hyper Charge"
+},
+"E": {
+"id": "JayceThunderingBlow",
+"zh": "風馳電掣／中子加速裝置",
+"en": "Thundering Blow / Acceleration Gate"
+},
+"R": {
+"id": "JayceStanceHtG",
+"zh": "水星加農／水星戰鎚",
+"en": "Mercury Cannon / Mercury Hammer"
+},
+"P": {
+"id": "JaycePassive",
+"zh": "海克斯電容器",
+"en": "Hextech Capacitor"
+}
+},
+"Jhin": {
+"Q": {
+"id": "JhinQ",
+"zh": "狂舞手雷",
+"en": "Dancing Grenade"
+},
+"W": {
+"id": "JhinW",
+"zh": "致命伏筆",
+"en": "Deadly Flourish"
+},
+"E": {
+"id": "JhinE",
+"zh": "魔幻時刻",
+"en": "Captive Audience"
+},
+"R": {
+"id": "JhinR",
+"zh": "華麗謝幕",
+"en": "Curtain Call"
+},
+"P": {
+"id": "JhinPassive",
+"zh": "低語",
+"en": "Whisper"
+}
+},
+"Jinx": {
+"Q": {
+"id": "JinxQ",
+"zh": "鬼靈精怪！",
+"en": "Switcheroo!"
+},
+"W": {
+"id": "JinxW",
+"zh": "咻咻！",
+"en": "Zap!"
+},
+"E": {
+"id": "JinxE",
+"zh": "咬咬手榴彈！",
+"en": "Flame Chompers!"
+},
+"R": {
+"id": "JinxR",
+"zh": "超威能死亡火箭！",
+"en": "Super Mega Death Rocket!"
+},
+"P": {
+"id": "JinxPassive",
+"zh": "狂躁！",
+"en": "Get Excited!"
+}
+},
+"Kaisa": {
+"Q": {
+"id": "KaisaQ",
+"zh": "伊卡西亞魔雨",
+"en": "Icathian Rain"
+},
+"W": {
+"id": "KaisaW",
+"zh": "虛空探索者",
+"en": "Void Seeker"
+},
+"E": {
+"id": "KaisaE",
+"zh": "極速充能",
+"en": "Supercharge"
+},
+"R": {
+"id": "KaisaR",
+"zh": "殺手本能",
+"en": "Killer Instinct"
+},
+"P": {
+"id": "KaisaPassive",
+"zh": "二階蟲甲",
+"en": "Second Skin"
+}
+},
+"Kalista": {
+"Q": {
+"id": "KalistaMysticShot",
+"zh": "赦罪穿刺",
+"en": "Pierce"
+},
+"W": {
+"id": "KalistaW",
+"zh": "憎靈守衛",
+"en": "Sentinel"
+},
+"E": {
+"id": "KalistaExpungeWrapper",
+"zh": "痛苦撕扯",
+"en": "Rend"
+},
+"R": {
+"id": "KalistaRx",
+"zh": "命運呼喚",
+"en": "Fate's Call"
+},
+"P": {
+"id": "KalistaPassive",
+"zh": "好戰突進",
+"en": "Martial Poise"
+}
+},
+"Karma": {
+"Q": {
+"id": "KarmaQ",
+"zh": "輪迴怒火",
+"en": "Inner Flame"
+},
+"W": {
+"id": "KarmaSpiritBind",
+"zh": "特化鏈結",
+"en": "Focused Resolve"
+},
+"E": {
+"id": "KarmaSolKimShield",
+"zh": "靈能啟示",
+"en": "Inspire"
+},
+"R": {
+"id": "KarmaMantra",
+"zh": "真言符印",
+"en": "Mantra"
+},
+"P": {
+"id": "KarmaPassive",
+"zh": "炎靈融合",
+"en": "Gathering Fire"
+}
+},
+"Karthus": {
+"Q": {
+"id": "KarthusLayWasteA1",
+"zh": "荒蕪",
+"en": "Lay Waste"
+},
+"W": {
+"id": "KarthusWallOfPain",
+"zh": "痛苦之牆",
+"en": "Wall of Pain"
+},
+"E": {
+"id": "KarthusDefile",
+"zh": "汙染",
+"en": "Defile"
+},
+"R": {
+"id": "KarthusFallenOne",
+"zh": "安魂曲",
+"en": "Requiem"
+},
+"P": {
+"id": "KarthusPassive",
+"zh": "無視死亡！",
+"en": "Death Defied"
+}
+},
+"Kassadin": {
+"Q": {
+"id": "NullLance",
+"zh": "虛無法球",
+"en": "Null Sphere"
+},
+"W": {
+"id": "NetherBlade",
+"zh": "虛空之刃",
+"en": "Nether Blade"
+},
+"E": {
+"id": "ForcePulse",
+"zh": "能量脈衝",
+"en": "Force Pulse"
+},
+"R": {
+"id": "RiftWalk",
+"zh": "虛空行走",
+"en": "Riftwalk"
+},
+"P": {
+"id": "KassadinPassive",
+"zh": "虛空之石",
+"en": "Void Stone"
+}
+},
+"Katarina": {
+"Q": {
+"id": "KatarinaQ",
+"zh": "彈射利刃",
+"en": "Bouncing Blade"
+},
+"W": {
+"id": "KatarinaW",
+"zh": "備戰",
+"en": "Preparation"
+},
+"E": {
+"id": "KatarinaEWrapper",
+"zh": "瞬步",
+"en": "Shunpo"
+},
+"R": {
+"id": "KatarinaR",
+"zh": "死亡蓮花",
+"en": "Death Lotus"
+},
+"P": {
+"id": "KatarinaPassive",
+"zh": "貪婪",
+"en": "Voracity"
+}
+},
+"Kayle": {
+"Q": {
+"id": "KayleQ",
+"zh": "聖光衝擊波",
+"en": "Radiant Blast"
+},
+"W": {
+"id": "KayleW",
+"zh": "天賜聖典",
+"en": "Celestial Blessing"
+},
+"E": {
+"id": "KayleE",
+"zh": "星火熾刃",
+"en": "Starfire Spellblade"
+},
+"R": {
+"id": "KayleR",
+"zh": "聖劍審判",
+"en": "Divine Judgment"
+},
+"P": {
+"id": "KaylePassive",
+"zh": "聖域之梯",
+"en": "Divine Ascent"
+}
+},
+"Kayn": {
+"Q": {
+"id": "KaynQ",
+"zh": "獵魂斬",
+"en": "Reaping Slash"
+},
+"W": {
+"id": "KaynW",
+"zh": "散華刃",
+"en": "Blade's Reach"
+},
+"E": {
+"id": "KaynE",
+"zh": "夜叉行",
+"en": "Shadow Step"
+},
+"R": {
+"id": "KaynR",
+"zh": "伏影滅",
+"en": "Umbral Trespass"
+},
+"P": {
+"id": "KaynPassive",
+"zh": "冥血罪鐮",
+"en": "The Darkin Scythe"
+}
+},
+"Kennen": {
+"Q": {
+"id": "KennenShurikenHurlMissile1",
+"zh": "雷電手裡劍",
+"en": "Thundering Shuriken"
+},
+"W": {
+"id": "KennenBringTheLight",
+"zh": "電能釋放",
+"en": "Electrical Surge"
+},
+"E": {
+"id": "KennenLightningRush",
+"zh": "閃電衝擊",
+"en": "Lightning Rush"
+},
+"R": {
+"id": "KennenShurikenStorm",
+"zh": "雷霆風暴",
+"en": "Slicing Maelstrom"
+},
+"P": {
+"id": "KennenPassive",
+"zh": "風暴印記",
+"en": "Mark of the Storm"
+}
+},
+"Khazix": {
+"Q": {
+"id": "KhazixQ",
+"zh": "孤獨的恐懼",
+"en": "Taste Their Fear"
+},
+"W": {
+"id": "KhazixW",
+"zh": "虛空尖刺",
+"en": "Void Spike"
+},
+"E": {
+"id": "KhazixE",
+"zh": "掠翅飛躍",
+"en": "Leap"
+},
+"R": {
+"id": "KhazixR",
+"zh": "虛空突襲",
+"en": "Void Assault"
+},
+"P": {
+"id": "KhazixPassive",
+"zh": "暗影殺機",
+"en": "Unseen Threat"
+}
+},
+"Kindred": {
+"Q": {
+"id": "KindredQ",
+"zh": "舞動箭矢",
+"en": "Dance of Arrows"
+},
+"W": {
+"id": "KindredW",
+"zh": "魔狼狂熱",
+"en": "Wolf's Frenzy"
+},
+"E": {
+"id": "KindredEWrapper",
+"zh": "恐懼蔓延",
+"en": "Mounting Dread"
+},
+"R": {
+"id": "KindredR",
+"zh": "神羊喘息",
+"en": "Lamb's Respite"
+},
+"P": {
+"id": "KindredPassive",
+"zh": "鏡爪印記",
+"en": "Mark of the Kindred"
+}
+},
+"Kled": {
+"Q": {
+"id": "KledQ",
+"zh": "飛射夾夾",
+"en": "Bear Trap on a Rope"
+},
+"W": {
+"id": "KledW",
+"zh": "生性暴戾",
+"en": "Violent Tendencies"
+},
+"E": {
+"id": "KledE",
+"zh": "比武角逐",
+"en": "Jousting"
+},
+"R": {
+"id": "KledR",
+"zh": "衝啊！！！",
+"en": "Chaaaaaaaarge!!!"
+},
+"P": {
+"id": "KledPassive",
+"zh": "膽小的小嘎",
+"en": "Skaarl, the Cowardly Lizard"
+}
+},
+"KogMaw": {
+"Q": {
+"id": "KogMawQ",
+"zh": "腐蝕唾液",
+"en": "Caustic Spittle"
+},
+"W": {
+"id": "KogMawBioArcaneBarrage",
+"zh": "生化彈幕",
+"en": "Bio-Arcane Barrage"
+},
+"E": {
+"id": "KogMawVoidOoze",
+"zh": "虛空淤泥",
+"en": "Void Ooze"
+},
+"R": {
+"id": "KogMawLivingArtillery",
+"zh": "生化巨炮",
+"en": "Living Artillery"
+},
+"P": {
+"id": "KogMawPassive",
+"zh": "來自伊卡西亞的驚喜",
+"en": "Icathian Surprise"
+}
+},
+"KSante": {
+"Q": {
+"id": "KSanteQ",
+"zh": "恩屠浮強擊",
+"en": "Ntofo Strikes"
+},
+"W": {
+"id": "KSanteW",
+"zh": "開山闢路",
+"en": "Path Maker"
+},
+"E": {
+"id": "KSanteE",
+"zh": "精熟腳步",
+"en": "Footwork"
+},
+"R": {
+"id": "KSanteR",
+"zh": "拼死一搏",
+"en": "All Out"
+},
+"P": {
+"id": "KSantePassive",
+"zh": "無畏本能",
+"en": "Dauntless Instinct"
+}
+},
+"Leblanc": {
+"Q": {
+"id": "LeblancQ",
+"zh": "惡意印記",
+"en": "Sigil of Malice"
+},
+"W": {
+"id": "LeblancW",
+"zh": "移行瞬影",
+"en": "Distortion"
+},
+"E": {
+"id": "LeblancE",
+"zh": "幻影鎖鍊",
+"en": "Ethereal Chains"
+},
+"R": {
+"id": "LeblancR",
+"zh": "模仿",
+"en": "Mimic"
+},
+"P": {
+"id": "LeblancPassive",
+"zh": "鏡像",
+"en": "Mirror Image"
+}
+},
+"LeeSin": {
+"Q": {
+"id": "LeeSinQOne",
+"zh": "虎嘯龍吟 ／ 震驚百里",
+"en": "Sonic Wave / Resonating Strike"
+},
+"W": {
+"id": "LeeSinWOne",
+"zh": "鐵璧金身 ／ 易筋洗髓",
+"en": "Safeguard / Iron Will"
+},
+"E": {
+"id": "LeeSinEOne",
+"zh": "狂風暴雨 ／ 分筋錯骨",
+"en": "Tempest / Cripple"
+},
+"R": {
+"id": "LeeSinR",
+"zh": "神龍擺尾",
+"en": "Dragon's Rage"
+},
+"P": {
+"id": "LeeSinPassive",
+"zh": "亂舞",
+"en": "Flurry"
+}
+},
+"Leona": {
+"Q": {
+"id": "LeonaShieldOfDaybreak",
+"zh": "拂曉盾擊",
+"en": "Shield of Daybreak"
+},
+"W": {
+"id": "LeonaSolarBarrier",
+"zh": "日蝕",
+"en": "Eclipse"
+},
+"E": {
+"id": "LeonaZenithBlade",
+"zh": "太陽聖劍",
+"en": "Zenith Blade"
+},
+"R": {
+"id": "LeonaSolarFlare",
+"zh": "日輪聖芒",
+"en": "Solar Flare"
+},
+"P": {
+"id": "LeonaPassive",
+"zh": "烈陽之力",
+"en": "Sunlight"
+}
+},
+"Lillia": {
+"Q": {
+"id": "LilliaQ",
+"zh": "盛綻之舞",
+"en": "Blooming Blows"
+},
+"W": {
+"id": "LilliaW",
+"zh": "拽柯之擊",
+"en": "Watch Out! Eep!"
+},
+"E": {
+"id": "LilliaE",
+"zh": "飛旋種籽",
+"en": "Swirlseed"
+},
+"R": {
+"id": "LilliaR",
+"zh": "柔沉夢謠",
+"en": "Lilting Lullaby"
+},
+"P": {
+"id": "LilliaPassive",
+"zh": "夢沉枝枒",
+"en": "Dream-Laden Bough"
+}
+},
+"Lissandra": {
+"Q": {
+"id": "LissandraQ",
+"zh": "幽影碎冰",
+"en": "Ice Shard"
+},
+"W": {
+"id": "LissandraW",
+"zh": "暴雪結界",
+"en": "Ring of Frost"
+},
+"E": {
+"id": "LissandraE",
+"zh": "急速冰刺",
+"en": "Glacial Path"
+},
+"R": {
+"id": "LissandraR",
+"zh": "永凍墳地",
+"en": "Frozen Tomb"
+},
+"P": {
+"id": "LissandraPassive",
+"zh": "寒霜霸權",
+"en": "Iceborn Subjugation"
+}
+},
+"Locke": {
+"Q": {
+"id": "LockeQ",
+"zh": "咒釘簪命",
+"en": "Ritual Nails"
+},
+"W": {
+"id": "LockeW",
+"zh": "燃魂回元",
+"en": "Soul Ignition"
+},
+"E": {
+"id": "LockeE",
+"zh": "瞬影追命",
+"en": "Ashen Pursuit"
+},
+"R": {
+"id": "LockeR",
+"zh": "芻靈疆域",
+"en": "Purgatory"
+},
+"P": {
+"id": "LockePassive",
+"zh": "銀樁咒殺",
+"en": "Silver Stake"
+}
+},
+"Lucian": {
+"Q": {
+"id": "LucianQ",
+"zh": "鋒芒貫穿",
+"en": "Piercing Light"
+},
+"W": {
+"id": "LucianW",
+"zh": "烈炎鐵血",
+"en": "Ardent Blaze"
+},
+"E": {
+"id": "LucianE",
+"zh": "冷酷進擊",
+"en": "Relentless Pursuit"
+},
+"R": {
+"id": "LucianR",
+"zh": "赤色屠戮",
+"en": "The Culling"
+},
+"P": {
+"id": "LucianPassive",
+"zh": "光之獵手",
+"en": "Lightslinger"
+}
+},
+"Lulu": {
+"Q": {
+"id": "LuluQ",
+"zh": "閃耀雙重奏",
+"en": "Glitterlance"
+},
+"W": {
+"id": "LuluW",
+"zh": "幻想曲",
+"en": "Whimsy"
+},
+"E": {
+"id": "LuluE",
+"zh": "帥啊小皮！",
+"en": "Help, Pix!"
+},
+"R": {
+"id": "LuluR",
+"zh": "究極鍊化",
+"en": "Wild Growth"
+},
+"P": {
+"id": "LuluPassive",
+"zh": "皮克斯，守護妖精",
+"en": "Pix, Faerie Companion"
+}
+},
+"Lux": {
+"Q": {
+"id": "LuxLightBinding",
+"zh": "光明束縛",
+"en": "Light Binding"
+},
+"W": {
+"id": "LuxPrismaticWave",
+"zh": "稜光障壁",
+"en": "Prismatic Barrier"
+},
+"E": {
+"id": "LuxLightStrikeKugel",
+"zh": "光明異點",
+"en": "Lucent Singularity"
+},
+"R": {
+"id": "LuxR",
+"zh": "終極閃光",
+"en": "Final Spark"
+},
+"P": {
+"id": "LuxPassive",
+"zh": "光芒四射",
+"en": "Illumination"
+}
+},
+"Malphite": {
+"Q": {
+"id": "SeismicShard",
+"zh": "地震碎片",
+"en": "Seismic Shard"
+},
+"W": {
+"id": "Obduracy",
+"zh": "震雷之擊",
+"en": "Thunderclap"
+},
+"E": {
+"id": "Landslide",
+"zh": "大地震顫",
+"en": "Ground Slam"
+},
+"R": {
+"id": "UFSlash",
+"zh": "勢不可擋",
+"en": "Unstoppable Force"
+},
+"P": {
+"id": "MalphitePassive",
+"zh": "花崗岩護盾",
+"en": "Granite Shield"
+}
+},
+"Malzahar": {
+"Q": {
+"id": "MalzaharQ",
+"zh": "虛空召喚",
+"en": "Call of the Void"
+},
+"W": {
+"id": "MalzaharW",
+"zh": "召喚虛靈",
+"en": "Void Swarm"
+},
+"E": {
+"id": "MalzaharE",
+"zh": "煞星幻象",
+"en": "Malefic Visions"
+},
+"R": {
+"id": "MalzaharR",
+"zh": "冥府之握",
+"en": "Nether Grasp"
+},
+"P": {
+"id": "MalzaharPassive",
+"zh": "虛空象限",
+"en": "Void Shift"
+}
+},
+"Maokai": {
+"Q": {
+"id": "MaokaiQ",
+"zh": "荊棘摧殘",
+"en": "Bramble Smash"
+},
+"W": {
+"id": "MaokaiW",
+"zh": "飛葉遁影",
+"en": "Twisted Advance"
+},
+"E": {
+"id": "MaokaiE",
+"zh": "扭曲樹精",
+"en": "Sapling Toss"
+},
+"R": {
+"id": "MaokaiR",
+"zh": "詭林之握",
+"en": "Nature's Grasp"
+},
+"P": {
+"id": "MaokaiPassive",
+"zh": "魔法樹液",
+"en": "Sap Magic"
+}
+},
+"MasterYi": {
+"Q": {
+"id": "AlphaStrike",
+"zh": "先聲奪人",
+"en": "Alpha Strike"
+},
+"W": {
+"id": "Meditate",
+"zh": "冥想",
+"en": "Meditate"
+},
+"E": {
+"id": "WujuStyle",
+"zh": "無極劍道",
+"en": "Wuju Style"
+},
+"R": {
+"id": "Highlander",
+"zh": "高原血統",
+"en": "Highlander"
+},
+"P": {
+"id": "MasterYiPassive",
+"zh": "雙重打擊",
+"en": "Double Strike"
+}
+},
+"Mel": {
+"Q": {
+"id": "MelQ",
+"zh": "絢輝彈幕",
+"en": "Radiant Volley"
+},
+"W": {
+"id": "MelW",
+"zh": "叱返金身",
+"en": "Rebuttal"
+},
+"E": {
+"id": "MelE",
+"zh": "烈陽羅網",
+"en": "Solar Snare"
+},
+"R": {
+"id": "MelR",
+"zh": "無垠天照",
+"en": "Golden Eclipse"
+},
+"P": {
+"id": "MelPassive",
+"zh": "炙灼耀輝",
+"en": "Searing Brilliance"
+}
+},
+"Milio": {
+"Q": {
+"id": "MilioQ",
+"zh": "究極火焰球",
+"en": "Ultra Mega Fire Kick"
+},
+"W": {
+"id": "MilioW",
+"zh": "舒適營火",
+"en": "Cozy Campfire"
+},
+"E": {
+"id": "MilioE",
+"zh": "溫暖擁抱",
+"en": "Warm Hugs"
+},
+"R": {
+"id": "MilioR",
+"zh": "賦生燄息",
+"en": "Breath of Life"
+},
+"P": {
+"id": "MilioPassive",
+"zh": "爐火餘溫",
+"en": "Fired Up!"
+}
+},
+"MissFortune": {
+"Q": {
+"id": "MissFortuneRicochetShot",
+"zh": "彈射",
+"en": "Double Up"
+},
+"W": {
+"id": "MissFortuneViciousStrikes",
+"zh": "趾高氣揚",
+"en": "Strut"
+},
+"E": {
+"id": "MissFortuneScattershot",
+"zh": "槍林彈雨",
+"en": "Make It Rain"
+},
+"R": {
+"id": "MissFortuneBulletTime",
+"zh": "彈幕",
+"en": "Bullet Time"
+},
+"P": {
+"id": "MissFortunePassive",
+"zh": "愛的拍拍",
+"en": "Love Tap"
+}
+},
+"MonkeyKing": {
+"Q": {
+"id": "MonkeyKingDoubleAttack",
+"zh": "定海神兵",
+"en": "Crushing Blow"
+},
+"W": {
+"id": "MonkeyKingDecoy",
+"zh": "分身術",
+"en": "Warrior Trickster"
+},
+"E": {
+"id": "MonkeyKingNimbus",
+"zh": "筋斗突擊",
+"en": "Nimbus Strike"
+},
+"R": {
+"id": "MonkeyKingSpinToWin",
+"zh": "無極風暴",
+"en": "Cyclone"
+},
+"P": {
+"id": "MonkeyKingPassive",
+"zh": "仙山石猴",
+"en": "Stone Skin"
+}
+},
+"Mordekaiser": {
+"Q": {
+"id": "MordekaiserQ",
+"zh": "泯殺",
+"en": "Obliterate"
+},
+"W": {
+"id": "MordekaiserW",
+"zh": "不滅之軀",
+"en": "Indestructible"
+},
+"E": {
+"id": "MordekaiserE",
+"zh": "死之爪",
+"en": "Death's Grasp"
+},
+"R": {
+"id": "MordekaiserR",
+"zh": "死亡領域",
+"en": "Realm of Death"
+},
+"P": {
+"id": "MordekaiserPassive",
+"zh": "暗崛",
+"en": "Darkness Rise"
+}
+},
+"Morgana": {
+"Q": {
+"id": "MorganaQ",
+"zh": "暗影禁錮",
+"en": "Dark Binding"
+},
+"W": {
+"id": "MorganaW",
+"zh": "痛苦腐蝕",
+"en": "Tormented Shadow"
+},
+"E": {
+"id": "MorganaE",
+"zh": "黑暗之盾",
+"en": "Black Shield"
+},
+"R": {
+"id": "MorganaR",
+"zh": "靈魂枷鎖",
+"en": "Soul Shackles"
+},
+"P": {
+"id": "MorganaPassive",
+"zh": "靈魂虹吸",
+"en": "Soul Siphon"
+}
+},
+"Naafiri": {
+"Q": {
+"id": "NaafiriQ",
+"zh": "冥血匕首",
+"en": "Darkin Daggers"
+},
+"W": {
+"id": "NaafiriR",
+"zh": "獵犬嚎殺",
+"en": "The Call of the Pack"
+},
+"E": {
+"id": "NaafiriE",
+"zh": "開膛破肚",
+"en": "Eviscerate"
+},
+"R": {
+"id": "NaafiriW",
+"zh": "尋血獵犬",
+"en": "Hounds' Pursuit"
+},
+"P": {
+"id": "NaafiriPassive",
+"zh": "眾犬吠聲",
+"en": "We Are More"
+}
+},
+"Nami": {
+"Q": {
+"id": "NamiQ",
+"zh": "禁錮水牢",
+"en": "Aqua Prison"
+},
+"W": {
+"id": "NamiW",
+"zh": "跳躍水柱",
+"en": "Ebb and Flow"
+},
+"E": {
+"id": "NamiE",
+"zh": "深海恩賜",
+"en": "Tidecaller's Blessing"
+},
+"R": {
+"id": "NamiR",
+"zh": "驚滔駭浪",
+"en": "Tidal Wave"
+},
+"P": {
+"id": "NamiPassive",
+"zh": "疾速波濤",
+"en": "Surging Tides"
+}
+},
+"Nasus": {
+"Q": {
+"id": "NasusQ",
+"zh": "虹吸打擊 ",
+"en": "Siphoning Strike"
+},
+"W": {
+"id": "NasusW",
+"zh": "枯萎",
+"en": "Wither"
+},
+"E": {
+"id": "NasusE",
+"zh": "靈魂烈焰",
+"en": "Spirit Fire"
+},
+"R": {
+"id": "NasusR",
+"zh": "死神降臨",
+"en": "Fury of the Sands"
+},
+"P": {
+"id": "NasusPassive",
+"zh": "食魂者",
+"en": "Soul Eater"
+}
+},
+"Nautilus": {
+"Q": {
+"id": "NautilusAnchorDrag",
+"zh": "深淵鐵錨",
+"en": "Dredge Line"
+},
+"W": {
+"id": "NautilusPiercingGaze",
+"zh": "巨人之怒",
+"en": "Titan's Wrath"
+},
+"E": {
+"id": "NautilusSplashZone",
+"zh": "鋼鐵怒濤",
+"en": "Riptide"
+},
+"R": {
+"id": "NautilusGrandLine",
+"zh": "潛航衝擊",
+"en": "Depth Charge"
+},
+"P": {
+"id": "NautilusPassive",
+"zh": "沉重打擊",
+"en": "Staggering Blow"
+}
+},
+"Neeko": {
+"Q": {
+"id": "NeekoQ",
+"zh": "爆裂艷花",
+"en": "Blooming Burst"
+},
+"W": {
+"id": "NeekoW",
+"zh": "擬態分裂",
+"en": "Shapesplitter"
+},
+"E": {
+"id": "NeekoE",
+"zh": "螺旋刺花",
+"en": "Tangle-Barbs"
+},
+"R": {
+"id": "NeekoR",
+"zh": "萬紫千紅",
+"en": "Pop Blossom"
+},
+"P": {
+"id": "NeekoPassive",
+"zh": "原生模影",
+"en": "Inherent Glamour"
+}
+},
+"Nidalee": {
+"Q": {
+"id": "JavelinToss",
+"zh": "標槍投擲 ／ 擊倒",
+"en": "Javelin Toss / Takedown"
+},
+"W": {
+"id": "Bushwhack",
+"zh": "叢林伏擊 ／ 猛撲",
+"en": "Bushwhack / Pounce"
+},
+"E": {
+"id": "PrimalSurge",
+"zh": "野性奔騰 ／ 揮擊",
+"en": "Primal Surge / Swipe"
+},
+"R": {
+"id": "AspectOfTheCougar",
+"zh": "美洲獅之形",
+"en": "Aspect Of The Cougar"
+},
+"P": {
+"id": "NidaleePassive",
+"zh": "穿梭",
+"en": "Prowl"
+}
+},
+"Nilah": {
+"Q": {
+"id": "NilahQ",
+"zh": "百變之刃",
+"en": "Formless Blade"
+},
+"W": {
+"id": "NilahW",
+"zh": "歡躍面紗",
+"en": "Jubilant Veil"
+},
+"E": {
+"id": "NilahE",
+"zh": "湍流淩步",
+"en": "Slipstream"
+},
+"R": {
+"id": "NilahR",
+"zh": "神之禮讚",
+"en": "Apotheosis"
+},
+"P": {
+"id": "NilahPassive",
+"zh": "樂無止境",
+"en": "Joy Unending"
+}
+},
+"Nocturne": {
+"Q": {
+"id": "NocturneDuskbringer",
+"zh": "黃昏渠道",
+"en": "Duskbringer"
+},
+"W": {
+"id": "NocturneShroudofDarkness",
+"zh": "夜幕庇護",
+"en": "Shroud of Darkness"
+},
+"E": {
+"id": "NocturneUnspeakableHorror",
+"zh": "深宵斷魂",
+"en": "Unspeakable Horror"
+},
+"R": {
+"id": "NocturneParanoia",
+"zh": "無盡夢魘",
+"en": "Paranoia"
+},
+"P": {
+"id": "NocturnePassive",
+"zh": "闇影幽刃",
+"en": "Umbra Blades"
+}
+},
+"Nunu": {
+"Q": {
+"id": "NunuQ",
+"zh": "吞噬",
+"en": "Consume"
+},
+"W": {
+"id": "NunuW",
+"zh": "巨無霸雪球！",
+"en": "Biggest Snowball Ever!"
+},
+"E": {
+"id": "NunuE",
+"zh": "雪球連擊",
+"en": "Snowball Barrage"
+},
+"R": {
+"id": "NunuR",
+"zh": "絕對零度",
+"en": "Absolute Zero"
+},
+"P": {
+"id": "NunuPassive",
+"zh": "弗雷爾卓德之喚",
+"en": "Call of the Freljord"
+}
+},
+"Olaf": {
+"Q": {
+"id": "OlafAxeThrowCast",
+"zh": "逆流投擲",
+"en": "Undertow"
+},
+"W": {
+"id": "OlafFrenziedStrikes",
+"zh": "咬牙苦撐",
+"en": "Tough It Out"
+},
+"E": {
+"id": "OlafRecklessStrike",
+"zh": "魯莽揮擊",
+"en": "Reckless Swing"
+},
+"R": {
+"id": "OlafRagnarok",
+"zh": "諸神黃昏",
+"en": "Ragnarok"
+},
+"P": {
+"id": "OlafPassive",
+"zh": "狂戰之怒",
+"en": "Berserker Rage"
+}
+},
+"Orianna": {
+"Q": {
+"id": "OrianaIzunaCommand",
+"zh": "指令：貫穿",
+"en": "Command: Attack"
+},
+"W": {
+"id": "OrianaDissonanceCommand",
+"zh": "指令：失衡",
+"en": "Command: Dissonance"
+},
+"E": {
+"id": "OrianaRedactCommand",
+"zh": "指令：守護",
+"en": "Command: Protect"
+},
+"R": {
+"id": "OrianaDetonateCommand",
+"zh": "終極指令：脈衝",
+"en": "Command: Shockwave"
+},
+"P": {
+"id": "OriannaPassive",
+"zh": "魔法發條",
+"en": "Clockwork Windup"
+}
+},
+"Ornn": {
+"Q": {
+"id": "OrnnQ",
+"zh": "火山脈動",
+"en": "Volcanic Rupture"
+},
+"W": {
+"id": "OrnnW",
+"zh": "熾焰吹息",
+"en": "Bellows Breath"
+},
+"E": {
+"id": "OrnnE",
+"zh": "熔岩俯衝",
+"en": "Searing Charge"
+},
+"R": {
+"id": "OrnnR",
+"zh": "鑄火者的呼喚",
+"en": "Call of the Forge God"
+},
+"P": {
+"id": "OrnnPassive",
+"zh": "活火爐",
+"en": "Living Forge"
+}
+},
+"Pantheon": {
+"Q": {
+"id": "PantheonQ",
+"zh": "彗星戰矛",
+"en": "Comet Spear"
+},
+"W": {
+"id": "PantheonW",
+"zh": "盾之躍擊",
+"en": "Shield Vault"
+},
+"E": {
+"id": "PantheonE",
+"zh": "聖盾猛襲",
+"en": "Aegis Assault"
+},
+"R": {
+"id": "PantheonR",
+"zh": "星殞衝擊",
+"en": "Grand Starfall"
+},
+"P": {
+"id": "PantheonPassive",
+"zh": "凡人堅志",
+"en": "Mortal Will"
+}
+},
+"Poppy": {
+"Q": {
+"id": "PoppyQ",
+"zh": "戰槌衝擊",
+"en": "Hammer Shock"
+},
+"W": {
+"id": "PoppyW",
+"zh": "堅定不移",
+"en": "Steadfast Presence"
+},
+"E": {
+"id": "PoppyE",
+"zh": "英勇衝鋒",
+"en": "Heroic Charge"
+},
+"R": {
+"id": "PoppyR",
+"zh": "守護者裁決",
+"en": "Keeper's Verdict"
+},
+"P": {
+"id": "PoppyPassive",
+"zh": "鋼鐵使者",
+"en": "Iron Ambassador"
+}
+},
+"Pyke": {
+"Q": {
+"id": "PykeQ",
+"zh": "刺骨串叉",
+"en": "Bone Skewer"
+},
+"W": {
+"id": "PykeW",
+"zh": "幽海深潛",
+"en": "Ghostwater Dive"
+},
+"E": {
+"id": "PykeE",
+"zh": "溺流鬼影",
+"en": "Phantom Undertow"
+},
+"R": {
+"id": "PykeR",
+"zh": "汪洋死域",
+"en": "Death From Below"
+},
+"P": {
+"id": "PykePassive",
+"zh": "血港淹禮",
+"en": "Gift of the Drowned Ones"
+}
+},
+"Qiyana": {
+"Q": {
+"id": "QiyanaQ",
+"zh": "元素之怒 / 伊克斯塔爾迴旋刀",
+"en": "Elemental Wrath / Edge of Ixtal"
+},
+"W": {
+"id": "QiyanaW",
+"zh": "元素之形",
+"en": "Terrashape"
+},
+"E": {
+"id": "QiyanaE",
+"zh": "勇往直前",
+"en": "Audacity"
+},
+"R": {
+"id": "QiyanaR",
+"zh": "大顯身手",
+"en": "Supreme Display of Talent"
+},
+"P": {
+"id": "QiyanaPassive",
+"zh": "皇家特權",
+"en": "Royal Privilege"
+}
+},
+"Quinn": {
+"Q": {
+"id": "QuinnQ",
+"zh": "飛鷹突擊",
+"en": "Blinding Assault"
+},
+"W": {
+"id": "QuinnW",
+"zh": "強化感知",
+"en": "Heightened Senses"
+},
+"E": {
+"id": "QuinnE",
+"zh": "完美奇襲",
+"en": "Vault"
+},
+"R": {
+"id": "QuinnR",
+"zh": "絕命殺戮",
+"en": "Behind Enemy Lines"
+},
+"P": {
+"id": "QuinnPassive",
+"zh": "追獵印記",
+"en": "Harrier"
+}
+},
+"Rakan": {
+"Q": {
+"id": "RakanQ",
+"zh": "癒光飛翎",
+"en": "Gleaming Quill"
+},
+"W": {
+"id": "RakanW",
+"zh": "盛大登場",
+"en": "Grand Entrance"
+},
+"E": {
+"id": "RakanE",
+"zh": "戰鬥舞踊",
+"en": "Battle Dance"
+},
+"R": {
+"id": "RakanR",
+"zh": "迷心迅步",
+"en": "The Quickness"
+},
+"P": {
+"id": "RakanPassive",
+"zh": "奇異羽篷",
+"en": "Fey Feathers"
+}
+},
+"Rammus": {
+"Q": {
+"id": "PowerBall",
+"zh": "動力衝刺",
+"en": "Powerball"
+},
+"W": {
+"id": "DefensiveBallCurl",
+"zh": "尖刺防禦",
+"en": "Defensive Ball Curl"
+},
+"E": {
+"id": "PuncturingTaunt",
+"zh": "披甲怒嘲",
+"en": "Frenzying Taunt"
+},
+"R": {
+"id": "Tremors2",
+"zh": "飛天動地",
+"en": "Soaring Slam"
+},
+"P": {
+"id": "RammusPassive",
+"zh": "錐刺甲殼",
+"en": "Spiked Shell"
+}
+},
+"RekSai": {
+"Q": {
+"id": "RekSaiQ",
+"zh": "女王之怒/尋找獵物",
+"en": "Queen's Wrath / Prey Seeker"
+},
+"W": {
+"id": "RekSaiW",
+"zh": "深掘/猛襲",
+"en": "Burrow / Un-burrow"
+},
+"E": {
+"id": "RekSaiE",
+"zh": "狂食/翻山",
+"en": "Furious Bite / Tunnel"
+},
+"R": {
+"id": "RekSaiR",
+"zh": "虛空疾行",
+"en": "Void Rush"
+},
+"P": {
+"id": "RekSaiPassive",
+"zh": "憤怒沙蟲",
+"en": "Fury of the Xer'Sai"
+}
+},
+"Rell": {
+"Q": {
+"id": "RellQ",
+"zh": "鐵碎之擊",
+"en": "Shattering Strike"
+},
+"W": {
+"id": "RellW_Dismount",
+"zh": "馭鐵之術：解構",
+"en": "Ferromancy: Crash Down"
+},
+"E": {
+"id": "RellE",
+"zh": "全速突進",
+"en": "Full Tilt"
+},
+"R": {
+"id": "RellR",
+"zh": "磁能風暴",
+"en": "Magnet Storm"
+},
+"P": {
+"id": "RellPassive",
+"zh": "破鑄者",
+"en": "Break the Mold"
+}
+},
+"Renata": {
+"Q": {
+"id": "RenataQ",
+"zh": "霸道手腕",
+"en": "Handshake"
+},
+"W": {
+"id": "RenataW",
+"zh": "急難救助",
+"en": "Bailout"
+},
+"E": {
+"id": "RenataE",
+"zh": "有酬必報",
+"en": "Loyalty Program"
+},
+"R": {
+"id": "RenataR",
+"zh": "惡意收購",
+"en": "Hostile Takeover"
+},
+"P": {
+"id": "RenataPassive",
+"zh": "唯利是圖",
+"en": "Leverage"
+}
+},
+"Renekton": {
+"Q": {
+"id": "RenektonCleave",
+"zh": "弱肉強食",
+"en": "Cull the Meek"
+},
+"W": {
+"id": "RenektonPreExecute",
+"zh": "庖丁解牛",
+"en": "Ruthless Predator"
+},
+"E": {
+"id": "RenektonSliceAndDice",
+"zh": "大切八塊",
+"en": "Slice and Dice"
+},
+"R": {
+"id": "RenektonReignOfTheTyrant",
+"zh": "君臨天下",
+"en": "Dominus"
+},
+"P": {
+"id": "RenektonPassive",
+"zh": "怒不可遏",
+"en": "Reign of Anger"
+}
+},
+"Rengar": {
+"Q": {
+"id": "RengarQ",
+"zh": "兇殘打擊",
+"en": "Savagery"
+},
+"W": {
+"id": "RengarW",
+"zh": "怒獅戰吼",
+"en": "Battle Roar"
+},
+"E": {
+"id": "RengarE",
+"zh": "狩獵拋繩",
+"en": "Bola Strike"
+},
+"R": {
+"id": "RengarR",
+"zh": "血性獵殺",
+"en": "Thrill of the Hunt"
+},
+"P": {
+"id": "RengarPassive",
+"zh": "潛行怒獅",
+"en": "Unseen Predator"
+}
+},
+"Riven": {
+"Q": {
+"id": "RivenTriCleave",
+"zh": "斷罪之翼",
+"en": "Broken Wings"
+},
+"W": {
+"id": "RivenMartyr",
+"zh": "符文衝擊",
+"en": "Ki Burst"
+},
+"E": {
+"id": "RivenFeint",
+"zh": "勇者無敵",
+"en": "Valor"
+},
+"R": {
+"id": "RivenFengShuiEngine",
+"zh": "放逐之刃",
+"en": "Blade of the Exile"
+},
+"P": {
+"id": "RivenPassive",
+"zh": "符文破刃",
+"en": "Runic Blade"
+}
+},
+"Rumble": {
+"Q": {
+"id": "RumbleFlameThrower",
+"zh": "火焰噴射器",
+"en": "Flamespitter"
+},
+"W": {
+"id": "RumbleShield",
+"zh": "鐵屑電磁盾",
+"en": "Scrap Shield"
+},
+"E": {
+"id": "RumbleGrenade",
+"zh": "高壓電魚叉",
+"en": "Electro Harpoon"
+},
+"R": {
+"id": "RumbleCarpetBomb",
+"zh": "等離子飛彈",
+"en": "The Equalizer"
+},
+"P": {
+"id": "RumblePassive",
+"zh": "泰坦熱能",
+"en": "Junkyard Titan"
+}
+},
+"Ryze": {
+"Q": {
+"id": "RyzeQWrapper",
+"zh": "超負荷",
+"en": "Overload"
+},
+"W": {
+"id": "RyzeW",
+"zh": "符文禁錮",
+"en": "Rune Prison"
+},
+"E": {
+"id": "RyzeE",
+"zh": "法術湧動",
+"en": "Spell Flux"
+},
+"R": {
+"id": "RyzeR",
+"zh": "扭轉之境",
+"en": "Realm Warp"
+},
+"P": {
+"id": "RyzePassive",
+"zh": "奧術專精",
+"en": "Arcane Mastery"
+}
+},
+"Samira": {
+"Q": {
+"id": "SamiraQ",
+"zh": "狂戰本能",
+"en": "Flair"
+},
+"W": {
+"id": "SamiraW",
+"zh": "劍刃風暴",
+"en": "Blade Whirl"
+},
+"E": {
+"id": "SamiraE",
+"zh": "狂野突進",
+"en": "Wild Rush"
+},
+"R": {
+"id": "SamiraR",
+"zh": "地獄火狂襲",
+"en": "Inferno Trigger"
+},
+"P": {
+"id": "SamiraPassive",
+"zh": "敢死風采",
+"en": "Daredevil Impulse"
+}
+},
+"Sejuani": {
+"Q": {
+"id": "SejuaniQ",
+"zh": "極地衝刺",
+"en": "Arctic Assault"
+},
+"W": {
+"id": "SejuaniW",
+"zh": "凜冬狂怒",
+"en": "Winter's Wrath"
+},
+"E": {
+"id": "SejuaniE",
+"zh": "永恆凍土",
+"en": "Permafrost"
+},
+"R": {
+"id": "SejuaniR",
+"zh": "冰河籠牢",
+"en": "Glacial Prison"
+},
+"P": {
+"id": "SejuaniPassive",
+"zh": "北境之怒",
+"en": "Fury of the North"
+}
+},
+"Senna": {
+"Q": {
+"id": "SennaQ",
+"zh": "刺骨幽闇",
+"en": "Piercing Darkness"
+},
+"W": {
+"id": "SennaW",
+"zh": "終末之擁",
+"en": "Last Embrace"
+},
+"E": {
+"id": "SennaE",
+"zh": "黯霧詛咒",
+"en": "Curse of the Black Mist"
+},
+"R": {
+"id": "SennaR",
+"zh": "黎明之影",
+"en": "Dawning Shadow"
+},
+"P": {
+"id": "SennaPassive",
+"zh": "赦罪",
+"en": "Absolution"
+}
+},
+"Seraphine": {
+"Q": {
+"id": "SeraphineQ",
+"zh": "樂音高亢",
+"en": "High Note"
+},
+"W": {
+"id": "SeraphineW",
+"zh": "繞樑歌聲",
+"en": "Surround Sound"
+},
+"E": {
+"id": "SeraphineE",
+"zh": "迷人節奏",
+"en": "Beat Drop"
+},
+"R": {
+"id": "SeraphineR",
+"zh": "要不要來首安可曲",
+"en": "Encore"
+},
+"P": {
+"id": "SeraphinePassive",
+"zh": "耀眼星光",
+"en": "Stage Presence"
+}
+},
+"Sett": {
+"Q": {
+"id": "SettQ",
+"zh": "懾人猛拳",
+"en": "Knuckle Down"
+},
+"W": {
+"id": "SettW",
+"zh": "獸魂轟拳",
+"en": "Haymaker"
+},
+"E": {
+"id": "SettE",
+"zh": "碎顱猛擊",
+"en": "Facebreaker"
+},
+"R": {
+"id": "SettR",
+"zh": "嘆為觀止",
+"en": "The Show Stopper"
+},
+"P": {
+"id": "SettPassive",
+"zh": "恆毅之泉",
+"en": "Pit Grit"
+}
+},
+"Shaco": {
+"Q": {
+"id": "Deceive",
+"zh": "欺詐魔術",
+"en": "Deceive"
+},
+"W": {
+"id": "JackInTheBox",
+"zh": "驚嚇魔盒",
+"en": "Jack In The Box"
+},
+"E": {
+"id": "TwoShivPoison",
+"zh": "雙面毒刃",
+"en": "Two-Shiv Poison"
+},
+"R": {
+"id": "HallucinateFull",
+"zh": "幻象",
+"en": "Hallucinate"
+},
+"P": {
+"id": "ShacoPassive",
+"zh": "背刺",
+"en": "Backstab"
+}
+},
+"Shen": {
+"Q": {
+"id": "ShenQ",
+"zh": "暮光強襲",
+"en": "Twilight Assault"
+},
+"W": {
+"id": "ShenW",
+"zh": "靈氣庇護",
+"en": "Spirit's Refuge"
+},
+"E": {
+"id": "ShenE",
+"zh": "影襲",
+"en": "Shadow Dash"
+},
+"R": {
+"id": "ShenR",
+"zh": "並肩作戰",
+"en": "Stand United"
+},
+"P": {
+"id": "ShenPassive",
+"zh": "凝氣盾",
+"en": "Ki Barrier"
+}
+},
+"Shyvana": {
+"Q": {
+"id": "ShyvanaQ",
+"zh": "餘燼龍擊",
+"en": "Emberstrike"
+},
+"W": {
+"id": "ShyvanaW",
+"zh": "業火燃盾",
+"en": "Inferno Aegis"
+},
+"E": {
+"id": "ShyvanaE",
+"zh": "融焰爆裂",
+"en": "Molten Burst"
+},
+"R": {
+"id": "ShyvanaR",
+"zh": "真龍轉生",
+"en": "Dragon's Descent"
+},
+"P": {
+"id": "ShyvanaPassive",
+"zh": "真龍鱗甲",
+"en": "Scalemail"
+}
+},
+"Singed": {
+"Q": {
+"id": "PoisonTrail",
+"zh": "劇毒蹤跡",
+"en": "Poison Trail"
+},
+"W": {
+"id": "MegaAdhesive",
+"zh": "強力粘膠",
+"en": "Mega Adhesive"
+},
+"E": {
+"id": "Fling",
+"zh": "過肩摔",
+"en": "Fling"
+},
+"R": {
+"id": "InsanityPotion",
+"zh": "瘋狂藥劑",
+"en": "Insanity Potion"
+},
+"P": {
+"id": "SingedPassive",
+"zh": "毒氣推進",
+"en": "Noxious Slipstream"
+}
+},
+"Sion": {
+"Q": {
+"id": "SionQ",
+"zh": "巨幅毀滅",
+"en": "Decimating Smash"
+},
+"W": {
+"id": "SionW",
+"zh": "魂魄熔爐",
+"en": "Soul Furnace"
+},
+"E": {
+"id": "SionE",
+"zh": "殺戮怒吼",
+"en": "Roar of the Slayer"
+},
+"R": {
+"id": "SionR",
+"zh": "猛烈狂擊",
+"en": "Unstoppable Onslaught"
+},
+"P": {
+"id": "SionPassive",
+"zh": "光榮戰死",
+"en": "Glory in Death"
+}
+},
+"Sivir": {
+"Q": {
+"id": "SivirQ",
+"zh": "迴旋之刃",
+"en": "Boomerang Blade"
+},
+"W": {
+"id": "SivirW",
+"zh": "十字彈射",
+"en": "Ricochet"
+},
+"E": {
+"id": "SivirE",
+"zh": "法術護盾",
+"en": "Spell Shield"
+},
+"R": {
+"id": "SivirR",
+"zh": "狩獵",
+"en": "On The Hunt"
+},
+"P": {
+"id": "SivirPassive",
+"zh": "戰鬥動能",
+"en": "Fleet of Foot"
+}
+},
+"Skarner": {
+"Q": {
+"id": "SkarnerQ",
+"zh": "翻天覆地/尖岩飛彈",
+"en": "Shattered Earth / Upheaval"
+},
+"W": {
+"id": "SkarnerW",
+"zh": "壁壘波動",
+"en": "Seismic Bastion"
+},
+"E": {
+"id": "SkarnerE",
+"zh": "伊克斯塔爾衝擊",
+"en": "Ixtal's Impact"
+},
+"R": {
+"id": "SkarnerR",
+"zh": "蠍尾穿刺",
+"en": "Impale"
+},
+"P": {
+"id": "SkarnerPassive",
+"zh": "震動餘波",
+"en": "Threads of Vibration"
+}
+},
+"Smolder": {
+"Q": {
+"id": "SmolderQ",
+"zh": "激灼龍息",
+"en": "Super Scorcher Breath"
+},
+"W": {
+"id": "SmolderW",
+"zh": "悶燃黏嚏",
+"en": "Achooo!"
+},
+"E": {
+"id": "SmolderE",
+"zh": "振翼高飛",
+"en": "Flap, Flap, Flap"
+},
+"R": {
+"id": "SmolderR",
+"zh": "媽媽幫我！",
+"en": "MMOOOMMMM!"
+},
+"P": {
+"id": "SmolderPassive",
+"zh": "龍性精通",
+"en": "Dragon Practice"
+}
+},
+"Sona": {
+"Q": {
+"id": "SonaQ",
+"zh": "英勇讚美詩",
+"en": "Hymn of Valor"
+},
+"W": {
+"id": "SonaW",
+"zh": "堅毅詠嘆調",
+"en": "Aria of Perseverance"
+},
+"E": {
+"id": "SonaE",
+"zh": "迅捷奏鳴曲",
+"en": "Song of Celerity"
+},
+"R": {
+"id": "SonaR",
+"zh": "狂舞終樂章",
+"en": "Crescendo"
+},
+"P": {
+"id": "SonaPassive",
+"zh": "力量和絃",
+"en": "Power Chord"
+}
+},
+"Soraka": {
+"Q": {
+"id": "SorakaQ",
+"zh": "殞星召喚",
+"en": "Starcall"
+},
+"W": {
+"id": "SorakaW",
+"zh": "星之祝福",
+"en": "Astral Infusion"
+},
+"E": {
+"id": "SorakaE",
+"zh": "寂靜星河",
+"en": "Equinox"
+},
+"R": {
+"id": "SorakaR",
+"zh": "祈願",
+"en": "Wish"
+},
+"P": {
+"id": "SorakaPassive",
+"zh": "群星指路",
+"en": "Salvation"
+}
+},
+"Swain": {
+"Q": {
+"id": "SwainQ",
+"zh": "靈魂拷問",
+"en": "Death's Hand"
+},
+"W": {
+"id": "SwainW",
+"zh": "真知魔眼",
+"en": "Vision of Empire"
+},
+"E": {
+"id": "SwainE",
+"zh": "影之爪",
+"en": "Nevermove"
+},
+"R": {
+"id": "SwainR",
+"zh": "魔君降生",
+"en": "Demonic Ascension"
+},
+"P": {
+"id": "SwainPassive",
+"zh": "群鴉盛宴",
+"en": "Ravenous Flock"
+}
+},
+"Sylas": {
+"Q": {
+"id": "SylasQ",
+"zh": "鍊斬",
+"en": "Chain Lash"
+},
+"W": {
+"id": "SylasW",
+"zh": "弒君之道",
+"en": "Kingslayer"
+},
+"E": {
+"id": "SylasE",
+"zh": "逆罪突進 / 罪獄鍊罰",
+"en": "Abscond / Abduct"
+},
+"R": {
+"id": "SylasR",
+"zh": "盜技禁鍊",
+"en": "Hijack"
+},
+"P": {
+"id": "SylasPassive",
+"zh": "反魔法英石衝擊",
+"en": "Petricite Burst"
+}
+},
+"Syndra": {
+"Q": {
+"id": "SyndraQ",
+"zh": "黑暗星體",
+"en": "Dark Sphere"
+},
+"W": {
+"id": "SyndraW",
+"zh": "意志之力",
+"en": "Force of Will"
+},
+"E": {
+"id": "SyndraE",
+"zh": "虛弱潰散",
+"en": "Scatter the Weak"
+},
+"R": {
+"id": "SyndraR",
+"zh": "超能解放",
+"en": "Unleashed Power"
+},
+"P": {
+"id": "SyndraPassive",
+"zh": "卓越",
+"en": "Transcendent"
+}
+},
+"TahmKench": {
+"Q": {
+"id": "TahmKenchQ",
+"zh": "毒舌",
+"en": "Tongue Lash"
+},
+"W": {
+"id": "TahmKenchW",
+"zh": "遨遊深淵",
+"en": "Abyssal Dive"
+},
+"E": {
+"id": "TahmKenchE",
+"zh": "血多皮厚",
+"en": "Thick Skin"
+},
+"R": {
+"id": "TahmKenchRWrapper",
+"zh": "大快朵頤",
+"en": "Devour"
+},
+"P": {
+"id": "TahmKenchPassive",
+"zh": "品味獨到",
+"en": "An Acquired Taste"
+}
+},
+"Taliyah": {
+"Q": {
+"id": "TaliyahQ",
+"zh": "旋舞飛岩",
+"en": "Threaded Volley"
+},
+"W": {
+"id": "TaliyahWVC",
+"zh": "震地之擊",
+"en": "Seismic Shove"
+},
+"E": {
+"id": "TaliyahE",
+"zh": "碎裂地表",
+"en": "Unraveled Earth"
+},
+"R": {
+"id": "TaliyahR",
+"zh": "編織者之牆",
+"en": "Weaver's Wall"
+},
+"P": {
+"id": "TaliyahPassive",
+"zh": "馭石之術",
+"en": "Rock Surfing"
+}
+},
+"Talon": {
+"Q": {
+"id": "TalonQ",
+"zh": "諾城王道",
+"en": "Noxian Diplomacy"
+},
+"W": {
+"id": "TalonW",
+"zh": "迴力匕首",
+"en": "Rake"
+},
+"E": {
+"id": "TalonE",
+"zh": "刺客身法",
+"en": "Assassin's Path"
+},
+"R": {
+"id": "TalonR",
+"zh": "暗影突襲",
+"en": "Shadow Assault"
+},
+"P": {
+"id": "TalonPassive",
+"zh": "終焉殘刃",
+"en": "Blade's End"
+}
+},
+"Taric": {
+"Q": {
+"id": "TaricQ",
+"zh": "星光之觸",
+"en": "Starlight's Touch"
+},
+"W": {
+"id": "TaricW",
+"zh": "雙星壁壘",
+"en": "Bastion"
+},
+"E": {
+"id": "TaricE",
+"zh": "失能眩光",
+"en": "Dazzle"
+},
+"R": {
+"id": "TaricR",
+"zh": "宇宙光彩",
+"en": "Cosmic Radiance"
+},
+"P": {
+"id": "TaricPassive",
+"zh": "智勇雙全",
+"en": "Bravado"
+}
+},
+"Teemo": {
+"Q": {
+"id": "TeemoQ",
+"zh": "致盲吹箭",
+"en": "Blinding Dart"
+},
+"W": {
+"id": "TeemoW",
+"zh": "衝刺",
+"en": "Move Quick"
+},
+"E": {
+"id": "TeemoE",
+"zh": "劇毒射擊",
+"en": "Toxic Shot"
+},
+"R": {
+"id": "TeemoR",
+"zh": "毒性陷阱",
+"en": "Noxious Trap"
+},
+"P": {
+"id": "TeemoPassive",
+"zh": "約德爾游擊隊",
+"en": "Guerrilla Warfare"
+}
+},
+"Thresh": {
+"Q": {
+"id": "ThreshQ",
+"zh": "死亡宣告",
+"en": "Death Sentence"
+},
+"W": {
+"id": "ThreshW",
+"zh": "鬼影燈籠",
+"en": "Dark Passage"
+},
+"E": {
+"id": "ThreshE",
+"zh": "懾魂掃蕩",
+"en": "Flay"
+},
+"R": {
+"id": "ThreshRPenta",
+"zh": "惡靈領域",
+"en": "The Box"
+},
+"P": {
+"id": "ThreshPassive",
+"zh": "靈魂饗宴",
+"en": "Damnation"
+}
+},
+"Tristana": {
+"Q": {
+"id": "TristanaQ",
+"zh": "急速射擊",
+"en": "Rapid Fire"
+},
+"W": {
+"id": "TristanaW",
+"zh": "火箭跳躍",
+"en": "Rocket Jump"
+},
+"E": {
+"id": "TristanaE",
+"zh": "爆炸射擊",
+"en": "Explosive Charge"
+},
+"R": {
+"id": "TristanaR",
+"zh": "毀滅射擊",
+"en": "Buster Shot"
+},
+"P": {
+"id": "TristanaPassive",
+"zh": "校準射擊",
+"en": "Draw a Bead"
+}
+},
+"Trundle": {
+"Q": {
+"id": "TrundleTrollSmash",
+"zh": "狂野撕咬",
+"en": "Chomp"
+},
+"W": {
+"id": "trundledesecrate",
+"zh": "極凍領地",
+"en": "Frozen Domain"
+},
+"E": {
+"id": "TrundleCircle",
+"zh": "狡詰冰柱",
+"en": "Pillar of Ice"
+},
+"R": {
+"id": "TrundlePain",
+"zh": "盛怒霸體",
+"en": "Subjugate"
+},
+"P": {
+"id": "TrundlePassive",
+"zh": "帝王獻祭",
+"en": "King's Tribute"
+}
+},
+"Tryndamere": {
+"Q": {
+"id": "TryndamereQ",
+"zh": "嗜血殺戮",
+"en": "Bloodlust"
+},
+"W": {
+"id": "TryndamereW",
+"zh": "嘲諷",
+"en": "Mocking Shout"
+},
+"E": {
+"id": "TryndamereE",
+"zh": "旋風斬",
+"en": "Spinning Slash"
+},
+"R": {
+"id": "UndyingRage",
+"zh": "無盡怒火",
+"en": "Undying Rage"
+},
+"P": {
+"id": "TryndamerePassive",
+"zh": "戰鬥狂怒",
+"en": "Battle Fury"
+}
+},
+"TwistedFate": {
+"Q": {
+"id": "WildCards",
+"zh": "萬能牌",
+"en": "Wild Cards"
+},
+"W": {
+"id": "PickACard",
+"zh": "選牌",
+"en": "Pick a Card"
+},
+"E": {
+"id": "CardmasterStack",
+"zh": "卡牌騙術",
+"en": "Stacked Deck"
+},
+"R": {
+"id": "Destiny",
+"zh": "命運",
+"en": "Destiny"
+},
+"P": {
+"id": "TwistedFatePassive",
+"zh": "灌鉛骰子",
+"en": "Loaded Dice"
+}
+},
+"Twitch": {
+"Q": {
+"id": "TwitchHideInShadows",
+"zh": "潛伏",
+"en": "Ambush"
+},
+"W": {
+"id": "TwitchVenomCask",
+"zh": "虛弱之毒",
+"en": "Venom Cask"
+},
+"E": {
+"id": "TwitchExpunge",
+"zh": "毒性爆發",
+"en": "Contaminate"
+},
+"R": {
+"id": "TwitchFullAutomatic",
+"zh": "噴射，然後祈禱吧！",
+"en": "Spray and Pray"
+},
+"P": {
+"id": "TwitchPassive",
+"zh": "死亡毒液",
+"en": "Deadly Venom"
+}
+},
+"Udyr": {
+"Q": {
+"id": "UdyrQ",
+"zh": "野蠻利爪",
+"en": "Wilding Claw"
+},
+"W": {
+"id": "UdyrW",
+"zh": "鋼筋鐵骨",
+"en": "Iron Mantle"
+},
+"E": {
+"id": "UdyrE",
+"zh": "熾熱衝撞",
+"en": "Blazing Stampede"
+},
+"R": {
+"id": "UdyrR",
+"zh": "霜翼風暴",
+"en": "Wingborne Storm"
+},
+"P": {
+"id": "UdyrPassive",
+"zh": "人神一體",
+"en": "Bridge Between"
+}
+},
+"Urgot": {
+"Q": {
+"id": "UrgotQ",
+"zh": "酸性榴彈",
+"en": "Corrosive Charge"
+},
+"W": {
+"id": "UrgotW",
+"zh": "殺戮射擊",
+"en": "Purge"
+},
+"E": {
+"id": "UrgotE",
+"zh": "恐怖襲擊",
+"en": "Disdain"
+},
+"R": {
+"id": "UrgotR",
+"zh": "索命虐殺",
+"en": "Fear Beyond Death"
+},
+"P": {
+"id": "UrgotPassive",
+"zh": "振盪火砲",
+"en": "Echoing Flames"
+}
+},
+"Varus": {
+"Q": {
+"id": "VarusQ",
+"zh": "破甲箭",
+"en": "Piercing Arrow"
+},
+"W": {
+"id": "VarusW",
+"zh": "荒蕪箭袋",
+"en": "Blighted Quiver"
+},
+"E": {
+"id": "VarusE",
+"zh": "腐敗箭雨",
+"en": "Hail of Arrows"
+},
+"R": {
+"id": "VarusR",
+"zh": "墮落連鎖",
+"en": "Chain of Corruption"
+},
+"P": {
+"id": "VarusPassive",
+"zh": "復仇怒火",
+"en": "Living Vengeance"
+}
+},
+"Vayne": {
+"Q": {
+"id": "VayneTumble",
+"zh": "翻滾瞄準",
+"en": "Tumble"
+},
+"W": {
+"id": "VayneSilveredBolts",
+"zh": "神聖銀箭",
+"en": "Silver Bolts"
+},
+"E": {
+"id": "VayneCondemn",
+"zh": "重型弩箭",
+"en": "Condemn"
+},
+"R": {
+"id": "VayneInquisition",
+"zh": "死亡通緝",
+"en": "Final Hour"
+},
+"P": {
+"id": "VaynePassive",
+"zh": "夜之狩獵",
+"en": "Night Hunter"
+}
+},
+"Veigar": {
+"Q": {
+"id": "VeigarBalefulStrike",
+"zh": "黑暗祭祀",
+"en": "Baleful Strike"
+},
+"W": {
+"id": "VeigarDarkMatter",
+"zh": "黑暗物質",
+"en": "Dark Matter"
+},
+"E": {
+"id": "VeigarEventHorizon",
+"zh": "扭曲空間",
+"en": "Event Horizon"
+},
+"R": {
+"id": "VeigarR",
+"zh": "能量爆裂",
+"en": "Primordial Burst"
+},
+"P": {
+"id": "VeigarPassive",
+"zh": "極度邪惡能量",
+"en": "Phenomenal Evil Power"
+}
+},
+"Velkoz": {
+"Q": {
+"id": "VelkozQ",
+"zh": "分裂電漿",
+"en": "Plasma Fission"
+},
+"W": {
+"id": "VelkozW",
+"zh": "虛空裂痕",
+"en": "Void Rift"
+},
+"E": {
+"id": "VelkozE",
+"zh": "反物質瓦解",
+"en": "Tectonic Disruption"
+},
+"R": {
+"id": "VelkozR",
+"zh": "生化射線",
+"en": "Life Form Disintegration Ray"
+},
+"P": {
+"id": "VelkozPassive",
+"zh": "結構毀滅",
+"en": "Organic Deconstruction"
+}
+},
+"Vex": {
+"Q": {
+"id": "VexQ",
+"zh": "冷酷暗箭",
+"en": "Mistral Bolt"
+},
+"W": {
+"id": "VexW",
+"zh": "個人舒適圈",
+"en": "Personal Space"
+},
+"E": {
+"id": "VexE",
+"zh": "闇黑迫近",
+"en": "Looming Darkness"
+},
+"R": {
+"id": "VexR",
+"zh": "飛影急襲",
+"en": "Shadow Surge"
+},
+"P": {
+"id": "VexPassive",
+"zh": "無望厄障",
+"en": "Doom 'n Gloom"
+}
+},
+"Vi": {
+"Q": {
+"id": "ViQ",
+"zh": "蓄能衝擊",
+"en": "Vault Breaker"
+},
+"W": {
+"id": "ViW",
+"zh": "三重極限",
+"en": "Denting Blows"
+},
+"E": {
+"id": "ViE",
+"zh": "粉碎震波",
+"en": "Relentless Force"
+},
+"R": {
+"id": "ViR",
+"zh": "火瀑連擊",
+"en": "Cease and Desist"
+},
+"P": {
+"id": "ViPassive",
+"zh": "爆破武裝",
+"en": "Blast Shield"
+}
+},
+"Viego": {
+"Q": {
+"id": "ViegoQ",
+"zh": "殞落王者之劍",
+"en": "Blade of the Ruined King"
+},
+"W": {
+"id": "ViegoW",
+"zh": "冥魂之噬",
+"en": "Spectral Maw"
+},
+"E": {
+"id": "ViegoE",
+"zh": "幽影之徑",
+"en": "Harrowed Path"
+},
+"R": {
+"id": "ViegoR",
+"zh": "破心者",
+"en": "Heartbreaker"
+},
+"P": {
+"id": "ViegoPassive",
+"zh": "王權統御",
+"en": "Sovereign's Domination"
+}
+},
+"Viktor": {
+"Q": {
+"id": "ViktorQ",
+"zh": "能量守恆",
+"en": "Siphon Power"
+},
+"W": {
+"id": "ViktorW",
+"zh": "萬有引力產生裝置",
+"en": "Gravity Field"
+},
+"E": {
+"id": "ViktorE",
+"zh": "海克斯科技射線",
+"en": "Hextech Ray"
+},
+"R": {
+"id": "ViktorR",
+"zh": "奧術風暴",
+"en": "Arcane Storm"
+},
+"P": {
+"id": "ViktorPassive",
+"zh": "榮光進化",
+"en": "Glorious Evolution"
+}
+},
+"Vladimir": {
+"Q": {
+"id": "VladimirQ",
+"zh": "鮮血轉換",
+"en": "Transfusion"
+},
+"W": {
+"id": "VladimirSanguinePool",
+"zh": "血紅之池",
+"en": "Sanguine Pool"
+},
+"E": {
+"id": "VladimirE",
+"zh": "血之潮汐",
+"en": "Tides of Blood"
+},
+"R": {
+"id": "VladimirHemoplague",
+"zh": "血之瘟疫",
+"en": "Hemoplague"
+},
+"P": {
+"id": "VladimirPassive",
+"zh": "血色契約",
+"en": "Crimson Pact"
+}
+},
+"Volibear": {
+"Q": {
+"id": "VolibearQ",
+"zh": "雷霆貫擊",
+"en": "Thundering Smash"
+},
+"W": {
+"id": "VolibearW",
+"zh": "狂熊撕咬",
+"en": "Frenzied Maul"
+},
+"E": {
+"id": "VolibearE",
+"zh": "蒼穹裂隙",
+"en": "Sky Splitter"
+},
+"R": {
+"id": "VolibearR",
+"zh": "風暴使者",
+"en": "Stormbringer"
+},
+"P": {
+"id": "VolibearPassive",
+"zh": "無情風暴",
+"en": "The Relentless Storm"
+}
+},
+"Warwick": {
+"Q": {
+"id": "WarwickQ",
+"zh": "猛獸狂顎",
+"en": "Jaws of the Beast"
+},
+"W": {
+"id": "WarwickW",
+"zh": "血跡獵蹤",
+"en": "Blood Hunt"
+},
+"E": {
+"id": "WarwickE",
+"zh": "本能怒嚎",
+"en": "Primal Howl"
+},
+"R": {
+"id": "WarwickR",
+"zh": "無盡束縛",
+"en": "Infinite Duress"
+},
+"P": {
+"id": "WarwickPassive",
+"zh": "永恆飢渴",
+"en": "Eternal Hunger"
+}
+},
+"Xayah": {
+"Q": {
+"id": "XayahQ",
+"zh": "赤落連匕",
+"en": "Double Daggers"
+},
+"W": {
+"id": "XayahW",
+"zh": "奪命疾翼",
+"en": "Deadly Plumage"
+},
+"E": {
+"id": "XayahE",
+"zh": "漫天血刃",
+"en": "Bladecaller"
+},
+"R": {
+"id": "XayahR",
+"zh": "驟羽暴風",
+"en": "Featherstorm"
+},
+"P": {
+"id": "XayahPassive",
+"zh": "一翦兩斷",
+"en": "Clean Cuts"
+}
+},
+"Xerath": {
+"Q": {
+"id": "XerathArcanopulseChargeUp",
+"zh": "祕術脈衝",
+"en": "Arcanopulse"
+},
+"W": {
+"id": "XerathArcaneBarrage2",
+"zh": "毀滅之眼",
+"en": "Eye of Destruction"
+},
+"E": {
+"id": "XerathMageSpear",
+"zh": "幻魔打擊",
+"en": "Shocking Orb"
+},
+"R": {
+"id": "XerathLocusOfPower2",
+"zh": "魔導祭典",
+"en": "Rite of the Arcane"
+},
+"P": {
+"id": "XerathPassive",
+"zh": "祕術強襲",
+"en": "Mana Surge"
+}
+},
+"XinZhao": {
+"Q": {
+"id": "XinZhaoQ",
+"zh": "三重爪擊",
+"en": "Three Talon Strike"
+},
+"W": {
+"id": "XinZhaoW",
+"zh": "風雷迅馳",
+"en": "Wind Becomes Lightning"
+},
+"E": {
+"id": "XinZhaoE",
+"zh": "一騎當先",
+"en": "Audacious Charge"
+},
+"R": {
+"id": "XinZhaoR",
+"zh": "新月無雙",
+"en": "Crescent Guard"
+},
+"P": {
+"id": "XinZhaoPassive",
+"zh": "鬥戰決心",
+"en": "Determination"
+}
+},
+"Yasuo": {
+"Q": {
+"id": "YasuoQ1Wrapper",
+"zh": "鋼鐵暴雪",
+"en": "Steel Tempest"
+},
+"W": {
+"id": "YasuoW",
+"zh": "風牆",
+"en": "Wind Wall"
+},
+"E": {
+"id": "YasuoE",
+"zh": "刃敵千軍",
+"en": "Sweeping Blade"
+},
+"R": {
+"id": "YasuoR",
+"zh": "奪命氣息",
+"en": "Last Breath"
+},
+"P": {
+"id": "YasuoPassive",
+"zh": "浪人之道",
+"en": "Way of the Wanderer"
+}
+},
+"Yone": {
+"Q": {
+"id": "YoneQ",
+"zh": "鋼鐵凡志",
+"en": "Mortal Steel"
+},
+"W": {
+"id": "YoneW",
+"zh": "滅魂斬",
+"en": "Spirit Cleave"
+},
+"E": {
+"id": "YoneE",
+"zh": "釋魂之刃",
+"en": "Soul Unbound"
+},
+"R": {
+"id": "YoneR",
+"zh": "二刀流奧義 ─ 封‧命‧斬",
+"en": "Fate Sealed"
+},
+"P": {
+"id": "YonePassive",
+"zh": "獵人之道",
+"en": "Way of the Hunter"
+}
+},
+"Yorick": {
+"Q": {
+"id": "YorickQ",
+"zh": "臨終葬儀",
+"en": "Last Rites"
+},
+"W": {
+"id": "YorickW",
+"zh": "黯影屍陣",
+"en": "Dark Procession"
+},
+"E": {
+"id": "YorickE",
+"zh": "悲鳴瘴霧",
+"en": "Mourning Mist"
+},
+"R": {
+"id": "YorickR",
+"zh": "荒島輓歌",
+"en": "Eulogy of the Isles"
+},
+"P": {
+"id": "YorickPassive",
+"zh": "亡魂牧人",
+"en": "Shepherd of Souls"
+}
+},
+"Yunara": {
+"Q": {
+"id": "YunaraQ",
+"zh": "靈心修真",
+"en": "Cultivation of Spirit"
+},
+"W": {
+"id": "YunaraW",
+"zh": "審判靈珠 | 毀滅弧光",
+"en": "Arc of Judgment | Arc of Ruin"
+},
+"E": {
+"id": "YunaraE",
+"zh": "感銘迅步 | 追風躡影",
+"en": "Kanmei's Steps | Untouchable Shadow"
+},
+"R": {
+"id": "YunaraR",
+"zh": "超逸絕塵",
+"en": "Transcend One's Self"
+},
+"P": {
+"id": "YunaraPassive",
+"zh": "淨土之誓",
+"en": "Vow of the First Lands"
+}
+},
+"Yuumi": {
+"Q": {
+"id": "YuumiQ",
+"zh": "奇幻圖騰",
+"en": "Prowling Projectile"
+},
+"W": {
+"id": "YuumiW",
+"zh": "飛撲抱抱！",
+"en": "You and Me!"
+},
+"E": {
+"id": "YuumiE",
+"zh": "蹦蹦衝刺",
+"en": "Zoomies"
+},
+"R": {
+"id": "YuumiR",
+"zh": "最終篇章",
+"en": "Final Chapter"
+},
+"P": {
+"id": "YuumiPassive",
+"zh": "貓貓摯友",
+"en": "Feline Friendship"
+}
+},
+"Zaahen": {
+"Q": {
+"id": "ZaahenQ",
+"zh": "冥血大刀",
+"en": "The Darkin Glaive"
+},
+"W": {
+"id": "ZaahenW",
+"zh": "冥厄鉤鐮",
+"en": "Dreaded Return"
+},
+"E": {
+"id": "ZaahenE",
+"zh": "偃月天衝",
+"en": "Aureate Rush"
+},
+"R": {
+"id": "ZaahenR",
+"zh": "冥聖裁決",
+"en": "Grim Deliverance"
+},
+"P": {
+"id": "ZaahenPassive",
+"zh": "邪心修真",
+"en": "Cultivation of War"
+}
+},
+"Zac": {
+"Q": {
+"id": "ZacQ",
+"zh": "橡膠飛拳",
+"en": "Stretching Strikes"
+},
+"W": {
+"id": "ZacW",
+"zh": "自體爆破",
+"en": "Unstable Matter"
+},
+"E": {
+"id": "ZacE",
+"zh": "必殺黏星",
+"en": "Elastic Slingshot"
+},
+"R": {
+"id": "ZacR",
+"zh": "活蹦亂跳！",
+"en": "Let's Bounce!"
+},
+"P": {
+"id": "ZacPassive",
+"zh": "組織分裂",
+"en": "Cell Division"
+}
+},
+"Zed": {
+"Q": {
+"id": "ZedQ",
+"zh": "風魔手裡劍",
+"en": "Razor Shuriken"
+},
+"W": {
+"id": "ZedW",
+"zh": "疾風殘影",
+"en": "Living Shadow"
+},
+"E": {
+"id": "ZedE",
+"zh": "影斬",
+"en": "Shadow Slash"
+},
+"R": {
+"id": "ZedR",
+"zh": "死亡印記",
+"en": "Death Mark"
+},
+"P": {
+"id": "ZedPassive",
+"zh": "強者特權",
+"en": "Contempt for the Weak"
+}
+},
+"Zeri": {
+"Q": {
+"id": "ZeriQ",
+"zh": "激電連彈",
+"en": "Burst Fire"
+},
+"W": {
+"id": "ZeriW",
+"zh": "超激爆電磁炮",
+"en": "Ultrashock Laser"
+},
+"E": {
+"id": "ZeriE",
+"zh": "電光石火",
+"en": "Spark Surge"
+},
+"R": {
+"id": "ZeriR",
+"zh": "雷霆萬鈞",
+"en": "Lightning Crash"
+},
+"P": {
+"id": "ZeriPassive",
+"zh": "人體蓄電池",
+"en": "Living Battery"
+}
+},
+"Ziggs": {
+"Q": {
+"id": "ZiggsQ",
+"zh": "彈跳炸彈",
+"en": "Bouncing Bomb"
+},
+"W": {
+"id": "ZiggsW",
+"zh": "技術性引爆",
+"en": "Satchel Charge"
+},
+"E": {
+"id": "ZiggsE",
+"zh": "海克斯詭雷",
+"en": "Hexplosive Minefield"
+},
+"R": {
+"id": "ZiggsR",
+"zh": "煉獄炸彈",
+"en": "Mega Inferno Bomb"
+},
+"P": {
+"id": "ZiggsPassive",
+"zh": "即刻爆發",
+"en": "Short Fuse"
+}
+},
+"Zilean": {
+"Q": {
+"id": "ZileanQ",
+"zh": "定時炸彈",
+"en": "Time Bomb"
+},
+"W": {
+"id": "ZileanW",
+"zh": "時光回溯",
+"en": "Rewind"
+},
+"E": {
+"id": "TimeWarp",
+"zh": "時間扭曲",
+"en": "Time Warp"
+},
+"R": {
+"id": "ChronoShift",
+"zh": "時光倒流",
+"en": "Chronoshift"
+},
+"P": {
+"id": "ZileanPassive",
+"zh": "時光之瓶",
+"en": "Time In A Bottle"
+}
+},
+"Zoe": {
+"Q": {
+"id": "ZoeQ",
+"zh": "星迴百轉",
+"en": "Paddle Star!"
+},
+"W": {
+"id": "ZoeW",
+"zh": "法術竊盜",
+"en": "Spell Thief"
+},
+"E": {
+"id": "ZoeE",
+"zh": "沉睡夢域",
+"en": "Sleepy Trouble Bubble"
+},
+"R": {
+"id": "ZoeR",
+"zh": "星界躍動",
+"en": "Portal Jump"
+},
+"P": {
+"id": "ZoePassive",
+"zh": "閃耀星火",
+"en": "More Sparkles!"
+}
+},
+"Zyra": {
+"Q": {
+"id": "ZyraQ",
+"zh": "致死棘刺",
+"en": "Deadly Spines"
+},
+"W": {
+"id": "ZyraW",
+"zh": "狂暴蔓延",
+"en": "Rampant Growth"
+},
+"E": {
+"id": "ZyraE",
+"zh": "索命棘蔓",
+"en": "Grasping Roots"
+},
+"R": {
+"id": "ZyraR",
+"zh": "致命綻放",
+"en": "Stranglethorns"
+},
+"P": {
+"id": "ZyraPassive",
+"zh": "荊棘花園",
+"en": "Garden of Thorns"
+}
+}
+}
+}

@@ -1,0 +1,461 @@
+{
+"version": "16.17.1",
+"runes": {
+"8100": {
+"zh": "征服",
+"en": "Domination",
+"style": 8100,
+"kind": "style"
+},
+"8112": {
+"zh": "死亡電刑",
+"en": "Electrocute",
+"style": 8100,
+"kind": "rune"
+},
+"8128": {
+"zh": "靈魂收割",
+"en": "Dark Harvest",
+"style": 8100,
+"kind": "rune"
+},
+"9923": {
+"zh": "刀鋒之雹",
+"en": "Hail of Blades",
+"style": 8100,
+"kind": "rune"
+},
+"8126": {
+"zh": "凌虐",
+"en": "Cheap Shot",
+"style": 8100,
+"kind": "rune"
+},
+"8139": {
+"zh": "血噬",
+"en": "Taste of Blood",
+"style": 8100,
+"kind": "rune"
+},
+"8143": {
+"zh": "即刻衝擊",
+"en": "Sudden Impact",
+"style": 8100,
+"kind": "rune"
+},
+"8137": {
+"zh": "第六感",
+"en": "Sixth Sense",
+"style": 8100,
+"kind": "rune"
+},
+"8140": {
+"zh": "恐懼紀念物",
+"en": "Grisly Mementos",
+"style": 8100,
+"kind": "rune"
+},
+"8141": {
+"zh": "敵後守衛",
+"en": "Deep Ward",
+"style": 8100,
+"kind": "rune"
+},
+"8135": {
+"zh": "寶藏獵人",
+"en": "Treasure Hunter",
+"style": 8100,
+"kind": "rune"
+},
+"8105": {
+"zh": "殘虐獵人",
+"en": "Relentless Hunter",
+"style": 8100,
+"kind": "rune"
+},
+"8106": {
+"zh": "終焉獵人",
+"en": "Ultimate Hunter",
+"style": 8100,
+"kind": "rune"
+},
+"8300": {
+"zh": "啟示",
+"en": "Inspiration",
+"style": 8300,
+"kind": "style"
+},
+"8351": {
+"zh": "冰川增幅",
+"en": "Glacial Augment",
+"style": 8300,
+"kind": "rune"
+},
+"8360": {
+"zh": "啟封法書",
+"en": "Unsealed Spellbook",
+"style": 8300,
+"kind": "rune"
+},
+"8369": {
+"zh": "先發制人",
+"en": "First Strike",
+"style": 8300,
+"kind": "rune"
+},
+"8306": {
+"zh": "海克斯充能閃現",
+"en": "Hextech Flashtraption",
+"style": 8300,
+"kind": "rune"
+},
+"8304": {
+"zh": "魔法靈靴",
+"en": "Magical Footwear",
+"style": 8300,
+"kind": "rune"
+},
+"8321": {
+"zh": "兌現",
+"en": "Cash Back",
+"style": 8300,
+"kind": "rune"
+},
+"8313": {
+"zh": "三倍藥水",
+"en": "Triple Tonic",
+"style": 8300,
+"kind": "rune"
+},
+"8352": {
+"zh": "時間扭曲藥水",
+"en": "Time Warp Tonic",
+"style": 8300,
+"kind": "rune"
+},
+"8345": {
+"zh": "乾糧快遞",
+"en": "Biscuit Delivery",
+"style": 8300,
+"kind": "rune"
+},
+"8347": {
+"zh": "銀河視界",
+"en": "Cosmic Insight",
+"style": 8300,
+"kind": "rune"
+},
+"8410": {
+"zh": "斗轉星移",
+"en": "Approach Velocity",
+"style": 8300,
+"kind": "rune"
+},
+"8316": {
+"zh": "萬事通",
+"en": "Jack Of All Trades",
+"style": 8300,
+"kind": "rune"
+},
+"8000": {
+"zh": "精準",
+"en": "Precision",
+"style": 8000,
+"kind": "style"
+},
+"8005": {
+"zh": "強攻",
+"en": "Press the Attack",
+"style": 8000,
+"kind": "rune"
+},
+"8008": {
+"zh": "致命節奏",
+"en": "Lethal Tempo",
+"style": 8000,
+"kind": "rune"
+},
+"8021": {
+"zh": "瞬疾步法",
+"en": "Fleet Footwork",
+"style": 8000,
+"kind": "rune"
+},
+"8010": {
+"zh": "征服者",
+"en": "Conqueror",
+"style": 8000,
+"kind": "rune"
+},
+"9101": {
+"zh": "吸取生命",
+"en": "Absorb Life",
+"style": 8000,
+"kind": "rune"
+},
+"9111": {
+"zh": "凱旋",
+"en": "Triumph",
+"style": 8000,
+"kind": "rune"
+},
+"8009": {
+"zh": "氣定神閒",
+"en": "Presence of Mind",
+"style": 8000,
+"kind": "rune"
+},
+"9104": {
+"zh": "傳奇：敏捷",
+"en": "Legend: Alacrity",
+"style": 8000,
+"kind": "rune"
+},
+"9105": {
+"zh": "傳奇：疾速",
+"en": "Legend: Haste",
+"style": 8000,
+"kind": "rune"
+},
+"9103": {
+"zh": "傳奇：血脈",
+"en": "Legend: Bloodline",
+"style": 8000,
+"kind": "rune"
+},
+"8014": {
+"zh": "致命一擊",
+"en": "Coup de Grace",
+"style": 8000,
+"kind": "rune"
+},
+"8017": {
+"zh": "斬殺",
+"en": "Cut Down",
+"style": 8000,
+"kind": "rune"
+},
+"8299": {
+"zh": "背水一戰",
+"en": "Last Stand",
+"style": 8000,
+"kind": "rune"
+},
+"8400": {
+"zh": "意志",
+"en": "Resolve",
+"style": 8400,
+"kind": "style"
+},
+"8437": {
+"zh": "不死之握",
+"en": "Grasp of the Undying",
+"style": 8400,
+"kind": "rune"
+},
+"8439": {
+"zh": "裂地衝擊",
+"en": "Aftershock",
+"style": 8400,
+"kind": "rune"
+},
+"8465": {
+"zh": "神聖守護",
+"en": "Guardian",
+"style": 8400,
+"kind": "rune"
+},
+"8446": {
+"zh": "爆破",
+"en": "Demolish",
+"style": 8400,
+"kind": "rune"
+},
+"8463": {
+"zh": "生命之泉",
+"en": "Font of Life",
+"style": 8400,
+"kind": "rune"
+},
+"8401": {
+"zh": "盾擊",
+"en": "Shield Bash",
+"style": 8400,
+"kind": "rune"
+},
+"8429": {
+"zh": "調節",
+"en": "Conditioning",
+"style": 8400,
+"kind": "rune"
+},
+"8444": {
+"zh": "回春",
+"en": "Second Wind",
+"style": 8400,
+"kind": "rune"
+},
+"8473": {
+"zh": "骨甲",
+"en": "Bone Plating",
+"style": 8400,
+"kind": "rune"
+},
+"8451": {
+"zh": "過度生長",
+"en": "Overgrowth",
+"style": 8400,
+"kind": "rune"
+},
+"8453": {
+"zh": "甦醒",
+"en": "Revitalize",
+"style": 8400,
+"kind": "rune"
+},
+"8242": {
+"zh": "堅毅",
+"en": "Unflinching",
+"style": 8400,
+"kind": "rune"
+},
+"8200": {
+"zh": "巫術",
+"en": "Sorcery",
+"style": 8200,
+"kind": "style"
+},
+"8214": {
+"zh": "召喚艾莉",
+"en": "Summon Aery",
+"style": 8200,
+"kind": "rune"
+},
+"8229": {
+"zh": "奧術彗星",
+"en": "Arcane Comet",
+"style": 8200,
+"kind": "rune"
+},
+"8230": {
+"zh": "風暴浪湧",
+"en": "Stormraider's Surge",
+"style": 8200,
+"kind": "rune"
+},
+"8992": {
+"zh": "冥火之觸",
+"en": "Deathfire Touch",
+"style": 8200,
+"kind": "rune"
+},
+"8224": {
+"zh": "公理奧術大師",
+"en": "Axiom Arcanist",
+"style": 8200,
+"kind": "rune"
+},
+"8226": {
+"zh": "附魔之帶",
+"en": "Manaflow Band",
+"style": 8200,
+"kind": "rune"
+},
+"8275": {
+"zh": "光輝披風",
+"en": "Nimbus Cloak",
+"style": 8200,
+"kind": "rune"
+},
+"8210": {
+"zh": "卓越",
+"en": "Transcendence",
+"style": 8200,
+"kind": "rune"
+},
+"8234": {
+"zh": "迅捷",
+"en": "Celerity",
+"style": 8200,
+"kind": "rune"
+},
+"8233": {
+"zh": "絕對專注",
+"en": "Absolute Focus",
+"style": 8200,
+"kind": "rune"
+},
+"8237": {
+"zh": "焦灼",
+"en": "Scorch",
+"style": 8200,
+"kind": "rune"
+},
+"8232": {
+"zh": "水行者",
+"en": "Waterwalking",
+"style": 8200,
+"kind": "rune"
+},
+"8236": {
+"zh": "暴風凝聚",
+"en": "Gathering Storm",
+"style": 8200,
+"kind": "rune"
+},
+"5001": {
+"zh": "生命值成長",
+"en": "生命值成長",
+"style": 0,
+"kind": "stat"
+},
+"5002": {
+"zh": "護甲",
+"en": "護甲",
+"style": 0,
+"kind": "stat"
+},
+"5003": {
+"zh": "魔法抗性",
+"en": "魔法抗性",
+"style": 0,
+"kind": "stat"
+},
+"5005": {
+"zh": "攻擊速度",
+"en": "攻擊速度",
+"style": 0,
+"kind": "stat"
+},
+"5007": {
+"zh": "技能急速",
+"en": "技能急速",
+"style": 0,
+"kind": "stat"
+},
+"5008": {
+"zh": "適應性攻擊力",
+"en": "適應性攻擊力",
+"style": 0,
+"kind": "stat"
+},
+"5010": {
+"zh": "移動速度",
+"en": "移動速度",
+"style": 0,
+"kind": "stat"
+},
+"5011": {
+"zh": "生命值",
+"en": "生命值",
+"style": 0,
+"kind": "stat"
+},
+"5013": {
+"zh": "韌性與緩速抗性",
+"en": "韌性與緩速抗性",
+"style": 0,
+"kind": "stat"
+}
+}
+}

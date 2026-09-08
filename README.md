@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前六个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前七个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -9,6 +9,7 @@ Chester 自用的 Claude Code plugin 集合。目前六个 plugin，各自独立
 | **leaps-strategy** | 针对特定股票制定 **LEAPS 长天期 call 槓桿策略**，串接 IBKR connector 抓真实选择权链，产出候选合约清单 |
 | **grill-me** | 对一个计划、决策或想法**地毯式提问**，逐一走过决策树、每题给建议答案，直到达成共识才罢休 |
 | **video-cut** | 从**固定机位的录影**里自动剪掉特写／观众席／转场卡等非主机位镜头，逐帧侦测＋关键帧对齐，支援无损直切 |
+| **lol-replay** | 離線解析 **League of Legends .rofl 重播檔**：賽後統計、對位比較、任意時刻座標、擊殺者、購買順序、技能施放，回答「這場為什麼輸」「凱特琳為什麼輸出低」 |
 | **concept-check** | 丢一个概念进去，讲清楚之后**用至少四轮四选一反问**，验证是真的懂而不是看懂；答错先给指针不给答案 |
 
 ## 安装
@@ -21,6 +22,7 @@ Chester 自用的 Claude Code plugin 集合。目前六个 plugin，各自独立
 /plugin install grill-me@chester-skills
 /plugin install video-cut@chester-skills
 /plugin install concept-check@chester-skills
+/plugin install lol-replay@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -34,7 +36,8 @@ plugins/
 ├── leaps-strategy/  leaps-strategy
 ├── grill-me/        grill-me, grilling
 ├── video-cut/       camera-cut
-└── concept-check/   concept-check
+├── concept-check/   concept-check
+└── lol-replay/      lol-replay（開發 repo：ChesterHsieh/lol-reviewer）
 ```
 
 ---

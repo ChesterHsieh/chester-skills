@@ -1,0 +1,175 @@
+{
+"version": "16.17.1",
+"spells": {
+"21": {
+"zh": "光盾",
+"en": "SummonerBarrier",
+"id": 21
+},
+"721": {
+"zh": "光盾",
+"en": "SummonerBarrier_Jade",
+"id": 721
+},
+"716": {
+"zh": "士氣",
+"en": "SummonerBattleCry_Jade",
+"id": 716
+},
+"1": {
+"zh": "淨化",
+"en": "SummonerBoost",
+"id": 1
+},
+"71": {
+"zh": "淨化",
+"en": "SummonerBoost_Jade",
+"id": 71
+},
+"2202": {
+"zh": "閃現",
+"en": "SummonerCherryFlash",
+"id": 2202
+},
+"2201": {
+"zh": "逃亡",
+"en": "SummonerCherryHold",
+"id": 2201
+},
+"75": {
+"zh": "洞察",
+"en": "SummonerClairvoyance_Jade",
+"id": 75
+},
+"14": {
+"zh": "點燃",
+"en": "SummonerDot",
+"id": 14
+},
+"714": {
+"zh": "點燃",
+"en": "SummonerDot_Jade",
+"id": 714
+},
+"3": {
+"zh": "虛弱",
+"en": "SummonerExhaust",
+"id": 3
+},
+"73": {
+"zh": "虛弱",
+"en": "SummonerExhaust_Jade",
+"id": 73
+},
+"4": {
+"zh": "閃現",
+"en": "SummonerFlash",
+"id": 4
+},
+"74": {
+"zh": "閃現",
+"en": "SummonerFlash_Jade",
+"id": 74
+},
+"705": {
+"zh": "鞏固",
+"en": "SummonerFortify_Jade",
+"id": 705
+},
+"6": {
+"zh": "鬼步",
+"en": "SummonerHaste",
+"id": 6
+},
+"76": {
+"zh": "鬼步",
+"en": "SummonerHaste_Jade",
+"id": 76
+},
+"7": {
+"zh": "治療",
+"en": "SummonerHeal",
+"id": 7
+},
+"77": {
+"zh": "治療",
+"en": "SummonerHeal_Jade",
+"id": 77
+},
+"13": {
+"zh": "清晰",
+"en": "SummonerMana",
+"id": 13
+},
+"713": {
+"zh": "清晰",
+"en": "SummonerMana_Jade",
+"id": 713
+},
+"30": {
+"zh": "為了吾王！",
+"en": "SummonerPoroRecall",
+"id": 30
+},
+"31": {
+"zh": "普羅投擲",
+"en": "SummonerPoroThrow",
+"id": 31
+},
+"709": {
+"zh": "集結",
+"en": "SummonerRally_Jade",
+"id": 709
+},
+"777": {
+"zh": "重生",
+"en": "SummonerRevive_Jade",
+"id": 777
+},
+"11": {
+"zh": "重擊",
+"en": "SummonerSmite",
+"id": 11
+},
+"711": {
+"zh": "重擊",
+"en": "SummonerSmite_Jade",
+"id": 711
+},
+"39": {
+"zh": "標記",
+"en": "SummonerSnowURFSnowball_Mark",
+"id": 39
+},
+"32": {
+"zh": "標記",
+"en": "SummonerSnowball",
+"id": 32
+},
+"720": {
+"zh": "煉化",
+"en": "SummonerSpell_Promote_Jade",
+"id": 720
+},
+"12": {
+"zh": "傳送",
+"en": "SummonerTeleport",
+"id": 12
+},
+"712": {
+"zh": "傳送",
+"en": "SummonerTeleport_Jade",
+"id": 712
+},
+"54": {
+"zh": "預留欄位",
+"en": "Summoner_UltBookPlaceholder",
+"id": 54
+},
+"55": {
+"zh": "預留欄位與普攻型重擊",
+"en": "Summoner_UltBookSmitePlaceholder",
+"id": 55
+}
+}
+}
