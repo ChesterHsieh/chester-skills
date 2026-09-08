@@ -25,6 +25,7 @@ SKILLS=(
   "grill-me:plugins/grill-me/skills/grill-me"
   "grilling:plugins/grill-me/skills/grilling"
   "camera-cut:plugins/video-cut/skills/camera-cut"
+  "concept-check:plugins/concept-check/skills/concept-check"
 )
 AGENTS=("deck-reviewer:plugins/deck-skills/agents/deck-reviewer.md")
 

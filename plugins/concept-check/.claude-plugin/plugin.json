@@ -1,0 +1,24 @@
+{
+  "name": "concept-check",
+  "displayName": "Concept Check",
+  "version": "0.1.0",
+  "description": "把一个概念／术语／体系讲清楚，然后用至少四轮四选一反问，验证使用者是真的懂。答错先给定向指针让他重想，第二次才公布答案并补一题变形题。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": [
+    "learning",
+    "explain",
+    "quiz",
+    "socratic",
+    "self-assessment",
+    "concept"
+  ],
+  "skills": [
+    "./skills/concept-check"
+  ]
+}

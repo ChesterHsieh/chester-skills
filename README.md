@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前五个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前六个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -9,6 +9,7 @@ Chester 自用的 Claude Code plugin 集合。目前五个 plugin，各自独立
 | **leaps-strategy** | 针对特定股票制定 **LEAPS 长天期 call 槓桿策略**，串接 IBKR connector 抓真实选择权链，产出候选合约清单 |
 | **grill-me** | 对一个计划、决策或想法**地毯式提问**，逐一走过决策树、每题给建议答案，直到达成共识才罢休 |
 | **video-cut** | 从**固定机位的录影**里自动剪掉特写／观众席／转场卡等非主机位镜头，逐帧侦测＋关键帧对齐，支援无损直切 |
+| **concept-check** | 丢一个概念进去，讲清楚之后**用至少四轮四选一反问**，验证是真的懂而不是看懂；答错先给指针不给答案 |
 
 ## 安装
 
@@ -19,6 +20,7 @@ Chester 自用的 Claude Code plugin 集合。目前五个 plugin，各自独立
 /plugin install leaps-strategy@chester-skills
 /plugin install grill-me@chester-skills
 /plugin install video-cut@chester-skills
+/plugin install concept-check@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -31,7 +33,8 @@ plugins/
 ├── skill-tree/      skill-tree
 ├── leaps-strategy/  leaps-strategy
 ├── grill-me/        grill-me, grilling
-└── video-cut/       camera-cut
+├── video-cut/       camera-cut
+└── concept-check/   concept-check
 ```
 
 ---
@@ -192,6 +195,42 @@ zsh 的 glob 中止、ffmpeg 吃 stdin）写在 `references/gotchas.md`。
 
 ---
 
+# concept-check
+
+丢一个概念、术语、体系，或两个东西的关系进来，交付物**不是一篇解释**，是一段有输赢的对话。
+
+```
+/concept-check 動態平衡是什麼
+/concept-check 地端翻譯容器的辭典覆蓋準則
+```
+
+```
+定深度 → 解释（300–500 字）→ 检核循环（≥4 轮，一次一题）→ 结算
+```
+
+设计上只有一件事要防：**写一篇很好的解释，然后草草出两题、还自己把答案接在后面。** 那就退化成一次普通问答了。
+教学发生在检核循环里，解释那一段只是给弹药——所以解释刻意压短，而且规定出完一题就停住等回答。
+
+三个重点：
+
+- **四轮是一道难度阶梯，不是四题同级的题。** 轮 1 辨识（跟最近的邻居概念分开）、轮 2 边界（什么情况下它不成立）、
+  轮 3 迁移（换一个解释里没出现过的场景还认不认得出来）、轮 4 取舍或量级（知道代价）。
+  **第 3、4 轮才拉得开差距**——四轮都考定义，跟单字卡没两样。
+- **答错先给指针，不公布答案。** 指针要针对他选的**那一个**选项：先说那个选项在什么情况下确实成立，
+  再指出这题里哪个条件让它不成立，然后「再想一次？」。同一题第二次还错才公布答案，并补一题变形题。
+  说「不知道」也走指针那条路——硬猜跟真的懂是两件事，指针能把它们分开。
+- **题目出成 UI 选单**（`AskUserQuestion`），四选一正好对上它每题 2–4 个 option 的上限。
+  一次 call 只放**一个** question——工具允许一次问四题，但那等于一次把四题丢出去，难度自适应与指针机制同时失效。
+  选项主干写在 `label`（有些客户端只显示 label，不能靠 description 补完），机制说明写在 `description`。
+  没有这个工具的环境退回 A/B/C/D 文字格式。
+- **不准安慰。** 「很接近了！」会让人误以为方向是对的。结算也不准写「你完全掌握了」，没验到的要明写没验到。
+
+解释本身按问法分四种骨架（单一术语／两者关系／一整套体系／「为什么会 X」），
+体系型先给地图再指出承重墙，题目考**部件之间的依赖**而不是「有哪几个部件」。
+规格：`plugins/concept-check/skills/concept-check/references/`（`explain-shapes.md` 解释骨架、`question-design.md` 出题与指针）。
+
+---
+
 ## 本地开发
 
 改 skill 内容时，用软链装到 `~/.claude/` 直接生效，不必走 plugin 安装流程：
@@ -214,6 +253,10 @@ zsh 的 glob 中止、ffmpeg 吃 stdin）写在 `references/gotchas.md`。
 **leaps-strategy** 的 delta 是用 Black-Scholes 从 IV 反推的近似值，不是券商回报的官方 greeks，
 无股息／连续复利假设下与实际会有小差距；判断分类够用，精算保证金不够用。
 另外 IBKR 的 `option_midpoint_iv` 在长天期合约上会回无效值，脚本改用 `implied_vol`。
+
+**concept-check** 的四轮检核挡得住「看懂了以为自己懂」，挡不住**解释本身就讲错**——
+skill 规定涉及版本、数字、规格时要去查，但没有机械闸门强制它查。讲错的概念配上四轮题，只会把错误观念钉得更牢。
+另外它是纯对话式的，没有跨 session 记忆：同一个概念隔週再问，会从头再走一次四轮。
 
 **video-cut** 只对**机位固定**的片子有效。手持跟拍、频繁推轨变焦的素材每一帧长相都不同，这套方法会整片误判——skill 会先要求用缩图墙确认前提，不成立时直接讲，不硬做。
 另外 `hybrid`／`lossless` 走 concat 出来的档案，接点上会有重复时间戳（`non monotonically increasing dts`）。播放器都正常播，但拿去重新编码会看到警告，试过 `+genpts` 与 `setts` 都修不掉，要根除只能走 `reencode`。
