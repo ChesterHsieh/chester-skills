@@ -74,6 +74,20 @@
         "lossless-cut",
         "sports"
       ]
+    },
+    {
+      "name": "concept-check",
+      "source": "./plugins/concept-check",
+      "description": "把一个概念、术语或体系讲清楚，接着用至少四轮四选一反问验证是不是真的懂。答错先给定向指针让人重想，第二次才公布答案并补一题变形题。",
+      "category": "productivity",
+      "keywords": [
+        "learning",
+        "explain",
+        "quiz",
+        "socratic",
+        "self-assessment",
+        "concept"
+      ]
     }
   ]
 }
