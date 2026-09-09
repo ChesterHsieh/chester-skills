@@ -137,8 +137,10 @@ connector **不回传 delta**，所以自己用 Black-Scholes 算。把上面抓
 
 价格一律**每股**（不是每口）。`iv` 取 `implied-vol.annual_iv`。
 
+脚本在本 skill 目录下，`$SKILL` 代表本 skill 的目录（同时支援 `-` 从 stdin 读）：
+
 ```bash
-python3 plugins/leaps-strategy/skills/leaps-strategy/screener.py quotes.json
+python3 $SKILL/screener.py quotes.json
 ```
 
 产出（上面这份 NVDA 真实报价的实际输出）：
