@@ -1,8 +1,8 @@
 {
   "name": "leaps-strategy",
   "displayName": "LEAPS Strategy",
-  "version": "0.1.0",
-  "description": "针对特定股票制定 LEAPS 长天期 call 槓桿策略：从 IBKR connector 抓真实选择权链，用 Black-Scholes 补算 delta，依三关检查清单产出可下单的候选合约。",
+  "version": "0.2.0",
+  "description": "针对特定股票制定 LEAPS 长天期 call 槓桿策略：从 IBKR connector 抓真实选择权链，用 Black-Scholes 补算 delta，依论述类型、财报 IV 封锁窗与三关检查清单产出可下单的候选合约，并附履约价交叉点与等 delta 曝险比较。",
   "author": {
     "name": "Chester Hsieh",
     "url": "https://github.com/ChesterHsieh"
@@ -10,6 +10,18 @@
   "homepage": "https://github.com/ChesterHsieh/chester-skills",
   "repository": "https://github.com/ChesterHsieh/chester-skills",
   "license": "MIT",
-  "keywords": ["options", "leaps", "ibkr", "leverage", "delta", "pmcc", "trading"],
-  "skills": ["./skills/leaps-strategy"]
+  "keywords": [
+    "options",
+    "leaps",
+    "ibkr",
+    "leverage",
+    "delta",
+    "vega",
+    "earnings",
+    "pmcc",
+    "trading"
+  ],
+  "skills": [
+    "./skills/leaps-strategy"
+  ]
 }
