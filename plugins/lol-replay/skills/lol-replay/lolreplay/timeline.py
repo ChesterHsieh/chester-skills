@@ -34,6 +34,7 @@ class Event:
     item: Optional[int] = None
     price: Optional[float] = None
     gold_after: Optional[float] = None
+    respawn: Optional[float] = None       # death timer in seconds (kill packet)
 
     @property
     def clock(self) -> str:
@@ -179,7 +180,7 @@ def _kill_decorator(spec: PayloadSpec, net_ids: Tuple[int, ...]) -> Optional[Dec
         if info is None:
             return {}
         return {"killer": index.get(info.killer_netid) if info.killer_netid is not None else None,
-                "killer_netid": info.killer_netid, "pos": info.pos}
+                "killer_netid": info.killer_netid, "pos": info.pos, "respawn": info.respawn}
     return decorate
 
 

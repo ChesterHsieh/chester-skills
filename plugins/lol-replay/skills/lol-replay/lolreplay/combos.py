@@ -27,7 +27,7 @@ ENGAGE_RADIUS = 1200.0     # an enemy champion this close to the caster makes th
 AIM_RADIUS = 450.0         # an enemy this close to an aim point is taken as that spell's target
 AIM_MIN = 50.0             # an aim point this close to the caster is a self-cast
 OUTCOME_WINDOW_S = 3.0     # deaths up to this long after the last cast are the combo's result
-CORPSE_S = 6.0             # a champion that died this recently is not "near" (its track still shows the death spot)
+CORPSE_S = 6.0             # death timer when the kill packet has none (a dead champion's track still shows the death spot)
 FLASH_RANGE = 400.0
 FLASH_ENEMY_RADIUS = 1500.0
 FLASH_MOVE_MIN = 150.0     # change of distance to the nearest enemy that makes a flash offensive / an escape
@@ -212,13 +212,13 @@ def aimed_enemy(cast: Cast, enemies: Sequence[int], position: PositionFn, radius
 
 
 def living(position: PositionFn, deaths: Sequence[Event]) -> PositionFn:
-    """Position lookup that hides champions who died less than CORPSE_S ago."""
-    times: Dict[int, list] = {}
+    """Position lookup that hides champions while they are dead (kill-packet death timer, else CORPSE_S)."""
+    spans: Dict[int, list] = {}
     for e in deaths:
-        times.setdefault(e.player, []).append(e.time)
+        spans.setdefault(e.player, []).append((e.time, e.respawn or CORPSE_S))
 
     def lookup(player: int, t: float) -> Optional[Pos]:
-        if any(0 < t - td < CORPSE_S for td in times.get(player, ())):
+        if any(0 < t - td < dead for td, dead in spans.get(player, ())):
             return None
         return position(player, t)
     return lookup

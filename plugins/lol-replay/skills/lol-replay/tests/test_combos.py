@@ -89,6 +89,15 @@ def test_recent_corpse_is_not_a_nearby_enemy():
     assert not c.is_fight
 
 
+def test_death_timer_from_kill_packet_hides_corpse_until_respawn():
+    casts = [cast(310.0, Q, end=POSITIONS[ENEMY_A]), cast(310.5, E)]
+    timed = [Event(295.0, ENEMY_A, "death", respawn=20.0)]
+    (c,) = combos.build_combos(casts, ZED, TEAMS, timed, position)
+    assert not c.is_fight                      # still dead at 310 (respawns at 315)
+    (fallback,) = combos.build_combos(casts, ZED, TEAMS, [death(295.0, ENEMY_A)], position)
+    assert fallback.is_fight                   # no timer: hidden only for CORPSE_S
+
+
 def test_flash_direction_relative_to_nearest_enemy():
     toward = cast(10.0, FLASH, end=(1500.0, 1000.0))   # lands at 1400: 300 -> 100 from enemy A
     away = cast(20.0, FLASH, end=(500.0, 1000.0))       # lands at 600: 300 -> 700
