@@ -15,12 +15,16 @@ from typing import Dict, Optional
 DATA_DIR = Path(__file__).parent / "data"
 ATTACK_SUFFIXES = ("BasicAttack", "BasicAttack2", "BasicAttack3", "BasicAttack4", "BasicAttack5",
                    "BasicAttack6", "BasicAttack7", "BasicAttack8", "CritAttack", "CritAttack2", "CritAttack3")
-# second/third casts and recasts share the ability's script id with a suffix (ZedW2, IreliaE2, QuinnRFinale, NocturneParanoia2)
-RECAST_SUFFIXES = {"2": "第二段", "3": "第三段", "Recast": "再施放", "Finale": "第二段", "End": "結束", "Cast": "", "Missile": "", "Toggle": "切換", "Wrapper": ""}
+# second/third casts and recasts share the ability's script id with a suffix (ZedW2, IreliaE2, QuinnRFinale, NocturneParanoia2);
+# evolved abilities append "Long" (KhazixQLong, KhazixWLong)
+RECAST_SUFFIXES = {"2": "第二段", "3": "第三段", "Recast": "再施放", "Finale": "第二段", "End": "結束", "Cast": "", "Missile": "", "Toggle": "切換", "Wrapper": "", "Long": "（進化）"}
+STAGE_SUFFIXES = {"2": "2", "3": "3", "Recast": "2", "Finale": "2"}
+ITEM_ACTIVE_PREFIX = "道具主動："
 RECALL_NAMES = {"Recall": "回城", "SuperRecall": "強化回城", "RecallImproved": "回城", "OdinRecall": "回城", "TeamRecall": "回城"}
 GENERIC_NAMES = {
     "TrinketTotemLvl1": "飾品眼", "TrinketTotemLvl2": "飾品眼", "TrinketSweeperLvl1": "掃描透鏡", "TrinketOrbLvl1": "先知飾品", "TrinketOrbLvl3": "先知飾品",
     "ItemCrystalFlask": "重生藥水", "ItemDarkCrystalFlask": "腐敗藥水", "ItemPotion": "生命藥水", "RefillablePotion": "重生藥水", "ItemBiscuit": "餅乾", "ItemControlWard": "控制守衛", "ItemSightWard": "偵查守衛",
+    "ItemGhostWard": "偵查守衛", "TrinketSweeperLvl3": "掃描透鏡",
     "SummonerSmite": "懲戒", "SummonerSmiteAvatarOffensive": "懲戒", "SummonerSmiteAvatarUtility": "懲戒", "SummonerSmiteAvatarDefensive": "懲戒",
     "S5_SummonerSmitePlayerGanker": "懲戒", "S5_SummonerSmiteDuel": "懲戒", "SummonerSmitePlayerGanker": "懲戒", "SummonerSmiteDuel": "懲戒",
     "SummonerTeleportUpgrade": "強化傳送", "S12_SummonerTeleportUpgrade": "強化傳送", "SummonerFlashPerksHextechFlashtraptionV2": "海克斯閃現",
@@ -33,6 +37,7 @@ class SpellRef:
     slot: str              # Q/W/E/R/P, "S" summoner, "A" attack, "B" recall, "I" item/trinket/potion, "?" unknown
     zh: str
     champion: Optional[str] = None
+    stage: str = ""        # "2"/"3" for second/third casts (ZedW2), "" otherwise
 
     @property
     def label(self) -> str:
@@ -41,6 +46,13 @@ class SpellRef:
         if self.slot == "P":
             return f"被動({self.zh})"
         return self.zh
+
+    @property
+    def token(self) -> str:
+        """Short form used in combo sequences: Q, W2, 閃現, 瀆神九頭蛇."""
+        if self.slot in "QWER":
+            return self.slot + self.stage
+        return self.zh.replace(ITEM_ACTIVE_PREFIX, "")
 
 
 def elf_hash(name: str) -> int:
@@ -86,11 +98,12 @@ def hash_table() -> Dict[int, SpellRef]:
         for slot, info in slots.items():
             table[elf_hash(info["id"])] = SpellRef(info["id"], slot, info["zh"], champ)
             for suffix, note in RECAST_SUFFIXES.items():
+                stage = STAGE_SUFFIXES.get(suffix, "")
                 script = info["id"] + suffix
-                table.setdefault(elf_hash(script), SpellRef(script, slot, f"{info['zh']}{note}", champ))
+                table.setdefault(elf_hash(script), SpellRef(script, slot, f"{info['zh']}{note}", champ, stage))
                 if slot in "QWER":
                     script = champ + slot + suffix
-                    table.setdefault(elf_hash(script), SpellRef(script, slot, f"{info['zh']}{note}", champ))
+                    table.setdefault(elf_hash(script), SpellRef(script, slot, f"{info['zh']}{note}", champ, stage))
         for suffix in ATTACK_SUFFIXES:
             script = champ + suffix
             table[elf_hash(script)] = SpellRef(script, "A", "普攻" if "Crit" not in suffix else "暴擊普攻", champ)
@@ -100,7 +113,7 @@ def hash_table() -> Dict[int, SpellRef]:
         table.setdefault(elf_hash(script), SpellRef(script, "S" if script.startswith("Summoner") else "I", zh))
     for item_id, info in _items().items():
         script = f"{item_id}Active"
-        table.setdefault(elf_hash(script), SpellRef(script, "I", f"道具主動：{info.get('zh') or info.get('en') or item_id}"))
+        table.setdefault(elf_hash(script), SpellRef(script, "I", f"{ITEM_ACTIVE_PREFIX}{info.get('zh') or info.get('en') or item_id}"))
     for script, zh in RECALL_NAMES.items():
         table[elf_hash(script)] = SpellRef(script, "B", zh)
     return table

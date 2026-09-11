@@ -17,10 +17,16 @@ NETID_TAG = 0x40000000
 # 16.17 object layouts (root-relative offsets; nested objects are flattened by the decoder)
 KILL_FIELDS = {"respawn": 0x10, "killer": 0x18, "x": 0x24, "height": 0x28, "z": 0x2c}
 SHOP_FIELDS = {"gold_after": 0x10, "item": 0x4c, "price": 0x50}
+# +0xb4 is the net id of the cast instance itself (it increases with every cast), not the target.
+# The target list is the vector at +0x100 (2 obfuscated bytes per target, empty for skillshots) and is
+# not decoded yet, so targets are inferred from positions (see combos.py). The client sometimes sends
+# the same cast twice; `seq` (+0x1c) identifies the cast.
+# `start` (+0xf0) is the caster position (matches the waypoint track within a few units); `end` (+0xa8)
+# is the aim point, which for targeted spells is the target's position.
 CAST_FIELDS = {
     "caster": 0x18, "seq": 0x1c, "spell_hash": 0x48, "cast_time": 0x6c,
-    "vec_a": (0x7c, 0x80, 0x84), "direction": (0x90, 0x94, 0x98), "start": (0xa8, 0xac, 0xb0),
-    "target": 0xb4, "end": (0xf0, 0xf4, 0xf8), "time": 0xe4,
+    "vec_a": (0x7c, 0x80, 0x84), "direction": (0x90, 0x94, 0x98), "end": (0xa8, 0xac, 0xb0),
+    "instance": 0xb4, "start": (0xf0, 0xf4, 0xf8), "time": 0xe4,
 }
 
 
@@ -42,7 +48,7 @@ class PurchaseInfo:
 class CastInfo:
     caster_netid: Optional[int]
     spell_hash: Optional[int]
-    target_netid: Optional[int]
+    seq: Optional[int]
     start: Optional[Tuple[float, float]]
     end: Optional[Tuple[float, float]]
     cast_time: Optional[float]
@@ -98,5 +104,5 @@ def decode_cast(spec: dict, content: bytes) -> Optional[CastInfo]:
         return None
     f = CAST_FIELDS
     return CastInfo(caster_netid=_netid(v, f["caster"]), spell_hash=_int(v, f["spell_hash"]),
-                    target_netid=_netid(v, f["target"]), start=_xz(v, f["start"]), end=_xz(v, f["end"]),
+                    seq=_int(v, f["seq"]), start=_xz(v, f["start"]), end=_xz(v, f["end"]),
                     cast_time=_float(v, f["cast_time"]))
