@@ -18,7 +18,7 @@ ROLE_ALIASES = {
 }
 TEAM_ALIASES = {100: ("藍方", "藍隊", "藍色", "blue", "藍"), 200: ("紅方", "紅隊", "紅色", "red", "紅")}
 NICKNAMES = {
-    "女警": "Caitlyn", "凱特": "Caitlyn", "蠻王": "Tryndamere", "螳螂": "Khazix", "武器": "Jax", "皇子": "JarvanIV",
+    "女警": "Caitlyn", "警女": "Caitlyn", "凱特": "Caitlyn", "蠻王": "Tryndamere", "螳螂": "Khazix", "武器": "Jax", "皇子": "JarvanIV",
     "盲僧": "LeeSin", "瞎子": "LeeSin", "猴子": "MonkeyKing", "稻草人": "Fiddlesticks", "狗頭": "Nasus",
     "鱷魚": "Renekton", "石頭人": "Malphite", "機器人": "Blitzcrank", "蜘蛛": "Elise", "小炮": "Tristana",
     "小砲": "Tristana", "大嘴": "KogMaw", "老鼠": "Twitch", "男槍": "Graves", "女槍": "MissFortune",
