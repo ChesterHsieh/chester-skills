@@ -14,7 +14,8 @@
   rofl_cli.py fight     TIME [--window W]                    everyone's position at TIME plus deaths within W seconds
   rofl_cli.py items     WHO                                  purchase order with item names, prices and gold left
   rofl_cli.py kills     [--who WHO]                          every death with killer and place (or only WHO's deaths/kills)
-  rofl_cli.py casts     WHO [FROM TO]                        spell casts (Q/W/E/R, summoners, items, recall) with target and position
+  rofl_cli.py casts     WHO [FROM TO]                        spell casts (Q/W/E/R, summoners, items, recall) with position, aim point and the enemy nearest it
+  rofl_cli.py combos    WHO [FROM TO] [--gap S] [--all]      combos: cast bursts with sequence, timing, inferred target, flashes and result
 Options: --json  --no-payload (metadata only, fast)
 Follow-up commands use the current session (last `session` call) unless --file is given.
 """
@@ -35,9 +36,9 @@ from lolreplay.container import RoflFormatError  # noqa: E402
 from lolreplay.names import resolve_player  # noqa: E402
 from lolreplay.pipeline import load_session, warn  # noqa: E402
 from lolreplay import workspace as wsmod  # noqa: E402
-from lolreplay.positions import distance, region_name  # noqa: E402
+from lolreplay.positions import region_name  # noqa: E402
 from lolreplay.timeline import fmt_clock  # noqa: E402
-from lolreplay import ddragon, spells  # noqa: E402
+from lolreplay import combos, ddragon, spells  # noqa: E402
 
 
 def cmd_summary(args) -> int:
@@ -248,16 +249,37 @@ def cmd_casts(args) -> int:
     t0 = wsmod.parse_time(args.start) if args.start else 0.0
     t1 = wsmod.parse_time(args.end) if args.end else float("inf")
     rows = tl.casts_of(p.index, t0, t1)
-    print(f"{_label(ws, p)} 施法 {len(rows)} 次（技能／召喚師技能／道具／回城；普攻不在施法封包裡）：")
+    enemies = tuple(o.index for o in ws.game.players if o.team != p.team)
+    pos = combos.living(lambda i, t: wsmod.position_of(ws, i, t), tl.deaths)
+    print(f"{_label(ws, p)} 施法 {len(rows)} 次（技能／召喚師技能／道具／回城；普攻不在施法封包裡；「瞄準」＝指向點 450 內最近的敵方英雄，由位置推定）：")
     for c in rows:
-        target = ""
-        if c.target is not None:
-            target = f" → {_label(ws, ws.game.players[c.target])}"
-        elif c.target_netid is not None:
-            target = " → 非英雄目標"
         where = f" 於 ({c.start[0]:.0f}, {c.start[1]:.0f}) {region_name(c.start)}" if c.start else ""
-        aim = f"，指向 ({c.end[0]:.0f}, {c.end[1]:.0f})" if c.end and (not c.start or distance(c.start, c.end) > 50) else ""
-        print(f"  {c.clock} {spells.label(c.spell_hash)}{target}{where}{aim}")
+        aim = combos.aim_point(c)
+        aim_txt = f"，指向 ({aim[0]:.0f}, {aim[1]:.0f})" if aim else ""
+        hit = combos.aimed_enemy(c, enemies, pos)
+        hit_txt = f"，瞄準 {_label(ws, ws.game.players[hit[0]])}（距指向點 {hit[1]:.0f}）" if hit else ""
+        print(f"  {c.clock} {spells.label(c.spell_hash)}{where}{aim_txt}{hit_txt}")
+    return 0
+
+
+def cmd_combos(args) -> int:
+    ws = _ws(args); p = _who(ws, args.who); tl = ws.session.timeline
+    if tl is None or "casts" not in tl.detail:
+        print("這個版本沒有施法封包規格，無法分析連招"); return 1
+    t0 = wsmod.parse_time(args.start) if args.start else 0.0
+    t1 = wsmod.parse_time(args.end) if args.end else float("inf")
+    every = [c for c in wsmod.combos_of(ws, p.index, args.gap) if t0 <= c.start <= t1]
+    shown = every if args.all else [c for c in every if c.is_fight]
+    name = lambda i: _label(ws, ws.game.players[i])  # noqa: E731
+    print(f"{_label(ws, p)} 連招（施法間隔 ≤{args.gap:g} 秒算一套；目標由位置推定；普攻不在施法封包裡，技能間的停頓可能是在普攻）：")
+    print("  " + combos.summary_line(combos.summarize(every)))
+    for c in shown:
+        print("  " + combos.describe(c, name))
+    if not shown:
+        print("  （這段時間沒有交戰連招；加 --all 看清線／打野連段）")
+    flashes = [f for f in wsmod.flashes_of(ws, p.index) if t0 <= f.time <= t1]
+    if flashes:
+        print("  " + "｜".join(combos.flash_text(f, name) for f in flashes))
     return 0
 
 
@@ -287,6 +309,9 @@ def build_parser() -> argparse.ArgumentParser:
     sp = sub.add_parser("kills"); sp.add_argument("--who"); sp.add_argument("--file"); sp.set_defaults(fn=cmd_kills)
     sp = sub.add_parser("casts"); sp.add_argument("who"); sp.add_argument("start", nargs="?"); sp.add_argument("end", nargs="?")
     sp.add_argument("--file"); sp.set_defaults(fn=cmd_casts)
+    sp = sub.add_parser("combos"); sp.add_argument("who"); sp.add_argument("start", nargs="?"); sp.add_argument("end", nargs="?")
+    sp.add_argument("--gap", type=float, default=combos.COMBO_GAP_S); sp.add_argument("--all", action="store_true")
+    sp.add_argument("--file"); sp.set_defaults(fn=cmd_combos)
     return p
 
 

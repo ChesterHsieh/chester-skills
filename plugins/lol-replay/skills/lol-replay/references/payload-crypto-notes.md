@@ -53,7 +53,7 @@ C. **接受目前的 envelope 層**：死亡／升級／購物／活動量時間
 | type | 意義 | 關鍵欄位（物件偏移） |
 |---|---|---|
 | 1262 | **WaypointGroup 路徑點**（寄給 net_id 0，每秒約 22 筆） | blob：每筆 `u16 type｜u32 net_id｜f32 speed｜bitmask｜i16/i8 路徑點`，座標 = i16×2 + (7358, 7412) |
-| 217 | **施法／攻擊**（CastSpellAns） | +0x18 施法者、+0x48 技能 hash(varint)、+0x6c 時間、+0x7c/0x80/0x84 與 +0xa8/0xac/0xb0 座標、+0x90/0x98 方向、+0xb4 目標、+0xf0/f4/f8 終點 |
+| 217 | **施法／攻擊**（CastSpellAns） | +0x18 施法者、+0x1c 施法序號、+0x48 技能 hash(varint)、+0x6c 時間、+0x7c/0x80/0x84 座標、+0xa8/0xac/0xb0 指向點、+0x90/0x98 方向、+0xb4 施法實例 net_id、+0xf0/f4/f8 施法者位置、+0x100 目標清單（未解，見 2026-09-11） |
 | 767 | 攻擊指令類（目標 net_id + hash + float） | +0x10 目標、+0x2c 自己 |
 | 1189 | 實體狀態 blob（HP 等 big-endian float） | blob |
 | 743 / 732 | 死亡（復活秒數 f32 BE） | +0x10 |
@@ -83,9 +83,23 @@ helper 對照表可用 `helper_probe.py`／`varint_probe.py`／`blob_helper_prob
 |---|---|---|
 | 732 擊殺 | +0x10 復活秒數 f32、+0x18 擊殺者 net_id(varint)、+0x24/+0x28/+0x2c 死亡座標 (x, 高度, z) | 48/48 封包（+0x40 一個不需要的 varint 有 36 筆對不上模擬器的「倒數第二次寫入」，疑似參考值本身不對） |
 | 777 購買 | +0x10 購後金錢 f32、+0x4c 道具 id(varint)、+0x50 價格 f32 | 165/165 |
-| 217 施法 | +0x18 施法者、+0x48 技能 hash、+0x6c 施放時間、+0x90/0x94/0x98 方向、+0xa8/0xac/0xb0 起點、+0xb4 目標 net_id、+0xe4 時間、+0xf0/0xf4/0xf8 終點 | 1674 封包：674 全欄位一致；施法欄位（到終點為止）≥1597 一致，尾端 +0x138/+0x13c/+0x140 三個不需要的 varint 在約半數封包不符、77 筆在尾端解碼失敗 → `decode_cast` 用 partial 解碼只取前面的欄位 |
+| 217 施法 | +0x18 施法者、+0x1c 施法序號、+0x48 技能 hash、+0x6c 施放時間、+0x90/0x94/0x98 方向、+0xa8/0xac/0xb0 指向點、+0xb4 施法實例 net_id、+0xe4 時間、+0xf0/0xf4/0xf8 施法者位置 | 1674 封包：674 全欄位一致；施法欄位（到終點為止）≥1597 一致，尾端 +0x138/+0x13c/+0x140 三個不需要的 varint 在約半數封包不符、77 筆在尾端解碼失敗 → `decode_cast` 用 partial 解碼只取前面的欄位 |
 
 ### 技能 hash
 
 `+0x48` 是 League 傳統的 spell hash：對小寫腳本名做 ELF hash（28 bit）。實測 `IreliaE` → `0x008c2f05` 與模擬器解出的值完全一致。
 `lolreplay/spells.py` 用 Data Dragon 的每位英雄 Q/W/E/R/被動腳本 id（`tools/fetch_champion_spells.py` 產生 `data/champion_spells.json`）、召喚師技能 id、`<Champ>BasicAttack*`／`CritAttack*`、`Recall` 建反查表。
+
+## 2026-09-11 施法欄位修正（為了連招分析）
+
+用 TW2-443949239（16.17，1348 筆施法封包）對照路徑點軌跡與擊殺封包：
+
+- **起點／終點原本對調**：+0xf0/f4/f8 與施法者當下的軌跡位置距離中位數 3（p90 26）＝施法者位置；+0xa8/ac/b0 中位數 350＝指向點。
+  指向技的指向點就在目標身上（劫 R 的指向點離泰達米爾 10）。閃現：施法者位置→指向點的距離 ≈ 閃現前位置到指向點的距離，落點在 400 內。
+- **+0xb4 不是目標**：每次施法遞增，1348 筆沒有一筆是英雄 net_id，是施法實例（飛彈）自己的 net_id。
+- **+0x100 vector（elem 2）是目標清單**：skillshot 為空；指向技／AoE（劫 R、點燃、劫 E 打到兩人）有 1–2 筆。每筆 2 byte 經混淆，
+  第二 byte 和目標高度相關（葵恩 4/4 是 `xx dd`、卡瑪 3/3 是 `xx 3f`、賈克斯 2/2 是 `xx 9f`），但同一目標也會出現不同值（泰達米爾 `fd`／`0f`／`2f`），
+  spec 裡的 varint／fixed helper 都對不上 → 推測兩 byte 一起做 bit 混淆，要回執行檔看反序列化器才能確定。目前 `combos.py` 用「指向點 450 內最近的敵方英雄」推定目標。
+- **重複封包**：同一施法有時送兩次（+0x1c 施法序號相同，1348 → 1328 筆）；有些技能每個階段各送一個同 hash 的封包（泰達米爾 E 每次兩筆、伊瑞莉雅 W 蓄力／放出），
+  0.2 秒內同一人同 hash 視為同一次按鍵。兩者處理後 Q/W/E/R 次數與賽後統計（`SPELL1_CAST`…）的總差距從 169 降到約 30，剩下的主要是蓄力技。
+- 反查表補上 Kha'Zix 進化技能 `KhazixQLong`／`KhazixWLong`（原本 99 筆顯示成未知技能）、`ItemGhostWard`、`TrinketSweeperLvl3`。

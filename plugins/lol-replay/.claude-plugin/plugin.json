@@ -1,8 +1,8 @@
 {
   "name": "lol-replay",
   "displayName": "LoL Replay",
-  "version": "0.2.0",
-  "description": "離線解析 League of Legends .rofl 重播檔（ROFL2）：賽後統計、對位比較、死亡／升級／購物時間軸、任意時刻座標、擊殺者、購買順序、技能施放，回答「這場為什麼輸」「凱特琳為什麼輸出低」這類賽後檢討問題。",
+  "version": "0.3.0",
+  "description": "離線解析 League of Legends .rofl 重播檔（ROFL2）：賽後統計、對位比較、死亡／升級／購物時間軸、任意時刻座標、擊殺者、購買順序、技能施放、連招分析，回答「這場為什麼輸」「凱特琳為什麼輸出低」「劫的連招打得好不好」這類賽後檢討問題。",
   "author": {
     "name": "Chester Hsieh",
     "url": "https://github.com/ChesterHsieh"

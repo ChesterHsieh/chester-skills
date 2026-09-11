@@ -8,7 +8,7 @@ from __future__ import annotations
 import math
 from collections import Counter
 from dataclasses import dataclass
-from typing import Callable, Dict, Optional, Tuple
+from typing import Callable, Dict, Iterable, Optional, Tuple
 
 from .blocks import Block
 from .calibrate import PacketProfile
@@ -19,6 +19,7 @@ from .payload.spec import PayloadSpec
 FIGHT_WINDOW_S = 12.0
 FIRST_LEVEL = 2
 START_WINDOW_S = 10.0
+PRESS_MERGE_S = 0.2        # the same spell re-sent within this window is one key press
 
 
 @dataclass(frozen=True)
@@ -44,8 +45,7 @@ class Cast:
     time: float
     player: int
     spell_hash: Optional[int]
-    target: Optional[int] = None          # player index when the target is a champion
-    target_netid: Optional[int] = None
+    seq: Optional[int] = None             # client cast counter (duplicate packets share it)
     start: Optional[Tuple[float, float]] = None
     end: Optional[Tuple[float, float]] = None
 
@@ -196,6 +196,20 @@ def _shop_decorator(spec: PayloadSpec) -> Optional[Decorator]:
     return decorate
 
 
+def merge_key_presses(casts: Iterable[Cast], merge_s: float = PRESS_MERGE_S) -> Tuple[Cast, ...]:
+    """Drop repeats of the same spell by the same player within `merge_s`. Some spells send one
+    packet per phase (Tryndamere E, Irelia W charge/release), which would double their counts."""
+    last: Dict[Tuple[int, Optional[int]], float] = {}
+    out = []
+    for c in sorted(casts, key=lambda c: c.time):
+        key = (c.player, c.spell_hash)
+        prev = last.get(key)
+        last[key] = c.time
+        if prev is None or c.time - prev > merge_s:
+            out.append(c)
+    return tuple(out)
+
+
 def build_casts(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: PayloadSpec) -> Tuple[Cast, ...]:
     cast_type = spec.packet_type("cast")
     cast_spec = spec.packet_spec("cast")
@@ -203,6 +217,7 @@ def build_casts(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: Paylo
         return ()
     index = {nid: i for i, nid in enumerate(net_ids)}
     out = []
+    seen = set()
     for b in blocks:
         if b.type != cast_type or b.net_id not in index:
             continue
@@ -210,9 +225,12 @@ def build_casts(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: Paylo
         if info is None:
             continue
         player = index.get(info.caster_netid, index[b.net_id]) if info.caster_netid is not None else index[b.net_id]
-        target = index.get(info.target_netid) if info.target_netid is not None else None
-        out.append(Cast(b.time, player, info.spell_hash, target, info.target_netid, info.start, info.end))
-    return tuple(sorted(out, key=lambda c: c.time))
+        if info.seq is not None:
+            if (player, info.seq) in seen:
+                continue
+            seen.add((player, info.seq))
+        out.append(Cast(b.time, player, info.spell_hash, info.seq, info.start, info.end))
+    return merge_key_presses(out)
 
 
 def build_timeline(game: Game, blocks: Tuple[Block, ...], net_ids: Tuple[int, ...],

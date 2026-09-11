@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Optional, Tuple
 
-from . import ddragon, spells, report
+from . import combos, ddragon, spells, report
 from .analysis import Metrics, flags_for, opponent_of
 from .metadata import Game
 from .names import resolve_player
@@ -235,6 +235,60 @@ def render_casts(ws: Workspace, index: int) -> str:
     return "\n".join(lines)
 
 
+def champion_namer(ws: Workspace) -> combos.NameFn:
+    return lambda i: ddragon.champion_name(ws.game.players[i].champion)
+
+
+def _cast_inputs(ws: Workspace):
+    tl = ws.session.timeline
+    if tl is None or "casts" not in tl.detail:
+        return None
+    return tl.casts, tuple(p.team for p in ws.game.players), tl.deaths, lambda i, t: position_of(ws, i, t)
+
+
+def combos_of(ws: Workspace, index: int, gap_s: float = combos.COMBO_GAP_S) -> Tuple[combos.Combo, ...]:
+    inputs = _cast_inputs(ws)
+    if inputs is None:
+        return ()
+    casts, teams, deaths, pos = inputs
+    return combos.build_combos(casts, index, teams, deaths, pos, gap_s)
+
+
+def flashes_of(ws: Workspace, index: int) -> Tuple[combos.FlashUse, ...]:
+    inputs = _cast_inputs(ws)
+    if inputs is None:
+        return ()
+    casts, teams, deaths, pos = inputs
+    return combos.player_flashes(casts, index, teams, deaths, pos)
+
+
+def render_combos(ws: Workspace, index: int) -> str:
+    """Combo summary: conversion, openers, flashes, the combos around kills and deaths, lane opponent."""
+    mine = combos_of(ws, index)
+    if not mine:
+        return ""
+    name = champion_namer(ws)
+    stats = combos.summarize(mine)
+    lines = ["", f"## 連招（同一人施法間隔 ≤{combos.COMBO_GAP_S:g} 秒算一套；目標由位置推定；追問用 combos 指令看逐套細節）",
+             "- " + combos.summary_line(stats)]
+    if stats.openers:
+        lines.append("- 常用起手：" + combos.pattern_text(stats.openers))
+    repeated = combos.pattern_text(stats.patterns, min_count=2)
+    if repeated:
+        lines.append("- 重複出現的完整序列：" + repeated)
+    flashes = flashes_of(ws, index)
+    if flashes:
+        lines.append("- 閃現：" + "｜".join(combos.flash_text(f, name) for f in flashes))
+    decisive = [c for c in mine if c.is_fight and (c.kills or c.died)]
+    if decisive:
+        lines.append("- 有擊殺或陣亡的連招：")
+        lines.extend(f"  - {combos.describe(c, name)}" for c in decisive)
+    opp = opponent_of(ws.session.metrics, ws.session.metrics[index])
+    if opp is not None:
+        lines.append(f"- 對位 {name(opp.index)}：" + combos.summary_line(combos.summarize(combos_of(ws, opp.index))))
+    return "\n".join(lines)
+
+
 def render_context(ws: Workspace) -> str:
     s = ws.session
     parts = ["# Replay session context", f"- 檔案：{ws.rofl_path}", f"- 問題：{ws.question or '（未指定）'}"]
@@ -251,6 +305,7 @@ def render_context(ws: Workspace) -> str:
         parts.append(report.render_player(ws.game, s.metrics, m, s.timeline, flags))
         parts.append(render_positions(ws, ws.focus))
         parts.append(render_casts(ws, ws.focus))
+        parts.append(render_combos(ws, ws.focus))
     return "\n".join(parts)
 
 
