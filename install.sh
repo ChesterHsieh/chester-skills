@@ -27,6 +27,7 @@ SKILLS=(
   "camera-cut:plugins/video-cut/skills/camera-cut"
   "concept-check:plugins/concept-check/skills/concept-check"
   "lol-replay:plugins/lol-replay/skills/lol-replay"
+  "tw-base-breakout:plugins/tw-base-breakout/skills/tw-base-breakout"
 )
 AGENTS=("deck-reviewer:plugins/deck-skills/agents/deck-reviewer.md")
 

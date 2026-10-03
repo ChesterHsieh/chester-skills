@@ -101,6 +101,20 @@
         "post-game-analysis",
         "esports"
       ]
+    },
+    {
+      "name": "tw-base-breakout",
+      "source": "./plugins/tw-base-breakout",
+      "description": "台股型態粗掃：給代碼、題材或全部個股期貨標的，找出符合「穩定支撐區 → 均線糾結 → 突破」且貼近底線（進場區）的股票，附底線、失效價與個股期貨保證金。",
+      "category": "finance",
+      "keywords": [
+        "taiwan-stock",
+        "twse",
+        "tpex",
+        "technical-analysis",
+        "breakout",
+        "trading"
+      ]
     }
   ]
 }
