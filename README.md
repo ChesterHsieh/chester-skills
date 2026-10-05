@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前七个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -11,6 +11,7 @@ Chester 自用的 Claude Code plugin 集合。目前七个 plugin，各自独立
 | **video-cut** | 从**固定机位的录影**里自动剪掉特写／观众席／转场卡等非主机位镜头，逐帧侦测＋关键帧对齐，支援无损直切 |
 | **lol-replay** | 離線解析 **League of Legends .rofl 重播檔**：賽後統計、對位比較、任意時刻座標、擊殺者、購買順序、技能施放、連招分析，回答「這場為什麼輸」「凱特琳為什麼輸出低」「連招打得好不好」 |
 | **concept-check** | 丢一个概念进去，讲清楚之后**用至少四轮四选一反问**，验证是真的懂而不是看懂；答错先给指针不给答案 |
+| **tw-base-breakout** | 台股型态粗扫：给代码、题材或全部个股期货标的，找出符合「**稳定支撑区 → 均线纠结 → 突破**」且贴近底线（进场区）的股票，附失效价与期货保证金，可用 `--asof` 回测 |
 
 ## 安装
 
@@ -23,6 +24,7 @@ Chester 自用的 Claude Code plugin 集合。目前七个 plugin，各自独立
 /plugin install video-cut@chester-skills
 /plugin install concept-check@chester-skills
 /plugin install lol-replay@chester-skills
+/plugin install tw-base-breakout@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -37,7 +39,8 @@ plugins/
 ├── grill-me/        grill-me, grilling
 ├── video-cut/       camera-cut
 ├── concept-check/   concept-check
-└── lol-replay/      lol-replay（開發 repo：ChesterHsieh/lol-reviewer）
+├── lol-replay/      lol-replay（開發 repo：ChesterHsieh/lol-reviewer）
+└── tw-base-breakout/ tw-base-breakout
 ```
 
 ---

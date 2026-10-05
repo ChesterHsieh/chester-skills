@@ -1,0 +1,17 @@
+{
+  "name": "tw-base-breakout",
+  "displayName": "TW Base Breakout",
+  "version": "0.2.0",
+  "description": "台股型態粗掃：給代碼、題材或全部個股期貨標的，判斷是否符合「穩定價格支撐區 → MA5/20/60 糾結、MA120 上彎 → 突破」型態，標出貼近底線的進場區、上緣、失效價位與個股期貨保證金。資料直接抓 TWSE／TPEx／TAIFEX，只用 Python 標準函式庫。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": ["taiwan-stock", "twse", "tpex", "taifex", "stock-futures", "screener", "technical-analysis", "support", "trading"],
+  "skills": [
+    "./skills/tw-base-breakout"
+  ]
+}
