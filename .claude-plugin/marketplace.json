@@ -115,6 +115,20 @@
         "breakout",
         "trading"
       ]
+    },
+    {
+      "name": "finance-paper-search",
+      "source": "./plugins/finance-paper-search",
+      "description": "量化／金融 × RL／ML 论文检索：附带固定版本的 resp-mcp（OpenAlex、Semantic Scholar、arXiv 等），含 1990 年代早期文献的检索流程、种子论文清单与实测限制。",
+      "category": "research",
+      "keywords": [
+        "papers",
+        "literature-review",
+        "quant",
+        "reinforcement-learning",
+        "mcp",
+        "openalex"
+      ]
     }
   ]
 }
