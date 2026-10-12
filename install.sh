@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 把这个 repo 里的 skill 与 agent 软链到 ~/.claude/，改档即时生效。
+# 把这个 repo 里的 skill 软链到 ~/.claude/，改档即时生效。
 #
 # 用法:
 #   ./install.sh            安装（软链）
@@ -12,14 +12,9 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_DST="$HOME/.claude/skills"
-AGENT_DST="$HOME/.claude/agents"
 
 # 每一项是「skill 名称:相对 REPO 的来源目录」
 SKILLS=(
-  "narrative-spine:plugins/deck-skills/skills/deck/narrative-spine"
-  "deck-audit:plugins/deck-skills/skills/deck/deck-audit"
-  "deck-script:plugins/deck-skills/skills/deck/deck-script"
-  "deck-build:plugins/deck-skills/skills/deck/deck-build"
   "skill-tree:plugins/skill-tree/skills/skill-tree"
   "leaps-strategy:plugins/leaps-strategy/skills/leaps-strategy"
   "grill-me:plugins/grill-me/skills/grill-me"
@@ -29,7 +24,6 @@ SKILLS=(
   "lol-replay:plugins/lol-replay/skills/lol-replay"
   "tw-base-breakout:plugins/tw-base-breakout/skills/tw-base-breakout"
 )
-AGENTS=("deck-reviewer:plugins/deck-skills/agents/deck-reviewer.md")
 
 mode="${1:-link}"
 
@@ -38,10 +32,6 @@ uninstall() {
     name="${entry%%:*}"
     rm -rf "${SKILL_DST:?}/$name"; echo "移除 skill: $name"
   done
-  for entry in "${AGENTS[@]}"; do
-    name="${entry%%:*}"
-    rm -f "${AGENT_DST:?}/$name.md"; echo "移除 agent: $name"
-  done
 }
 
 if [[ "$mode" == "--uninstall" ]]; then
@@ -49,7 +39,7 @@ if [[ "$mode" == "--uninstall" ]]; then
   exit 0
 fi
 
-mkdir -p "$SKILL_DST" "$AGENT_DST"
+mkdir -p "$SKILL_DST"
 
 for entry in "${SKILLS[@]}"; do
   name="${entry%%:*}"; src="$REPO/${entry#*:}"
@@ -63,20 +53,8 @@ for entry in "${SKILLS[@]}"; do
   echo "安装 skill: $name"
 done
 
-for entry in "${AGENTS[@]}"; do
-  name="${entry%%:*}"; src="$REPO/${entry#*:}"
-  [[ -f "$src" ]] || { echo "缺少 $src，中止" >&2; exit 1; }
-  if [[ "$mode" == "--copy" ]]; then
-    cp "$src" "$AGENT_DST/$name.md"
-  else
-    ln -sfn "$src" "$AGENT_DST/$name.md"
-  fi
-  echo "安装 agent: $name"
-done
-
 echo
 echo "完成。开新的 Claude Code session 后生效。"
-echo "验证 deck:       python3 $REPO/plugins/deck-skills/skills/deck/deck-audit/scripts/extract.py <你的档案> --pretty"
 echo "验证 skill-tree: cd <你的题目资料夹> && python3 $REPO/plugins/skill-tree/skills/skill-tree/assets/build.py"
 echo "验证 leaps:      python3 $REPO/plugins/leaps-strategy/skills/leaps-strategy/screener.py <quotes.json>"
 echo "验证 lol-replay:  python3 $REPO/plugins/lol-replay/skills/lol-replay/scripts/rofl_cli.py summary <game.rofl> --no-payload"
