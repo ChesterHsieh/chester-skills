@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前九个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -12,6 +12,7 @@ Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立
 | **lol-replay** | 離線解析 **League of Legends .rofl 重播檔**：賽後統計、對位比較、任意時刻座標、擊殺者、購買順序、技能施放、連招分析，回答「這場為什麼輸」「凱特琳為什麼輸出低」「連招打得好不好」 |
 | **concept-check** | 丢一个概念进去，讲清楚之后**用至少四轮四选一反问**，验证是真的懂而不是看懂；答错先给指针不给答案 |
 | **tw-base-breakout** | 台股型态粗扫：给代码、题材或全部个股期货标的，找出符合「**稳定支撑区 → 均线纠结 → 突破**」且贴近底线（进场区）的股票，附失效价与期货保证金，可用 `--asof` 回测 |
+| **finance-paper-search** | 量化／金融 × RL／ML **论文检索**，附带固定版本的 resp-mcp server；含 1990 年代早期文献的检索流程与种子论文清单 |
 
 ## 安装
 
@@ -25,6 +26,7 @@ Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立
 /plugin install concept-check@chester-skills
 /plugin install lol-replay@chester-skills
 /plugin install tw-base-breakout@chester-skills
+/plugin install finance-paper-search@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -40,7 +42,8 @@ plugins/
 ├── video-cut/       camera-cut
 ├── concept-check/   concept-check
 ├── lol-replay/      lol-replay（開發 repo：ChesterHsieh/lol-reviewer）
-└── tw-base-breakout/ tw-base-breakout
+├── tw-base-breakout/ tw-base-breakout
+└── finance-paper-search/ finance-paper-search + resp-mcp 启动脚本与 requirements.lock
 ```
 
 ---
@@ -266,6 +269,11 @@ skill 规定涉及版本、数字、规格时要去查，但没有机械闸门�
 
 **video-cut** 只对**机位固定**的片子有效。手持跟拍、频繁推轨变焦的素材每一帧长相都不同，这套方法会整片误判——skill 会先要求用缩图墙确认前提，不成立时直接讲，不硬做。
 另外 `hybrid`／`lossless` 走 concat 出来的档案，接点上会有重复时间戳（`non monotonically increasing dts`）。播放器都正常播，但拿去重新编码会看到警告，试过 `+genpts` 与 `setts` 都修不掉，要根除只能走 `reencode`。
+
+**finance-paper-search** 首次启动 MCP server 时会在 `~/.cache/resp-mcp/` 建 venv 并安装，需要网络与 `uv`（没有 `uv` 退回 `python3 -m venv`）。
+版本钉在 [monk1337/resp_mcp](https://github.com/monk1337/resp_mcp) 的 commit `6e5727c`，且 **`mcp` 必须 `<2`**——v2 把 `FastMCP` 改名，server 会直接起不来。
+Semantic Scholar 不设 `SEMANTIC_SCHOLAR_API_KEY` 几乎必 429；没有 SSRN 检索。1990 年代命中只实测了 OpenAlex，未量化召回率。
+另外论文摘要是第三方内容，与交易／写入类 connector 同 session 使用有间接 prompt injection 风险。
 
 ## License
 

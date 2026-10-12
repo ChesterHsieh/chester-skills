@@ -1,0 +1,24 @@
+{
+  "name": "finance-paper-search",
+  "displayName": "Finance Paper Search",
+  "version": "0.1.0",
+  "description": "量化／金融 × RL／ML 论文检索：包一个固定版本的 resp-mcp（OpenAlex、Semantic Scholar、arXiv、DBLP 等），并附 1990 年代早期文献的检索流程与实测命中率。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": [
+    "papers",
+    "literature-review",
+    "quant",
+    "reinforcement-learning",
+    "mcp",
+    "openalex"
+  ],
+  "skills": [
+    "./skills/finance-paper-search"
+  ]
+}
