@@ -116,6 +116,19 @@
         "mcp",
         "openalex"
       ]
+    },
+    {
+      "name": "job104-search",
+      "source": "./plugins/job104-search",
+      "description": "104 人力银行职缺检索：附带固定版本、依赖带 hash 锁定的 job104-mcp，用中文地区／职类名称搜职缺并取完整内容；含薪资筛选的坑与使用守则。",
+      "category": "productivity",
+      "keywords": [
+        "jobs",
+        "104",
+        "taiwan",
+        "job-search",
+        "mcp"
+      ]
     }
   ]
 }

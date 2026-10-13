@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前九个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -12,6 +12,7 @@ Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立
 | **concept-check** | 丢一个概念进去，讲清楚之后**用至少四轮四选一反问**，验证是真的懂而不是看懂；答错先给指针不给答案 |
 | **tw-base-breakout** | 台股型态粗扫：给代码、题材或全部个股期货标的，找出符合「**稳定支撑区 → 均线纠结 → 突破**」且贴近底线（进场区）的股票，附失效价与期货保证金，可用 `--asof` 回测 |
 | **finance-paper-search** | 量化／金融 × RL／ML **论文检索**，附带固定版本的 resp-mcp server；含 1990 年代早期文献的检索流程与种子论文清单 |
+| **job104-search** | **104 人力银行职缺检索**，附带固定版本的 job104-mcp server（依赖 sha256 锁定）；用中文地区／职类名称搜职缺、取完整内容，含薪资筛选的坑与使用守则 |
 
 ## 安装
 
@@ -25,6 +26,7 @@ Chester 自用的 Claude Code plugin 集合。目前八个 plugin，各自独立
 /plugin install lol-replay@chester-skills
 /plugin install tw-base-breakout@chester-skills
 /plugin install finance-paper-search@chester-skills
+/plugin install job104-search@chester-skills
 ```
 
 换机器时重跑这几行即可。私有 repo 需要本机 `gh` 已登入。只要其中一个就装其中一行。
@@ -40,7 +42,8 @@ plugins/
 ├── concept-check/   concept-check
 ├── lol-replay/      lol-replay（開發 repo：ChesterHsieh/lol-reviewer）
 ├── tw-base-breakout/ tw-base-breakout
-└── finance-paper-search/ finance-paper-search + resp-mcp 启动脚本与 requirements.lock
+├── finance-paper-search/ finance-paper-search + resp-mcp 启动脚本与 requirements.lock
+└── job104-search/   job104-search + job104-mcp 启动脚本与 requirements.lock（带 hash）
 ```
 
 ---
@@ -211,6 +214,12 @@ skill 规定涉及版本、数字、规格时要去查，但没有机械闸门�
 版本钉在 [monk1337/resp_mcp](https://github.com/monk1337/resp_mcp) 的 commit `6e5727c`，且 **`mcp` 必须 `<2`**——v2 把 `FastMCP` 改名，server 会直接起不来。
 Semantic Scholar 不设 `SEMANTIC_SCHOLAR_API_KEY` 几乎必 429；没有 SSRN 检索。1990 年代命中只实测了 OpenAlex，未量化召回率。
 另外论文摘要是第三方内容，与交易／写入类 connector 同 session 使用有间接 prompt injection 风险。
+
+**job104-search** 首次启动 MCP server 时会在 `~/.cache/job104-mcp/` 建 venv 并安装（`requirements.lock` 每个包都带 sha256），需要网络与 `uv`（或 Python ≥ 3.11）。
+上游 [mozzan/job104-mcp](https://github.com/mozzan/job104-mcp) 钉在 v0.1.8（commit `2c1215e`，PyPI wheel 已与该 commit 逐档比对一致），**`mcp` 必须 `<2`**。
+它靠 `curl_cffi` 模拟 Chrome TLS 指纹绕过 104 的 Cloudflare 防护、抓网页端非公开 JSON：**未经 104 官方授权**，104 改版或加强防护就会 403，只适合个人低频使用。
+`salary_min` 只是改成薪资排序、不是硬筛选；职缺内容是第三方文字，与交易／写入类 connector 同 session 使用有间接 prompt injection 风险。
+升级版本时用上游 `uv export --frozen --no-dev --no-emit-project --no-annotate` 重新匯出 lock，并重跑 diff 比对 wheel 与原始码。
 
 ## License
 

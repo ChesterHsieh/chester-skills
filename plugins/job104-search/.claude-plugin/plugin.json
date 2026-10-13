@@ -1,0 +1,23 @@
+{
+  "name": "job104-search",
+  "displayName": "104 Job Search",
+  "version": "0.1.0",
+  "description": "104 人力银行职缺检索：包一个固定版本、依赖带 hash 锁定的 job104-mcp（mozzan/job104-mcp v0.1.8），用中文地区／职类名称搜职缺并取完整职缺内容。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": [
+    "jobs",
+    "104",
+    "taiwan",
+    "job-search",
+    "mcp"
+  ],
+  "skills": [
+    "./skills/job104-search"
+  ]
+}
