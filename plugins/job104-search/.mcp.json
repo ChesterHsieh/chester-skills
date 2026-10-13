@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "job104": {
+      "command": "bash",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/job104-mcp.sh"]
+    }
+  }
+}
