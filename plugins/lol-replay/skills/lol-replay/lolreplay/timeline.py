@@ -122,14 +122,23 @@ def fmt_clock(seconds: float) -> str:
 Decorator = Callable[[Block], Dict[str, object]]
 
 
-def _events(blocks, net_ids, ptype: Optional[int], kind: str, decorate: Optional[Decorator] = None) -> Tuple[Event, ...]:
+def _events(blocks, net_ids, ptype: Optional[int], kind: str, decorate: Optional[Decorator] = None,
+            code_byte: Optional[int] = None) -> Tuple[Event, ...]:
+    """Events of one packet type; with `code_byte`, a packet repeating the player's previous
+    code at that content byte is a resend and is dropped."""
     if ptype is None:
         return ()
     index = {nid: i for i, nid in enumerate(net_ids)}
     out = []
+    last_code: Dict[int, int] = {}
     for b in blocks:
         if b.type != ptype or b.net_id not in index:
             continue
+        if code_byte is not None and -len(b.content) <= code_byte < len(b.content):
+            code = b.content[code_byte]
+            if last_code.get(b.net_id) == code:
+                continue
+            last_code[b.net_id] = code
         extra = decorate(b) if decorate else {}
         out.append(Event(b.time, index[b.net_id], kind, **extra))
     return tuple(sorted(out, key=lambda e: e.time))
@@ -251,7 +260,8 @@ def build_timeline(game: Game, blocks: Tuple[Block, ...], net_ids: Tuple[int, ..
     if casts:
         detail.append("casts")
     deaths = _events(blocks, net_ids, death_type, "death", kill_decorate)
-    levels = _number_levels(_events(blocks, net_ids, profile.level_type, "level"))
+    levels = _number_levels(_events(blocks, net_ids, profile.level_type, "level",
+                                    code_byte=profile.level_code_byte))
     shop = _events(blocks, net_ids, profile.shop_type, "shop", shop_decorate)
     buckets = max(1, math.ceil(game.minutes))
     return Timeline(deaths=deaths, level_ups=levels, shop=shop,

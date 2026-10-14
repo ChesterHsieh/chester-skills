@@ -119,7 +119,7 @@ def cmd_calibrate(args) -> int:
     blocks = game_blocks(s.rofl)
     net_ids = champion_net_ids(blocks)
     matrix = count_matrix(blocks, net_ids)
-    profile = detect_profile(s.game, matrix)
+    profile = detect_profile(s.game, matrix, blocks, net_ids)
     path = save_profile(profile)
     print(json.dumps({"profile": profile.__dict__, "net_ids": [hex(n) for n in net_ids], "saved": str(path)},
                      ensure_ascii=False, indent=2))

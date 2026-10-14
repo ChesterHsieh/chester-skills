@@ -19,7 +19,7 @@ description: 解析並分析 League of Legends 的 .rofl 重播檔（ROFL2），
 全部離線、純 Python，不需要 Riot API 或遊戲客戶端。
 
 不能（目前）：血量曲線、傷害逐筆明細、技能是否命中（封包裡的目標清單還沒解出來，目標只能用指向點與位置推定）、普攻次數、物件（眼、塔）狀態。回答時遇到就明說「這版還沒有」。
-遇到沒有規格檔的版本，位置／擊殺者／購買／施法區塊會缺席，其餘功能不受影響。細節見 `references/rofl2-format.md` 與 `references/payload-crypto-notes.md`。
+遇到沒有規格檔的版本，位置／擊殺者／購買／施法區塊會缺席，其餘功能不受影響（16.20 目前就是這樣：死亡／升級／購物時間軸可用，封包內容還沒有規格）。細節見 `references/rofl2-format.md` 與 `references/payload-crypto-notes.md`。
 
 ## 環境
 
