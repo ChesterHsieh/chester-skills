@@ -13,13 +13,15 @@ from typing import Callable, Dict, Iterable, Optional, Tuple
 from .blocks import Block
 from .calibrate import PacketProfile
 from .metadata import Game
-from .payload.events import decode_cast, decode_kill, decode_purchase
+from . import spells
+from .payload.events import decode_attack, decode_cast, decode_damage, decode_kill, decode_purchase
 from .payload.spec import PayloadSpec
 
 FIGHT_WINDOW_S = 12.0
 FIRST_LEVEL = 2
 START_WINDOW_S = 10.0
 PRESS_MERGE_S = 0.2        # the same spell re-sent within this window is one key press
+ATTACK_RESEND_S = 0.35     # attack packets on the same target closer than this are one attack (faster than any attack speed)
 
 
 @dataclass(frozen=True)
@@ -58,6 +60,46 @@ class Cast:
 
 
 @dataclass(frozen=True)
+class Damage:
+    """One damage instance involving a champion (16.20+ damage packet)."""
+    time: float
+    target: Optional[int]                 # player index, None for minions / monsters / structures
+    target_netid: Optional[int]
+    source: Optional[int]                 # player index of the dealer when known (see build_damage)
+    source_netid: Optional[int]
+    amount: float
+    spell_hash: Optional[int]             # damage-source script: a champion spell, attack, item, minion attack...
+
+    @property
+    def clock(self) -> str:
+        return fmt_clock(self.time)
+
+    @property
+    def is_attack(self) -> bool:
+        ref = spells.lookup(self.spell_hash)
+        return ref is not None and ref.slot == "A"
+
+    @property
+    def is_crit(self) -> bool:
+        ref = spells.lookup(self.spell_hash)
+        return ref is not None and ref.slot == "A" and "Crit" in ref.script
+
+
+@dataclass(frozen=True)
+class Attack:
+    """A basic-attack start (16.20+ attack packet); whether it landed is in the damage events."""
+    time: float
+    player: int
+    target: Optional[int]                 # player index when the target is a champion
+    target_netid: Optional[int]
+    target_pos: Optional[Tuple[float, float]] = None
+
+    @property
+    def clock(self) -> str:
+        return fmt_clock(self.time)
+
+
+@dataclass(frozen=True)
 class Fight:
     start: float
     end: float
@@ -79,8 +121,21 @@ class Timeline:
     activity: Tuple[Tuple[int, ...], ...]
     fights: Tuple[Fight, ...]
     profile: PacketProfile
-    detail: Tuple[str, ...] = ()          # which extras are decoded: "killer", "death_pos", "items", "casts"
+    detail: Tuple[str, ...] = ()          # which extras are decoded: "killer", "death_pos", "items", "casts", "damage", "attacks"
     casts: Tuple[Cast, ...] = ()
+    damage: Tuple[Damage, ...] = ()
+    attacks: Tuple[Attack, ...] = ()
+
+    def damage_dealt(self, player: int, start: float = 0.0, end: float = float("inf"),
+                     champions_only: bool = True) -> Tuple[Damage, ...]:
+        return tuple(d for d in self.damage if d.source == player and start <= d.time <= end
+                     and (d.target is not None or not champions_only))
+
+    def damage_taken(self, player: int, start: float = 0.0, end: float = float("inf")) -> Tuple[Damage, ...]:
+        return tuple(d for d in self.damage if d.target == player and start <= d.time <= end)
+
+    def attacks_of(self, player: int, start: float = 0.0, end: float = float("inf")) -> Tuple[Attack, ...]:
+        return tuple(a for a in self.attacks if a.player == player and start <= a.time <= end)
 
     def casts_of(self, player: int, start: float = 0.0, end: float = float("inf")) -> Tuple[Cast, ...]:
         return tuple(c for c in self.casts if c.player == player and start <= c.time <= end)
@@ -255,6 +310,52 @@ def build_casts(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: Paylo
     return merge_key_presses(out)
 
 
+def build_damage(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: PayloadSpec) -> Tuple[Damage, ...]:
+    """Damage instances with a champion on either side. `source` is the dealing champion; damage from
+    minions, monsters, turrets and champion-owned units (clones, pets) keeps source=None, which is how
+    the end-of-game damage stats count it."""
+    dtype, dspec, fields = spec.packet_type("damage"), spec.packet_spec("damage"), spec.role_fields("damage")
+    if dtype is None or dspec is None or not fields:
+        return ()
+    index = {nid: i for i, nid in enumerate(net_ids)}
+    out = []
+    for b in blocks:
+        if b.type != dtype:
+            continue
+        info = decode_damage(dspec, b.content, fields)
+        if info is None or info.amount is None:
+            continue
+        target = index.get(info.target_netid)
+        source = index.get(info.source_netid)
+        if target is None and source is None:
+            continue
+        out.append(Damage(b.time, target, info.target_netid, source, info.source_netid, info.amount, info.script_hash))
+    return tuple(out)
+
+
+def build_attacks(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: PayloadSpec) -> Tuple[Attack, ...]:
+    atype, aspec, fields = spec.packet_type("attack"), spec.packet_spec("attack"), spec.role_fields("attack")
+    if atype is None or aspec is None or not fields:
+        return ()
+    index = {nid: i for i, nid in enumerate(net_ids)}
+    out = []
+    last: Dict[int, Attack] = {}
+    for b in blocks:
+        if b.type != atype or b.net_id not in index:
+            continue
+        info = decode_attack(aspec, b.content, fields)
+        if info is None or not info.target_netid:  # no unit target: an attack-move order, not an attack
+            continue
+        player = index[b.net_id]
+        prev = last.get(player)
+        if prev is not None and prev.target_netid == info.target_netid and b.time - prev.time < ATTACK_RESEND_S:
+            continue  # the order re-sent while chasing / winding up the same target
+        a = Attack(b.time, player, index.get(info.target_netid), info.target_netid, info.target_pos)
+        last[player] = a
+        out.append(a)
+    return tuple(out)
+
+
 def build_timeline(game: Game, blocks: Tuple[Block, ...], net_ids: Tuple[int, ...],
                    profile: PacketProfile, spec: Optional[PayloadSpec] = None) -> Timeline:
     detail = []
@@ -271,6 +372,12 @@ def build_timeline(game: Game, blocks: Tuple[Block, ...], net_ids: Tuple[int, ..
     casts = build_casts(blocks, net_ids, spec) if spec is not None else ()
     if casts:
         detail.append("casts")
+    damage = build_damage(blocks, net_ids, spec) if spec is not None else ()
+    if damage:
+        detail.append("damage")
+    attacks = build_attacks(blocks, net_ids, spec) if spec is not None else ()
+    if attacks:
+        detail.append("attacks")
     deaths = _events(blocks, net_ids, death_type, "death", kill_decorate)
     levels = _number_levels(_events(blocks, net_ids, profile.level_type, "level",
                                     code_byte=profile.level_code_byte))
@@ -278,4 +385,5 @@ def build_timeline(game: Game, blocks: Tuple[Block, ...], net_ids: Tuple[int, ..
     buckets = max(1, math.ceil(game.minutes))
     return Timeline(deaths=deaths, level_ups=levels, shop=shop,
                     activity=activity_per_minute(blocks, net_ids, buckets),
-                    fights=cluster_fights(deaths), profile=profile, detail=tuple(detail), casts=casts)
+                    fights=cluster_fights(deaths), profile=profile, detail=tuple(detail), casts=casts,
+                    damage=damage, attacks=attacks)

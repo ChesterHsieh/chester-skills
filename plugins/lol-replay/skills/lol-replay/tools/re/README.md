@@ -21,15 +21,20 @@ python3 roles.py types
 
 # 4. 對候選 type 產生規格（施法封包約 10 分鐘）
 P=16.20
-python3 specgen.py --out ../../lolreplay/specs/$P 421 63 1215 61
+python3 specgen.py --out ../../lolreplay/specs/$P 421 63 1215 61 150 972
 
 # 5. 驗證：真實封包與客戶端逐欄位比對、隨機旗標模糊測試
 python3 validate.py 1215 ../../lolreplay/specs/$P/packet_1215.json
 python3 fuzz.py 1215 ../../lolreplay/specs/$P/packet_1215.json 300
 
 # 6. 用賽後數據自動找欄位偏移，把輸出的 packets / waypoint / fields 寫進 lolreplay/specs/$P.json
-python3 roles.py fields --specs ../../lolreplay/specs/$P --kill 421 --shop 63 --cast 1215 --waypoint 61
+python3 roles.py fields --specs ../../lolreplay/specs/$P --kill 421 --shop 63 --cast 1215 --waypoint 61 --damage 150 --attack 972
+
+# 7. 傷害封包的技能子腳本名（新英雄、技能重做時重跑；需要能連 raw.communitydragon.org）
+python3 ../fetch_spell_scripts.py
 ```
+
+傷害／普攻的封包 type 目前沒有自動候選：傷害是「解出來後依來源加總等於 `TOTAL_DAMAGE_DEALT_TO_CHAMPIONS`」的那種（16.20 是 150），普攻是寄給攻擊者、帶一個目標 net id 與目標座標、每筆英雄普攻傷害前 0.1–0.7 秒都會出現的那種（16.20 是 972）；先對候選跑 specgen，再用 `roles.py fields --damage T` 看合計誤差。
 
 `specs/<patch>.json` 的其餘欄位：`patch`、`waypoint_type`（＝路徑點封包 type）、`map_center`（目前一直是 `[7358, 7412]`）、`notes`。
 最後在 `tests/` 加幾筆該版真實封包的回歸測試（參考 `tests/test_spec_1620.py`）。

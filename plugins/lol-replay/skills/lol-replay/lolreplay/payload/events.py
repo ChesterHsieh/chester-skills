@@ -83,6 +83,21 @@ def _xz(values: Dict[int, Any], offs) -> Optional[Tuple[float, float]]:
     return (x, z)
 
 
+@dataclass(frozen=True)
+class DamageInfo:
+    target_netid: Optional[int]
+    source_netid: Optional[int]
+    amount: Optional[float]
+    script_hash: Optional[int]     # spell script of the damage source (TalonWMissileOne, CaitlynCritAttack, minion attacks...)
+    kind: Optional[int]            # raw flag byte of the hit (meaning not decoded)
+
+
+@dataclass(frozen=True)
+class AttackInfo:
+    target_netid: Optional[int]    # None/0 when the attack order has no unit target
+    target_pos: Optional[Tuple[float, float]]
+
+
 def _targets(values: Dict[int, Any], spec: Optional[Mapping[str, int]]) -> Tuple[int, ...]:
     """Net ids of the target-list vector: {"list": offset of the vector, "netid": offset in an element}."""
     if not spec:
@@ -125,3 +140,25 @@ def decode_cast(spec: dict, content: bytes, fields: Optional[Mapping[str, Any]] 
     return CastInfo(caster_netid=_netid(v, f["caster"]), spell_hash=_int(v, f["spell_hash"]),
                     seq=_int(v, f["seq"]), start=_xz(v, f["start"]), end=_xz(v, f["end"]),
                     cast_time=_float(v, f["cast_time"]), targets=_targets(v, f.get("targets")))
+
+
+def decode_damage(spec: dict, content: bytes, fields: Mapping[str, Any]) -> Optional[DamageInfo]:
+    """One damage instance (16.20+): who took how much from whom, through which spell script."""
+    try:
+        v = decode_packet(spec, content)
+    except DecodeError:
+        return None
+    f = fields
+    script = _int(v, f["script"])
+    return DamageInfo(target_netid=_netid(v, f["target"]), source_netid=_netid(v, f["source"]),
+                      amount=_float(v, f["amount"]), script_hash=script if script else None,
+                      kind=_int(v, f["kind"]) if "kind" in f else None)
+
+
+def decode_attack(spec: dict, content: bytes, fields: Mapping[str, Any]) -> Optional[AttackInfo]:
+    """A basic-attack start (16.20+): the attacker is the packet's object, the target is a unit."""
+    try:
+        v = decode_packet(spec, content)
+    except DecodeError:
+        return None
+    return AttackInfo(target_netid=_netid(v, fields["target"]), target_pos=_xz(v, fields["pos"]))

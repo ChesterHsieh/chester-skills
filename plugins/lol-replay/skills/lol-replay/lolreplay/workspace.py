@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Optional, Tuple
 
-from . import combos, ddragon, spells, report
+from . import combos, damage as dmg, ddragon, spells, report
 from .analysis import Metrics, flags_for, opponent_of
 from .metadata import Game
 from .names import resolve_player
@@ -235,6 +235,39 @@ def render_casts(ws: Workspace, index: int) -> str:
     return "\n".join(lines)
 
 
+def render_damage(ws: Workspace, index: int) -> str:
+    """Damage to champions by spell, damage taken by source, basic attacks, and per-fight dealt / taken."""
+    tl = ws.session.timeline
+    if tl is None or "damage" not in tl.detail:
+        return ""
+    game = ws.game
+    p = game.players[index]
+    name = champion_namer(ws)
+    s = dmg.summarize(tl, index)
+    stat = p.int("TOTAL_DAMAGE_DEALT_TO_CHAMPIONS")
+    lines = ["", "## 傷害與普攻（來自傷害／普攻封包；追問用 damage、attacks 指令看逐筆）"]
+    gap = f"；賽後統計 {stat}（封包歸屬到 {s.total / stat:.0%}）" if stat else ""
+    lines.append(f"- 對英雄傷害 {s.total:.0f}{gap}：{dmg.breakdown_text(s, dmg.champion_spell_names(p.champion))}")
+    if "attacks" in tl.detail:
+        lines.append("- " + dmg.attack_text(s))
+    lines.append(f"- 承受傷害 {s.taken:.0f}，來源：{dmg.taken_text(s, name)}")
+    opp = opponent_of(ws.session.metrics, ws.session.metrics[index])
+    if opp is not None:
+        o = dmg.summarize(tl, opp.index)
+        lines.append(f"- 對位 {name(opp.index)}：對英雄傷害 {o.total:.0f}（{dmg.breakdown_text(o, dmg.champion_spell_names(game.players[opp.index].champion))}）"
+                     + (f"；{dmg.attack_text(o)}" if "attacks" in tl.detail else ""))
+    rows = []
+    for f in spatial_fights(ws):
+        w = dmg.summarize(tl, index, f.start - FIGHT_LEAD_S, f.end + FIGHT_TAIL_S)
+        if w.total >= 1 or w.taken >= 1:
+            top = dmg.per_target(tl.damage_dealt(index, f.start - FIGHT_LEAD_S, f.end + FIGHT_TAIL_S))
+            focus = f"，主要打 {name(top[0][0])}" if top and top[0][0] is not None else ""
+            rows.append(f"{f.clock} 輸出 {w.total:.0f}／承傷 {w.taken:.0f}{focus}")
+    if rows:
+        lines.append("- 各波交戰（前 8 秒到結束後 5 秒）輸出／承傷：" + "｜".join(rows))
+    return "\n".join(lines)
+
+
 def side_suffix(game, player) -> str:
     """"[藍方]" / "[紅方]" when both teams play this champion (mirror match), else ""."""
     if sum(1 for p in game.players if p.champion == player.champion) < 2:
@@ -258,7 +291,8 @@ def combos_of(ws: Workspace, index: int, gap_s: float = combos.COMBO_GAP_S) -> T
     if inputs is None:
         return ()
     casts, teams, deaths, pos = inputs
-    return combos.build_combos(casts, index, teams, deaths, pos, gap_s)
+    attacks = tuple(a.time for a in ws.session.timeline.attacks_of(index))
+    return combos.build_combos(casts, index, teams, deaths, pos, gap_s, attacks)
 
 
 def flashes_of(ws: Workspace, index: int) -> Tuple[combos.FlashUse, ...]:
@@ -312,6 +346,7 @@ def render_context(ws: Workspace) -> str:
         parts.append(report.render_player(ws.game, s.metrics, m, s.timeline, flags))
         parts.append(render_positions(ws, ws.focus))
         parts.append(render_casts(ws, ws.focus))
+        parts.append(render_damage(ws, ws.focus))
         parts.append(render_combos(ws, ws.focus))
     return "\n".join(parts)
 

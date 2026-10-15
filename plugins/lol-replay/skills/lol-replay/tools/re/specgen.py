@@ -208,13 +208,17 @@ class SpecGen:
                     cons.append(c)
                     values.append(plain_at(r))
                 base_cons = min(cons)
-                if max(cons) > 2:
-                    self._inline_vector(act, cons, run_with)
-                    continue
                 if len(set(cons)) == 1:
                     act['consumed'] = cons[0]
                     if cons[0] == 1 and None not in values:
                         act['tables'] = {'kind': 'fixed', 'plain': [values], 'shifts': [0]}
+                    elif cons[0] > 1:
+                        tables = self._inline_fixed(cons[0], run_with, plain_at)
+                        if tables:
+                            act['tables'] = tables
+                    continue
+                if max(cons) > 2:
+                    self._inline_vector(act, cons, run_with)
                     continue
                 if set(cons) != {base_cons, base_cons + 1} or base_cons != 1:
                     self.errors.append(f'{spec["label"]}: inline field {off} consumption {sorted(set(cons))}')
@@ -251,6 +255,32 @@ class SpecGen:
                 if not ok_values:
                     act['value_unknown'] = True
                 act.pop('consumed', None)
+
+    @staticmethod
+    def _inline_fixed(width, run_with, plain_at):
+        """Fixed multi-byte inline read: which plain byte each payload byte feeds, through which table."""
+        base = [0] * width
+        p0 = plain_at(run_with(base)[0])
+        if p0 is None:
+            return None
+        plain, shifts = [], []
+        for i in range(width):
+            vals = []
+            for v in range(256):
+                seq = list(base)
+                seq[i] = v
+                vals.append(plain_at(run_with(seq)[0]))
+            if None in vals:
+                return None
+            where = [bi for bi in range(4) if len({(x >> 8 * bi) & 0xFF for x in vals}) > 1]
+            if len(where) != 1:
+                return None
+            plain.append([(x >> 8 * where[0]) & 0xFF for x in vals])
+            shifts.append(8 * where[0])
+        fed = {s // 8 for s in shifts}
+        if any((p0 >> 8 * bi) & 0xFF for bi in range(4) if bi not in fed):
+            return None
+        return {'kind': 'fixed', 'plain': plain, 'shifts': shifts}
 
     def _inline_vector(self, act, cons, run_with):
         """Inline count-prefixed byte vector: count = 7-bit varint (per-byte tables), then count bytes."""

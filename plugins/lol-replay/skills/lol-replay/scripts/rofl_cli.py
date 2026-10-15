@@ -16,6 +16,8 @@
   rofl_cli.py kills     [--who WHO]                          every death with killer and place (or only WHO's deaths/kills)
   rofl_cli.py casts     WHO [FROM TO]                        spell casts (Q/W/E/R, summoners, items, recall) with position, aim point and the enemy nearest it
   rofl_cli.py combos    WHO [FROM TO] [--gap S] [--all]      combos: cast bursts with sequence, timing, target (packet or inferred), flashes and result
+  rofl_cli.py damage    WHO [FROM TO] [--taken] [--all]      every hit WHO dealt to champions (or took), with spell and amount, plus totals
+  rofl_cli.py attacks   WHO [FROM TO]                        basic attacks started: target, and whether a damage instance followed
 Options: --json  --no-payload (metadata only, fast)
 Follow-up commands use the current session (last `session` call) unless --file is given.
 """
@@ -28,7 +30,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from lolreplay import report  # noqa: E402
+from lolreplay import damage as dmg, report  # noqa: E402
 from lolreplay.analysis import flags_for  # noqa: E402
 from lolreplay.blocks import game_blocks, keyframe_blocks  # noqa: E402
 from lolreplay.calibrate import champion_net_ids, count_matrix, detect_profile, save_profile  # noqa: E402
@@ -281,7 +283,7 @@ def cmd_combos(args) -> int:
     shown = every if args.all else [c for c in every if c.is_fight]
     name = lambda i: _label(ws, ws.game.players[i])  # noqa: E731
     print(f"{_label(ws, p)} 連招（施法間隔 ≤{args.gap:g} 秒算一套；目標標「封包」的來自施法封包的目標清單，標「推定」的由位置推定；"
-          "普攻不在施法封包裡，技能間的停頓可能是在普攻）：")
+          "「穿插普攻」來自普攻封包（16.20 起），沒有這個欄位的版本技能間的停頓可能是在普攻）：")
     print("  " + combos.summary_line(combos.summarize(every)))
     for c in shown:
         print("  " + combos.describe(c, name))
@@ -290,6 +292,57 @@ def cmd_combos(args) -> int:
     flashes = [f for f in wsmod.flashes_of(ws, p.index) if t0 <= f.time <= t1]
     if flashes:
         print("  " + "｜".join(combos.flash_text(f, name) for f in flashes))
+    return 0
+
+
+def _span(args):
+    t0 = wsmod.parse_time(args.start) if args.start else 0.0
+    t1 = wsmod.parse_time(args.end) if args.end else float("inf")
+    return t0, t1
+
+
+def cmd_damage(args) -> int:
+    ws = _ws(args); p = _who(ws, args.who); tl = ws.session.timeline
+    if tl is None or "damage" not in tl.detail:
+        print("這個版本沒有傷害封包規格"); return 1
+    t0, t1 = _span(args)
+    name = lambda i: _label(ws, ws.game.players[i])  # noqa: E731
+    if args.taken:
+        rows = tl.damage_taken(p.index, t0, t1)
+        print(f"{_label(ws, p)} 承受傷害 {len(rows)} 筆、共 {sum(d.amount for d in rows):.0f}"
+              "（來源是英雄時標英雄；「小兵／野怪／防禦塔」為非英雄來源）：")
+    else:
+        rows = tl.damage_dealt(p.index, t0, t1, champions_only=not args.all)
+        print(f"{_label(ws, p)} 造成傷害 {len(rows)} 筆、共 {sum(d.amount for d in rows):.0f}"
+              f"（{'含非英雄目標' if args.all else '只列打英雄的'}；普攻＝BasicAttack、暴擊普攻＝CritAttack 的命中）：")
+        for target, amount, n in dmg.per_target(rows):
+            who = name(target) if target is not None else "非英雄單位"
+            print(f"  → {who}：{amount:.0f}（{n} 筆）")
+    for line in dmg.hits_text(rows, name, args.taken):
+        print("  " + line)
+    s = dmg.summarize(tl, p.index, t0, t1)
+    print("  合計：" + dmg.breakdown_text(s, dmg.champion_spell_names(p.champion)))
+    return 0
+
+
+def cmd_attacks(args) -> int:
+    ws = _ws(args); p = _who(ws, args.who); tl = ws.session.timeline
+    if tl is None or "attacks" not in tl.detail:
+        print("這個版本沒有普攻封包規格"); return 1
+    t0, t1 = _span(args)
+    rows = tl.attacks_of(p.index, t0, t1)
+    hits = [d for d in tl.damage_dealt(p.index, t0, t1 + 2.0) if d.is_attack]
+    print(f"{_label(ws, p)} 普攻出手 {len(rows)} 次（「命中」＝之後 2 秒內對該英雄打出普攻傷害；打小兵的命中多半不在 replay 裡，不標）：")
+    for a in rows:
+        if a.target is not None:
+            hit = next((d for d in hits if d.target == a.target and 0 <= d.time - a.time <= 2.0), None)
+            res = f"命中 {hit.amount:.0f}{'（暴擊）' if hit.is_crit else ''} +{hit.time - a.time:.2f}s" if hit else "沒有打出傷害"
+            print(f"  {a.clock} → {_label(ws, ws.game.players[a.target])}｜{res}")
+        else:
+            where = f" @({a.target_pos[0]:.0f}, {a.target_pos[1]:.0f})" if a.target_pos else ""
+            print(f"  {a.clock} → 非英雄單位{where}")
+    s = dmg.summarize(tl, p.index, t0, t1)
+    print("  " + dmg.attack_text(s))
     return 0
 
 
@@ -322,6 +375,11 @@ def build_parser() -> argparse.ArgumentParser:
     sp = sub.add_parser("combos"); sp.add_argument("who"); sp.add_argument("start", nargs="?"); sp.add_argument("end", nargs="?")
     sp.add_argument("--gap", type=float, default=combos.COMBO_GAP_S); sp.add_argument("--all", action="store_true")
     sp.add_argument("--file"); sp.set_defaults(fn=cmd_combos)
+    sp = sub.add_parser("damage"); sp.add_argument("who"); sp.add_argument("start", nargs="?"); sp.add_argument("end", nargs="?")
+    sp.add_argument("--taken", action="store_true"); sp.add_argument("--all", action="store_true")
+    sp.add_argument("--file"); sp.set_defaults(fn=cmd_damage)
+    sp = sub.add_parser("attacks"); sp.add_argument("who"); sp.add_argument("start", nargs="?"); sp.add_argument("end", nargs="?")
+    sp.add_argument("--file"); sp.set_defaults(fn=cmd_attacks)
     return p
 
 

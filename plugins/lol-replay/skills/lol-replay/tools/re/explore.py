@@ -235,7 +235,40 @@ def explore_object(e, fn, this, obj_size, label=''):
     for b in range(nflag * 8):
         if bit_aff[b]:
             groups[find(b)].append(b)
-    return nflag, base, bit_aff, [sorted(g) for g in groups.values()]
+    groups = [sorted(g) for g in groups.values()]
+    _merge_silent_bits(e, fn, this, obj_size, nflag, bit_aff, groups)
+    return nflag, base, bit_aff, sorted(groups)
+
+
+def _merge_silent_bits(e, fn, this, obj_size, nflag, bit_aff, groups):
+    """A bit with no effect on its own may still extend a neighbouring group (e.g. it only matters when
+    the next two bits select an inline read). Try every silent bit against the non-zero modes of the
+    adjacent groups and merge it where it changes behaviour."""
+    changed = True
+    while changed:
+        changed = False
+        grouped = {b for g in groups for b in g}
+        for b in range(nflag * 8):
+            if b in grouped or bit_aff.get(b):
+                continue
+            for g in sorted(groups, key=lambda g: min(abs(b - g[0]), abs(b - g[-1]))):
+                if min(abs(b - g[0]), abs(b - g[-1])) > 1:
+                    break
+                hit = False
+                for m in range(1, 1 << len(g)):
+                    flags = int.from_bytes(_set_bits(nflag, g, m), 'little')
+                    ra = run_body(e, fn, this, flags.to_bytes(nflag, 'little'), obj_size)
+                    rb = run_body(e, fn, this, (flags | 1 << b).to_bytes(nflag, 'little'), obj_size)
+                    if _affected(ra, rb, nflag) or ra.ok != rb.ok:
+                        hit = True
+                        break
+                if hit:
+                    g.append(b)
+                    g.sort()
+                    changed = True
+                    break
+            if changed:
+                break
 
 
 def group_modes(e, fn, this, obj_size, nflag, bits):

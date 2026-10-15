@@ -34,6 +34,11 @@ def _game():
     return parse_game(r.metadata(), r.game_version)
 
 
+def _is_netid(x):
+    """net ids are 0x40xxxxxx (floats in [2, 4) share that top byte: exclude position offsets first)"""
+    return isinstance(x, int) and x >> 24 == TAG >> 24
+
+
 def _f(v):
     return struct.unpack('<f', struct.pack('<I', v & 0xFFFFFFFF))[0] if isinstance(v, int) else None
 
@@ -168,7 +173,8 @@ def waypoint_field(spec, ptype, center=(7358.0, 7412.0)):
 
 def cast_fields(spec, ptype, ids, tracks):
     rows = [(b, v) for b, v in _decoded(spec, ptype) if b.net_id in ids]
-    table = spells.hash_table()
+    # the ability itself (TalonW), not the sub-script that fired (TalonWMissileOne, at another offset)
+    table = {spells.elf_hash(info['id']) for slots in spells._champion_spells().values() for info in slots.values()}
     caster = Counter()
     hashes = Counter()
     times = Counter()
@@ -228,6 +234,48 @@ def cast_fields(spec, ptype, ids, tracks):
             'end': [end, end + 4, end + 8], 'start': [start, start + 4, start + 8], 'targets': targets}
 
 
+def damage_fields(spec, ptype, game, ids):
+    """target / source net id, amount, script hash: the (source, target, amount) offsets whose per-champion
+    sums over champion targets match TOTAL_DAMAGE_DEALT_TO_CHAMPIONS."""
+    rows = _decoded(spec, ptype)
+    want = [p.float('TOTAL_DAMAGE_DEALT_TO_CHAMPIONS') for p in game.players]
+    champs = set(ids)
+    tags = [o for o, n in Counter(o for _, v in rows for o, x in v.items() if _is_netid(x)).items()
+            if n > 0.5 * len(rows)]
+    floats = [o for o, n in Counter(o for _, v in rows for o, x in v.items()
+                                    if _f(x) is not None and 0 < _f(x) < 20000).items() if n > 0.5 * len(rows)]
+    best = None
+    for src in tags:
+        for tgt in tags:
+            if src == tgt:
+                continue
+            for amt in floats:
+                got = defaultdict(float)
+                for _, v in rows:
+                    if v.get(tgt) in champs:
+                        got[v.get(src)] += _f(v.get(amt)) or 0.0
+                err = sum(abs(got[n] - w) for n, w in zip(ids, want))
+                if best is None or err < best[0]:
+                    best = (err, src, tgt, amt)
+    err, src, tgt, amt = best
+    table = spells.hash_table()
+    script = Counter(o for _, v in rows for o, x in v.items() if isinstance(x, int) and x in table).most_common(1)[0][0]
+    print(f'  damage: source +{src:#x}, target +{tgt:#x}, amount +{amt:#x} (total error vs '
+          f'TOTAL_DAMAGE_DEALT_TO_CHAMPIONS {err:.0f} over {sum(want):.0f}), script +{script:#x}')
+    return {'target': tgt, 'source': src, 'amount': amt, 'script': script}
+
+
+def attack_fields(spec, ptype, ids):
+    """target net id (most often a champion or another unit) and the target position vec3."""
+    rows = [(b, v) for b, v in _decoded(spec, ptype) if b.net_id in ids]
+    pos = _vec3s(rows)
+    floats = {o + k for o in pos for k in (0, 4, 8)}
+    tags = Counter(o for _, v in rows for o, x in v.items() if o not in floats and _is_netid(x))
+    target = tags.most_common(1)[0][0]
+    print(f'  attack: target +{target:#x} ({tags[target]}/{len(rows)}), target position +{pos[0]:#x}')
+    return {'target': target, 'pos': [pos[0], pos[0] + 4, pos[0] + 8]}
+
+
 def cmd_fields(args):
     from lolreplay.positions import build_tracks
     game = _game()
@@ -245,6 +293,12 @@ def cmd_fields(args):
     S.SPEC_DIR = __import__('pathlib').Path(spec_dir)
     tracks = build_tracks(ps, tuple(blocks()), tuple(ids))
     fields['cast'] = cast_fields(load(args.cast), args.cast, ids, tracks)
+    if args.damage:
+        out['packets']['damage'] = args.damage
+        fields['damage'] = damage_fields(load(args.damage), args.damage, game, ids)
+    if args.attack:
+        out['packets']['attack'] = args.attack
+        fields['attack'] = attack_fields(load(args.attack), args.attack, ids)
     out['fields'] = fields
     print(json.dumps(out, indent=2))
 
@@ -257,6 +311,8 @@ def main(argv):
     f.add_argument('--specs', required=True)
     for role in ('kill', 'shop', 'cast', 'waypoint'):
         f.add_argument('--' + role, type=int, required=True)
+    for role in ('damage', 'attack'):
+        f.add_argument('--' + role, type=int)
     args = ap.parse_args(argv)
     return {'types': cmd_types, 'fields': cmd_fields}[args.cmd](args) or 0
 

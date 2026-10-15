@@ -27,6 +27,7 @@ MIN_STEPS = 2
 ENGAGE_RADIUS = 1200.0     # an enemy champion this close to the caster makes the combo a fight
 AIM_RADIUS = 450.0         # an enemy this close to an aim point is taken as that spell's target
 AIM_MIN = 50.0             # an aim point this close to the caster is a self-cast
+WEAVE_TAIL_S = 1.0         # basic attacks this long after the last cast still belong to the combo
 OUTCOME_WINDOW_S = 3.0     # deaths up to this long after the last cast are the combo's result
 CORPSE_S = 6.0             # death timer when the kill packet has none (a dead champion's track still shows the death spot)
 FLASH_RANGE = 400.0
@@ -77,6 +78,7 @@ class Combo:
     died: Optional[Event]          # the caster's own death in the window
     flashes: Tuple[FlashUse, ...] = ()
     target_confirmed: bool = False # the target is an enemy champion from the cast packets' target lists
+    attacks: int = 0               # basic attacks started from the first cast to WEAVE_TAIL_S after the last (16.20+)
 
     @property
     def start(self) -> float:
@@ -292,7 +294,7 @@ def _step(c: Cast, enemies: Sequence[int], position: PositionFn) -> Step:
 
 
 def _combo(group: Tuple[Cast, ...], player: int, enemies: Sequence[int], deaths: Sequence[Event],
-           position: PositionFn, flashes: Sequence[FlashUse]) -> Combo:
+           position: PositionFn, flashes: Sequence[FlashUse], attacks: Sequence[float] = ()) -> Combo:
     steps = tuple(_step(c, enemies, position) for c in group)
     near = _enemies_near(group, enemies, position)
     confirmed = Counter(t for s in steps for t in s.enemy_targets)
@@ -304,16 +306,17 @@ def _combo(group: Tuple[Cast, ...], player: int, enemies: Sequence[int], deaths:
                   and (e.player in involved or e.killer == player))
     died = next((e for e in deaths if e.player == player and start <= e.time <= until), None)
     inside = tuple(f for f in flashes if group[0].time <= f.time <= group[-1].time)
-    return Combo(player, steps, involved, target, kills, died, inside, bool(confirmed))
+    weave = sum(1 for t in attacks if group[0].time <= t <= group[-1].time + WEAVE_TAIL_S)
+    return Combo(player, steps, involved, target, kills, died, inside, bool(confirmed), weave)
 
 
 def build_combos(casts: Sequence[Cast], player: int, teams: Sequence[int], deaths: Sequence[Event],
-                 position: PositionFn, gap_s: float = COMBO_GAP_S) -> Tuple[Combo, ...]:
+                 position: PositionFn, gap_s: float = COMBO_GAP_S, attacks: Sequence[float] = ()) -> Tuple[Combo, ...]:
     """All combos of `player` (fights and farming bursts) in time order."""
     enemies, alive = _enemies(teams, player), living(position, deaths)
     mine = merge_key_presses(c for c in casts if c.player == player and combat_ref(c) is not None)
     flashes = player_flashes(mine, player, teams, deaths, position)
-    return tuple(_combo(g, player, enemies, deaths, alive, flashes) for g in group_casts(mine, gap_s))
+    return tuple(_combo(g, player, enemies, deaths, alive, flashes, attacks) for g in group_casts(mine, gap_s))
 
 
 def _mean(values: Iterable[float]) -> float:
@@ -374,6 +377,8 @@ def describe(combo: Combo, name: NameFn) -> str:
     targets, enemies nearby, flashes, result."""
     seq = " → ".join(s.token if i == 0 else f"{s.token} +{s.time - combo.start:.1f}" for i, s in enumerate(combo.steps))
     parts = [f"{combo.clock} {seq}", f"{combo.duration:.1f} 秒"]
+    if combo.attacks:
+        parts.append(f"穿插普攻 {combo.attacks} 下")
     if combo.target is not None:
         parts.append(f"目標 {name(combo.target)}（封包）" if combo.target_confirmed else f"目標(推定) {name(combo.target)}")
     hits = [f"{s.token}→{'、'.join(name(t) for t in s.enemy_targets)}" for s in combo.steps if s.enemy_targets]

@@ -49,9 +49,9 @@ def _assemble(plain_bytes, order: str, shifts) -> int:
 
 
 def _decode_fixed(tables: dict, cur: Cursor) -> Tuple[int, Cursor]:
-    width = len(tables["plain"])
-    raw, cur = cur.take(width)
-    plain = [tables["plain"][i][raw[i]] for i in range(width)]
+    positions = tables.get("positions") or range(len(tables["plain"]))
+    raw, cur = cur.take(tables.get("width") or len(tables["plain"]))
+    plain = [tables["plain"][i][raw[p]] for i, p in enumerate(positions)]
     return _assemble(plain, tables.get("order"), tables.get("shifts")), cur
 
 

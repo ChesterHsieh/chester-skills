@@ -155,3 +155,10 @@ def test_merged_repeat_packet_keeps_its_target_list():
     repeat = Cast(10.1, ZED, Q, targets=(ENEMY_A,), unit_targets=2)
     (merged,) = merge_key_presses([first, repeat])
     assert merged.time == 10.0 and merged.targets == (ENEMY_A,) and merged.unit_targets == 2
+
+
+def test_combo_counts_woven_basic_attacks():
+    casts = [cast(400.0, Q, end=POSITIONS[ENEMY_A]), cast(401.0, W, end=POSITIONS[ENEMY_A])]
+    (c,) = combos.build_combos(casts, ZED, TEAMS, [], position, attacks=(399.5, 400.4, 400.7, 401.8, 403.0))
+    assert c.attacks == 3   # 400.4, 400.7 between the casts, 401.8 within the tail
+    assert "穿插普攻 3 下" in combos.describe(c, lambda i: str(i))

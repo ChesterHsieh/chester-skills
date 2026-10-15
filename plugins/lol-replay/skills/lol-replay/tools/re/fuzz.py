@@ -12,7 +12,7 @@ from lolreplay.payload.generic import DecodeError, decode_packet
 
 
 def main(ptype, spec_path, n=300, seed=1):
-    spec = json.load(open(spec_path))
+    spec = V.without_const_plains(json.load(open(spec_path)))  # constants have no reader call to compare
     tr = T.Tracer()
     rnd = random.Random(seed)
     real = of(ptype)
