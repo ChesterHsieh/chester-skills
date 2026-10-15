@@ -2,8 +2,9 @@
 
 A combo is a burst of combat casts (Q/W/E/R, summoner spells, item actives) whose consecutive casts
 are at most `gap_s` apart. Cast packets give the caster, the spell, the caster position and the aim
-point but no decodable target list, so the target is inferred from positions (the enemy champion
-nearest the aim points, else nearest the caster). The result comes from the kill packets: an enemy
+point. From 16.20 they also carry a decodable target list (the unit a targeted spell is cast on, the
+units an instant area spell affects); an enemy champion in it is the step's confirmed target. Otherwise
+the target is inferred from positions (the enemy champion nearest the aim points, else nearest the caster). The result comes from the kill packets: an enemy
 death around the combo, or the caster's own death, up to OUTCOME_WINDOW_S after the last cast.
 Basic attacks are not cast packets, so auto-attack weaving only shows as the pauses between casts."""
 from __future__ import annotations
@@ -40,7 +41,13 @@ FLASH_SCRIPTS = frozenset({"SummonerFlash", "SummonerFlashPerksHextechFlashtrapt
 class Step:
     cast: Cast
     token: str
-    aimed_at: Optional[int]        # enemy champion (player index) within AIM_RADIUS of the aim point
+    aimed_at: Optional[int]        # packet target (enemy champion), else the enemy within AIM_RADIUS of the aim point
+    enemy_targets: Tuple[int, ...] = ()  # enemy champions in the packet's target list (16.20+; empty for skillshots)
+
+    @property
+    def confirmed(self) -> bool:
+        """aimed_at comes from the packet's target list, not from positions"""
+        return bool(self.enemy_targets)
 
     @property
     def time(self) -> float:
@@ -69,6 +76,7 @@ class Combo:
     kills: Tuple[Event, ...]       # deaths of those enemies (or anyone the caster last-hit) in the window
     died: Optional[Event]          # the caster's own death in the window
     flashes: Tuple[FlashUse, ...] = ()
+    target_confirmed: bool = False # the target is an enemy champion from the cast packets' target lists
 
     @property
     def start(self) -> float:
@@ -276,11 +284,19 @@ def _enemies_near(group: Sequence[Cast], enemies: Sequence[int], position: Posit
     return best
 
 
+def _step(c: Cast, enemies: Sequence[int], position: PositionFn) -> Step:
+    hit = tuple(t for t in c.targets if t in enemies)
+    if hit:
+        return Step(c, combat_ref(c).token, hit[0], hit)
+    return Step(c, combat_ref(c).token, (aimed_enemy(c, enemies, position) or (None,))[0])
+
+
 def _combo(group: Tuple[Cast, ...], player: int, enemies: Sequence[int], deaths: Sequence[Event],
            position: PositionFn, flashes: Sequence[FlashUse]) -> Combo:
-    steps = tuple(Step(c, combat_ref(c).token, (aimed_enemy(c, enemies, position) or (None,))[0]) for c in group)
+    steps = tuple(_step(c, enemies, position) for c in group)
     near = _enemies_near(group, enemies, position)
-    aimed = Counter(s.aimed_at for s in steps if s.aimed_at is not None)
+    confirmed = Counter(t for s in steps for t in s.enemy_targets)
+    aimed = confirmed or Counter(s.aimed_at for s in steps if s.aimed_at is not None)
     involved = tuple(sorted(set(near) | set(aimed), key=lambda e: near.get(e, ENGAGE_RADIUS)))
     target = aimed.most_common(1)[0][0] if aimed else (involved[0] if involved else None)
     start, until = group[0].time, group[-1].time + OUTCOME_WINDOW_S
@@ -288,7 +304,7 @@ def _combo(group: Tuple[Cast, ...], player: int, enemies: Sequence[int], deaths:
                   and (e.player in involved or e.killer == player))
     died = next((e for e in deaths if e.player == player and start <= e.time <= until), None)
     inside = tuple(f for f in flashes if group[0].time <= f.time <= group[-1].time)
-    return Combo(player, steps, involved, target, kills, died, inside)
+    return Combo(player, steps, involved, target, kills, died, inside, bool(confirmed))
 
 
 def build_combos(casts: Sequence[Cast], player: int, teams: Sequence[int], deaths: Sequence[Event],
@@ -354,11 +370,15 @@ def outcome_text(combo: Combo, name: NameFn) -> str:
 
 
 def describe(combo: Combo, name: NameFn) -> str:
-    """One line: time, sequence with offsets, duration, inferred target, enemies nearby, flashes, result."""
+    """One line: time, sequence with offsets, duration, target (packet or inferred), per-spell packet
+    targets, enemies nearby, flashes, result."""
     seq = " → ".join(s.token if i == 0 else f"{s.token} +{s.time - combo.start:.1f}" for i, s in enumerate(combo.steps))
     parts = [f"{combo.clock} {seq}", f"{combo.duration:.1f} 秒"]
     if combo.target is not None:
-        parts.append(f"目標(推定) {name(combo.target)}")
+        parts.append(f"目標 {name(combo.target)}（封包）" if combo.target_confirmed else f"目標(推定) {name(combo.target)}")
+    hits = [f"{s.token}→{'、'.join(name(t) for t in s.enemy_targets)}" for s in combo.steps if s.enemy_targets]
+    if hits:
+        parts.append("技能目標 " + "；".join(hits))
     if combo.enemies_near:
         parts.append("附近敵人 " + "、".join(name(e) for e in combo.enemies_near))
     parts.extend(flash_text(f, name) for f in combo.flashes)

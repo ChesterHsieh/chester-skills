@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import math
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Callable, Dict, Iterable, Optional, Tuple
 
 from .blocks import Block
@@ -49,6 +49,8 @@ class Cast:
     seq: Optional[int] = None             # client cast counter (duplicate packets share it)
     start: Optional[Tuple[float, float]] = None
     end: Optional[Tuple[float, float]] = None
+    targets: Tuple[int, ...] = ()         # champions (player index) in the packet's target list (16.20+)
+    unit_targets: int = 0                 # non-champion units (minions, monsters, wards) in that list
 
     @property
     def clock(self) -> str:
@@ -185,7 +187,7 @@ def _kill_decorator(spec: PayloadSpec, net_ids: Tuple[int, ...]) -> Optional[Dec
     index = {nid: i for i, nid in enumerate(net_ids)}
 
     def decorate(b: Block) -> Dict[str, object]:
-        info = decode_kill(kill_spec, b.content)
+        info = decode_kill(kill_spec, b.content, spec.role_fields("kill"))
         if info is None:
             return {}
         return {"killer": index.get(info.killer_netid) if info.killer_netid is not None else None,
@@ -199,7 +201,7 @@ def _shop_decorator(spec: PayloadSpec) -> Optional[Decorator]:
         return None
 
     def decorate(b: Block) -> Dict[str, object]:
-        info = decode_purchase(shop_spec, b.content)
+        info = decode_purchase(shop_spec, b.content, spec.role_fields("shop"))
         if info is None:
             return {}
         return {"item": info.item, "value": info.item or 0, "price": info.price, "gold_after": info.gold_after}
@@ -210,13 +212,21 @@ def merge_key_presses(casts: Iterable[Cast], merge_s: float = PRESS_MERGE_S) -> 
     """Drop repeats of the same spell by the same player within `merge_s`. Some spells send one
     packet per phase (Tryndamere E, Irelia W charge/release), which would double their counts."""
     last: Dict[Tuple[int, Optional[int]], float] = {}
+    kept: Dict[Tuple[int, Optional[int]], int] = {}
     out = []
     for c in sorted(casts, key=lambda c: c.time):
         key = (c.player, c.spell_hash)
         prev = last.get(key)
         last[key] = c.time
         if prev is None or c.time - prev > merge_s:
+            kept[key] = len(out)
             out.append(c)
+        elif c.targets or c.unit_targets:
+            # the repeat may carry the target list the first packet lacked
+            k = kept[key]
+            first = out[k]
+            merged = first.targets + tuple(t for t in c.targets if t not in first.targets)
+            out[k] = replace(first, targets=merged, unit_targets=max(first.unit_targets, c.unit_targets))
     return tuple(out)
 
 
@@ -231,7 +241,7 @@ def build_casts(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: Paylo
     for b in blocks:
         if b.type != cast_type or b.net_id not in index:
             continue
-        info = decode_cast(cast_spec, b.content)
+        info = decode_cast(cast_spec, b.content, spec.role_fields("cast"))
         if info is None:
             continue
         player = index.get(info.caster_netid, index[b.net_id]) if info.caster_netid is not None else index[b.net_id]
@@ -239,7 +249,9 @@ def build_casts(blocks: Tuple[Block, ...], net_ids: Tuple[int, ...], spec: Paylo
             if (player, info.seq) in seen:
                 continue
             seen.add((player, info.seq))
-        out.append(Cast(b.time, player, info.spell_hash, info.seq, info.start, info.end))
+        champs = tuple(index[t] for t in info.targets if t in index)
+        out.append(Cast(b.time, player, info.spell_hash, info.seq, info.start, info.end,
+                        champs, len(info.targets) - len(champs)))
     return merge_key_presses(out)
 
 

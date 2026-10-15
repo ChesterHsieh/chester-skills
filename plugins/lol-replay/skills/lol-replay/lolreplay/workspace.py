@@ -235,8 +235,15 @@ def render_casts(ws: Workspace, index: int) -> str:
     return "\n".join(lines)
 
 
+def side_suffix(game, player) -> str:
+    """"[藍方]" / "[紅方]" when both teams play this champion (mirror match), else ""."""
+    if sum(1 for p in game.players if p.champion == player.champion) < 2:
+        return ""
+    return "[藍方]" if player.team == 100 else "[紅方]"
+
+
 def champion_namer(ws: Workspace) -> combos.NameFn:
-    return lambda i: ddragon.champion_name(ws.game.players[i].champion)
+    return lambda i: ddragon.champion_name(ws.game.players[i].champion) + side_suffix(ws.game, ws.game.players[i])
 
 
 def _cast_inputs(ws: Workspace):
@@ -269,7 +276,7 @@ def render_combos(ws: Workspace, index: int) -> str:
         return ""
     name = champion_namer(ws)
     stats = combos.summarize(mine)
-    lines = ["", f"## 連招（同一人施法間隔 ≤{combos.COMBO_GAP_S:g} 秒算一套；目標由位置推定；追問用 combos 指令看逐套細節）",
+    lines = ["", f"## 連招（同一人施法間隔 ≤{combos.COMBO_GAP_S:g} 秒算一套；目標標「封包」的來自施法封包目標清單、標「推定」的由位置推定；追問用 combos 指令看逐套細節）",
              "- " + combos.summary_line(stats)]
     if stats.openers:
         lines.append("- 常用起手：" + combos.pattern_text(stats.openers))

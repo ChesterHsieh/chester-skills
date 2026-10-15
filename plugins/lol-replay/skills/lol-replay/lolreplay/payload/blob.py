@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import Tuple
 
+from .generic import DecodeError, decode_packet
 from .spec import PayloadSpec
 
 
@@ -45,7 +46,22 @@ def decode_blob(spec: PayloadSpec, data: bytes, pos: int) -> Tuple[bytes, int]:
 
 
 def decode_waypoint_packet(spec: PayloadSpec, content: bytes) -> bytes:
-    """WaypointGroup packet: flags byte, bit 3 set means a blob follows immediately."""
+    """WaypointGroup packet -> plain record blob.
+
+    16.17: flags byte, bit 3 set means a blob (global byte transform, front/back interleave) follows.
+    16.20+: the blob is a byte-vector field of the packet spec, decoded with that field's own tables."""
+    if spec.waypoint_blob_field is not None:
+        pspec = spec.packet_spec("waypoint")
+        if pspec is None:
+            raise BlobError(f"no waypoint packet spec for patch {spec.patch}")
+        try:
+            values = decode_packet(pspec, content)
+        except DecodeError as exc:
+            raise BlobError(str(exc)) from exc
+        field = values.get(spec.waypoint_blob_field)
+        if not isinstance(field, dict) or "raw" not in field:
+            return b""
+        return bytes.fromhex(field["raw"])
     if not content or not content[0] & 0x08:
         return b""
     blob, _ = decode_blob(spec, content, 1)

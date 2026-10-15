@@ -15,7 +15,7 @@
   rofl_cli.py items     WHO                                  purchase order with item names, prices and gold left
   rofl_cli.py kills     [--who WHO]                          every death with killer and place (or only WHO's deaths/kills)
   rofl_cli.py casts     WHO [FROM TO]                        spell casts (Q/W/E/R, summoners, items, recall) with position, aim point and the enemy nearest it
-  rofl_cli.py combos    WHO [FROM TO] [--gap S] [--all]      combos: cast bursts with sequence, timing, inferred target, flashes and result
+  rofl_cli.py combos    WHO [FROM TO] [--gap S] [--all]      combos: cast bursts with sequence, timing, target (packet or inferred), flashes and result
 Options: --json  --no-payload (metadata only, fast)
 Follow-up commands use the current session (last `session` call) unless --file is given.
 """
@@ -163,7 +163,7 @@ def cmd_session(args) -> int:
 
 
 def _label(ws, player):
-    return f"{ddragon.champion_name(player.champion)}({player.champion})"
+    return f"{ddragon.champion_name(player.champion)}({player.champion}){wsmod.side_suffix(ws.game, player)}"
 
 
 def cmd_where(args) -> int:
@@ -222,7 +222,8 @@ def cmd_items(args) -> int:
     print(f"{_label(ws, p)} 購買順序（{len(rows)} 件）：")
     for e in rows:
         left = f"，買後剩 {e.gold_after:.0f}" if e.gold_after is not None else ""
-        print(f"  {e.clock} {ddragon.item_name(e.item)}({e.item}) {e.price:.0f} 金{left}")
+        price = f" {e.price:.0f} 金" if e.price is not None else ""
+        print(f"  {e.clock} {ddragon.item_name(e.item)}({e.item}){price}{left}")
     return 0
 
 
@@ -251,13 +252,21 @@ def cmd_casts(args) -> int:
     rows = tl.casts_of(p.index, t0, t1)
     enemies = tuple(o.index for o in ws.game.players if o.team != p.team)
     pos = combos.living(lambda i, t: wsmod.position_of(ws, i, t), tl.deaths)
-    print(f"{_label(ws, p)} 施法 {len(rows)} 次（技能／召喚師技能／道具／回城；普攻不在施法封包裡；「瞄準」＝指向點 450 內最近的敵方英雄，由位置推定）：")
+    print(f"{_label(ws, p)} 施法 {len(rows)} 次（技能／召喚師技能／道具／回城；普攻不在施法封包裡；"
+          "「目標」＝封包的目標清單（指向技的對象、瞬發範圍技打到的英雄，16.20 起才有）；"
+          "「瞄準」＝指向點 450 內最近的敵方英雄，由位置推定）：")
     for c in rows:
         where = f" 於 ({c.start[0]:.0f}, {c.start[1]:.0f}) {region_name(c.start)}" if c.start else ""
         aim = combos.aim_point(c)
         aim_txt = f"，指向 ({aim[0]:.0f}, {aim[1]:.0f})" if aim else ""
-        hit = combos.aimed_enemy(c, enemies, pos)
-        hit_txt = f"，瞄準 {_label(ws, ws.game.players[hit[0]])}（距指向點 {hit[1]:.0f}）" if hit else ""
+        if c.targets or c.unit_targets:
+            names = [_label(ws, ws.game.players[t]) for t in c.targets]
+            if c.unit_targets:
+                names.append(f"非英雄單位 {c.unit_targets}")
+            hit_txt = "，目標 " + "、".join(names)
+        else:
+            hit = combos.aimed_enemy(c, enemies, pos)
+            hit_txt = f"，瞄準 {_label(ws, ws.game.players[hit[0]])}（距指向點 {hit[1]:.0f}）" if hit else ""
         print(f"  {c.clock} {spells.label(c.spell_hash)}{where}{aim_txt}{hit_txt}")
     return 0
 
@@ -271,7 +280,8 @@ def cmd_combos(args) -> int:
     every = [c for c in wsmod.combos_of(ws, p.index, args.gap) if t0 <= c.start <= t1]
     shown = every if args.all else [c for c in every if c.is_fight]
     name = lambda i: _label(ws, ws.game.players[i])  # noqa: E731
-    print(f"{_label(ws, p)} 連招（施法間隔 ≤{args.gap:g} 秒算一套；目標由位置推定；普攻不在施法封包裡，技能間的停頓可能是在普攻）：")
+    print(f"{_label(ws, p)} 連招（施法間隔 ≤{args.gap:g} 秒算一套；目標標「封包」的來自施法封包的目標清單，標「推定」的由位置推定；"
+          "普攻不在施法封包裡，技能間的停頓可能是在普攻）：")
     print("  " + combos.summary_line(combos.summarize(every)))
     for c in shown:
         print("  " + combos.describe(c, name))

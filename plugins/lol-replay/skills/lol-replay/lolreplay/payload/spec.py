@@ -6,7 +6,7 @@ import json
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
-from typing import Mapping, Optional, Tuple
+from typing import Any, Mapping, Optional, Tuple
 
 SPEC_DIR = Path(__file__).resolve().parent.parent / "specs"
 
@@ -20,18 +20,25 @@ class PayloadSpec:
     blob_add: int
     map_center: Tuple[float, float]
     packets: Mapping[str, int] = field(default_factory=dict)
+    # per-role object offsets of the decoded fields (16.20+); events.py falls back to the 16.17 layout
+    fields: Mapping[str, Mapping[str, Any]] = field(default_factory=dict)
+    # 16.20+: the waypoint blob is a byte-vector field of the waypoint packet's own spec (no global transform)
+    waypoint_blob_field: Optional[int] = None
 
     def tbyte(self, b: int) -> int:
         return ((((self.blob_sub - b) & 0xFF) ^ self.blob_xor) + self.blob_add) & 0xFF
 
     def packet_type(self, role: str) -> Optional[int]:
-        """Packet type id playing `role` ("kill", "shop", "cast") in this patch, if its spec is shipped."""
+        """Packet type id playing `role` ("kill", "shop", "cast", "waypoint") in this patch, if its spec is shipped."""
         t = self.packets.get(role)
         return t if t is not None and load_packet_spec(self.patch, t) is not None else None
 
     def packet_spec(self, role: str) -> Optional[dict]:
         t = self.packets.get(role)
         return load_packet_spec(self.patch, t) if t is not None else None
+
+    def role_fields(self, role: str) -> Optional[Mapping[str, Any]]:
+        return self.fields.get(role)
 
 
 @lru_cache(maxsize=None)
@@ -40,11 +47,15 @@ def load_spec(patch: str) -> Optional[PayloadSpec]:
     if not path.is_file():
         return None
     data = json.loads(path.read_text(encoding="utf-8"))
-    t = data["blob_transform"]
+    t = data.get("blob_transform") or {"sub": 0, "xor": 0, "add": 0}
     packets = {str(k): int(v) for k, v in data.get("packets", {}).items()}
+    waypoint = data.get("waypoint") or {}
+    blob_field = waypoint.get("blob_field")
     return PayloadSpec(patch=data["patch"], waypoint_type=int(data["waypoint_type"]),
                        blob_sub=int(t["sub"]), blob_xor=int(t["xor"]), blob_add=int(t["add"]),
-                       map_center=tuple(float(x) for x in data["map_center"]), packets=packets)
+                       map_center=tuple(float(x) for x in data["map_center"]), packets=packets,
+                       fields=data.get("fields", {}),
+                       waypoint_blob_field=int(blob_field) if blob_field is not None else None)
 
 
 @lru_cache(maxsize=None)

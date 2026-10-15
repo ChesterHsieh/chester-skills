@@ -1,14 +1,15 @@
 """Named fields decoded from packet contents through the per-patch packet specs.
 
 The generic decoder returns {object offset: plain value}; this module knows which offsets carry
-the kill, purchase and spell-cast information for the packet layouts described by the specs.
-Offsets are object-relative and stable within a patch (they come from the client's class layout),
-so a patch only needs its `packet_<type>.json` spec and the role→type mapping in `<patch>.json`.
+the kill, purchase and spell-cast information. Offsets are object-relative and stable within a
+patch (they come from the client's class layout). A patch ships its `packet_<type>.json` specs,
+the role→type mapping and, from 16.20 on, the role→offset map (`fields` in `<patch>.json`);
+patches without one use the 16.17 layout below.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, Mapping, Optional, Tuple
 
 from .generic import DecodeError, as_float, decode_packet
 
@@ -52,6 +53,9 @@ class CastInfo:
     start: Optional[Tuple[float, float]]
     end: Optional[Tuple[float, float]]
     cast_time: Optional[float]
+    # net ids in the cast's target list (16.20+): the unit a targeted spell is cast on, the units an
+    # instant area spell affects (often the caster itself); empty for missiles and skillshots
+    targets: Tuple[int, ...] = ()
 
 
 def _int(values: Dict[int, Any], off: int) -> Optional[int]:
@@ -79,30 +83,45 @@ def _xz(values: Dict[int, Any], offs) -> Optional[Tuple[float, float]]:
     return (x, z)
 
 
-def decode_kill(spec: dict, content: bytes) -> Optional[KillInfo]:
+def _targets(values: Dict[int, Any], spec: Optional[Mapping[str, int]]) -> Tuple[int, ...]:
+    """Net ids of the target-list vector: {"list": offset of the vector, "netid": offset in an element}."""
+    if not spec:
+        return ()
+    field = values.get(spec["list"])
+    if not isinstance(field, dict):
+        return ()
+    out = []
+    for item in field.get("items", ()):
+        nid = item.get(spec["netid"])
+        if isinstance(nid, int) and nid & NETID_TAG:
+            out.append(nid)
+    return tuple(out)
+
+
+def decode_kill(spec: dict, content: bytes, fields: Optional[Mapping[str, Any]] = None) -> Optional[KillInfo]:
     try:
         v = decode_packet(spec, content)
     except DecodeError:
         return None
-    f = KILL_FIELDS
+    f = fields or KILL_FIELDS
     return KillInfo(killer_netid=_netid(v, f["killer"]), respawn=_float(v, f["respawn"]),
                     pos=_xz(v, (f["x"], f["height"], f["z"])))
 
 
-def decode_purchase(spec: dict, content: bytes) -> Optional[PurchaseInfo]:
+def decode_purchase(spec: dict, content: bytes, fields: Optional[Mapping[str, Any]] = None) -> Optional[PurchaseInfo]:
     try:
         v = decode_packet(spec, content)
     except DecodeError:
         return None
-    f = SHOP_FIELDS
+    f = fields or SHOP_FIELDS
     return PurchaseInfo(item=_int(v, f["item"]), price=_float(v, f["price"]), gold_after=_float(v, f["gold_after"]))
 
 
-def decode_cast(spec: dict, content: bytes) -> Optional[CastInfo]:
+def decode_cast(spec: dict, content: bytes, fields: Optional[Mapping[str, Any]] = None) -> Optional[CastInfo]:
     v = decode_packet(spec, content, partial=True)  # the fields after the end position are not needed
     if not v:
         return None
-    f = CAST_FIELDS
+    f = fields or CAST_FIELDS
     return CastInfo(caster_netid=_netid(v, f["caster"]), spell_hash=_int(v, f["spell_hash"]),
                     seq=_int(v, f["seq"]), start=_xz(v, f["start"]), end=_xz(v, f["end"]),
-                    cast_time=_float(v, f["cast_time"]))
+                    cast_time=_float(v, f["cast_time"]), targets=_targets(v, f.get("targets")))

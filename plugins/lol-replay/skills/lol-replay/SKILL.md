@@ -9,16 +9,17 @@ description: 解析並分析 League of Legends 的 .rofl 重播檔（ROFL2），
 
 能：從 .rofl 檔直接讀出 10 位玩家約 400 個賽後欄位（KDA、CS、金錢、各種傷害、視野、施法次數、裝備、符文…），
 算出每分鐘值、對位差距、隊伍佔比；從 payload 抽出**死亡時間、升級時間、購物時間、每分鐘操作量**；
-在有該版本規格檔（`lolreplay/specs/<patch>.json` 與 `specs/<patch>/packet_*.json`，目前 16.17）時還能還原：
+在有該版本規格檔（`lolreplay/specs/<patch>.json` 與 `specs/<patch>/packet_*.json`，目前 16.17、16.20）時還能還原：
 - **每個英雄任意時刻的座標**（死亡地點、當時附近敵我、每波交戰是否在場、任意兩人的距離）
 - **擊殺者**（每次死亡被誰殺、死在哪）
 - **購買順序**（時間、道具、價格、買後剩餘金錢）
 - **技能施放**（Q/W/E/R 含二段、召喚師技能、道具主動、飾品眼、回城；施放位置、指向點、指向點旁最近的敵方英雄。普攻不在施法封包裡）
-- **連招**：同一人相鄰施法間隔 ≤1.5 秒算一套，列出順序與每一步的時間差、推定目標、附近敵人、閃現方向（進攻／逃生／橫向），以及打完有沒有擊殺或陣亡；彙總起手、重複序列、接擊殺率並和對位比
+- **施法目標清單（16.20 起）**：施法封包附帶的目標 net id——指向技的對象、瞬發範圍技在施放當下判定到的單位（常含施法者自己）；純飛行道具／skillshot 為空
+- **連招**：同一人相鄰施法間隔 ≤1.5 秒算一套，列出順序與每一步的時間差、目標（16.20 起優先用封包目標清單，標「封包」；沒有時用指向點推定，標「推定」）、每個技能打到哪些敵方英雄、附近敵人、閃現方向（進攻／逃生／橫向），以及打完有沒有擊殺或陣亡；彙總起手、重複序列、接擊殺率並和對位比
 
 全部離線、純 Python，不需要 Riot API 或遊戲客戶端。
 
-不能（目前）：血量曲線、傷害逐筆明細、技能是否命中（封包裡的目標清單還沒解出來，目標只能用指向點與位置推定）、普攻次數、物件（眼、塔）狀態。回答時遇到就明說「這版還沒有」。
+不能（目前）：血量曲線、傷害逐筆明細、skillshot 是否命中（目標清單只涵蓋指向技與瞬發範圍技；16.17 沒有目標清單，目標只能用指向點與位置推定）、普攻次數、物件（眼、塔）狀態。回答時遇到就明說「這版還沒有」。
 遇到沒有規格檔的版本，位置／擊殺者／購買／施法區塊會缺席，其餘功能不受影響（16.20 目前就是這樣：死亡／升級／購物時間軸可用，封包內容還沒有規格）。細節見 `references/rofl2-format.md` 與 `references/payload-crypto-notes.md`。
 
 ## 環境
@@ -45,7 +46,7 @@ CLI 在本 skill 目錄的 `scripts/rofl_cli.py`，用 `python3` 執行；下面
    python3 $SKILL/scripts/rofl_cli.py kills --who 凱特琳               # 她的每次死亡：被誰殺、在哪；以及她的最後一擊
    python3 $SKILL/scripts/rofl_cli.py items 凱特琳                     # 購買順序、價格、買後剩餘金錢
    python3 $SKILL/scripts/rofl_cli.py casts 凱特琳 5:30 6:00           # 這段時間放了什麼技能、瞄準誰、在哪
-   python3 $SKILL/scripts/rofl_cli.py combos 劫 [7:00 8:00]            # 連招：順序與間隔、推定目標、閃現方向、有沒有接擊殺（--all 含清線連段、--gap 1.0 改分組間隔）
+   python3 $SKILL/scripts/rofl_cli.py combos 劫 [7:00 8:00]            # 連招：順序與間隔、目標（封包／推定）、閃現方向、有沒有接擊殺（--all 含清線連段、--gap 1.0 改分組間隔）
    ```
    問題只靠 context 就能回答時不必呼叫；需要精確時刻、距離、軌跡時才呼叫。
 4. 其他指令（不開 session 也能用）：`summary`、`player FILE WHO`、`timeline`、`meta --keys`；加 `--json` 得到結構化資料，`--no-payload` 只讀 metadata 秒回。
@@ -60,16 +61,20 @@ CLI 在本 skill 目錄的 `scripts/rofl_cli.py`，用 `python3` 執行；下面
 - `player` 報告已包含 Q/W/E/R 分項施放、召喚師技能各用幾次、未花費金錢、投降旗標（在 summary 標頭），不需要再跑 `meta` 撈。
 - 交戰時間軸的「在場／不在場」來自位置（<1500 視為在場），擊殺者來自擊殺封包；兩者都有時可以直接寫「那波她在場但只放了 Q」。沒有規格檔的版本只知道「誰在那波陣亡」，不要寫成「她沒參加那波團」。
 - 技能施放的「指向點」是玩家點的位置，不代表命中；「瞄準 X」只表示指向點 450 內最近的敵人是 X（指向技的指向點就在目標身上，skillshot 則是點的位置）。要說「放空」請用 `near` 看指向點附近有沒有敵人。普攻不在施法封包裡（在另一種尚未解的攻擊封包），所以「有沒有在打人」要看傷害數據與位置，不能用施法次數。少數技能名稱反查不到會顯示「未知技能#hash」。
-- 連招的「目標(推定)」「接擊殺」都是用位置與擊殺封包推出來的，不是命中紀錄；技能之間 0.4–0.9 秒的停頓多半是在穿插普攻，不要直接寫成手慢。怎麼判讀見 `references/analysis-playbook.md` 的連招一節。
+- 連招的「目標 X（封包）」「技能目標 Q→X」來自施法封包的目標清單（16.20 起）：指向技的對象、瞬發範圍技施放當下判定到的敵方英雄，可以當成「這招打到誰」；「目標(推定)」則是指向點與位置推出來的。skillshot、飛行道具的目標清單是空的，命中與否仍要看傷害數據。「接擊殺」來自擊殺封包；同一場若兩隊有同一隻英雄，名字後面會標 [藍方]／[紅方]。技能之間 0.4–0.9 秒的停頓多半是在穿插普攻，不要直接寫成手慢。怎麼判讀見 `references/analysis-playbook.md` 的連招一節。
 
 ## 換版本時
 
-封包 type 每個 patch 都會重新編號。工具會用每人死亡數／等級／購買次數自動比對並存到 `lolreplay/profiles/<patch>.json`；
-若時間軸區塊空白或 stderr 出現 `packet profile unverified`，跑：
+封包 type 每個 patch 都會重新編號。工具會用每人死亡數／等級／購買次數自動比對並存到 `lolreplay/profiles/<patch>.json`
+（升級封包偶爾重送同一等級，會用內容裡的「等級碼 byte」去掉重送）；若時間軸區塊空白或 stderr 出現 `packet profile unverified`，跑：
 ```bash
 python3 $SKILL/scripts/rofl_cli.py calibrate "/path/to/game.rofl"
 ```
 研究新封包用 `packets` 子命令（`--type`、`--player`、`--keyframe`、`--limit`）。
+
+封包內容（位置／擊殺者／購買／施法）每個 patch 都要重新產生規格檔：`tools/re/` 從 Riot CDN 抓該版的 macOS 客戶端，
+用 Unicorn 模擬客戶端的解碼函式產生 `specs/<patch>/packet_<type>.json`，再用賽後數據自動找出欄位偏移寫進 `specs/<patch>.json`。
+步驟見 `tools/re/README.md`（約 15 分鐘，需要能連 Riot CDN；該版還是線上版本時才抓得到）。
 
 ## 回答格式（建議）
 
@@ -85,7 +90,7 @@ python3 $SKILL/scripts/rofl_cli.py calibrate "/path/to/game.rofl"
 
 - `scripts/rofl_cli.py` — 入口（session / where / near / track / fight / items / kills / casts / combos / summary / player / timeline / packets / calibrate / meta）
 - `lolreplay/` — 解析與分析套件；`lolreplay/data/` 是 Data Dragon 16.17 的中英對照表（含每位英雄的技能腳本名）；`lolreplay/specs/` 是各版本的 payload 規格（`<patch>.json` + `<patch>/packet_<type>.json`）；`lolreplay/payload/` 是純 Python 的封包內容解碼（`generic.py` 通用解碼器、`events.py` 擊殺／購買／施法欄位）、`positions.py` 路徑、`spells.py` 技能 hash 反查、`combos.py` 連招分組與判讀
-- `tools/re/` — 產生規格檔用的離線逆向工具（需要遊戲執行檔與 Unicorn，skill 執行時不需要）
+- `tools/re/` — 產生規格檔用的離線逆向工具（需要遊戲執行檔、Unicorn、Capstone、LIEF，skill 執行時不需要），流程見 `tools/re/README.md`
 - `references/analysis-playbook.md` — 各類問題的檢查清單與寫法
 - `references/stat-fields.md` — 欄位意義與陷阱
 - `references/rofl2-format.md` — 檔案格式（reverse engineering 結果）
