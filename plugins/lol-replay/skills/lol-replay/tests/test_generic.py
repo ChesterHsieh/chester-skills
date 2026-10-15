@@ -87,3 +87,20 @@ def test_object_vector_decodes_each_element():
                         "list": {"kind": "object_vector", "val7": VAL7, "cont": CONT, "element": element}})
     out = decode_packet(spec, bytes([1, 2, 1, 0x37, 1, 0x31]))
     assert out == {0x20: {"count": 2, "items": [{8: 0x40000037}, {8: 0x40000031}]}}
+
+
+def test_varint_vector_fills_from_the_last_element():
+    spec = obj([{"bit": 0, "kind": "bit", "modes": {"1": {"kind": "helper", "offset": 0x28, "helper": "vv"}}}],
+               helpers={"vv": {"kind": "varint_vector", "val7": VAL7, "cont": CONT, "reverse": True}})
+    # count 2, then 0x85 0x01 (= 133) and 7; the client stores them last-first
+    assert decode_packet(spec, bytes([1, 2, 0x85, 0x01, 7])) == {0x28: {"count": 2, "values": [7, 133]}}
+    with pytest.raises(DecodeError):  # the client refuses a count larger than the bytes left
+        decode_packet(spec, bytes([1, 5, 1, 2]))
+
+
+def test_inline_object_vector():
+    element = obj([{"bit": 0, "kind": "bit", "modes": {"1": {"kind": "helper", "offset": 8, "helper": "n"}}}])
+    spec = obj([{"bit": 0, "kind": "bit", "modes": {
+        "1": {"kind": "object_vector", "offset": 0x10, "val7": VAL7, "cont": CONT, "element": element}}}],
+        helpers={"n": varint(size=4)})
+    assert decode_packet(spec, bytes([1, 2, 1, 5, 0])) == {0x10: {"count": 2, "items": [{8: 5}, {}]}}

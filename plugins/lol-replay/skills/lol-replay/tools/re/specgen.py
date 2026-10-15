@@ -174,10 +174,12 @@ class SpecGen:
     def _learn_inline(self, fn, this, size, nflag, spec):
         """Inline reads in the body: fixed 1-byte fields get a value table, varints a cont table.
         Only reads made by the field's own instructions count; the varied byte is the first one they read."""
+        self._last_this = this
         for f in spec['fields']:
             for m, act in f['modes'].items():
                 if act['kind'] != 'inline':
                     continue
+                self._last_this = this
                 rips = set(act.pop('rips'))
                 width = 1 if f['kind'] == 'bit' else int(f['kind'][:-3])
                 g = list(range(f['bit'], f['bit'] + width))
@@ -224,6 +226,8 @@ class SpecGen:
                     self.errors.append(f'{spec["label"]}: inline field {off} consumption {sorted(set(cons))}')
                     continue
                 cont = [1 if c > base_cons else 0 for c in cons]
+                if self._inline_object_vector(act, cont, run_with, spec['label']):
+                    continue
                 terms = [v for v in range(256) if not cont[v]]
                 tvals = {v: values[v] for v in terms}
                 tag = int(any(x is not None and x & 0x40000000 for x in tvals.values()))
@@ -255,6 +259,54 @@ class SpecGen:
                 if not ok_values:
                     act['value_unknown'] = True
                 act.pop('consumed', None)
+
+    def _element_calls(self, r):
+        """Element deserializer calls of a body run: (object, vtable, deserializer) in call order."""
+        out = []
+        for ev in r.events:
+            if ev[0] == 'call' and ev[4] and client.is_vtable(ev[4]):
+                try:
+                    if self.e.q(ev[4] + 8) == ev[2]:
+                        out.append(ev)
+                except Exception:
+                    pass
+        return out
+
+    def _inline_object_vector(self, act, cont, run_with, label):
+        """Inline count varint followed by that many element objects (the count lands in a container,
+        not in the field, so it is learned from the number of element deserializer calls)."""
+        terms = [v for v in range(256) if not cont[v]]
+        counts = {}
+        sample = None
+        for v in terms:
+            r, _ = run_with([v])
+            calls = self._element_calls(r)
+            counts[v] = len(calls)
+            if len(calls) >= 2 and sample is None:
+                stride = calls[1][1] - calls[0][1]
+                sample = (calls[0][2], stride, bytes(self.e.mu.mem_read(self._last_this + calls[0][1], stride)))
+        if sample is None:
+            return False
+        if sorted(counts.values()) != list(range(128)):
+            self.errors.append(f'{label}: inline object vector count bytes do not cover 0..127')
+            return False
+        val7 = [counts.get(v, 0) for v in range(256)]
+        t = next(v for v in terms if counts[v] == 1)
+        for v in range(256):
+            if cont[v]:
+                n = len(self._element_calls(run_with([v, t])[0]))
+                if n >> 7 != 1:
+                    self.errors.append(f'{label}: inline object vector count byte {v:#x} gives {n} elements')
+                    return False
+                val7[v] = n & 0x7F
+        deser, stride, snap = sample
+        this = self.e.alloc(stride + 0x40)
+        self.e.mu.mem_write(this, snap)
+        off = act.get('offset')
+        act.clear()
+        act.update({'kind': 'object_vector', 'offset': off, 'val7': val7, 'cont': cont, 'elem_size': stride,
+                    'element': self.build_object(deser, this, stride, f'{label}@{off}[]')})
+        return True
 
     @staticmethod
     def _inline_fixed(width, run_with, plain_at):

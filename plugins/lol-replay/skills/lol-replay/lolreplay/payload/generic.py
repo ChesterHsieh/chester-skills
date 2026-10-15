@@ -118,6 +118,27 @@ def _decode_vector(h: dict, cur: Cursor) -> Tuple[Dict[str, Any], Cursor]:
     return {"count": count, "raw": body.hex()}, cur
 
 
+def _decode_varint_vector(h: dict, cur: Cursor) -> Tuple[Dict[str, Any], Cursor]:
+    """Count varint, then that many u32 varints through the same byte tables; the client fills the
+    array from the last element to the first (`reverse`)."""
+    count, cur = _decode_count(h, cur)
+    if count > len(cur.data) - cur.pos:
+        raise DecodeError(f"varint vector of {count} with {len(cur.data) - cur.pos} bytes left")
+    values = []
+    for _ in range(count):
+        value, shift = 0, 0
+        while True:
+            raw, cur = cur.take(1)
+            value = (value | (h["val7"][raw[0]] << (shift % 32))) & 0xFFFFFFFF
+            shift += 7
+            if not h["cont"][raw[0]]:
+                break
+        values.append(value)
+    if h.get("reverse"):
+        values.reverse()
+    return {"count": count, "values": values}, cur
+
+
 def _decode_blob(h: dict, cur: Cursor) -> Tuple[bytes, Cursor]:
     table = h["table"]
     if table is None:
@@ -257,6 +278,8 @@ def _decode_field(field: dict, flags: bytes, cur: Cursor, helpers: dict, base: i
                 item, cur = decode_object(h["element"], cur, helpers, 0, partial)
                 items.append(item)
             out[off] = {"count": count, "items": items}
+        elif h["kind"] == "varint_vector":
+            out[off], cur = _decode_varint_vector(h, cur)
         elif h["kind"] == "skip":
             cur = cur.take(h.get("width", 0))[1]
         elif h["kind"] == "blob":
@@ -283,6 +306,13 @@ def _decode_field(field: dict, flags: bytes, cur: Cursor, helpers: dict, base: i
         count, cur = _decode_count(action, cur)
         body, cur = cur.take(count * action.get("elem", 1))
         out[off] = {"count": count, "raw": body.hex()}
+    elif kind == "object_vector":  # inline count, then that many element objects
+        count, cur = _decode_count(action, cur)
+        items = []
+        for _ in range(count):
+            item, cur = decode_object(action["element"], cur, helpers, 0, partial)
+            items.append(item)
+        out[off] = {"count": count, "items": items}
     elif kind == "nested":
         sub = action.get("nested")
         if not sub:

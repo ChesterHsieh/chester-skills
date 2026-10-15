@@ -44,10 +44,10 @@ python3 ../fetch_spell_scripts.py
 | `fetch_client.py` | replay 版本 → Riot sieve → RMAN manifest → 只下載遊戲執行檔 |
 | `client.py` | 讀 Mach-O x86_64 slice（segments、函式起點、import stubs） |
 | `disasm.py` | Capstone 反組譯、call 目標解析；`python3 disasm.py ADDR [N]` 看程式碼 |
-| `emu.py` | Unicorn harness：位址自動偵測、配置器與 libc stub、`Deser` 跑真實封包 |
+| `emu.py` | Unicorn harness：位址自動偵測（工廠、配置器與其初始化／free、隊伍遮罩用的全域設定 `team_cfg`）、libc stub、`Deser` 跑真實封包 |
 | `explore.py` | 攔截讀取函式、逐 bit 翻旗標，找出欄位群組與各模式的動作 |
-| `readers.py` | 讀取函式黑箱量測：固定長度／vec3／varint／byte 陣列／物件陣列的對照表，明文擷取規則 |
-| `specgen.py` | 組成完整規格（巢狀物件、物件陣列、行內欄位、分派順序、常數明文） |
+| `readers.py` | 讀取函式黑箱量測：固定長度／vec3／varint／byte 陣列／物件陣列／u32 varint 陣列的對照表，明文擷取規則 |
+| `specgen.py` | 組成完整規格（巢狀物件、物件陣列、行內欄位與行內物件陣列、分派順序、常數明文） |
 | `calltrace.py` | 在真實封包上追蹤每個讀取函式的寫入（validate 的標準答案） |
 | `validate.py` / `fuzz.py` | 規格 vs 客戶端：真實封包、隨機旗標 |
 | `roles.py` | 封包 type 候選與欄位偏移的自動判定 |

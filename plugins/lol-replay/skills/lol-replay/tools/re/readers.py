@@ -257,13 +257,18 @@ def characterize(e, fn):
     except Exception as exc:
         third = exc
     try:
+        return learn_varint_vector(e, fn)
+    except Exception as exc:
+        fourth = exc
+    try:
         return learn_vector(e, fn)
     except Exception as exc:
         second = exc
     try:
         return learn_varint_consumption(e, fn)
     except Exception as exc:
-        raise ValueError(f'varint: {first}; object-vector: {third}; vector: {second}; varint-consumption: {exc}')
+        raise ValueError(f'varint: {first}; object-vector: {third}; varint-vector: {fourth}; vector: {second}; '
+                         f'varint-consumption: {exc}')
 
 
 def learn_vector(e, fn, buf=4096):
@@ -315,6 +320,60 @@ def learn_vector(e, fn, buf=4096):
         if None not in tab:
             table = tab
     return {'kind': 'vector', 'val7': val7, 'cont': cont, 'elem': elem, 'elem_table': table}
+
+
+def learn_varint_vector(e, fn):
+    """Vector of u32 varints: {ptr, u32 count, u32 capacity} at dst; a count varint, then `count`
+    varints through the same byte tables, accumulated straight into the array (no tail transform).
+    The client may fill the array from the last element to the first (`reverse`)."""
+    def run(data):
+        r = run_helper(e, fn, data)
+        ptr, count = struct.unpack_from('<QI', r.final, 0)
+        values = []
+        if r.ok == 1 and count:
+            values = list(struct.unpack(f'<{count}I', bytes(e.mu.mem_read(ptr, 4 * count))))
+        return r, count, values
+    zero = next((v for v in range(256) if run_helper(e, fn, bytes([v])).ok == 1
+                 and run_helper(e, fn, bytes([v])).consumed == 1), None)
+    if zero is None:
+        raise ValueError(f'{fn:#x}: no empty-vector byte')
+    val7, cont = [0] * 256, [0] * 256
+    for v in range(256):
+        r, count, values = run(bytes([v]) + bytes([zero]) * 200)
+        if r.ok != 1 or count > 127 or values != [0] * count:
+            raise ValueError(f'{fn:#x}: byte {v:#x} is not a count ({r.ok}, {count})')
+        extra = r.consumed - 1 - count
+        if extra not in (0, 1):
+            raise ValueError(f'{fn:#x}: byte {v:#x} consumed {r.consumed} for {count} elements')
+        val7[v], cont[v] = count, extra
+    one = next(v for v in range(256) if not cont[v] and val7[v] == 1)
+    two = next(v for v in range(256) if not cont[v] and val7[v] == 2)
+    for v in range(256):  # element bytes use the same tables
+        r, count, values = run(bytes([one, v]) + bytes([zero]) * 8)
+        if values != [val7[v]] or r.consumed != 2 + cont[v]:
+            raise ValueError(f'{fn:#x}: element byte {v:#x} -> {values} ({r.consumed})')
+    a, b = (next(v for v in range(256) if not cont[v] and val7[v] == k) for k in (5, 9))
+    _, _, values = run(bytes([two, a, b]))
+    if sorted(values) != [5, 9]:
+        raise ValueError(f'{fn:#x}: two elements read as {values}')
+    h = {'kind': 'varint_vector', 'val7': val7, 'cont': cont, 'reverse': values == [9, 5]}
+    rnd = random.Random(5)
+    terms = [v for v in range(256) if not cont[v]]
+    conts = [v for v in range(256) if cont[v]]
+    for _ in range(30):
+        n = rnd.randrange(1, 6)
+        seq, want = [next(v for v in terms if val7[v] == n)], []
+        for _ in range(n):
+            k = rnd.randrange(1, 4)
+            item = [rnd.choice(conts) for _ in range(k - 1)] + [rnd.choice(terms)]
+            seq += item
+            want.append(sum(val7[x] << (7 * i) for i, x in enumerate(item)) & 0xFFFFFFFF)
+        r, count, values = run(bytes(seq))
+        if h['reverse']:
+            values = values[::-1]
+        if r.consumed != len(seq) or values != want:
+            raise ValueError(f'{fn:#x}: varint vector mismatch on {bytes(seq).hex()}')
+    return h
 
 
 def learn_varint_consumption(e, fn):
