@@ -1,0 +1,13 @@
+{
+  "patch": "16.20",
+  "death_types": [
+    131,
+    166,
+    421
+  ],
+  "level_type": 969,
+  "shop_type": 63,
+  "verified": true,
+  "notes": "auto-detected from per-champion packet counts vs NUM_DEATHS / LEVEL / ITEMS_PURCHASED",
+  "level_code_byte": -1
+}

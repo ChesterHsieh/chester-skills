@@ -174,7 +174,7 @@ def _render_timeline(game: Game, metrics, m: Metrics, opp: Optional[Metrics], tl
     shop = tl.shop_of(m.index)
     purchases = tl.purchases_of(m.index)
     if purchases:
-        lines.append(f"- 購買順序（{len(purchases)} 件）：{'、'.join(f'{e.clock} {ddragon.item_name(e.item)}({e.price:.0f})' for e in purchases)}")
+        lines.append(f"- 購買順序（{len(purchases)} 件）：{'、'.join(f'{e.clock} {ddragon.item_name(e.item)}{_price(e.price)}' for e in purchases)}")
     elif shop:
         lines.append(f"- 購物事件 {len(shop)} 次：{', '.join(e.clock for e in shop)}")
     act = tl.activity[m.index] if m.index < len(tl.activity) else ()
@@ -244,3 +244,7 @@ def to_json(game: Game, metrics: Sequence[Metrics], timeline: Optional[Timeline]
     if flags:
         payload["flags"] = {k: [asdict(f) for f in v] for k, v in flags.items()}
     return json.dumps(payload, ensure_ascii=False, indent=2)
+
+
+def _price(price) -> str:
+    return f"({price:.0f})" if price is not None else ""

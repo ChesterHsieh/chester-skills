@@ -1,9 +1,11 @@
 """Generic packet-content decoder driven by a JSON spec produced by tools/re/specgen.py.
 
-Spec model: content = [flag bytes][fields in `order`]. Each field owns a 1/2/3-bit group in the flag
-bit-stream; the mode selects a constant (stored-domain bytes) or an explicit read: a helper
-(fixed-K bytes with per-byte tables, varint with a 7-bit table, or a blob) or inline code with
-equivalent tables. Nested objects carry their own flag bytes and fields at `base`.
+Spec model: content = [flag bytes][fields in `order`]. Each field owns a group of 1-4 bits in the
+flag bit-stream; the mode selects a constant (stored-domain bytes; 16.20+ specs also give its `plain`
+value), an explicit read, nothing, or `invalid` (the client rejects the packet). Reads are a helper
+(fixed-K bytes with per-byte tables, 7-bit varint, blob, count-prefixed byte `vector` with an element
+table, `object_vector` of nested element objects, or `skip`) or inline code with equivalent tables
+(`inline`, `inline_varint`, `vector`). Nested objects carry their own flag bytes and fields at `base`.
 """
 from __future__ import annotations
 
@@ -47,9 +49,9 @@ def _assemble(plain_bytes, order: str, shifts) -> int:
 
 
 def _decode_fixed(tables: dict, cur: Cursor) -> Tuple[int, Cursor]:
-    width = len(tables["plain"])
-    raw, cur = cur.take(width)
-    plain = [tables["plain"][i][raw[i]] for i in range(width)]
+    positions = tables.get("positions") or range(len(tables["plain"]))
+    raw, cur = cur.take(tables.get("width") or len(tables["plain"]))
+    plain = [tables["plain"][i][raw[p]] for i, p in enumerate(positions)]
     return _assemble(plain, tables.get("order"), tables.get("shifts")), cur
 
 
@@ -81,20 +83,60 @@ def _decode_count(action: dict, cur: Cursor) -> Tuple[int, Cursor]:
 
 
 def _decode_varint(h: dict, cur: Cursor) -> Tuple[int, Cursor]:
+    """7-bit varint through per-byte tables. Specs that record the accumulator `size` follow the
+    client exactly: no length cap (bounded by the content) and x86 shift-count masking."""
     value = 0
     shift = 0
+    size = h.get("size")
+    bits = 8 * size if size else None
     while True:
         raw, cur = cur.take(1)
         b = raw[0]
-        value |= h["val7"][b] << shift
+        if bits:
+            value = (value | (h["val7"][b] << (shift % (32 if bits <= 32 else 64)))) & ((1 << max(bits, 32)) - 1)
+        else:
+            value |= h["val7"][b] << shift
         shift += 7
         if not h["cont"][b]:
             break
-        if shift > 35:
+        if not bits and shift > 35:
             raise DecodeError("varint too long")
     if h.get("netid_tag") and value & 0xFFFFFF:
-        value |= 0x40000000
+        value = value ^ 0x40000000 if bits else value | 0x40000000  # the client XORs the tag in
+    if bits:
+        value &= (1 << bits) - 1  # the plain value is stored at the slot's width
     return value, cur
+
+
+def _decode_vector(h: dict, cur: Cursor) -> Tuple[Dict[str, Any], Cursor]:
+    """Count-prefixed vector or string: count varint (per-byte tables), then count*elem bytes."""
+    count, cur = _decode_count(h, cur)
+    body, cur = cur.take(count * h.get("elem", 1))
+    table = h.get("elem_table")
+    if table:
+        body = bytes(table[b] for b in body)
+    return {"count": count, "raw": body.hex()}, cur
+
+
+def _decode_varint_vector(h: dict, cur: Cursor) -> Tuple[Dict[str, Any], Cursor]:
+    """Count varint, then that many u32 varints through the same byte tables; the client fills the
+    array from the last element to the first (`reverse`)."""
+    count, cur = _decode_count(h, cur)
+    if count > len(cur.data) - cur.pos:
+        raise DecodeError(f"varint vector of {count} with {len(cur.data) - cur.pos} bytes left")
+    values = []
+    for _ in range(count):
+        value, shift = 0, 0
+        while True:
+            raw, cur = cur.take(1)
+            value = (value | (h["val7"][raw[0]] << (shift % 32))) & 0xFFFFFFFF
+            shift += 7
+            if not h["cont"][raw[0]]:
+                break
+        values.append(value)
+    if h.get("reverse"):
+        values.reverse()
+    return {"count": count, "values": values}, cur
 
 
 def _decode_blob(h: dict, cur: Cursor) -> Tuple[bytes, Cursor]:
@@ -172,6 +214,11 @@ class PartialDecode(DecodeError):
         self.cur = cur
 
 
+def _group_width(kind: str) -> int:
+    """Flag bits of a field group: "bit", "2bit", "3bit", ... ("Nbit")."""
+    return 1 if kind == "bit" else int(kind[:-3])
+
+
 def decode_object(spec: dict, cur: Cursor, helpers: dict, base: int = 0, partial: bool = False) -> Tuple[Dict[int, Any], Cursor]:
     flags, cur = cur.take(spec["flag_bytes"])
     out: Dict[int, Any] = {}
@@ -190,18 +237,27 @@ def decode_object(spec: dict, cur: Cursor, helpers: dict, base: int = 0, partial
 
 
 def _decode_field(field: dict, flags: bytes, cur: Cursor, helpers: dict, base: int, partial: bool) -> Tuple[Dict[int, Any], Cursor]:
-    width = {"3bit": 3, "2bit": 2, "bit": 1}[field["kind"]]
+    width = _group_width(field["kind"])
     mode = _flag_value(flags, field["bit"], width)
     action = field["modes"].get(str(mode), field["modes"].get(mode))
     if action is None:
         return {}, cur
     kind = action["kind"]
+    if action.get("offset", 0) is None:  # inline read whose value lands outside the object: consume only
+        _, cur = _decode_field({**field, "modes": {str(mode): dict(action, offset=0)}}, flags, cur, helpers, base, partial)
+        return {}, cur
     off = base + action.get("offset", 0)
     out: Dict[int, Any] = {}
     if kind in ("none", "nested_default"):
         return out, cur
     if kind == "const":
-        out.update(_const_plain(action, field, helpers, base))
+        if "plain" in action:  # 16.20+ specs carry the constant's plain value
+            parts = action.get("extra") or [[action.get("offset", 0), action.get("size", 4), action.get("stored")]]
+            plains = action.get("extra_plain") or [action["plain"]]
+            for (o, _size, _stored), value in zip(parts, plains):
+                out[base + o] = value
+        else:
+            out.update(_const_plain(action, field, helpers, base))
     elif kind == "helper":
         h = helpers[action["helper"]]
         if h["kind"] == "fixed":
@@ -210,7 +266,22 @@ def _decode_field(field: dict, flags: bytes, cur: Cursor, helpers: dict, base: i
             vals, cur = _decode_fixedv(h, cur, off)
             out.update(vals)
         elif h["kind"] == "varint":
-            out[off], cur = _decode_varint(h, cur)
+            value, cur = _decode_varint(h, cur)
+            if not h.get("value_unknown"):  # only the continuation bytes are known: consume, report nothing
+                out[off] = value
+        elif h["kind"] == "vector":
+            out[off], cur = _decode_vector(h, cur)
+        elif h["kind"] == "object_vector":
+            count, cur = _decode_count(h, cur)
+            items = []
+            for _ in range(count):
+                item, cur = decode_object(h["element"], cur, helpers, 0, partial)
+                items.append(item)
+            out[off] = {"count": count, "items": items}
+        elif h["kind"] == "varint_vector":
+            out[off], cur = _decode_varint_vector(h, cur)
+        elif h["kind"] == "skip":
+            cur = cur.take(h.get("width", 0))[1]
         elif h["kind"] == "blob":
             out[off], cur = _decode_blob(h, cur)
         else:
@@ -225,10 +296,23 @@ def _decode_field(field: dict, flags: bytes, cur: Cursor, helpers: dict, base: i
             out[off] = {"raw": raw.hex()}
         else:
             out[off], cur = _decode_fixed(tabs, cur)
+    elif kind == "inline_varint":
+        value, cur = _decode_varint(action, cur)
+        if not action.get("value_unknown"):
+            out[off] = value
+    elif kind == "invalid":
+        raise DecodeError(f"flag mode {mode} of the field at {off:#x} is rejected by the client")
     elif kind == "vector":
         count, cur = _decode_count(action, cur)
         body, cur = cur.take(count * action.get("elem", 1))
         out[off] = {"count": count, "raw": body.hex()}
+    elif kind == "object_vector":  # inline count, then that many element objects
+        count, cur = _decode_count(action, cur)
+        items = []
+        for _ in range(count):
+            item, cur = decode_object(action["element"], cur, helpers, 0, partial)
+            items.append(item)
+        out[off] = {"count": count, "items": items}
     elif kind == "nested":
         sub = action.get("nested")
         if not sub:

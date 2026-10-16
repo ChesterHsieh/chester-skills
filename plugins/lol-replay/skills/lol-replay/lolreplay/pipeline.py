@@ -46,7 +46,7 @@ def load_session(path: str, payload: bool = True, persist_profile: bool = True) 
     if len(net_ids) != len(game.players):
         warnings.append(f"found {len(net_ids)} champion net ids for {len(game.players)} players")
     matrix = count_matrix(blocks, net_ids)
-    profile = resolve_profile(game, matrix, persist=persist_profile)
+    profile = resolve_profile(game, matrix, persist=persist_profile, blocks=blocks, net_ids=net_ids)
     if not profile.verified:
         warnings.append("packet profile unverified: death packet not identified, timeline may be empty")
     spec = load_spec(game.patch)

@@ -84,6 +84,29 @@ def _summoner_spells() -> Dict[str, dict]:
 
 
 @lru_cache(maxsize=None)
+def _spell_scripts() -> Dict[str, Dict[str, str]]:
+    """champion -> {script name: slot} for every spell script in the champion's game data
+    (missiles, recasts, passive procs), from tools/fetch_spell_scripts.py."""
+    path = DATA_DIR / "champion_spell_scripts.json"
+    if not path.is_file():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8")).get("champions", {})
+
+
+@lru_cache(maxsize=None)
+def _shared_scripts() -> tuple:
+    path = DATA_DIR / "champion_spell_scripts.json"
+    if not path.is_file():
+        return ()
+    return tuple(json.loads(path.read_text(encoding="utf-8")).get("shared", ()))
+
+
+SHARED_NAMES = {"Burning": "燃燒", "ElderDragonBuff": "遠古龍", "SRX_DragonSoulBuffHextech": "海克斯龍魂",
+                "SRX_DragonSoulBuffInfernal": "炎龍魂", "SRX_DragonSoulBuffChemtech": "化學龍魂",
+                "SRX_DragonSoulBuffMountain": "山龍魂", "SRX_DragonSoulBuffOcean": "海龍魂", "SRX_DragonSoulBuffCloud": "風龍魂"}
+
+
+@lru_cache(maxsize=None)
 def _items() -> Dict[str, dict]:
     path = DATA_DIR / "items.json"
     if not path.is_file():
@@ -107,6 +130,20 @@ def hash_table() -> Dict[int, SpellRef]:
         for suffix in ATTACK_SUFFIXES:
             script = champ + suffix
             table[elf_hash(script)] = SpellRef(script, "A", "普攻" if "Crit" not in suffix else "暴擊普攻", champ)
+    # sub-scripts (TalonWMissileOne, BriarP, GangplankEBarrelFuseMissile...) name the ability they belong to;
+    # damage packets use them as the damage source
+    for champ, scripts in _spell_scripts().items():
+        slots = _champion_spells().get(champ, {})
+        for script, slot in scripts.items():
+            if slot in slots:
+                ref = SpellRef(script, slot, slots[slot]["zh"], champ)
+            elif slot == "A":
+                ref = SpellRef(script, "A", "暴擊普攻" if "Crit" in script else "普攻", champ)
+            else:
+                ref = SpellRef(script, "?", script, champ)
+            table.setdefault(elf_hash(script), ref)
+    for script in _shared_scripts():
+        table.setdefault(elf_hash(script), SpellRef(script, "?", SHARED_NAMES.get(script, script)))
     for info in _summoner_spells().values():
         table[elf_hash(info["en"])] = SpellRef(info["en"], "S", info["zh"])
     for script, zh in GENERIC_NAMES.items():

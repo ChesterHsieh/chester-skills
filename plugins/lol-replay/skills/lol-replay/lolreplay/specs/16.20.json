@@ -1,0 +1,69 @@
+{
+  "patch": "16.20",
+  "waypoint_type": 61,
+  "waypoint": {
+    "blob_field": 24
+  },
+  "map_center": [
+    7358.0,
+    7412.0
+  ],
+  "notes": "Generated from the 16.20.8248524 macOS client with tools/re (Unicorn emulation of the packet deserializers; specgen.py, validated with validate.py and fuzz.py). Replay contents start at the derived class's flag bytes (the base-class header varint is not stored). The waypoint blob is the byte vector at +0x18 of packet 61; records keep the 16.17 layout. Offsets below are object-relative (decimal). Damage 150: every damage instance with a champion involved (target +0x14, source +0x1c, amount +0x10, source script hash +0x2c); per-champion sums equal TOTAL_DAMAGE_DEALT_TO_CHAMPIONS / TOTAL_DAMAGE_TAKEN. Attack 972: basic-attack start, sent for the attacker (target +0x10, target position +0x14/+0x18/+0x1c).",
+  "packets": {
+    "kill": 421,
+    "shop": 63,
+    "cast": 1215,
+    "waypoint": 61,
+    "damage": 150,
+    "attack": 972
+  },
+  "fields": {
+    "kill": {
+      "respawn": 84,
+      "killer": 80,
+      "x": 48,
+      "height": 52,
+      "z": 56
+    },
+    "shop": {
+      "gold_after": 16,
+      "item": 48,
+      "price": 132
+    },
+    "cast": {
+      "caster": 144,
+      "seq": 148,
+      "spell_hash": 264,
+      "cast_time": 64,
+      "end": [
+        196,
+        200,
+        204
+      ],
+      "start": [
+        316,
+        320,
+        324
+      ],
+      "targets": {
+        "list": 32,
+        "netid": 8
+      }
+    },
+    "damage": {
+      "target": 20,
+      "source": 28,
+      "amount": 16,
+      "script": 44,
+      "kind": 32
+    },
+    "attack": {
+      "target": 16,
+      "pos": [
+        20,
+        24,
+        28
+      ]
+    }
+  }
+}

@@ -128,3 +128,37 @@ def test_summarize_counts_openers_and_kill_conversion():
     assert stats.fights == 3 and stats.kills == 1
     assert stats.openers[0] == combos.PatternStat("E → Q", 2, 1)
     assert "接擊殺 1（33%）" in combos.summary_line(stats)
+
+
+def test_packet_target_list_beats_the_aim_point_and_drops_self():
+    # Q aimed at ENEMY_A's spot, but the packet says the spell landed on ENEMY_B (and the caster itself)
+    far_b = Cast(200.5, ZED, Q, None, HOME, POSITIONS[ENEMY_A], targets=(ZED, ENEMY_B))
+    casts = [cast(200.0, E), far_b]
+    (c,) = combos.build_combos(casts, ZED, TEAMS, [], position)
+    assert c.target == ENEMY_B and c.target_confirmed
+    assert [s.enemy_targets for s in c.steps] == [(), (ENEMY_B,)]
+    assert ZED not in c.enemies_near and ENEMY_B in c.enemies_near
+    names = {ZED: "劫", ALLY: "隊友", ENEMY_A: "甲", ENEMY_B: "乙"}
+    text = combos.describe(c, names.get)
+    assert "目標 乙（封包）" in text and "技能目標 Q→乙" in text
+
+
+def test_aim_point_target_is_marked_inferred():
+    casts = [cast(300.0, E), cast(300.5, Q, end=POSITIONS[ENEMY_A])]
+    (c,) = combos.build_combos(casts, ZED, TEAMS, [], position)
+    assert c.target == ENEMY_A and not c.target_confirmed
+    assert "目標(推定)" in combos.describe(c, lambda i: str(i))
+
+
+def test_merged_repeat_packet_keeps_its_target_list():
+    first = Cast(10.0, ZED, Q)
+    repeat = Cast(10.1, ZED, Q, targets=(ENEMY_A,), unit_targets=2)
+    (merged,) = merge_key_presses([first, repeat])
+    assert merged.time == 10.0 and merged.targets == (ENEMY_A,) and merged.unit_targets == 2
+
+
+def test_combo_counts_woven_basic_attacks():
+    casts = [cast(400.0, Q, end=POSITIONS[ENEMY_A]), cast(401.0, W, end=POSITIONS[ENEMY_A])]
+    (c,) = combos.build_combos(casts, ZED, TEAMS, [], position, attacks=(399.5, 400.4, 400.7, 401.8, 403.0))
+    assert c.attacks == 3   # 400.4, 400.7 between the casts, 401.8 within the tail
+    assert "穿插普攻 3 下" in combos.describe(c, lambda i: str(i))
