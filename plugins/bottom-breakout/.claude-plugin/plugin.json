@@ -1,0 +1,17 @@
+{
+  "name": "bottom-breakout",
+  "displayName": "Bottom Breakout",
+  "version": "0.1.0",
+  "description": "底翻突破判讀：用 Murphy《Technical Analysis of the Financial Markets》的規則，判斷回檔或打底、底部確認四步、破底翻、反轉日、缺口、量能與報酬風險比；跨市場掛牌（原股＋ADR）改看全球量能。資料走 IBKR connector，只用 Python 標準函式庫。",
+  "author": {
+    "name": "Chester Hsieh",
+    "url": "https://github.com/ChesterHsieh"
+  },
+  "homepage": "https://github.com/ChesterHsieh/chester-skills",
+  "repository": "https://github.com/ChesterHsieh/chester-skills",
+  "license": "MIT",
+  "keywords": ["technical-analysis", "breakout", "double-bottom", "volume", "adr", "ibkr", "trading"],
+  "skills": [
+    "./skills/bottom-breakout"
+  ]
+}
