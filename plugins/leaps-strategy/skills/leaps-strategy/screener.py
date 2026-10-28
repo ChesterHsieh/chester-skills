@@ -547,13 +547,13 @@ def print_equal_delta(rows, cfg):
         if not target:
             target = max(r["delta"] * cfg["spot"] * 100 * (cfg["budget"] / r["premium"]) for r in live)
     print(f'\n--- D. 等美元 delta 曝险比较（控制变因：固定 ${target:,.0f} 的美元 delta）---')
-    hdr = f'{"履约价":<12}{"需要口数":>10}{"投入资金":>12}{"资产(内含)":>13}{"时值总额":>12}{"IV 1pt 曝险":>13}'
+    hdr = f'{"到期 / 履约价":<18}{"需要口数":>10}{"投入资金":>12}{"资产(内含)":>13}{"时值总额":>12}{"IV 1pt 曝险":>13}'
     print(hdr)
     print("-" * len(hdr))
-    for r in sorted(live, key=lambda x: x["strike"]):
+    for r in sorted(live, key=lambda x: (x["strike"], x["expiry"])):
         per_ct = r["delta"] * cfg["spot"] * 100
         n = target / per_ct if per_ct else 0.0
-        print(f'{r["strike"]:<12g}{n:>10.2f}{n * r["premium"]:>12,.0f}'
+        print(f'{r["expiry"] + " " + format(r["strike"], "g"):<18}{n:>10.2f}{n * r["premium"]:>12,.0f}'
               f'{n * r["intrinsic"] * 100:>13,.0f}{n * r["extrinsic"] * 100:>12,.0f}'
               f'{n * r["vega_1pt"]:>13,.0f}')
     print("\n   → 选深度 ITM 不是「降低槓桿」，是「用同样的槓桿买下更少的波动率曝险」。")
