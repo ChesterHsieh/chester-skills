@@ -23,6 +23,7 @@ SKILLS=(
   "concept-check:plugins/concept-check/skills/concept-check"
   "lol-replay:plugins/lol-replay/skills/lol-replay"
   "tw-base-breakout:plugins/tw-base-breakout/skills/tw-base-breakout"
+  "bottom-breakout:plugins/bottom-breakout/skills/bottom-breakout"
 )
 
 mode="${1:-link}"

@@ -1,6 +1,6 @@
 # chester-skills
 
-Chester 自用的 Claude Code plugin 集合。目前九个 plugin，各自独立安装：
+Chester 自用的 Claude Code plugin 集合。目前十个 plugin，各自独立安装：
 
 | plugin | 做什么 |
 |---|---|
@@ -11,6 +11,7 @@ Chester 自用的 Claude Code plugin 集合。目前九个 plugin，各自独立
 | **lol-replay** | 離線解析 **League of Legends .rofl 重播檔**：賽後統計、對位比較、任意時刻座標、擊殺者、購買順序、技能施放、連招分析，回答「這場為什麼輸」「凱特琳為什麼輸出低」「連招打得好不好」 |
 | **concept-check** | 丢一个概念进去，讲清楚之后**用至少四轮四选一反问**，验证是真的懂而不是看懂；答错先给指针不给答案 |
 | **tw-base-breakout** | 台股型态粗扫：给代码、题材或全部个股期货标的，找出符合「**稳定支撑区 → 均线纠结 → 突破**」且贴近底线（进场区）的股票，附失效价与期货保证金，可用 `--asof` 回测 |
+| **bottom-breakout** | 底翻突破判读：用 Murphy《Technical Analysis of the Financial Markets》的规则，判断**回档还是打底**、底部确认四步（前低 → 反弹高点 X → 回测 → 带量突破）、破底翻、反转日、缺口与报酬风险比；ADR 跨市场挂牌改看**全球量能**。资料走 IBKR connector |
 | **finance-paper-search** | 量化／金融 × RL／ML **论文检索**，附带固定版本的 resp-mcp server；含 1990 年代早期文献的检索流程与种子论文清单 |
 | **job104-search** | **104 人力银行职缺检索**，附带固定版本的 job104-mcp server（依赖 sha256 锁定）；用中文地区／职类名称搜职缺、取完整内容，含薪资筛选的坑与使用守则 |
 
@@ -25,6 +26,7 @@ Chester 自用的 Claude Code plugin 集合。目前九个 plugin，各自独立
 /plugin install concept-check@chester-skills
 /plugin install lol-replay@chester-skills
 /plugin install tw-base-breakout@chester-skills
+/plugin install bottom-breakout@chester-skills
 /plugin install finance-paper-search@chester-skills
 /plugin install job104-search@chester-skills
 ```
@@ -42,6 +44,7 @@ plugins/
 ├── concept-check/   concept-check
 ├── lol-replay/      lol-replay（開發 repo：ChesterHsieh/lol-reviewer）
 ├── tw-base-breakout/ tw-base-breakout
+├── bottom-breakout/ bottom-breakout
 ├── finance-paper-search/ finance-paper-search + resp-mcp 启动脚本与 requirements.lock
 └── job104-search/   job104-search + job104-mcp 启动脚本与 requirements.lock（带 hash）
 ```
@@ -220,6 +223,11 @@ Semantic Scholar 不设 `SEMANTIC_SCHOLAR_API_KEY` 几乎必 429；没有 SSRN �
 它靠 `curl_cffi` 模拟 Chrome TLS 指纹绕过 104 的 Cloudflare 防护、抓网页端非公开 JSON：**未经 104 官方授权**，104 改版或加强防护就会 403，只适合个人低频使用。
 `salary_min` 只是改成薪资排序、不是硬筛选；职缺内容是第三方文字，与交易／写入类 connector 同 session 使用有间接 prompt injection 风险。
 升级版本时用上游 `uv export --frozen --no-dev --no-emit-project --no-annotate` 重新匯出 lock，并重跑 diff 比对 wheel 与原始码。
+
+**bottom-breakout** 的规则来自一本 1999 年的书加上一个案例（SK Hynix 2026-10），不是统计验证过的胜率。
+低点、高点用相邻 K 棒判断，盘整很乱时可能抓到不是你眼中的那一个，要对照图。
+跨市场量能目前只有原股＋ADR 正常盘：IBKR 历史资料没有 ADR 夜盘，韩股日线不含 Nextrade；`get_price_snapshot` 的 volume 会把这些都算进去，所以量能判断一律用日线、不用即时报价。
+另外 IBKR alert 在这个案例里条件达到也没触发，skill 规定不能把 alert 当停损。
 
 ## License
 

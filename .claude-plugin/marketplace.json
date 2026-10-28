@@ -104,6 +104,20 @@
       ]
     },
     {
+      "name": "bottom-breakout",
+      "source": "./plugins/bottom-breakout",
+      "description": "底翻突破判讀：用 Murphy 的規則判斷回檔或打底、底部確認四步（前低／反彈高點 X／回測／帶量突破）、破底翻、反轉日、缺口與報酬風險比；ADR 跨市場掛牌改看全球量能。資料走 IBKR connector。",
+      "category": "finance",
+      "keywords": [
+        "technical-analysis",
+        "breakout",
+        "double-bottom",
+        "volume",
+        "adr",
+        "ibkr"
+      ]
+    },
+    {
       "name": "finance-paper-search",
       "source": "./plugins/finance-paper-search",
       "description": "量化／金融 × RL／ML 论文检索：附带固定版本的 resp-mcp（OpenAlex、Semantic Scholar、arXiv 等），含 1990 年代早期文献的检索流程、种子论文清单与实测限制。",
