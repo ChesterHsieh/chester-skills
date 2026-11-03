@@ -293,7 +293,8 @@ def evaluate(q, cfg, today, gates):
     rent = (extrinsic / t) / spot if t > 0 else float("inf")
     notional = delta * spot * 100.0          # 每口等效持股金额
     premium = mid * 100.0                    # 每口权利金
-    leverage = notional / premium if premium else 0.0
+    leverage = notional / premium if premium else 0.0          # Δ槓桿：乘 delta，等于「等效持股 ÷ 同额正股」
+    nominal_leverage = spot * 100.0 / premium if premium else 0.0   # 名目槓桿：每口控制 100 股 ÷ 权利金，不乘 delta
     half_spread = (ask - bid) / 2.0
     half_spread_pct = half_spread / mid if mid else 1.0
     oi = int(q.get("oi", 0) or 0)
@@ -313,8 +314,17 @@ def evaluate(q, cfg, today, gates):
     warns = []
     blocked = bool(gates["hard"])   # 整体关卡（A/B/E）已挡下，与选哪档无关
     months = t * 12
+    outside_frame = False
     if not (DTE_MIN_MONTHS <= months <= DTE_MAX_MONTHS):
-        fails.append(f"到期窗 {months:.1f} 月不在 {DTE_MIN_MONTHS}-{DTE_MAX_MONTHS} 月")
+        ov = cfg.get("dte_override_months")
+        if ov and float(ov[0]) <= months <= float(ov[1]):
+            # 使用者这次明示放宽：不算通过，标成「框外」并印出理由（M股：深度 OTM 且剩 13 个月内 → −$1.3k）
+            outside_frame = True
+            warns.append(f"⚠ 框外：到期 {months:.1f} 月不在 {DTE_MIN_MONTHS}-{DTE_MAX_MONTHS} 月，"
+                         f"使用者这次放宽到 {ov[0]}–{ov[1]} 月（理由：{cfg.get('dte_override_reason', '未写')}）。"
+                         f"剩不到一年的合约时间价值流失更快，价外的尤其明显")
+        else:
+            fails.append(f"到期窗 {months:.1f} 月不在 {DTE_MIN_MONTHS}-{DTE_MAX_MONTHS} 月")
     if half_spread_pct > MAX_HALF_SPREAD_PCT:
         fails.append(f"半价差 {half_spread_pct:.1%} > {MAX_HALF_SPREAD_PCT:.0%}")
     if oi < MIN_OI:
@@ -342,7 +352,8 @@ def evaluate(q, cfg, today, gates):
         "expiry": str(q["expiry"]), "strike": strike,
         "months": months, "t": t, "mid": mid, "delta": delta, "iv": iv,
         "intrinsic": intrinsic, "extrinsic": extrinsic, "ext_pct": ext_pct,
-        "rent": rent, "leverage": leverage, "vega_1pt": vega * 100,
+        "rent": rent, "leverage": leverage, "nominal_leverage": nominal_leverage,
+        "outside_frame": outside_frame, "vega_1pt": vega * 100,
         "half_spread": half_spread, "half_spread_pct": half_spread_pct,
         "oi": oi, "bucket": bucket, "note": note,
         "premium": premium, "n_contracts": n_ct, "spend": spend,
@@ -388,7 +399,12 @@ def threshold_line(cfg, row_for_iv, price, horizon_td, closes):
     spot = cfg["spot"]
     rn = prob_above(spot, price, row_for_iv["t"], row_for_iv["iv"], cfg["rate"], cfg.get("div_yield", 0.0))
     freq, n = rolling_freq(closes, horizon_td, price / spot - 1.0) if closes else (None, 0)
-    hist = f"{freq * 100:.1f}%（{n} 个滚动窗）" if freq is not None else "—（没给 price_history）"
+    if freq is not None:
+        hist = f"{freq * 100:.1f}%（{n} 个滚动窗）"
+    elif closes:
+        hist = f"—（历史只有 {len(closes)} 根，不够 {horizon_td} 个交易日的滚动窗）"
+    else:
+        hist = "—（没给 price_history）"
     return f"市场定价 {rn * 100:.1f}% ／ 历史频率 {hist}"
 
 
@@ -412,15 +428,48 @@ def print_gates(gates):
 
 def print_table(rows):
     hdr = (f'{"合约":<26}{"月":>5}{"中价":>8}{"delta":>7}{"IV":>7}{"时值%":>7}'
-           f'{"年租金":>8}{"槓桿":>6}{"半价差":>8}{"OI":>7}{"口数":>6}{"动用":>8}  {"分类"}')
+           f'{"年租金":>8}{"名目槓桿":>9}{"Δ槓桿":>7}{"半价差":>8}{"OI":>7}{"口数":>6}{"动用":>8}  {"分类"}')
     print(hdr)
     print("-" * len(hdr))
     for r in rows:
-        flag = "  " if not r["rejected"] else "✗ "
+        flag = "✗ " if r["rejected"] else ("⚠ " if r.get("outside_frame") else "  ")
         print(f'{flag}{r["label"]:<24}{r["months"]:>5.1f}{r["mid"]:>8.2f}{r["delta"]:>7.2f}'
               f'{r["iv"] * 100:>6.1f}%{r["ext_pct"] * 100:>6.1f}%{r["rent"] * 100:>7.1f}%'
-              f'{r["leverage"]:>5.1f}x{r["half_spread_pct"] * 100:>7.1f}%{r["oi"]:>7}'
+              f'{r["nominal_leverage"]:>8.1f}x{r["leverage"]:>6.1f}x{r["half_spread_pct"] * 100:>7.1f}%{r["oi"]:>7}'
               f'{r["n_contracts"]:>6}{r["budget_use"] * 100:>7.0f}%  {r["bucket"]}')
+    print("   名目槓桿 = 每口控制 100 股 × 股价 ÷ 权利金（不乘 delta）；"
+          "Δ槓桿 = 名目槓桿 × delta = 等效持股 ÷ 同额正股")
+    if any(r.get("outside_frame") for r in rows):
+        print("   ⚠ = 使用者明示放宽到期窗的框外合约：数字照算，但不是三关全过")
+
+
+def print_target(rows, cfg, today):
+    """E. 目标价情境：股价到 target_price 时，每档的倍率与这笔预算的损益（到期价值）。"""
+    tgt = cfg.get("target_price")
+    if not tgt:
+        return
+    tgt = float(tgt)
+    spot = cfg["spot"]
+    stock_ret = tgt / spot - 1.0
+    label = cfg.get("target_label", "目标价")
+    print(f'\n--- E. 目标价情境：{label} ${tgt:,.2f}（正股 {stock_ret * 100:+.1f}%），以到期价值计 ---')
+    hdr = (f'{"合约":<26}{"权利金倍数":>10}{"选择权报酬":>11}{"实际倍率":>9}'
+           f'{"这笔预算损益":>13}{"市场定价机率":>13}')
+    print(hdr)
+    print("-" * len(hdr))
+    for r in sorted(rows, key=lambda x: (x["expiry"], x["strike"])):
+        val = max(tgt - r["strike"], 0.0)
+        mult = val / r["mid"] if r["mid"] else 0.0
+        opt_ret = mult - 1.0
+        real_lev = opt_ret / stock_ret if stock_ret else 0.0
+        pnl = r["n_contracts"] * 100 * val - r["spend"] if r["n_contracts"] >= 1 else None
+        p = prob_above(spot, tgt, r["t"], r["iv"], cfg["rate"], cfg.get("div_yield", 0.0))
+        flag = "✗ " if r["rejected"] else ("⚠ " if r.get("outside_frame") else "  ")
+        pnl_s = f'{pnl:>+13,.0f}' if pnl is not None else f'{"买不到":>13}'
+        print(f'{flag}{r["label"]:<24}{mult:>9.2f}x{opt_ret * 100:>+10.0f}%{real_lev:>8.1f}x{pnl_s}{p * 100:>12.1f}%')
+    print("   权利金倍数 = 到期时 (目标价 − 履约价) ÷ 中价；实际倍率 = 选择权报酬 ÷ 正股报酬")
+    print("   这是「到期刚好在目标价」的价值。提前到目标价时还有剩余时间价值，实际卖得更多；")
+    print("   到期没到目标价，价外合约会归零——倍率越高，归零的机率越大（看最后一栏）")
 
 
 def print_details(rows, cfg, today, closes):
@@ -452,6 +501,8 @@ def print_details(rows, cfg, today, closes):
             print("   判定：否决（已被上面的整体关卡挡下，与选哪个履约价无关）")
         if r["fails"]:
             print(f'   合约层级：否决 → {"；".join(r["fails"])}')
+        elif not r["blocked"] and r.get("outside_frame"):
+            print("   判定：⚠ 框外——到期窗是使用者放宽的，其余条件都过，但不是三关全过")
         elif not r["blocked"]:
             print("   判定：三关全过 ✓")
 
@@ -496,13 +547,13 @@ def print_equal_delta(rows, cfg):
         if not target:
             target = max(r["delta"] * cfg["spot"] * 100 * (cfg["budget"] / r["premium"]) for r in live)
     print(f'\n--- D. 等美元 delta 曝险比较（控制变因：固定 ${target:,.0f} 的美元 delta）---')
-    hdr = f'{"履约价":<12}{"需要口数":>10}{"投入资金":>12}{"资产(内含)":>13}{"时值总额":>12}{"IV 1pt 曝险":>13}'
+    hdr = f'{"到期 / 履约价":<18}{"需要口数":>10}{"投入资金":>12}{"资产(内含)":>13}{"时值总额":>12}{"IV 1pt 曝险":>13}'
     print(hdr)
     print("-" * len(hdr))
-    for r in sorted(live, key=lambda x: x["strike"]):
+    for r in sorted(live, key=lambda x: (x["strike"], x["expiry"])):
         per_ct = r["delta"] * cfg["spot"] * 100
         n = target / per_ct if per_ct else 0.0
-        print(f'{r["strike"]:<12g}{n:>10.2f}{n * r["premium"]:>12,.0f}'
+        print(f'{r["expiry"] + " " + format(r["strike"], "g"):<18}{n:>10.2f}{n * r["premium"]:>12,.0f}'
               f'{n * r["intrinsic"] * 100:>13,.0f}{n * r["extrinsic"] * 100:>12,.0f}'
               f'{n * r["vega_1pt"]:>13,.0f}')
     print("\n   → 选深度 ITM 不是「降低槓桿」，是「用同样的槓桿买下更少的波动率曝险」。")
@@ -537,6 +588,7 @@ def main():
     print_details(rows, cfg, today, closes)
     print_crossovers(rows, cfg, today, closes)
     print_equal_delta(rows, cfg)
+    print_target(rows, cfg, today)
     print("\n※ 本表是筛选与风险计算工具，不是投资建议；下单与否由你决定。")
 
 
